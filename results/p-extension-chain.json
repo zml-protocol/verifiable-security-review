@@ -1,0 +1,55 @@
+{
+  "chains": {
+    "authlib-jws-none/base": {
+      "class": "FULL_CHAIN",
+      "length": 4,
+      "verified_bridge_hops": [
+        "b82",
+        "b93"
+      ]
+    },
+    "authlib-jws-none/head": {
+      "class": "FULL_CHAIN",
+      "length": 4,
+      "verified_bridge_hops": [
+        "b54",
+        "b91"
+      ]
+    },
+    "caddy-forward-auth/base": {
+      "class": "FULL_CHAIN",
+      "length": 2,
+      "verified_bridge_hops": [
+        "b36"
+      ]
+    },
+    "caddy-forward-auth/head": {
+      "class": "FULL_CHAIN",
+      "length": 3,
+      "verified_bridge_hops": [
+        "b33",
+        "b59"
+      ]
+    },
+    "filebrowser-archive-backslash/base": {
+      "class": "FULL_CHAIN",
+      "length": 5,
+      "verified_bridge_hops": [
+        "b01",
+        "b14",
+        "b23",
+        "b70"
+      ]
+    },
+    "filebrowser-archive-backslash/head": {
+      "class": "FULL_CHAIN",
+      "length": 5,
+      "verified_bridge_hops": [
+        "b13",
+        "b39",
+        "b51",
+        "b90"
+      ]
+    }
+  }
+}

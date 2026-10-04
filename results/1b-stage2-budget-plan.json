@@ -1,0 +1,24 @@
+{
+  "protocol": "v1.1",
+  "label": "claude_claude-sonnet-5_high",
+  "ceiling_usd": 200.0,
+  "gate_costs_usd": {
+    "authlib-jws-none/H1/forward/r0": 0.3511,
+    "caddy-forward-auth/H1/forward/r0": 0.6516,
+    "filebrowser-archive-backslash/H1/forward/r0": 0.2065,
+    "filebrowser-archive-backslash/H3/forward/r0": 0.2035,
+    "caddy-forward-auth/H2/forward/r0": 0.6807
+  },
+  "per_run_estimate_usd": 0.7488,
+  "observed_spend_usd": 2.0934,
+  "trim_steps": [],
+  "conditions": [
+    "forward",
+    "swapped",
+    "identity_base",
+    "identity_head"
+  ],
+  "repeats": 5,
+  "projected_total_usd": 118.15,
+  "budget_censored": []
+}

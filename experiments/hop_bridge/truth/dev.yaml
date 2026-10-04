@@ -1,0 +1,33 @@
+# Scorer-only truth for sets/dev.yaml (§14). Never shown to a verifier.
+set: dev
+truth:
+  g1: {label: true}
+  g2: {label: false, kind: wrong_target, reason: "`other` is a different collection from `items`"}
+  g3: {label: false, kind: wrong_source, reason: "`other` is not what the first loop ranges over"}
+  g4: {label: true}
+  g5: {label: false, kind: reversed, reason: "a range value variable does not define the collection"}
+  g20: {label: false, kind: wrong_target, reason: "a single-variable range binds the index, not an element"}
+  g6: {label: true}
+  g7: {label: true}
+  g8: {label: false, kind: wrong_target, reason: "the argument `prefix` does not read `cleaned`"}
+  g9: {label: true}
+  g10: {label: false, kind: wrong_source, reason: "`t` is redefined before the call reads it"}
+  g11: {label: true}
+  g12: {label: false, kind: wrong_source, reason: "the value of `v` is overwritten in `t` before the call"}
+  g13: {label: true}
+  g14: {label: true}
+  g15: {label: false, kind: wrong_target, reason: "`cleaned` is argument 1, bound to `raw`, not `prefix`"}
+  g16: {label: true, note: "interface dispatch can run upper.Name; the verifier may leave it UNVERIFIED"}
+  g17: {label: false, kind: wrong_target, reason: "a variadic tail receives a slice, not the argument"}
+  g19: {label: false, kind: reversed, reason: "a parameter is not a call argument"}
+  p1: {label: true}
+  p2: {label: true}
+  p3: {label: true}
+  p4: {label: false, kind: wrong_source, reason: "`token` is redefined before the call"}
+  p5: {label: true}
+  p6: {label: false, kind: wrong_target, reason: "the right-hand side is a literal; it does not read `token`"}
+  p7: {label: false, kind: wrong_target, reason: "the call reads `name` and a literal, not `token`"}
+  p8: {label: true}
+  p9: {label: true}
+  p10: {label: false, kind: reversed, reason: "a call does not define a value"}
+  p11: {label: false, kind: wrong_source, reason: "the call in `skip` reads its own `token`, not the one defined in `read`"}

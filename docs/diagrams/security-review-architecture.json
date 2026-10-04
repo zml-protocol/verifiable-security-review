@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Verifiable Security Review Architecture",
+    "quality_profile": "showcase",
+    "viewBox": [1780, 860]
+  },
+  "components": [
+    {
+      "id": "sources",
+      "type": "external",
+      "label": "Advisory + Fix",
+      "sublabel": "real Go / Python revisions",
+      "pos": [40, 330],
+      "size": [150, 68]
+    },
+    {
+      "id": "builder",
+      "type": "backend",
+      "label": "Benchmark Builder",
+      "sublabel": "selection + isolation",
+      "tag": "construction role",
+      "pos": [330, 330],
+      "size": [166, 68]
+    },
+    {
+      "id": "executable",
+      "type": "security",
+      "label": "Executable Truth",
+      "sublabel": "same trigger, parent vs fix",
+      "pos": [580, 120],
+      "size": [172, 68]
+    },
+    {
+      "id": "requirements",
+      "type": "security",
+      "label": "Requirement Truth",
+      "sublabel": "entry + behavior + qualifiers",
+      "pos": [880, 120],
+      "size": [184, 68]
+    },
+    {
+      "id": "neutral_task",
+      "type": "messagebus",
+      "label": "Neutral Review Task",
+      "sublabel": "source only; truth hidden",
+      "pos": [580, 540],
+      "size": [172, 68]
+    },
+    {
+      "id": "agent",
+      "type": "backend",
+      "label": "Evaluated Agent",
+      "sublabel": "discovers what must be proven",
+      "tag": "isolated session",
+      "pos": [880, 540],
+      "size": [184, 68]
+    },
+    {
+      "id": "verifier",
+      "type": "security",
+      "label": "Static Verifier",
+      "sublabel": "typed hops + closed feedback",
+      "pos": [1180, 540],
+      "size": [176, 68]
+    },
+    {
+      "id": "artifact",
+      "type": "database",
+      "label": "Sealed Review Artifact",
+      "sublabel": "requirements + VERIFIED chain",
+      "pos": [1480, 540],
+      "size": [184, 68]
+    },
+    {
+      "id": "scorer",
+      "type": "security",
+      "label": "Frozen Scorer",
+      "sublabel": "compare only after submission",
+      "pos": [1180, 290],
+      "size": [176, 68]
+    },
+    {
+      "id": "results",
+      "type": "database",
+      "label": "Frozen Results",
+      "sublabel": "scores + hashes + provenance",
+      "pos": [1480, 290],
+      "size": [172, 68]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Benchmark construction — not the evaluated agent",
+      "wraps": ["builder", "executable", "requirements"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Isolated measured review",
+      "wraps": ["neutral_task", "agent", "verifier", "artifact"]
+    }
+  ],
+  "connections": [
+    {"from": "sources", "to": "builder", "label": "select + reproduce", "variant": "emphasis"},
+    {"from": "builder", "to": "executable", "label": "differential test", "variant": "security"},
+    {"from": "executable", "to": "requirements", "label": "define requirements", "variant": "security"},
+    {"from": "builder", "to": "neutral_task", "label": "redact identity + labels", "variant": "dashed"},
+    {"from": "neutral_task", "to": "agent", "label": "neutral source", "variant": "emphasis"},
+    {"from": "agent", "to": "verifier", "label": "typed hop checks", "variant": "emphasis"},
+    {"from": "verifier", "to": "artifact", "label": "VERIFIED only", "variant": "security", "labelDy": 45},
+    {"from": "requirements", "to": "scorer", "label": "hidden expected evidence", "variant": "dashed"},
+    {"from": "artifact", "to": "scorer", "label": "sealed submission", "variant": "emphasis"},
+    {"from": "scorer", "to": "results", "label": "freeze before review", "variant": "security"}
+  ],
+  "cards": [
+    {
+      "dot": "rose",
+      "title": "Role isolation",
+      "items": [
+        "Benchmark-construction agent and evaluated agent are different roles",
+        "Golden requirements and canonical revision labels stay hidden",
+        "The scorer and provider are frozen before measured sessions"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Security controls",
+      "items": [
+        "Runtime-minted anchors reject cross-revision citations",
+        "Only machine-VERIFIED edges can form a chain",
+        "Negative controls and protocol mismatches fail closed"
+      ]
+    }
+  ]
+}

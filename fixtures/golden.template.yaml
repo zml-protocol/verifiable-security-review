@@ -1,0 +1,23 @@
+# Copy to fixtures/<case-id>/golden.yaml. Never shown to the agent.
+# State everything for the ORIGINAL base/head; swapped/identity expectations are derived.
+# Write and commit it before the first agent run on this fixture (PREREGISTRATION.md §3.4).
+case: <case-id>
+
+hypotheses:
+  H1:
+    truth: {base: false, head: true}      # verified by differential execution where feasible
+    components:                           # supported | contradicted, per revision
+      entrypoint: {base: supported, head: supported}
+      control: {base: contradicted, head: supported}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: CHANGE_IMPLICATED      # must follow from the table above (tests check this)
+      with_execution: REGRESSION          # what a base/head differential test should establish
+    facts:                                # facts, not anchors: list every sufficient evidence set
+      - id: <short-slug>
+        revision: base
+        component: control
+        statement: <the fact in one sentence>
+        evidence_sets:                    # any one set suffices; all locations in a set are needed
+          - [{path: <path>, lines: 10-12}]
+          - [{path: <other path>, lines: 40}, {path: <third path>, lines: 7-9}]

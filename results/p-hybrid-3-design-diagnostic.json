@@ -1,0 +1,896 @@
+[
+ {
+  "block": "authlib-jws-none/r0",
+  "fixture": "authlib-jws-none",
+  "revision": "base",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e30",
+   "e44"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r0",
+  "fixture": "authlib-jws-none",
+  "revision": "head",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e47",
+   "e48"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r0",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "base",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   131,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e23"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r0",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "head",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   137,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e36"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r0",
+  "fixture": "caddy-forward-auth",
+  "revision": "base",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   198,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   215,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "caddy-forward-auth/r0",
+  "fixture": "caddy-forward-auth",
+  "revision": "head",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   233,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   240,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "authlib-jws-none/r1",
+  "fixture": "authlib-jws-none",
+  "revision": "base",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e30",
+   "e44"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r1",
+  "fixture": "authlib-jws-none",
+  "revision": "head",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e47",
+   "e48"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r1",
+  "fixture": "caddy-forward-auth",
+  "revision": "base",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   198,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   215,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "caddy-forward-auth/r1",
+  "fixture": "caddy-forward-auth",
+  "revision": "head",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   233,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   240,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "filebrowser-archive-backslash/r1",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "base",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   131,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e23"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r1",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "head",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   137,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e36"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r2",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "base",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   131,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": false,
+   "shortest": null
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "filebrowser-archive-backslash/r2",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "head",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   137,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": false,
+   "shortest": null
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "caddy-forward-auth/r2",
+  "fixture": "caddy-forward-auth",
+  "revision": "base",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   198,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   215,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "caddy-forward-auth/r2",
+  "fixture": "caddy-forward-auth",
+  "revision": "head",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   233,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   240,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "authlib-jws-none/r2",
+  "fixture": "authlib-jws-none",
+  "revision": "base",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e30",
+   "e44"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r2",
+  "fixture": "authlib-jws-none",
+  "revision": "head",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e47",
+   "e48"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r3",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "base",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   131,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e23"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r3",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "head",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   137,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e36"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r3",
+  "fixture": "caddy-forward-auth",
+  "revision": "base",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   198,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   215,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e52",
+   "e54"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r3",
+  "fixture": "caddy-forward-auth",
+  "revision": "head",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   233,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   240,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e08",
+   "e42"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r3",
+  "fixture": "authlib-jws-none",
+  "revision": "base",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e30",
+   "e44"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r3",
+  "fixture": "authlib-jws-none",
+  "revision": "head",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e47",
+   "e48"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r4",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "base",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   131,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": true,
+   "shortest": 1
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e23"
+  ]
+ },
+ {
+  "block": "filebrowser-archive-backslash/r4",
+  "fixture": "filebrowser-archive-backslash",
+  "revision": "head",
+  "entry": [
+   "node",
+   "http/raw.go",
+   125,
+   3
+  ],
+  "terminal": [
+   "node",
+   "http/raw.go",
+   137,
+   4
+  ],
+  "qualified": false,
+  "verified_edges": 1,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": false,
+   "shortest": null
+  },
+  "golden_strict": []
+ },
+ {
+  "block": "authlib-jws-none/r4",
+  "fixture": "authlib-jws-none",
+  "revision": "base",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e30",
+   "e44"
+  ]
+ },
+ {
+  "block": "authlib-jws-none/r4",
+  "fixture": "authlib-jws-none",
+  "revision": "head",
+  "entry": [
+   "node",
+   "authlib/jose/rfc7519/jwt.py",
+   104,
+   20
+  ],
+  "terminal": [
+   "inside",
+   "authlib/jose/rfc7518/jws_algs.py",
+   37,
+   38
+  ],
+  "qualified": false,
+  "verified_edges": 2,
+  "C1": {
+   "complete": true,
+   "shortest": 2
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 2
+  },
+  "golden_strict": [
+   "e47",
+   "e48"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r4",
+  "fixture": "caddy-forward-auth",
+  "revision": "base",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   198,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   215,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e52"
+  ]
+ },
+ {
+  "block": "caddy-forward-auth/r4",
+  "fixture": "caddy-forward-auth",
+  "revision": "head",
+  "entry": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   233,
+   2
+  ],
+  "terminal": [
+   "node",
+   "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+   240,
+   2
+  ],
+  "qualified": true,
+  "verified_edges": 3,
+  "C1": {
+   "complete": false,
+   "shortest": null
+  },
+  "C2": {
+   "complete": true,
+   "shortest": 1
+  },
+  "golden_strict": [
+   "e42"
+  ]
+ }
+]

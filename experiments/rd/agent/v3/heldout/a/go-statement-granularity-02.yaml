@@ -1,0 +1,86 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-statement-granularity-02",
+  "language": "go",
+  "cell": "statement_granularity",
+  "package": "ambercatalog",
+  "effect_claim": "Whether a supplied catalog key causes the corresponding entry to be removed.",
+  "files": {
+    "revision_A": {
+      "ambercatalog.go": "package ambercatalog\n\ntype Removal struct {\n\tKey string\n}\n\nfunc remove(request Removal, index map[string]string) {\n\trequestedKey := request.Key\n\tdelete(index, requestedKey)\n}\n"
+    },
+    "revision_B": {
+      "ambercatalog.go": "package ambercatalog\n\ntype Removal struct {\n\tKey string\n}\n\nfunc remove(request Removal, index map[string]string) {\n\trequestedKey := request.Key\n\tdelete(index, requestedKey)\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ambercatalog.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "requestedKey := request.Key"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "ambercatalog.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "requestedKey := request.Key"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ambercatalog.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "delete(index, requestedKey)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "ambercatalog.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "delete(index, requestedKey)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression",
+    "enclosing_function"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "subexpression",
+      "kind": "behavior",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "ambercatalog.go",
+        "start_line": 9,
+        "end_line": 9,
+        "expression": "requestedKey"
+      }
+    },
+    {
+      "family": "enclosing_function",
+      "kind": "behavior",
+      "revision": "revision_B",
+      "anchor": {
+        "file": "ambercatalog.go",
+        "start_line": 7,
+        "end_line": 7,
+        "expression": "func remove(request Removal, index map[string]string) {"
+      }
+    }
+  ]
+}

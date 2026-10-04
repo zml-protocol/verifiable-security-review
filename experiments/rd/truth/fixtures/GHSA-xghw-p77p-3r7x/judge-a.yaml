@@ -1,0 +1,15 @@
+# Judge A = gpt-6-astra (Codex CLI, medium, fresh/isolated), one run. (markdown-escaping de-escaped)
+labels:
+  item-01: NOT_REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: NOT_REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: REQUIRED
+missing:
+  - kind: behavior
+    behavior:
+      vuln:  {state: absent,  context: {file: lib/server/ldap/client.go, start_line: 172, end_line: 172, expression: "sreq := ldap.NewSearchRequest("}}
+      fixed: {state: present, anchor:  {file: lib/server/ldap/client.go, start_line: 180, end_line: 180, expression: "escapedUsername := ldap.EscapeFilter(username)"}}

@@ -1,0 +1,43 @@
+schema: rd-negative-control-candidates/v1
+generated_by: experiments/rd/truth/negative_control.py
+rule: PREREGISTRATION.md §15.6
+candidate_names:
+  22: CWE-22 Path Traversal
+  79: CWE-79 Cross-site Scripting
+  89: CWE-89 SQL Injection
+  352: CWE-352 Cross-Site Request Forgery
+  502: CWE-502 Deserialization of Untrusted Data
+  601: CWE-601 Open Redirect
+  611: CWE-611 XML External Entity
+  918: CWE-918 Server-Side Request Forgery
+fixtures:
+  - fixture: GHSA-fq2j-j8hc-8vw8
+    package: SiYuan
+    language: go
+    source_cwe: 200
+    source_claim_basis: top-level frozen claim effect; CWE-22 is its path-handling mechanism
+    candidates: [22, 79, 89]
+  - fixture: GHSA-mr3j-p26x-72x4
+    package: Vikunja
+    language: go
+    source_cwe: 862
+    source_claim_basis: top-level frozen claim (Missing Authorization)
+    candidates: [918, 502, 601]
+  - fixture: GO-2026-6237
+    package: github.com/insomniacslk/dhcp/nclient4
+    language: go
+    source_cwe: 400
+    source_claim_basis: frozen claim's denial-of-service effect mapped to the corresponding frozen-list CWE
+    candidates: [352, 22, 79]
+  - fixture: GHSA-hx8v-g79f-8w5f
+    package: LiteLLM Proxy
+    language: python
+    source_cwe: 918
+    source_claim_basis: top-level frozen claim (Server-Side Request Forgery)
+    candidates: [502, 601, 611]
+  - fixture: GHSA-xcw4-53cc-hv32
+    package: Mnemosyne sync server
+    language: python
+    source_cwe: 347
+    source_claim_basis: top-level frozen claim (Improper Verification of Cryptographic Signature)
+    candidates: [22, 79, 89]

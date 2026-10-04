@@ -1,0 +1,169 @@
+{
+  "round": 1,
+  "status": "SCORED",
+  "reviewers": {
+    "a": {
+      "type": "model",
+      "name": "GPT-6, new conversation",
+      "date": "2026-10-01",
+      "attestation": {
+        "independent": true,
+        "saw_author_labels": false,
+        "saw_project_history": false
+      }
+    },
+    "b": {
+      "type": "model",
+      "name": "GPT-6, new conversation",
+      "date": "2026-10-01",
+      "attestation": {
+        "independent": true,
+        "saw_author_labels": false,
+        "saw_project_history": false
+      }
+    }
+  },
+  "cases": 94,
+  "pairwise_agreement": {
+    "author~a": 91,
+    "author~b": 91,
+    "a~b": 94
+  },
+  "groups": {
+    "behavior": {
+      "cases": 16,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "config": {
+      "cases": 2,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "dispatch_target": {
+      "cases": 2,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "entry": {
+      "cases": 13,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/argument_binding": {
+      "cases": 8,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/def_use": {
+      "cases": 6,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/field_flow": {
+      "cases": 4,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/guard_property": {
+      "cases": 3,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/object_composition": {
+      "cases": 9,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/range_element": {
+      "cases": 5,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "guard": {
+      "cases": 8,
+      "disputed": [
+        {
+          "id": "q32",
+          "rule": "QU-1",
+          "tier": "boundary",
+          "author": "REQUIRED",
+          "a": "INDETERMINATE",
+          "b": "INDETERMINATE"
+        }
+      ],
+      "status": "DISPUTED",
+      "outcome_without_revision": "INDETERMINATE_BOUNDARY",
+      "indeterminate_rules": [
+        "QU-1"
+      ]
+    },
+    "python/call_typed_attribute": {
+      "cases": 2,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "python/def_use": {
+      "cases": 8,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "python/registry_dispatch": {
+      "cases": 3,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "transform": {
+      "cases": 5,
+      "disputed": [
+        {
+          "id": "q15",
+          "rule": "QU-1",
+          "tier": "boundary",
+          "author": "NOT_REQUIRED",
+          "a": "INDETERMINATE",
+          "b": "INDETERMINATE"
+        },
+        {
+          "id": "q45",
+          "rule": "QU-1",
+          "tier": "boundary",
+          "author": "NOT_REQUIRED",
+          "a": "INDETERMINATE",
+          "b": "INDETERMINATE"
+        }
+      ],
+      "status": "DISPUTED",
+      "outcome_without_revision": "INDETERMINATE_BOUNDARY",
+      "indeterminate_rules": [
+        "QU-1"
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Judge b — one run, fresh/isolated (A=gpt-6-astra/Codex CLI, B=deepseek-flash/OpenCode --standalone)
+labels:
+  item-01: NOT_REQUIRED
+  item-02: REQUIRED
+  item-03: NOT_REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: NOT_REQUIRED
+missing: []

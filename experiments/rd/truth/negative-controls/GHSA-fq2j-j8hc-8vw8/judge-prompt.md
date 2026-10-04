@@ -1,0 +1,439 @@
+# RD negative-control adjudication — GHSA-fq2j-j8hc-8vw8
+
+You are one of two independent adjudicators. Work only from this message; do not use outside project
+knowledge. Return only the YAML object requested at the end.
+
+For each candidate and each canonical revision, assess this package-wide existential claim:
+
+> In the SiYuan Go product, attacker-controlled input may lead to the candidate CWE.
+
+Use exactly one label:
+
+- `SUPPORTED`: the evidence establishes at least one instance of the claim in that revision.
+- `NOT_SUPPORTED`: the evidence establishes that the claim is false in that revision.
+- `INDETERMINATE`: neither conclusion is justified by the evidence.
+
+Judge all six cells independently. A text search match does not by itself establish a CWE. No search
+match is sufficient for `NOT_SUPPORTED` only when the complete inventory and package surface make
+the missing primitive dispositive; otherwise use `INDETERMINATE`. Do not infer a label from the
+candidate order or from the fact that this is a negative-control task.
+
+Candidates, in frozen order:
+
+1. `candidate-01`: CWE-22 Path Traversal
+2. `candidate-02`: CWE-79 Cross-site Scripting
+3. `candidate-03`: CWE-89 SQL Injection
+
+---
+
+# Factual evidence
+
+## Revision and inventory
+
+- `vuln`: `b0c770c394619dfb645bbcfabbe64dce81b50949`
+- `fixed`: `294b8b429dea152cd1df522cddf406054c1619ad`
+- Product source is tracked `.go` excluding `_test.go`, `vendor/`, and `testdata/`.
+- Both revisions have the same complete sorted inventory: 236 files, list SHA-256
+  `b6fe186c80fc1b17e66481e265b8cd4ea1a37184711b4d4eaaca86dce98f6630`.
+- Product-source line counts are 95,091 (`vuln`) and 95,095 (`fixed`).
+
+```text
+kernel/api/account.go
+kernel/api/ai.go
+kernel/api/archive.go
+kernel/api/asset.go
+kernel/api/attr.go
+kernel/api/av.go
+kernel/api/bazaar.go
+kernel/api/block.go
+kernel/api/block_op.go
+kernel/api/bookmark.go
+kernel/api/broadcast.go
+kernel/api/clipboard.go
+kernel/api/export.go
+kernel/api/extension.go
+kernel/api/file.go
+kernel/api/filetree.go
+kernel/api/format.go
+kernel/api/graph.go
+kernel/api/history.go
+kernel/api/icon.go
+kernel/api/import.go
+kernel/api/inbox.go
+kernel/api/lute.go
+kernel/api/network.go
+kernel/api/notebook.go
+kernel/api/notification.go
+kernel/api/outline.go
+kernel/api/pandoc.go
+kernel/api/petal.go
+kernel/api/ref.go
+kernel/api/repo.go
+kernel/api/riff.go
+kernel/api/router.go
+kernel/api/search.go
+kernel/api/setting.go
+kernel/api/snippet.go
+kernel/api/sql.go
+kernel/api/storage.go
+kernel/api/sync.go
+kernel/api/system.go
+kernel/api/tag.go
+kernel/api/template.go
+kernel/api/transaction.go
+kernel/api/ui.go
+kernel/api/workspace.go
+kernel/av/av.go
+kernel/av/av_fix.go
+kernel/av/calc.go
+kernel/av/filter.go
+kernel/av/group.go
+kernel/av/layout.go
+kernel/av/layout_gallery.go
+kernel/av/layout_kanban.go
+kernel/av/layout_table.go
+kernel/av/mirror.go
+kernel/av/relation.go
+kernel/av/sort.go
+kernel/av/value.go
+kernel/bazaar/bazaar.go
+kernel/bazaar/install.go
+kernel/bazaar/installed.go
+kernel/bazaar/package.go
+kernel/bazaar/plugin.go
+kernel/bazaar/readme.go
+kernel/bazaar/stage.go
+kernel/cache/asset.go
+kernel/cache/ial.go
+kernel/cache/tree.go
+kernel/cmd/closews.go
+kernel/cmd/cmd.go
+kernel/cmd/ping.go
+kernel/conf/account.go
+kernel/conf/ai.go
+kernel/conf/api.go
+kernel/conf/appearance.go
+kernel/conf/bazaar.go
+kernel/conf/box.go
+kernel/conf/editor.go
+kernel/conf/export.go
+kernel/conf/filetree.go
+kernel/conf/flashcard.go
+kernel/conf/graph.go
+kernel/conf/lang.go
+kernel/conf/layout.go
+kernel/conf/publish.go
+kernel/conf/repo.go
+kernel/conf/search.go
+kernel/conf/snippet.go
+kernel/conf/stat.go
+kernel/conf/sync.go
+kernel/conf/system.go
+kernel/conf/tag.go
+kernel/conf/user.go
+kernel/filesys/stat.go
+kernel/filesys/template.go
+kernel/filesys/tree.go
+kernel/harmony/kernel.go
+kernel/job/cron.go
+kernel/main.go
+kernel/mobile/kernel.go
+kernel/model/ai.go
+kernel/model/appearance.go
+kernel/model/asset_content.go
+kernel/model/assets.go
+kernel/model/assets_watcher.go
+kernel/model/assets_watcher_darwin.go
+kernel/model/attribute_view.go
+kernel/model/attribute_view_fix.go
+kernel/model/attribute_view_render.go
+kernel/model/auth.go
+kernel/model/backlink.go
+kernel/model/bazaar.go
+kernel/model/block.go
+kernel/model/blockial.go
+kernel/model/blockinfo.go
+kernel/model/bookmark.go
+kernel/model/box.go
+kernel/model/caldav.go
+kernel/model/carddav.go
+kernel/model/cloud_service.go
+kernel/model/conf.go
+kernel/model/dav.go
+kernel/model/elevator.go
+kernel/model/elevator_windows.go
+kernel/model/emojis_watcher.go
+kernel/model/emojis_watcher_darwin.go
+kernel/model/export.go
+kernel/model/export_merge.go
+kernel/model/file.go
+kernel/model/flashcard.go
+kernel/model/format.go
+kernel/model/graph.go
+kernel/model/heading.go
+kernel/model/history.go
+kernel/model/import.go
+kernel/model/index.go
+kernel/model/index_fix.go
+kernel/model/listitem.go
+kernel/model/mount.go
+kernel/model/ocr.go
+kernel/model/outline.go
+kernel/model/path.go
+kernel/model/pdf.go
+kernel/model/plugin.go
+kernel/model/process.go
+kernel/model/publish_access.go
+kernel/model/push_reload.go
+kernel/model/render.go
+kernel/model/repository.go
+kernel/model/role.go
+kernel/model/search.go
+kernel/model/session.go
+kernel/model/shortcuts.go
+kernel/model/snippet.go
+kernel/model/storage.go
+kernel/model/sync.go
+kernel/model/tag.go
+kernel/model/template.go
+kernel/model/theme.go
+kernel/model/themes_watcher.go
+kernel/model/themes_watcher_darwin.go
+kernel/model/transaction.go
+kernel/model/tree.go
+kernel/model/updater.go
+kernel/model/upload.go
+kernel/model/virutalref.go
+kernel/model/widget.go
+kernel/search/find.go
+kernel/search/mark.go
+kernel/server/port.go
+kernel/server/proxy/fixedport.go
+kernel/server/proxy/publish.go
+kernel/server/serve.go
+kernel/sql/asset.go
+kernel/sql/asset_content.go
+kernel/sql/asset_content_query.go
+kernel/sql/attribute.go
+kernel/sql/av.go
+kernel/sql/av_gallery.go
+kernel/sql/av_kanban.go
+kernel/sql/av_table.go
+kernel/sql/block.go
+kernel/sql/block_query.go
+kernel/sql/block_ref.go
+kernel/sql/block_ref_query.go
+kernel/sql/cache.go
+kernel/sql/database.go
+kernel/sql/file_annotation_ref.go
+kernel/sql/history.go
+kernel/sql/queue.go
+kernel/sql/queue_asset_content.go
+kernel/sql/queue_history.go
+kernel/sql/span.go
+kernel/sql/stat.go
+kernel/sql/upsert.go
+kernel/task/queue.go
+kernel/treenode/av.go
+kernel/treenode/blocktree.go
+kernel/treenode/blocktree_fix.go
+kernel/treenode/heading.go
+kernel/treenode/marker.go
+kernel/treenode/node.go
+kernel/treenode/tree.go
+kernel/util/cert.go
+kernel/util/clipboard.go
+kernel/util/clipboard_darwin.go
+kernel/util/clipboard_windows.go
+kernel/util/cloud.go
+kernel/util/cmux.go
+kernel/util/crypt.go
+kernel/util/disk.go
+kernel/util/disk_mobile.go
+kernel/util/etag.go
+kernel/util/file.go
+kernel/util/font.go
+kernel/util/lute.go
+kernel/util/misc.go
+kernel/util/net.go
+kernel/util/ocr.go
+kernel/util/openai.go
+kernel/util/os.go
+kernel/util/os_mobile.go
+kernel/util/pandoc.go
+kernel/util/path.go
+kernel/util/result.go
+kernel/util/rhy.go
+kernel/util/rune.go
+kernel/util/runtime.go
+kernel/util/session.go
+kernel/util/sort.go
+kernel/util/statusbar.go
+kernel/util/time.go
+kernel/util/tls.go
+kernel/util/websocket.go
+kernel/util/working.go
+kernel/util/working_mobile.go
+```
+
+The scan excerpts below preserve paths, line numbers, and source text, while normalizing leading
+source indentation to a single space.
+
+## Candidate 01 — CWE-22 Path Traversal
+
+Exact case-insensitive regex:
+
+```text
+path|filepath|realpath|normpath|clean\(|join\(|open\(|readfile|writefile|\.\.[\\/]
+```
+
+- `vuln`: 4,790 matching lines
+- `fixed`: 4,792 matching lines
+
+The sorted output is explicitly truncated after its first 20 lines in each revision (4,770 and
+4,772 further matches omitted). The identical first 20 are:
+
+```text
+kernel/api/archive.go:104: if err := gulu.Zip.Unzip(zipAbsFilePath, entryAbsPath); err != nil {
+kernel/api/archive.go:21: "path/filepath"
+kernel/api/archive.go:37: entryPath := arg["path"].(string)
+kernel/api/archive.go:38: entryAbsPath, err := util.GetAbsPathInWorkspace(entryPath)
+kernel/api/archive.go:45: zipFilePath := arg["zipPath"].(string)
+kernel/api/archive.go:46: zipAbsFilePath, err := util.GetAbsPathInWorkspace(zipFilePath)
+kernel/api/archive.go:53: zipFile, err := gulu.Zip.Create(zipAbsFilePath)
+kernel/api/archive.go:60: base := filepath.Base(entryAbsPath)
+kernel/api/archive.go:61: if gulu.File.IsDir(entryAbsPath) {
+kernel/api/archive.go:62: err = zipFile.AddDirectory(base, entryAbsPath)
+kernel/api/archive.go:64: err = zipFile.AddEntry(base, entryAbsPath)
+kernel/api/archive.go:88: zipFilePath := arg["zipPath"].(string)
+kernel/api/archive.go:89: zipAbsFilePath, err := util.GetAbsPathInWorkspace(zipFilePath)
+kernel/api/archive.go:96: entryPath := arg["path"].(string)
+kernel/api/archive.go:97: entryAbsPath, err := util.GetAbsPathInWorkspace(entryPath)
+kernel/api/asset.go:121: var path string
+kernel/api/asset.go:122: if nil == arg["path"] {
+kernel/api/asset.go:128: path = arg["path"].(string)
+kernel/api/asset.go:132: "text": util.GetAssetText(path),
+kernel/api/asset.go:145: path := arg["path"].(string)
+```
+
+The already-observed real fixture supplies a concrete path flow. In both revisions the HTTP handler
+extracts a local path from converted request content, decodes it, requires it to be absolute and to
+exist, then copies it into the data assets directory:
+
+```go
+localPath := n.TokensStr()
+localPath = strings.TrimPrefix(localPath, "file://")
+unescaped, _ := url.PathUnescape(localPath)
+if unescaped != localPath { localPath = unescaped }
+if !filepath.IsAbs(localPath) { return ast.WalkContinue }
+if !gulu.File.IsExist(localPath) { return ast.WalkContinue }
+name := filepath.Base(localPath)
+targetPath := filepath.Join(util.DataDir, "assets", name)
+if err := filelock.Copy(localPath, targetPath); err != nil { ... }
+```
+
+Observed execution at `vuln`: a crafted request naming a readable sensitive absolute file copied it
+into assets and returned content derived from that file. At `fixed`, the same trigger was rejected.
+The fix inserts `if util.IsSensitivePath(localPath) { return ast.WalkContinue }` before the copy;
+the other path-handling code remains.
+
+## Candidate 02 — CWE-79 Cross-site Scripting
+
+Exact case-insensitive regex:
+
+```text
+xss|innerhtml|outerhtml|document\.write|html/template|text/template|markupsafe|escape|safehtml|javascript:
+```
+
+Both revisions have 228 matching lines. The sorted output is explicitly truncated after 20 lines
+(208 further matches omitted in each revision):
+
+```text
+kernel/api/block.go:721: rootTitle = html.UnescapeString(rootTitle)
+kernel/api/export.go:650: zipURL := "/export/" + url.PathEscape(filepath.Base(zipPath))
+kernel/api/extension.go:108: oName, err = url.PathUnescape(originalName)
+kernel/api/extension.go:117: unescaped, _ := url.PathUnescape(oName)
+kernel/api/extension.go:118: if "" != unescaped {
+kernel/api/extension.go:119: oName = unescaped
+kernel/api/extension.go:165: uploaded[unescaped] = "assets/" + fName
+kernel/api/extension.go:94: oName, err := url.PathUnescape(originalName)
+kernel/api/extension.go:95: unescaped := oName
+kernel/api/lute.go:165: unescaped, _ := url.PathUnescape(localPath)
+kernel/api/lute.go:166: if unescaped != localPath {
+kernel/api/lute.go:168: localPath = unescaped
+kernel/api/network.go:136: "EscapedPath": c.Request.URL.EscapedPath(),
+kernel/api/network.go:137: "EscapedFragment": c.Request.URL.EscapedFragment(),
+kernel/api/search.go:384: "k": util.EscapeHTML(keyword),
+kernel/api/setting.go:730: // XSS through emoji name https://github.com/siyuan-note/siyuan/issues/15034
+kernel/api/system.go:195: if !util.IsValidUploadFileName(html.UnescapeString(name)) {
+kernel/api/system.go:199: // XSS through emoji name https://github.com/siyuan-note/siyuan/issues/15034
+kernel/api/system.go:224: if !util.IsValidUploadFileName(html.UnescapeString(subName)) {
+kernel/api/system.go:227: // XSS through emoji name https://github.com/siyuan-note/siyuan/issues/15034
+```
+
+Other matches include `html/template`, `text/template`, HTML rendering, escape/unescape calls, and
+comments referring to earlier XSS issues. The supplied evidence does not include a demonstrated
+attacker-input-to-unescaped-HTML execution.
+
+## Candidate 03 — CWE-89 SQL Injection
+
+Exact case-insensitive regex:
+
+```text
+sql|select[[:space:]]|insert[[:space:]]|update[[:space:]]|delete[[:space:]]|query\(|exec\(|database
+```
+
+Both revisions have 1,668 matching lines. The sorted output is explicitly truncated after 20 lines
+(1,648 further matches omitted in each revision):
+
+```text
+kernel/api/asset.go:153: sql.IndexNodeQueue(id)
+kernel/api/asset.go:32: "github.com/siyuan-note/siyuan/kernel/sql"
+kernel/api/attr.go:26: "github.com/siyuan-note/siyuan/kernel/sql"
+kernel/api/attr.go:53: ret.Data = sql.BatchGetBlockAttrs(idList)
+kernel/api/attr.go:70: ret.Data = sql.GetBlockAttrs(id)
+kernel/api/av.go:264: newAvID, newBlockID, err := model.DuplicateDatabaseBlock(avID)
+kernel/api/av.go:306: func getMirrorDatabaseBlocks(c *gin.Context) {
+kernel/api/av.go:330: func setDatabaseBlockView(c *gin.Context) {
+kernel/api/av.go:343: err := model.SetDatabaseBlockView(blockID, avID, viewID)
+kernel/api/av.go:377: attributeViewName, databaseBlockIDs, rows, err := model.GetAttributeViewPrimaryKeyValues(id, keyword, page, pageSize)
+kernel/api/av.go:386: "blockIDs": databaseBlockIDs,
+kernel/api/broadcast.go:300: value := c.DefaultQuery("retry", "")
+kernel/api/broadcast.go:323: select {
+kernel/api/broadcast.go:379: channel string = c.Query("channel")
+kernel/api/broadcast.go:387: // delete channel before creating a new one
+kernel/api/icon.go:118: iconType := c.Query("type")
+kernel/api/icon.go:122: color := c.Query("color")
+kernel/api/icon.go:123: date := c.Query("date")
+kernel/api/icon.go:124: lang := c.Query("lang")
+kernel/api/icon.go:128: weekdayType := c.Query("weekdayType")
+```
+
+The router exposes `POST /api/query/sql` behind authentication, admin-role, and non-readonly checks.
+Its handler directly reads a request JSON `stmt` and invokes `sql.Query`:
+
+```go
+ginServer.Handle("POST", "/api/query/sql", model.CheckAuth, model.CheckAdminRole,
+    model.CheckReadonly, SQL)
+
+func SQL(c *gin.Context) {
+    arg, ok := util.JsonArg(c, ret)
+    if !ok { return }
+    stmt := arg["stmt"].(string)
+    result, err := sql.Query(stmt, model.Conf.Search.Limit)
+    ...
+}
+```
+
+A separate search handler permits SQL search mode only for an admin. The evidence does not decide
+whether either intentional privileged SQL feature or any other dynamic query constitutes SQL
+injection.
+
+---
+
+Return exactly this schema with all labels replaced, and no Markdown fence or prose:
+
+labels:
+  candidate-01: {vuln: LABEL, fixed: LABEL}
+  candidate-02: {vuln: LABEL, fixed: LABEL}
+  candidate-03: {vuln: LABEL, fixed: LABEL}

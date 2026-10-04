@@ -1,0 +1,152 @@
+{
+  "set": "dev",
+  "unsafe": [],
+  "counts": {
+    "same": {
+      "SAME_OBJECT": 10,
+      "NOT_PROVEN_SAME": 0
+    },
+    "different": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 9
+    },
+    "not_always": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 2
+    },
+    "unprovable": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 4
+    }
+  },
+  "same_coverage": 1.0,
+  "query_sha256": "bdb99f40fdafe0b383fefd9fa861ed4520b1e318fe3e2f8bc9117bb2e840161c",
+  "pairs_sha256": "68c1d92360e404d53041445b3ad9ec188e2e3b35dbc8219cd2c612551953f980",
+  "results": [
+    {
+      "id": "s1",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s2",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s3",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s4",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s5",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s6",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s7",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s8",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s9",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "s10",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "d1",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d2",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d3",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d4",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d5",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d6",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d7",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d8",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "d9",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "n1",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "n2",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "u1",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "u2",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "u3",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "u4",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    }
+  ]
+}

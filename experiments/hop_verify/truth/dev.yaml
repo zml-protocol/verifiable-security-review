@@ -1,0 +1,38 @@
+# Scorer-only truth for sets/dev.yaml (PREREGISTRATION.md §10). Never shown to a verifier.
+set: dev
+truth:
+  dff1: {label: true}
+  dff2: {label: true}
+  dff3: {label: false, kind: wrong_source, reason: "other is never assigned to label at base"}
+  dff4: {label: false, kind: wrong_revision, of: dff1, reason: "head line 30 redefines label from other, killing the definition at 27"}
+  dff5: {label: true}
+  dff6: {label: false, kind: wrong_target, of: dff1, reason: "Size takes len(raw), not label"}
+  dff7: {label: false, kind: reversed, of: dff1, reason: "a literal field does not define a variable"}
+  dff8: {label: true}
+  doc1: {label: true}
+  doc2: {label: true}
+  doc3: {label: false, kind: wrong_revision, of: doc2, reason: "head line 40 redefines ok before it is stored at 43"}
+  doc4: {label: true}
+  doc5: {label: false, kind: wrong_source, reason: "fallback is never stored into p.Stages"}
+  doc6: {label: false, kind: reversed, of: doc1, reason: "p is not stored into ok.Steps"}
+  doc7: {label: false, kind: wrong_target, of: doc2, reason: "ok is the container at 41, not a stored value"}
+  dgp1: {label: true}
+  dgp2: {label: false, kind: wrong_revision, of: dgp1, reason: "at head the object stored into at 41 is the one defined at 40"}
+  dgp3: {label: true}
+  dgp4: {label: false, kind: wrong_source, reason: "Codes 5 belongs to fallback at base, not to ok"}
+  dgp5: {label: false, kind: wrong_target, of: dgp1, reason: "the store at 43 writes into p, whose literal has no Codes"}
+  dgp6: {label: false, kind: reversed, of: dgp1, reason: "a field store is not a literal field"}
+  dct1: {label: true}
+  dct2: {label: false, kind: wrong_revision, of: dct1, reason: "at head _codec holds a Mirror"}
+  dct3: {label: true}
+  dct4: {label: false, kind: wrong_source, reason: "_mirror holds a Mirror, whose decode returns key"}
+  dct5: {label: false, kind: reversed, of: dct1, reason: "a return statement is not a call"}
+  drd1: {label: true}
+  drd2: {label: true}
+  drd3: {label: false, kind: wrong_target, of: drd1, reason: "Unlisted is never registered at base"}
+  drd4: {label: false, kind: wrong_revision, of: drd1, reason: "Plain is not registered at head"}
+  drd5: {label: true}
+  drd6: {label: true}
+  drd7: {label: false, kind: wrong_target, of: drd6, reason: "Gamma is not in HANDLERS at base"}
+  drd8: {label: true}
+  drd9: {label: false, kind: wrong_target, of: drd6, reason: "handle can never run Plain.check (different method)"}

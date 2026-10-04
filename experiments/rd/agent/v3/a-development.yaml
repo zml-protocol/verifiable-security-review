@@ -1,0 +1,314 @@
+schema: rd-v3-a-development/v1
+cases:
+  - id: a-go-claim-specific-entry
+    language: go
+    cell: claim_specific_entry
+    effect_claim: attacker-controlled resource selection may grant protected access
+    files:
+      revision_A:
+        main.go: |
+          package calibration
+          import "strings"
+          func Review(request map[string]string) bool {
+              resource := request["resource"]
+              normalized := strings.TrimSpace(resource)
+              return normalized != ""
+          }
+      revision_B:
+        main.go: |
+          package calibration
+          import "strings"
+          func Review(request map[string]string) bool {
+              resource := request["resource"]
+              normalized := strings.TrimSpace(resource)
+              return normalized != "" && normalized != "root"
+          }
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'resource := request["resource"]'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'resource := request["resource"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 6, end_line: 6, expression: 'return normalized != ""'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 6, end_line: 6, expression: 'return normalized != "" && normalized != "root"'}}
+
+  - id: a-python-claim-specific-entry
+    language: python
+    cell: claim_specific_entry
+    effect_claim: attacker-controlled token selection may grant a privileged response
+    files:
+      revision_A:
+        module.py: |
+          def review(request):
+              token = request["token"]
+              normalized = token.strip()
+              return normalized != ""
+      revision_B:
+        module.py: |
+          def review(request):
+              token = request["token"]
+              normalized = token.strip()
+              return normalized not in {"", "admin"}
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'token = request["token"]'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'token = request["token"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 4, end_line: 4, expression: 'return normalized != ""'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 4, end_line: 4, expression: 'return normalized not in {"", "admin"}'}}
+
+  - id: a-go-decision-point
+    language: go
+    cell: decision_point
+    effect_claim: an invalid attacker-controlled signature may be accepted
+    files:
+      revision_A:
+        main.go: |
+          package calibration
+          func Verify(request map[string]string) bool {
+              signature := request["signature"]
+              valid := Check(signature)
+              _ = valid
+              return true
+          }
+          func Check(value string) bool { return value == "trusted" }
+      revision_B:
+        main.go: |
+          package calibration
+          func Verify(request map[string]string) bool {
+              signature := request["signature"]
+              valid := Check(signature)
+              if !valid {
+                  return false
+              }
+              return true
+          }
+          func Check(value string) bool { return value == "trusted" }
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 3, end_line: 3, expression: 'signature := request["signature"]'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 3, end_line: 3, expression: 'signature := request["signature"]'}}
+      behavior:
+        revision_A: {state: absent, context: {file: main.go, start_line: 6, end_line: 6, expression: 'return true'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 5, end_line: 5, expression: 'if !valid {'}}
+
+  - id: a-python-decision-point
+    language: python
+    cell: decision_point
+    effect_claim: an invalid attacker-controlled signature may be accepted
+    files:
+      revision_A:
+        module.py: |
+          def verify(request):
+              signature = request["signature"]
+              valid = check(signature)
+              _ = valid
+              return True
+
+          def check(value):
+              return value == "trusted"
+      revision_B:
+        module.py: |
+          def verify(request):
+              signature = request["signature"]
+              valid = check(signature)
+              if not valid:
+                  return False
+              return True
+
+          def check(value):
+              return value == "trusted"
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'signature = request["signature"]'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'signature = request["signature"]'}}
+      behavior:
+        revision_A: {state: absent, context: {file: module.py, start_line: 5, end_line: 5, expression: 'return True'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 4, end_line: 4, expression: 'if not valid:'}}
+
+  - id: a-go-changed-present-both
+    language: go
+    cell: changed_present_both
+    effect_claim: an attacker-controlled routing target may be allowed
+    files:
+      revision_A:
+        main.go: |
+          package calibration
+          func Allowed(request map[string]string) bool {
+              target := request["target"]
+              blocked := map[string]bool{"host": true}
+              return !blocked[target]
+          }
+      revision_B:
+        main.go: |
+          package calibration
+          func Allowed(request map[string]string) bool {
+              target := request["target"]
+              blocked := map[string]bool{"host": true, "target": true}
+              return !blocked[target]
+          }
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 3, end_line: 3, expression: 'target := request["target"]'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 3, end_line: 3, expression: 'target := request["target"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'blocked := map[string]bool{"host": true}'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'blocked := map[string]bool{"host": true, "target": true}'}}
+
+  - id: a-python-changed-present-both
+    language: python
+    cell: changed_present_both
+    effect_claim: an attacker-controlled routing target may be allowed
+    files:
+      revision_A:
+        module.py: |
+          def allowed(request):
+              target = request["target"]
+              blocked = {"host"}
+              return target not in blocked
+      revision_B:
+        module.py: |
+          def allowed(request):
+              target = request["target"]
+              blocked = {"host", "target"}
+              return target not in blocked
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'target = request["target"]'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'target = request["target"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 3, end_line: 3, expression: 'blocked = {"host"}'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 3, end_line: 3, expression: 'blocked = {"host", "target"}'}}
+
+  - id: a-go-absent-context
+    language: go
+    cell: absent_context
+    effect_claim: an attacker-controlled name may escape the intended namespace
+    files:
+      revision_A:
+        main.go: |
+          package calibration
+          func Read(request map[string]string) string {
+              name := request["name"]
+              return Load(name)
+          }
+          func Load(value string) string { return value }
+      revision_B:
+        main.go: |
+          package calibration
+          import "strings"
+          func Read(request map[string]string) string {
+              name := request["name"]
+              if strings.Contains(name, "..") {
+                  return ""
+              }
+              return Load(name)
+          }
+          func Load(value string) string { return value }
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 3, end_line: 3, expression: 'name := request["name"]'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'name := request["name"]'}}
+      behavior:
+        revision_A: {state: absent, context: {file: main.go, start_line: 4, end_line: 4, expression: 'return Load(name)'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 5, end_line: 5, expression: 'if strings.Contains(name, "..") {'}}
+
+  - id: a-python-absent-context
+    language: python
+    cell: absent_context
+    effect_claim: an attacker-controlled name may escape the intended namespace
+    files:
+      revision_A:
+        module.py: |
+          def read(request):
+              name = request["name"]
+              return load(name)
+
+          def load(value):
+              return value
+      revision_B:
+        module.py: |
+          def read(request):
+              name = request["name"]
+              if ".." in name:
+                  return ""
+              return load(name)
+
+          def load(value):
+              return value
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'name = request["name"]'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'name = request["name"]'}}
+      behavior:
+        revision_A: {state: absent, context: {file: module.py, start_line: 3, end_line: 3, expression: 'return load(name)'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 3, end_line: 3, expression: 'if ".." in name:'}}
+
+  - id: a-go-statement-granularity
+    language: go
+    cell: statement_granularity
+    effect_claim: an attacker-controlled command may reach execution
+    files:
+      revision_A:
+        main.go: |
+          package calibration
+          import "strings"
+          func Run(request map[string]string) bool {
+              command := request["command"]
+              if command == "" {
+                  return false
+              }
+              return Execute(command)
+          }
+          func Execute(value string) bool { return strings.TrimSpace(value) != "" }
+      revision_B:
+        main.go: |
+          package calibration
+          import "strings"
+          func Run(request map[string]string) bool {
+              command := request["command"]
+              if command == "" || strings.Contains(command, ";") {
+                  return false
+              }
+              return Execute(command)
+          }
+          func Execute(value string) bool { return strings.TrimSpace(value) != "" }
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'command := request["command"]'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 4, end_line: 4, expression: 'command := request["command"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: main.go, start_line: 5, end_line: 5, expression: 'if command == "" {'}}
+        revision_B: {state: present, anchor: {file: main.go, start_line: 5, end_line: 5, expression: 'if command == "" || strings.Contains(command, ";") {'}}
+
+  - id: a-python-statement-granularity
+    language: python
+    cell: statement_granularity
+    effect_claim: an attacker-controlled command may reach execution
+    files:
+      revision_A:
+        module.py: |
+          def run(request):
+              command = request["command"]
+              if command == "":
+                  return False
+              return execute(command)
+
+          def execute(value):
+              return value.strip() != ""
+      revision_B:
+        module.py: |
+          def run(request):
+              command = request["command"]
+              if command == "" or ";" in command:
+                  return False
+              return execute(command)
+
+          def execute(value):
+              return value.strip() != ""
+    expected:
+      entry:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'command = request["command"]'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 2, end_line: 2, expression: 'command = request["command"]'}}
+      behavior:
+        revision_A: {state: present, anchor: {file: module.py, start_line: 3, end_line: 3, expression: 'if command == "":'}}
+        revision_B: {state: present, anchor: {file: module.py, start_line: 3, end_line: 3, expression: 'if command == "" or ";" in command:'}}

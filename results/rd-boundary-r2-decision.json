@@ -1,0 +1,71 @@
+{
+  "round": 2,
+  "status": "SCORED",
+  "reviewers": {
+    "a": {
+      "type": "model",
+      "name": "GPT-6, new conversation",
+      "date": "2026-10-01",
+      "attestation": {
+        "independent": true,
+        "saw_author_labels": false,
+        "saw_project_history": false
+      }
+    },
+    "b": {
+      "type": "model",
+      "name": "DeepSeek V4.1 Flash, new conversation",
+      "date": "2026-10-01",
+      "attestation": {
+        "independent": true,
+        "saw_author_labels": false,
+        "saw_project_history": false
+      }
+    }
+  },
+  "cases": 19,
+  "pairwise_agreement": {
+    "author~a": 18,
+    "author~b": 19,
+    "a~b": 18
+  },
+  "groups": {
+    "config": {
+      "cases": 2,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "dispatch_target": {
+      "cases": 2,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "guard": {
+      "cases": 10,
+      "disputed": [],
+      "status": "AGREED",
+      "outcome_without_revision": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "transform": {
+      "cases": 5,
+      "disputed": [
+        {
+          "id": "q27",
+          "rule": "QU-1",
+          "tier": "core",
+          "author": "REQUIRED",
+          "a": "NOT_REQUIRED",
+          "b": "REQUIRED"
+        }
+      ],
+      "status": "DISPUTED",
+      "outcome_without_revision": "EXIT_VOCABULARY",
+      "indeterminate_rules": []
+    }
+  }
+}

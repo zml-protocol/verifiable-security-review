@@ -1,0 +1,8 @@
+# Plumbing-pilot anchors (PREREGISTRATION.md §12.3): hand-picked on the P-Hybrid-1 development
+# modules, mechanics only, never scored.
+hopdev-go:
+  base: {entry: [node, flow.go, 27, 2], terminal: [node, flow.go, 31, 14], needs_qualifier: false}
+  head: {entry: [node, flow.go, 29, 2], terminal: [node, flow.go, 31, 14], needs_qualifier: false}
+hopdev-py:
+  base: {entry: [node, dev.py, 60, 16], terminal: [inside, dev.py, 25, 26], needs_qualifier: false}
+  head: {entry: [node, dev.py, 60, 16], terminal: [inside, dev.py, 39, 40], needs_qualifier: false}

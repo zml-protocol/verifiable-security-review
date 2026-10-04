@@ -1,0 +1,86 @@
+# Expected answers. Never exposed to the agent. Truth values are backed by
+# truth/result.json (probe P1 for H1, P2 for H2).
+# facts: any one evidence set suffices; every location in that set must be cited.
+case: caddy-forward-auth
+notes: >
+  CVE-2026-30851 / GHSA-7r4p-vjf4-gxv4. truth/ builds a minimal host (only the
+  modules the probe needs) because upstream's standard build does not compile
+  in this commit window; see truth/probe_main.go and PREREGISTRATION.md §3.5.
+
+hypotheses:
+  H1:
+    truth: {base: false, head: true}
+    components:
+      configuration: {base: supported, head: supported}
+      overwrite: {base: contradicted, head: supported}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: CHANGE_IMPLICATED
+      with_execution: REGRESSION          # P1: base upstream sees the unreplaced placeholder, head sees "admin"
+    facts:
+      - id: base-copy-routes-run-on-2xx
+        revision: base
+        component: configuration
+        statement: the copy-header routes sit in the response handler that matches 2xx auth responses, and that handler is attached to the auth request's reverse proxy
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 180}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 198}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 215}]
+      - id: head-copy-routes-run-on-2xx
+        revision: head
+        component: configuration
+        statement: the copy-header routes sit in the response handler that matches 2xx auth responses, and that handler is attached to the auth request's reverse proxy
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 182}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 233}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 240}]
+      - id: base-unconditional-set
+        revision: base
+        component: overwrite
+        statement: every copied header is Set on the request unconditionally, replacing the client's value
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 194-196}]
+      - id: head-set-skipped-when-absent
+        revision: head
+        component: overwrite
+        statement: the Set route is guarded by not(vars placeholder == ""), so it is skipped when the auth response lacks the header
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 219-222}]
+    notes: >
+      Not required: that clients can set headers (a precondition in the claim)
+      and that reverse_proxy forwards request headers (identical on both sides).
+      Insufficient on its own: citing only the forward_auth directive entry or
+      the caddyfiletest JSON without the matcher that skips the Set.
+
+  H2:
+    # Negative control: when the auth service does return the header, both sides replace the client's value.
+    truth: {base: false, head: false}
+    components:
+      configuration: {base: supported, head: supported}
+      overwrite: {base: contradicted, head: contradicted}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: NOT_SUPPORTED
+      with_execution: NOT_SUPPORTED       # P2: upstream sees "alice" on both sides
+    facts:
+      - id: base-copy-routes-run-on-2xx
+        revision: base
+        component: configuration
+        statement: the copy-header routes sit in the response handler that matches 2xx auth responses, and that handler is attached to the auth request's reverse proxy
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 180}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 198}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 215}]
+      - id: head-copy-routes-run-on-2xx
+        revision: head
+        component: configuration
+        statement: the copy-header routes sit in the response handler that matches 2xx auth responses, and that handler is attached to the auth request's reverse proxy
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 182}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 233}, {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 240}]
+      - id: base-unconditional-set
+        revision: base
+        component: overwrite
+        statement: every copied header is Set on the request unconditionally from the auth response
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 194-196}]
+      - id: head-set-runs-when-present
+        revision: head
+        component: overwrite
+        statement: when the auth response carries the header, the not(vars == "") matcher passes and Set replaces the client's value
+        evidence_sets:
+          - [{path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 213-214},
+             {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 219-222}]

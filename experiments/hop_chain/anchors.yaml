@@ -1,0 +1,31 @@
+# Chain anchors (PREREGISTRATION.md §12.2), rule G: derived from the frozen golden hops of each
+# fixture and revision, guard_property hops aside; entry = the first hop's `from` node,
+# terminal = the last hop's `to` identity. A test re-derives them. Scoring only; never shown
+# to the agent.
+authlib-jws-none:
+  base:
+    entry: [node, authlib/jose/rfc7519/jwt.py, 104, 20]
+    terminal: [inside, authlib/jose/rfc7518/jws_algs.py, 37, 38]
+    needs_qualifier: false
+  head:
+    entry: [node, authlib/jose/rfc7519/jwt.py, 104, 20]
+    terminal: [inside, authlib/jose/rfc7518/jws_algs.py, 37, 38]
+    needs_qualifier: false
+caddy-forward-auth:
+  base:
+    entry: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 198, 2]
+    terminal: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 215, 2]
+    needs_qualifier: true
+  head:
+    entry: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 233, 2]
+    terminal: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 240, 2]
+    needs_qualifier: true
+filebrowser-archive-backslash:
+  base:
+    entry: [node, http/raw.go, 125, 3]
+    terminal: [node, http/raw.go, 131, 4]
+    needs_qualifier: false
+  head:
+    entry: [node, http/raw.go, 125, 3]
+    terminal: [node, http/raw.go, 137, 4]
+    needs_qualifier: false

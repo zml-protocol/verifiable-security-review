@@ -1,0 +1,7 @@
+# Stage-2 gate slots (PREREGISTRATION.md §3.6), launched in this order with --jobs 1.
+# All five are formal data; only their billed cost is read to project the budget.
+authlib-jws-none/H1/forward/r0
+caddy-forward-auth/H1/forward/r0
+filebrowser-archive-backslash/H1/forward/r0
+filebrowser-archive-backslash/H3/forward/r0
+caddy-forward-auth/H2/forward/r0

@@ -1,0 +1,4910 @@
+{
+  "provenance": {
+    "scored_at": "2026-09-27T19:48:48+00:00",
+    "harness_commit": "0a96a96f5946f3e788fc1797690df63de68af8e4",
+    "harness_dirty": false,
+    "scorer_sha256": "8d827ce6404c2ef711c3bf4e5e1e3fbfc1a224ea6d2e7d6c78cd6ac42558d653",
+    "goldens_sha256": {
+      "fixtures/synthetic-notes/golden.yaml": "8dbd4c15947e5ddd8a86a6c02813fedb721f933bb3acf7beb91466ec92747e25"
+    }
+  },
+  "harness_invariants": {
+    "anchor_audit_failures": 0,
+    "accepted_revision_mismatches": 0,
+    "harness_errors": 0,
+    "runs_with_foreign_tools": 0,
+    "runs_with_context_leak": 0,
+    "infra_invalid_slots": 0,
+    "infra_invalid_rate": 0.0
+  },
+  "metrics": {
+    "valid_runs": 80,
+    "outcomes": {
+      "completed": 80
+    },
+    "finished_rate": 1,
+    "attribution_correct_rate": 0.9875,
+    "attribution_correct_rate_forward": 1,
+    "evidence_complete_correct_rate": 0.925,
+    "fact_coverage": 0.94375,
+    "fact_coverage_by_condition": {
+      "forward": 0.95,
+      "swapped": 1,
+      "identity_base": 1,
+      "identity_head": 0.825
+    },
+    "component_accuracy": 0.9802083333333333,
+    "negative_control_false_supported_rate": 0,
+    "false_supported_revision_rate": 0.0,
+    "forward_correct_by_true_hypothesis": {
+      "synthetic-notes/H1": 1,
+      "synthetic-notes/H3": 1
+    },
+    "repeat_agreement": 0.9875,
+    "swap_mirror_consistency": 1,
+    "identity_inconsistency_rate": 0.025,
+    "identity_component_agreement": 0.975,
+    "identity_runs_with_change_language": 13,
+    "attempt_citation_error_rate": 0.07045009784735812,
+    "runs_with_attempted_revision_mismatch": 0.0125,
+    "served_models": [
+      "claude-haiku-4-5-20251001"
+    ],
+    "api_key_sources": [
+      "none"
+    ],
+    "cost_usd": 5.556328
+  },
+  "cells": {
+    "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "CHANGE_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "CHANGE_IMPLICATED"
+    },
+    "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "FIX_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "FIX_IMPLICATED"
+    },
+    "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.9,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.95,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.9,
+      "fact_coverage": 0.9,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 0.8,
+      "attribution_correct": 0.8,
+      "evidence_complete_correct": 0.8,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.8,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.6,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.933,
+      "fact_coverage": 0.4,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.4,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 1,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 1,
+      "expected_attribution": "NOT_SUPPORTED"
+    }
+  },
+  "runs": [
+    {
+      "run": "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0777979,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0667857,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 18,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07461720000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07463380000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/forward/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 18,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07963509999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "base-delete-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0647167,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "base-delete-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07139830000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "base-delete-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "unchanged": 5,
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.08339779999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "base-delete-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "unchanged": 6,
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07837030000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O2",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_base/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@base": true,
+        "base-delete-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0601339,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-path-unchecked@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.08332460000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-path-unchecked@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 6
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0644549,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-path-unchecked@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 4
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0755661,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-path-unchecked@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.059793200000000005,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O5",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/identity_head/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-path-unchecked@base": true,
+        "head-delete-path-unchecked@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.061988600000000005,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O6"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@head": true,
+        "head-delete-path-unchecked@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06431629999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@head": true,
+        "head-delete-path-unchecked@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0820314,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@head": true,
+        "head-delete-path-unchecked@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0595196,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@head": true,
+        "head-delete-path-unchecked@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0696503,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H1/swapped/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-owner-check@head": true,
+        "head-delete-path-unchecked@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0697431,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 0.5,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 31,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.11675010000000001,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "contradicted"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0931071,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0680273,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06046239999999999,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/forward/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0772014,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "base-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0757595,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "base-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.055728700000000006,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "base-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 4,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0721954,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "base-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05046610000000001,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H2/identity_base/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@base": true,
+        "base-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06117129999999999,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0590863,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 3
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 28,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0838319,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.08542599999999999,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0639,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": [
+        "O3",
+        "O4"
+      ]
+    },
+    {
+      "run": "synthetic-notes/H2/identity_head/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-delete-requires-login@base": true,
+        "head-delete-requires-login@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07396599999999999,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@head": true,
+        "head-delete-requires-login@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 14,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0579436,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 0.75,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@head": true,
+        "head-delete-requires-login@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 5,
+      "errors": {
+        "revision_mismatch": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 14,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06874919999999998,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@head": true,
+        "head-delete-requires-login@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07052329999999998,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@head": true,
+        "head-delete-requires-login@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0587372,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H2/swapped/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-delete-requires-login@head": true,
+        "head-delete-requires-login@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 4,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 18,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07071269999999999,
+      "components": {
+        "base": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0559044,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 2
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0629917,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0544195,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07141850000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/forward/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0552341,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "base-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 2
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06490560000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "base-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05719760000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "base-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06008850000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "base-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05484039999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_base/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@base": true,
+        "base-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 3
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0644591,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 0.5,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "NO_EVIDENCE"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "UNDETERMINED",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": false,
+      "facts_covered": {
+        "head-all-emails@base": true,
+        "head-all-emails@head": false
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 3,
+      "errors": {
+        "unchanged": 2
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05673189999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "no_evidence",
+          "control": "no_evidence",
+          "effect": "no_evidence"
+        }
+      },
+      "identity_inconsistent": [
+        "entrypoint",
+        "control",
+        "effect"
+      ],
+      "identity_component_agreement": 0,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05371089999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0671221,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0597028,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/identity_head/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-all-emails@base": true,
+        "head-all-emails@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.08381390000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@head": true,
+        "head-all-emails@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.055943099999999996,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@head": true,
+        "head-all-emails@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0599364,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@head": true,
+        "head-all-emails@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {
+        "unchanged": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06327750000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@head": true,
+        "head-all-emails@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05784329999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H3/swapped/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-all-emails@head": true,
+        "head-all-emails@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0963378,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "head-read-owner-check-moved@head": false
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 14,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05119200000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "head-read-owner-check-moved@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 9,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0940328,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "head-read-owner-check-moved@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06311580000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "head-read-owner-check-moved@head": false
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 18,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0707333,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/forward/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "head-read-owner-check-moved@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 17,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0786775,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "base-read-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "unchanged": 2,
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.05708850000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "base-read-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 10,
+      "errors": {
+        "unchanged": 1,
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 32,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.09903720000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "base-read-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.07056430000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "base-read-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.061614600000000005,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_base/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_base",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@base": true,
+        "base-read-owner-check@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 12,
+      "errors": {
+        "quote_ambiguous": 4
+      },
+      "citation_errors": 4,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.08000119999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-read-owner-check-moved@base": true,
+        "head-read-owner-check-moved@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0709935,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-read-owner-check-moved@base": false,
+        "head-read-owner-check-moved@head": false
+      },
+      "fact_coverage": 0,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0599906,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "no_evidence"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-read-owner-check-moved@base": true,
+        "head-read-owner-check-moved@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0763787,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-read-owner-check-moved@base": false,
+        "head-read-owner-check-moved@head": false
+      },
+      "fact_coverage": 0,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0631845,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/identity_head/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "identity_head",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "head-read-owner-check-moved@base": false,
+        "head-read-owner-check-moved@head": false
+      },
+      "fact_coverage": 0,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.062361,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      },
+      "identity_inconsistent": [],
+      "identity_component_agreement": 1,
+      "identity_change_language": []
+    },
+    {
+      "run": "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001/r0",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@head": true,
+        "head-read-owner-check-moved@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 14,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0635034,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001/r1",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@head": true,
+        "head-read-owner-check-moved@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 10,
+      "errors": {
+        "quote_ambiguous": 1,
+        "bad_component": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0950934,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001/r2",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@head": true,
+        "head-read-owner-check-moved@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 10,
+      "errors": {
+        "quote_ambiguous": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.10184660000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001/r3",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@head": true,
+        "head-read-owner-check-moved@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.06417099999999999,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "synthetic-notes/H4/swapped/claude_claude-haiku-4-5-20251001/r4",
+      "case": "synthetic-notes",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-haiku-4-5-20251001",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-haiku-4-5-20251001"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-read-owner-check@head": true,
+        "head-read-owner-check-moved@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 7,
+      "errors": {
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.0712487,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "control": "contradicted",
+          "effect": "supported"
+        }
+      }
+    }
+  ]
+}

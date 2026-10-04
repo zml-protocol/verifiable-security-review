@@ -1,0 +1,29 @@
+reviewer:
+  type: "model"
+  name: "GPT-6, new conversation"
+  date: "2026-10-01"
+  attestation:
+    independent: true
+    saw_author_labels: false
+    saw_project_history: false
+relations: {}
+requirements:
+  q06: {label: "NOT_REQUIRED", note: "The added check is the behavior, excluded by QU-2."}
+  q07: {label: "NOT_REQUIRED", note: "The added transform is the behavior, excluded by QU-2."}
+  q08: {label: "NOT_REQUIRED", note: "CF-1 requires equals \"1\", not merely set."}
+  q13: {label: "REQUIRED", note: "The environment value must equal \"1\"."}
+  q15: {label: "NOT_REQUIRED", note: "Traversal remains possible without trimming whitespace."}
+  q16: {label: "NOT_REQUIRED", note: "An empty policy label does not prevent injection."}
+  q18: {label: "NOT_REQUIRED", note: "The request method is attacker-controlled input under QU-3."}
+  q19: {label: "REQUIRED", note: "Injection requires the mode predicate to be false."}
+  q20: {label: "NOT_REQUIRED", note: "The stated polarity is reversed."}
+  q26: {label: "NOT_REQUIRED", note: "Applying this existing transform does not eliminate traversal."}
+  q27: {label: "NOT_REQUIRED", note: "Allowed filesystem states defeat necessity: an unchanged encoded path can traverse through a symlink, while decoding produces dot segments rejected by the fix."}
+  q30: {label: "NOT_REQUIRED", note: "The changed path check is the behavior under BE-3."}
+  q32: {label: "NOT_REQUIRED", note: "Adding verification does not stop traversal for verified uploaders."}
+  q35: {label: "NOT_REQUIRED", note: "Verification is not necessary, and its absent context should be the key extraction."}
+  q36: {label: "REQUIRED", note: "The signature-verification weakness requires dispatch to NoneAlg.verify; its definition remains present after the fix."}
+  q40: {label: "NOT_REQUIRED", note: "Dispatch to HmacAlg.verify is not necessary for the weakness."}
+  q45: {label: "NOT_REQUIRED", note: "An absolute sibling path can pass the prefix check even with user_path passed through unchanged."}
+  q47: {label: "REQUIRED", note: "The earlier added check independently blocks the triggering dot-segment paths; the later changed check is the behavior."}
+  q48: {label: "NOT_REQUIRED", note: "The fixed guard permits continuation only when its predicate is false."}

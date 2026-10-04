@@ -1,0 +1,12 @@
+{
+  "round": 2,
+  "frozen_with": "definitions v2 and the round-2 sheet; not changed after any result is seen",
+  "judges": {
+    "a": {"family": "OpenAI", "runner": "experiments/rd/boundary/judge_codex.py",
+          "model": "gpt-6-astra", "reasoning_effort": "medium", "chosen_by": "user"},
+    "b": {"family": "DeepSeek", "runner": "experiments/rd/boundary/judge_opencode.py",
+          "model": "deepseek/deepseek-flash", "reasoning_effort": "provider default (no setting exposed)",
+          "chosen_by": "user (Codex preferred a Google model; DeepSeek also satisfies the charter: a non-OpenAI, non-Anthropic family)"}
+  },
+  "round_1_note": "round 1 used two isolated sessions from the same model family (OpenAI); round 2 uses two different model families"
+}

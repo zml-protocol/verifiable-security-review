@@ -1,0 +1,63 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-decision-point-02",
+  "language": "go",
+  "cell": "decision_point",
+  "package": "mintrelay",
+  "effect_claim": "Whether a provided relay address is admitted to the outbound channel.",
+  "files": {
+    "revision_A": {
+      "mintrelay.go": "package mintrelay\n\ntype RelayRequest struct {\n\tAddress string\n}\n\nfunc route(request RelayRequest, outgoing chan<- string) {\n\tdestination := request.Address\n\tclass := classify(destination)\n\tif class == \"open\" { outgoing <- destination }\n}\n\nfunc classify(value string) string {\n\tif len(value) > 4 {\n\t\treturn \"open\"\n\t}\n\treturn \"closed\"\n}\n"
+    },
+    "revision_B": {
+      "mintrelay.go": "package mintrelay\n\ntype RelayRequest struct {\n\tAddress string\n}\n\nfunc route(request RelayRequest, outgoing chan<- string) {\n\tdestination := request.Address\n\tclass := classify(destination)\n\tif class == \"reviewed\" { outgoing <- destination }\n}\n\nfunc classify(value string) string {\n\tif len(value) > 8 {\n\t\treturn \"reviewed\"\n\t}\n\treturn \"closed\"\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "mintrelay.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "destination := request.Address"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "mintrelay.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "destination := request.Address"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "mintrelay.go",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "if class == \"open\" { outgoing <- destination }"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "mintrelay.go",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "if class == \"reviewed\" { outgoing <- destination }"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "computed_value",
+    "sink_argument"
+  ],
+  "forbidden_anchors": []
+}

@@ -1,0 +1,120 @@
+set: cal
+truth:
+  c01:
+    name: cp4
+    label: false
+    kind: wrong_source
+    reason: the call reads `body` as redefined at 19
+  c02:
+    name: cp8
+    label: true
+  c03:
+    name: cd3
+    label: false
+    kind: wrong_target
+    reason: the argument `kind` does not read `norm`
+  c04:
+    name: cr1
+    label: true
+  c05:
+    name: cp7
+    label: true
+  c06:
+    name: cp10
+    label: false
+    kind: reversed
+    reason: a call does not define a value
+  c07:
+    name: ca2
+    label: true
+  c08:
+    name: ca6
+    label: true
+  c09:
+    name: cd6
+    label: false
+    kind: wrong_target
+    reason: inside the if block `w` is the shadowing variable defined at 52
+  c10:
+    name: ca8
+    label: false
+    kind: reversed
+    reason: a parameter is not a call argument
+  c11:
+    name: ca7
+    label: true
+    note: a local function value; the verifier may leave it UNVERIFIED
+  c12:
+    name: cr3
+    label: false
+    kind: wrong_target
+    reason: the second loop ranges over `fixed`, not `list`
+  c13:
+    name: ca3
+    label: false
+    kind: wrong_target
+    reason: '`norm` is argument 1, bound to `value`'
+  c14:
+    name: cp9
+    label: false
+    kind: wrong_target
+    reason: the right-hand side reads `user` and `body`, not `request`
+  c15:
+    name: cr4
+    label: false
+    kind: wrong_source
+    reason: the first loop ranges over `list`, not `fixed`
+  c16:
+    name: cp3
+    label: true
+  c17:
+    name: cd7
+    label: true
+  c18:
+    name: cp6
+    label: false
+    kind: wrong_target
+    reason: the call reads `user` and a literal; `inner` has its own `request`
+  c19:
+    name: cp1
+    label: true
+  c20:
+    name: ca4
+    label: true
+    note: interface dispatch can run memSink.Put; the verifier may leave it UNVERIFIED
+  c21:
+    name: cr5
+    label: false
+    kind: wrong_target
+    reason: '`idx` is the index variable, not an element'
+  c22:
+    name: cp2
+    label: true
+  c23:
+    name: cd2
+    label: true
+  c24:
+    name: ca5
+    label: false
+    kind: wrong_target
+    reason: '`a` is argument 0, bound to `a`'
+  c25:
+    name: cd4
+    label: true
+  c26:
+    name: ca1
+    label: true
+  c27:
+    name: cd5
+    label: true
+  c28:
+    name: cp5
+    label: false
+    kind: wrong_source
+    reason: '`request` is redefined to None before the call'
+  c29:
+    name: cr2
+    label: true
+  c30:
+    name: cd1
+    label: true

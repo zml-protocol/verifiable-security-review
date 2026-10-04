@@ -1,0 +1,329 @@
+{
+  "set": "cal",
+  "provenance": {
+    "harness": {
+      "commit": "64ad5e9f8400890bfa642db236c9562ff27cecc2",
+      "dirty": false
+    },
+    "codeql": "codeql-bundle-v2.27.1",
+    "files": {
+      "experiments/hop_bridge/relations.yaml": "6a832c783bbbdbf751248dc7541a13cae99519a7ebee7d063fa3e05721bd2ff9",
+      "experiments/hop_bridge/bridge.py": "c7349f1f2ec9b9409042d3c4a5e21142892cb4f03b30cf3f2193ff4df387e295",
+      "experiments/hop_bridge/sets/cal.yaml": "949d11689c2dd3fa733e4344856ad3d45f387f72ed73998c4de657a59b40e482",
+      "experiments/hop_bridge/queries/go/ArgumentBinding.ql": "3c7722bde8252a534821115b11afbbd69b81a04024639cebc1f135922b0cc649",
+      "experiments/hop_bridge/queries/go/BridgeCommon.qll": "52170cc1d5ee9df61ca60bbe77f99339f9c7a9af32f461e8ff37e02d70980ce0",
+      "experiments/hop_bridge/queries/go/BridgeShapes.ql": "defee9b8b9694536f745e1830208073dfd767ebcc9ce07f2015d237232bb8f9a",
+      "experiments/hop_bridge/queries/go/DefUse.ql": "3e89237431b62ff9b9d60f77f2eea96721aee0b1dc710d01378ae9f5242f3c9e",
+      "experiments/hop_bridge/queries/go/RangeElement.ql": "f4dfe82c8eaef9dce6d3d7ba6fc5f12725bc294f21fa554ed86476210c02b853",
+      "experiments/hop_bridge/queries/python/BridgeCommon.qll": "e7bda48f0e72012cafac00e6497970728ca2bc0a5cecc9b5eab3588cb20d9775",
+      "experiments/hop_bridge/queries/python/BridgeShapes.ql": "217550782bace70da44a3d0defa01f44240e21718c14f25890a3e3955d9ba7b9",
+      "experiments/hop_bridge/queries/python/DefUse.ql": "5a48e410407ef7378f9185b0fba4f74460a9b1601905d66778abd21773209e26"
+    },
+    "truth": {
+      "experiments/hop_bridge/truth/cal.yaml": "4a3c2144f11dd92e2ee82778c22d8f1234c06cf8e124f1c3d4c1f8966d9e98f1"
+    }
+  },
+  "verifiers": {
+    "codeql/python/def_use": {
+      "true_hops": 5,
+      "false_hops": 5,
+      "true_verified": 5,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 4,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "c01": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cp4"
+        },
+        "c02": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cp8"
+        },
+        "c05": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cp7"
+        },
+        "c06": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "cp10"
+        },
+        "c14": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cp9"
+        },
+        "c16": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cp3"
+        },
+        "c18": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cp6"
+        },
+        "c19": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cp1"
+        },
+        "c22": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cp2"
+        },
+        "c28": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cp5"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "codeql/go/def_use": {
+      "true_hops": 5,
+      "false_hops": 2,
+      "true_verified": 5,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 0,
+      "true_unverified": 0,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "c03": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cd3"
+        },
+        "c09": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cd6"
+        },
+        "c17": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cd7"
+        },
+        "c23": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cd2"
+        },
+        "c25": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cd4"
+        },
+        "c27": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cd5"
+        },
+        "c30": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cd1"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "codeql/go/range_element": {
+      "true_hops": 2,
+      "false_hops": 3,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "c04": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cr1"
+        },
+        "c12": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cr3"
+        },
+        "c15": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "cr4"
+        },
+        "c21": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "cr5"
+        },
+        "c29": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "cr2"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "codeql/go/argument_binding": {
+      "true_hops": 5,
+      "false_hops": 3,
+      "true_verified": 3,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 2,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "c07": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "ca2"
+        },
+        "c08": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "ca6"
+        },
+        "c10": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "ca8"
+        },
+        "c11": {
+          "label": true,
+          "state": "UNVERIFIED",
+          "name": "ca7"
+        },
+        "c13": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "ca3"
+        },
+        "c20": {
+          "label": true,
+          "state": "UNVERIFIED",
+          "name": "ca4"
+        },
+        "c24": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "ca5"
+        },
+        "c26": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "ca1"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 0.6,
+      "verification_precision": 1.0,
+      "class": "PARTIAL"
+    }
+  },
+  "verifier_queries": {
+    "codeql/python/def_use": "experiments/hop_bridge/queries/python/DefUse.ql",
+    "codeql/go/def_use": "experiments/hop_bridge/queries/go/DefUse.ql",
+    "codeql/go/range_element": "experiments/hop_bridge/queries/go/RangeElement.ql",
+    "codeql/go/argument_binding": "experiments/hop_bridge/queries/go/ArgumentBinding.ql"
+  },
+  "false_hops_by_mutation": {
+    "wrong_source": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 3,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "wrong_target": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 7,
+      "CONTRADICTED": 1,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "reversed": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 0,
+      "CONTRADICTED": 2,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    }
+  },
+  "report_only_by_relation": {
+    "def_use": {
+      "true_hops": 10,
+      "false_hops": 7,
+      "true_verified": 10,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 6,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "range_element": {
+      "true_hops": 2,
+      "false_hops": 3,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "argument_binding": {
+      "true_hops": 5,
+      "false_hops": 3,
+      "true_verified": 3,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 2,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 0.6,
+      "verification_precision": 1.0,
+      "class": "PARTIAL"
+    }
+  }
+}

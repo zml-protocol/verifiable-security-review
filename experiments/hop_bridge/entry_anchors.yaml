@@ -1,0 +1,12 @@
+# §14 entry anchors: the long-frozen Spike P source endpoints (experiments/provider_reach/
+# endpoints.yaml: Authlib `s` at jwt.py:80, File Browser `filenames` at raw.go:165/171, Caddy
+# `handler` at caddyfile.go:185/211) as node identities. Terminals are §12's (hop_chain/anchors.yaml).
+authlib-jws-none:
+  base: [node, authlib/jose/rfc7519/jwt.py, 80, 22]
+  head: [node, authlib/jose/rfc7519/jwt.py, 80, 22]
+caddy-forward-auth:
+  base: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 185, 2]
+  head: [node, modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, 211, 3]
+filebrowser-archive-backslash:
+  base: [node, http/raw.go, 165, 2]
+  head: [node, http/raw.go, 171, 2]

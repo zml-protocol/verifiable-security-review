@@ -1,0 +1,423 @@
+# Scorer-only truth for sets/eval.yaml (PREREGISTRATION.md §10.4). Never shown to a verifier.
+set: eval
+truth:
+  e01:
+    name: c-gp-b-reversed
+    label: false
+    kind: reversed
+    of: c-gp-b
+    reason: a field store is not a literal field
+  e02:
+    name: c-oc-h-reversed
+    label: false
+    kind: reversed
+    of: c-oc-h
+    reason: rpHandler is not stored into goodResponseHandler.Routes
+  e03:
+    name: c-gp-b-shift-down
+    label: false
+    kind: shift
+    of: c-gp-b
+    direction: down
+    skipped_true:
+    - caddyfile.go:182 Routes (a field of goodResponseHandler)
+    reason: a field of the handler literal, not of goodResponseHandler
+  e04:
+    name: f-ff-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f-ff-b
+    direction: up
+    reason: FileInfo takes info
+  e05:
+    name: c-gp-h-shift-up
+    label: false
+    kind: shift
+    of: c-gp-h
+    direction: up
+    skipped_true:
+    - caddyfile.go:181 Match (a field of goodResponseHandler)
+    reason: a field of the rpHandler literal, not of goodResponseHandler
+  e06:
+    name: c-oc-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: c-oc-h
+    direction: up
+    reason: the store at the target puts dispenser.Val() into Rewrite.URI, before goodResponseHandler exists
+  e07:
+    name: a-rd-b-shift-down
+    label: false
+    kind: shift
+    of: a-rd-b
+    direction: down
+    reason: calls JsonWebSignature._validate_private_headers (jws.py:264)
+  e08:
+    name: c-oc-h
+    label: true
+  e09:
+    name: c-oc-b-reversed
+    label: false
+    kind: reversed
+    of: c-oc-b
+    reason: rpHandler is not stored into goodResponseHandler.Routes
+  e10:
+    name: c-oc-b-shift-up
+    label: false
+    kind: shift
+    of: c-oc-b
+    direction: up
+    reason: the value stored at the target is goodResponseHandler; the upper statement's object is neither it nor
+      part of that stored expression (no single composition step)
+  e11:
+    name: f-ff-b-reversed
+    label: false
+    kind: reversed
+    of: f-ff-b
+    reason: a literal field does not define a variable
+  e12:
+    name: a-ct-b-shift-down
+    label: false
+    kind: shift
+    of: a-ct-b
+    direction: down
+    reason: _jwe holds a JsonWebEncryption (jwt.py:39); its deserialize_compact is jwe.py:447
+  e13:
+    name: c-gp-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: c-gp-b
+    direction: up
+    reason: the store writes into rpHandler.Rewrite, which does not carry the 2xx matcher
+  e14:
+    name: a-ct-h-reversed
+    label: false
+    kind: reversed
+    of: a-ct-h
+    reason: algorithm.verify runs a JWS algorithm's verify, none of which contains jwt.py:104
+  e15:
+    name: c-gp-h-reversed
+    label: false
+    kind: reversed
+    of: c-gp-h
+    reason: a field store is not a literal field
+  e16:
+    name: a-ct-h-shift-down
+    label: false
+    kind: shift
+    of: a-ct-h
+    direction: down
+    reason: _jwe holds a JsonWebEncryption (jwt.py:39); its deserialize_compact is jwe.py:447
+  e17:
+    name: c-gp-h-shift-down
+    label: false
+    kind: shift
+    of: c-gp-h
+    direction: down
+    skipped_true:
+    - caddyfile.go:184 Routes and :186 HandlersRaw (fields inside the goodResponseHandler literal)
+    reason: a field of the handler literal, not of goodResponseHandler
+  e18:
+    name: a-rd-h-shift-down
+    label: false
+    kind: shift
+    of: a-rd-h
+    direction: down
+    reason: calls JsonWebSignature._validate_private_headers (jws.py:264)
+  e19:
+    name: c-oc-h-shift-up
+    label: false
+    kind: shift
+    of: c-oc-h
+    direction: up
+    reason: the value stored at the target is goodResponseHandler; the upper statement's object is neither it nor
+      part of that stored expression (no single composition step)
+  e20:
+    name: a-ct-b-wrong-target
+    label: false
+    kind: wrong_target
+    of: a-ct-b
+    direction: homonym
+    reason: _jws holds a JsonWebSignature (jwt.py:38), never a JsonWebEncryption; the only other deserialize_compact
+  e21:
+    name: f-ff-b-shift-up
+    label: false
+    kind: shift
+    of: f-ff-b
+    direction: up
+    reason: info and err never reach NameInArchive
+  e22:
+    name: f-ff-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f-ff-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  e23:
+    name: f-ff-b
+    label: true
+  e24:
+    name: c-oc-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: c-oc-b
+    direction: down
+    reason: the store puts the user's matcher set into rpRoute, not goodResponseHandler
+  e25:
+    name: a-rd-b-reversed
+    label: false
+    kind: reversed
+    of: a-rd-b
+    reason: NoneAlgorithm.verify makes no call that reaches deserialize_compact
+  e26:
+    name: c-oc-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: c-oc-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  e27:
+    name: c-gp-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: c-gp-h
+    direction: down
+    reason: the store writes into rpHandler, whose literal does not carry the 2xx matcher
+  e28:
+    name: a-rd-b-wrong-target
+    label: false
+    kind: wrong_target
+    of: a-rd-b
+    direction: homonym
+    skipped_true:
+    - jws_algs.py:66
+    - jws_algs.py:97
+    - jws_algs.py:139
+    - jws_algs.py:189
+    - 'rfc8037/jws_eddsa.py:18 (registered algorithms: may run)'
+    reason: JWSAlgorithm.verify is overridden by every class registered in ALGORITHMS_REGISTRY (JWS_ALGORITHMS,
+      jws_algs.py:206-220, and EdDSAAlgorithm), so dispatch never reaches it
+  e29:
+    name: c-oc-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: c-oc-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  e30:
+    name: a-rd-b
+    label: true
+  e31:
+    name: f-ff-h-reversed
+    label: false
+    kind: reversed
+    of: f-ff-h
+    reason: a literal field does not define a variable
+  e32:
+    name: a-ct-b-reversed
+    label: false
+    kind: reversed
+    of: a-ct-b
+    reason: algorithm.verify runs a JWS algorithm's verify, none of which contains jwt.py:104
+  e33:
+    name: a-rd-b-shift-up
+    label: false
+    kind: shift
+    of: a-rd-b
+    direction: up
+    reason: calls JsonWebSignature._prepare_algorithm_key (jws.py:246), not an algorithm's verify
+  e34:
+    name: a-rd-h-reversed
+    label: false
+    kind: reversed
+    of: a-rd-h
+    reason: NoneAlgorithm.verify makes no call that reaches deserialize_compact
+  e35:
+    name: f-ff-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f-ff-b
+    direction: down
+    reason: Open takes a closure over path, not nameInArchive
+  e36:
+    name: f-ff-h
+    label: true
+  e37:
+    name: a-ct-h-shift-up
+    label: false
+    kind: shift
+    of: a-ct-h
+    direction: up
+    reason: resolves to JsonWebSignature.serialize_compact (jws.py:49-75), which does not contain jws.py:107
+  e38:
+    name: c-gp-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: c-gp-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  e39:
+    name: c-oc-b-shift-down
+    label: false
+    kind: shift
+    of: c-oc-b
+    direction: down
+    reason: err is never stored into HandleResponse (and is assigned after the store)
+  e40:
+    name: c-gp-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: c-gp-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  e41:
+    name: a-rd-h-wrong-target
+    label: false
+    kind: wrong_target
+    of: a-rd-h
+    direction: homonym
+    skipped_true:
+    - jws_algs.py:66
+    - jws_algs.py:97
+    - jws_algs.py:139
+    - jws_algs.py:189
+    - 'rfc8037/jws_eddsa.py:18 (registered algorithms: may run)'
+    reason: JWSAlgorithm.verify is overridden by every class registered in ALGORITHMS_REGISTRY (JWS_ALGORITHMS,
+      jws_algs.py:206-220, and EdDSAAlgorithm), so dispatch never reaches it
+  e42:
+    name: c-gp-h
+    label: true
+  e43:
+    name: c-gp-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: c-gp-h
+    direction: up
+    reason: the store writes into rpHandler.Rewrite, which does not carry the 2xx matcher
+  e44:
+    name: a-ct-b
+    label: true
+  e45:
+    name: c-oc-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: c-oc-b
+    direction: up
+    reason: the store at the target puts dispenser.Val() into Rewrite.URI, before goodResponseHandler exists
+  e46:
+    name: f-ff-h-shift-down
+    label: false
+    kind: shift
+    of: f-ff-h
+    direction: down
+    skipped_true:
+    - raw.go:126
+    - raw.go:127
+    - raw.go:133
+    reason: the definition of archiveFiles does not reach its own element's NameInArchive value
+  e47:
+    name: a-ct-h
+    label: true
+  e48:
+    name: a-rd-h
+    label: true
+  e49:
+    name: c-oc-h-shift-down
+    label: false
+    kind: shift
+    of: c-oc-h
+    direction: down
+    reason: err is never stored into HandleResponse (and is assigned after the store)
+  e50:
+    name: f-ff-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f-ff-h
+    direction: down
+    reason: Open takes a closure over path, not nameInArchive
+  e51:
+    name: f-ff-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f-ff-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  e52:
+    name: c-gp-b
+    label: true
+  e53:
+    name: c-gp-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: c-gp-b
+    direction: down
+    reason: the store writes into rpHandler, whose literal does not carry the 2xx matcher
+  e54:
+    name: c-oc-b
+    label: true
+  e55:
+    name: a-rd-h-shift-up
+    label: false
+    kind: shift
+    of: a-rd-h
+    direction: up
+    reason: calls JsonWebSignature._prepare_algorithm_key (jws.py:246), not an algorithm's verify
+  e56:
+    name: f-ff-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f-ff-h
+    direction: up
+    reason: FileInfo takes info
+  e57:
+    name: f-ff-b-shift-down
+    label: false
+    kind: shift
+    of: f-ff-b
+    direction: down
+    skipped_true:
+    - raw.go:126
+    - raw.go:127
+    reason: the definition of archiveFiles does not reach its own element's NameInArchive value
+  e58:
+    name: a-ct-b-shift-up
+    label: false
+    kind: shift
+    of: a-ct-b
+    direction: up
+    reason: resolves to JsonWebSignature.serialize_compact (jws.py:49-75), which does not contain jws.py:107
+  e59:
+    name: f-ff-h-shift-up
+    label: false
+    kind: shift
+    of: f-ff-h
+    direction: up
+    reason: info and err never reach NameInArchive
+  e60:
+    name: c-oc-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: c-oc-h
+    direction: down
+    reason: the store puts the user's matcher set into rpRoute, not goodResponseHandler
+  e61:
+    name: a-ct-h-wrong-target
+    label: false
+    kind: wrong_target
+    of: a-ct-h
+    direction: homonym
+    reason: _jws holds a JsonWebSignature (jwt.py:38), never a JsonWebEncryption; the only other deserialize_compact
+  e62:
+    name: c-gp-b-shift-up
+    label: false
+    kind: shift
+    of: c-gp-b
+    direction: up
+    skipped_true:
+    - caddyfile.go:179 Match (a field of goodResponseHandler)
+    reason: a field of the rpHandler literal, not of goodResponseHandler
+dropped_before_freeze:
+  a-ct-b-wrong-revision: duplicate of a-ct-h (identical code at both revisions)
+  a-rd-b-wrong-revision: duplicate of a-rd-h (identical code at both revisions)
+  a-ct-h-wrong-revision: duplicate of a-ct-b (identical code at both revisions)
+  a-rd-h-wrong-revision: duplicate of a-rd-b (identical code at both revisions)

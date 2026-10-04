@@ -1,0 +1,91 @@
+# Expected answers. Never exposed to the agent. Truth values are backed by
+# truth/result.json (probes T1 for H1, T2 for H2).
+# facts: any one evidence set suffices; every location in that set must be cited.
+case: authlib-jws-none
+notes: >
+  CVE-2026-28802 / GHSA-7wc2-qxgw-g8gg. The GHSA's affected range (>=1.6.5) is
+  wrong; truth/result.json shows the behavior flips exactly at a61c2ac, first
+  released in v1.6.0. Probe T3 (RS256-only decoder) is kept in truth/ as a
+  non-scored negative control.
+
+hypotheses:
+  H1:
+    truth: {base: false, head: true}
+    components:
+      algorithm_selection: {base: supported, head: supported}
+      verification: {base: contradicted, head: supported}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: CHANGE_IMPLICATED
+      with_execution: REGRESSION          # T1: base REJECTED BadSignatureError, head ACCEPTED
+    facts:
+      - id: base-decode-reaches-verify
+        revision: base
+        component: verification
+        statement: jwt.decode hands the token to JWS deserialize_compact, which accepts it only if the selected algorithm's verify returns True
+        evidence_sets:
+          - [{path: authlib/jose/rfc7519/jwt.py, lines: 104}, {path: authlib/jose/rfc7515/jws.py, lines: 106-109}]
+      - id: head-decode-reaches-verify
+        revision: head
+        component: verification
+        statement: jwt.decode hands the token to JWS deserialize_compact, which accepts it only if the selected algorithm's verify returns True
+        evidence_sets:
+          - [{path: authlib/jose/rfc7519/jwt.py, lines: 104}, {path: authlib/jose/rfc7515/jws.py, lines: 106-109}]
+      - id: base-none-verify-rejects
+        revision: base
+        component: verification
+        statement: NoneAlgorithm.verify returns False for every signature
+        evidence_sets:
+          - [{path: authlib/jose/rfc7518/jws_algs.py, lines: 37-38}]
+      - id: head-none-verify-accepts-empty
+        revision: head
+        component: verification
+        statement: NoneAlgorithm.verify returns True exactly when the signature is empty
+        evidence_sets:
+          - [{path: authlib/jose/rfc7518/jws_algs.py, lines: 37-38}]
+      - id: head-default-decoder-allows-none
+        revision: head
+        component: algorithm_selection
+        statement: the default jwt instance allows every registered algorithm, including none
+        evidence_sets:
+          - [{path: authlib/jose/__init__.py, lines: 49}]
+    notes: >
+      Insufficient on its own: citing the test change in tests/jose/test_jws.py
+      (it builds a decoder with algorithms=["none"], not the default one), or
+      citing _prepare_algorithm_key without showing the default allowlist.
+
+  H2:
+    # Negative control on the changed line itself: head still rejects a non-empty signature.
+    truth: {base: false, head: false}
+    components:
+      algorithm_selection: {base: supported, head: supported}
+      verification: {base: contradicted, head: contradicted}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: NOT_SUPPORTED
+      with_execution: NOT_SUPPORTED       # T2: REJECTED BadSignatureError on both sides
+    facts:
+      - id: base-decode-reaches-verify
+        revision: base
+        component: verification
+        statement: jwt.decode hands the token to JWS deserialize_compact, which accepts it only if the selected algorithm's verify returns True
+        evidence_sets:
+          - [{path: authlib/jose/rfc7519/jwt.py, lines: 104}, {path: authlib/jose/rfc7515/jws.py, lines: 106-109}]
+      - id: head-decode-reaches-verify
+        revision: head
+        component: verification
+        statement: jwt.decode hands the token to JWS deserialize_compact, which accepts it only if the selected algorithm's verify returns True
+        evidence_sets:
+          - [{path: authlib/jose/rfc7519/jwt.py, lines: 104}, {path: authlib/jose/rfc7515/jws.py, lines: 106-109}]
+      - id: base-none-verify-rejects
+        revision: base
+        component: verification
+        statement: NoneAlgorithm.verify returns False for every signature
+        evidence_sets:
+          - [{path: authlib/jose/rfc7518/jws_algs.py, lines: 37-38}]
+      - id: head-none-verify-requires-empty
+        revision: head
+        component: verification
+        statement: NoneAlgorithm.verify returns False for any non-empty signature
+        evidence_sets:
+          - [{path: authlib/jose/rfc7518/jws_algs.py, lines: 37-38}]

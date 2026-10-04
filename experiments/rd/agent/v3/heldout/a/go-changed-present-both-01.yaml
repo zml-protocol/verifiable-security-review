@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-changed-present-both-01",
+  "language": "go",
+  "cell": "changed_present_both",
+  "package": "orbitarchive",
+  "effect_claim": "Whether the submitted note text is written into the archive.",
+  "files": {
+    "revision_A": {
+      "orbitarchive.go": "package orbitarchive\n\ntype NoteEnvelope struct {\n\tText string\n}\n\ntype Archive struct {\n\tLast string\n}\n\nfunc (archive *Archive) Store(value string) {\n\tarchive.Last = value\n}\n\nfunc ingest(envelope NoteEnvelope, archive *Archive) {\n\tnoteText := envelope.Text\n\tarchive.Store(noteText)\n}\n"
+    },
+    "revision_B": {
+      "orbitarchive.go": "package orbitarchive\n\ntype NoteEnvelope struct {\n\tText string\n}\n\ntype Archive struct {\n\tLast string\n}\n\nfunc (archive *Archive) Store(value string) {\n\tarchive.Last = value\n}\n\nfunc ingest(envelope NoteEnvelope, archive *Archive) {\n\tnoteText := envelope.Text\n\tarchive.Store(scrub(noteText))\n}\n\nfunc scrub(value string) string {\n\treturn \"{\" + value + \"}\"\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "orbitarchive.go",
+          "start_line": 16,
+          "end_line": 16,
+          "expression": "noteText := envelope.Text"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "orbitarchive.go",
+          "start_line": 16,
+          "end_line": 16,
+          "expression": "noteText := envelope.Text"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "orbitarchive.go",
+          "start_line": 17,
+          "end_line": 17,
+          "expression": "archive.Store(noteText)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "orbitarchive.go",
+          "start_line": 17,
+          "end_line": 17,
+          "expression": "archive.Store(scrub(noteText))"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "sink_argument",
+    "subexpression"
+  ],
+  "forbidden_anchors": [],
+  "changed_slot": "behavior"
+}

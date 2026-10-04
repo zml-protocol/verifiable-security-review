@@ -1,0 +1,11 @@
+# Judge B = deepseek/deepseek-flash (OpenCode --standalone, fresh/isolated), one run.
+labels:
+  item-01: NOT_REQUIRED
+  item-02: REQUIRED
+  item-03: NOT_REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: REQUIRED
+  item-08: NOT_REQUIRED
+missing: []

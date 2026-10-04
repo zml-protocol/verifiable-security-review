@@ -1,0 +1,30 @@
+{
+  "decision": "LOOP_CLOSED",
+  "current_run": true,
+  "classes": {
+    "codeql/go/argument_binding": {
+      "cal": "PARTIAL",
+      "current": "SUPPORTED"
+    },
+    "codeql/go/def_use": {
+      "cal": "SUPPORTED",
+      "current": "SUPPORTED"
+    },
+    "codeql/go/object_composition": {
+      "cal": null,
+      "current": "SUPPORTED"
+    },
+    "codeql/go/range_element": {
+      "cal": "SUPPORTED",
+      "current": "SUPPORTED"
+    },
+    "codeql/python/def_use": {
+      "cal": "SUPPORTED",
+      "current": "SUPPORTED"
+    }
+  },
+  "unsafe": [],
+  "tool_failure": [],
+  "calibration_blind": [],
+  "gaps": {}
+}

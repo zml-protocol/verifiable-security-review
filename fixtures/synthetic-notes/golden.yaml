@@ -1,0 +1,100 @@
+# Expected answers. Never exposed to the agent.
+# Everything is stated for the ORIGINAL base/head; the scorer derives expectations
+# for swapped and identity conditions (PREREGISTRATION.md §4).
+# facts: any one evidence set suffices; every location in that set must be cited.
+case: synthetic-notes
+
+hypotheses:
+  H1:
+    truth: {base: false, head: true}
+    components:
+      entrypoint: {base: supported, head: supported}
+      control: {base: contradicted, head: supported}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: CHANGE_IMPLICATED
+      with_execution: REGRESSION
+    facts:
+      - id: base-delete-owner-check
+        revision: base
+        component: control
+        statement: delete_note rejects non-owners before deleting
+        evidence_sets:
+          - [{path: app/notes.py, lines: 18-19}]
+      - id: head-delete-path-unchecked
+        revision: head
+        component: control
+        statement: the handler delegates to service.delete, which deletes without an owner check
+        evidence_sets:
+          - [{path: app/notes.py, lines: 17}, {path: app/services/notes_service.py, lines: 14-15}]
+
+  H2:
+    truth: {base: false, head: false}
+    components:
+      entrypoint: {base: contradicted, head: contradicted}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: NOT_SUPPORTED
+      with_execution: NOT_SUPPORTED
+    facts:
+      - id: base-delete-requires-login
+        revision: base
+        component: entrypoint
+        statement: the DELETE route is wrapped by require_login, which rejects anonymous requests
+        evidence_sets:
+          - [{path: app/notes.py, lines: 15}]
+          - [{path: app/web.py, lines: 22-23}]
+      - id: head-delete-requires-login
+        revision: head
+        component: entrypoint
+        statement: the DELETE route is still wrapped by require_login
+        evidence_sets:
+          - [{path: app/notes.py, lines: 15}]
+          - [{path: app/web.py, lines: 22-23}]
+
+  H3:
+    truth: {base: true, head: true}
+    components:
+      entrypoint: {base: supported, head: supported}
+      control: {base: supported, head: supported}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: PRE_EXISTING
+      with_execution: PRE_EXISTING
+    facts:
+      - id: base-all-emails
+        revision: base
+        component: effect
+        statement: list_users returns every user's email
+        evidence_sets:
+          - [{path: app/users.py, lines: 8}]
+      - id: head-all-emails
+        revision: head
+        component: effect
+        statement: the same code survives the rename to accounts.py
+        evidence_sets:
+          - [{path: app/accounts.py, lines: 8}]
+
+  H4:
+    # Negative control placed inside the refactor: the owner check moved, it did not disappear.
+    truth: {base: false, head: false}
+    components:
+      entrypoint: {base: supported, head: supported}
+      control: {base: contradicted, head: contradicted}
+      effect: {base: supported, head: supported}
+    attribution:
+      static_only: NOT_SUPPORTED
+      with_execution: NOT_SUPPORTED
+    facts:
+      - id: base-read-owner-check
+        revision: base
+        component: control
+        statement: get_note rejects non-owners in the handler
+        evidence_sets:
+          - [{path: app/notes.py, lines: 9-10}]
+      - id: head-read-owner-check-moved
+        revision: head
+        component: control
+        statement: get_note delegates to get_for, which still rejects non-owners
+        evidence_sets:
+          - [{path: app/notes.py, lines: 11}, {path: app/services/notes_service.py, lines: 10-11}]

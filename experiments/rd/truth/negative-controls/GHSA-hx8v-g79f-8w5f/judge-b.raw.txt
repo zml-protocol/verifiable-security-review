@@ -1,0 +1,6 @@
+[0m
+> build · deepseek-flash
+labels:
+  candidate-01: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-02: {vuln: SUPPORTED, fixed: SUPPORTED}
+  candidate-03: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}

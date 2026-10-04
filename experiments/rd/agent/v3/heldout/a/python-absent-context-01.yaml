@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-absent-context-01",
+  "language": "python",
+  "cell": "absent_context",
+  "package": "ochre_signal",
+  "effect_claim": "Whether a supplied signal code is announced on the reset bus.",
+  "files": {
+    "revision_A": {
+      "ochre_signal.py": "def announce(request, reset_bus, activity_log):\n    signal_code = request[\"signal\"]\n    if signal_code:\n        reset_bus.append(signal_code)\n"
+    },
+    "revision_B": {
+      "ochre_signal.py": "def announce(request, reset_bus, activity_log):\n    signal_code = request[\"signal\"]\n    if signal_code: activity_log.append(signal_code)\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ochre_signal.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "signal_code = request[\"signal\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "ochre_signal.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "signal_code = request[\"signal\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ochre_signal.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "reset_bus.append(signal_code)"
+        }
+      },
+      "revision_B": {
+        "state": "absent",
+        "context": {
+          "file": "ochre_signal.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "if signal_code: activity_log.append(signal_code)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "nonexistent_present",
+    "nearby_statement",
+    "wrong_context"
+  ],
+  "forbidden_anchors": []
+}

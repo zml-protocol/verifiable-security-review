@@ -1,0 +1,296 @@
+# The author's labels for requirement_cases.yaml. Never shown to adjudicators.
+set: rd-boundary-requirements
+labels:
+  q01:
+    name: s1-behavior-wrong-context
+    label: NOT_REQUIRED
+    rule: AC-3
+    reason: the context is the statement after the insertion point, not before it
+    tier: boundary
+  q02:
+    name: s1-behavior-sink
+    label: NOT_REQUIRED
+    rule: BE-1
+    reason: 'the fix adds a check: the behavior is the check, not the sink'
+    tier: boundary
+  q03:
+    name: s1-entry-request
+    label: REQUIRED
+    rule: EN-1
+    reason: the claim concerns the request as a whole
+    tier: boundary
+  q04:
+    name: s1-behavior-check
+    label: REQUIRED
+    rule: BE-1
+    reason: the fix adds the check; absent before, context = the statement after the insertion point
+    tier: boundary
+  q05:
+    name: s1-entry-derived
+    label: NOT_REQUIRED
+    rule: EN-3
+    reason: u is derived from the request
+    tier: boundary
+  q06:
+    name: s1-guard-is-behavior
+    label: NOT_REQUIRED
+    rule: QU-2
+    reason: the added check is the behavior; not also a qualifier
+    tier: boundary
+  q07:
+    name: s2-transform-is-behavior
+    label: NOT_REQUIRED
+    rule: QU-2
+    reason: the added transform is the behavior
+    tier: boundary
+  q08:
+    name: s2-config-set
+    label: NOT_REQUIRED
+    rule: CF-1
+    reason: 're-derived under v2: `set` holds in every admissible execution, but CF-1 asks for the condition the
+      behavior needs, equals "1"'
+    tier: boundary
+  q09:
+    name: s2-entry-derived
+    label: NOT_REQUIRED
+    rule: EN-3
+    reason: derived after the first extraction
+    tier: boundary
+  q10:
+    name: s2-behavior-transform
+    label: REQUIRED
+    rule: BE-1
+    reason: the fix adds the transform; context = the statement after the insertion point
+    tier: boundary
+  q11:
+    name: s2-entry-request
+    label: NOT_REQUIRED
+    rule: EN-2
+    reason: the input is one part of the request
+    tier: boundary
+  q12:
+    name: s2-behavior-sink
+    label: NOT_REQUIRED
+    rule: BE-1
+    reason: 'the fix adds a transform: the behavior is the transform'
+    tier: boundary
+  q13:
+    name: s2-config-equals
+    label: REQUIRED
+    rule: CF-1
+    reason: 're-derived under v2: every admissible execution needs ALLOW_DOWNLOAD == "1" (the environment is otherwise
+      free)'
+    tier: core
+  q14:
+    name: s2-entry-extracted
+    label: REQUIRED
+    rule: EN-2
+    reason: the first definition extracting the query parameter
+    tier: core
+  q15:
+    name: s2-transform-irrelevant
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: trimming whitespace does not decide traversal
+    tier: boundary
+  q16:
+    name: s3-guard-sibling
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: the label does not decide whether the query runs
+    tier: boundary
+  q17:
+    name: s3-entry-extracted
+    label: REQUIRED
+    rule: EN-2
+    reason: the first extraction of the form value
+    tier: boundary
+  q18:
+    name: s3-guard-method
+    label: NOT_REQUIRED
+    rule: QU-3
+    reason: the attacker chooses the method
+    tier: boundary
+  q19:
+    name: s3-guard-mode
+    label: REQUIRED
+    rule: GU-1
+    reason: the query runs only when the written condition is false
+    tier: core
+  q20:
+    name: s3-guard-mode-polarity
+    label: NOT_REQUIRED
+    rule: GU-1
+    reason: wrong polarity
+    tier: boundary
+  q21:
+    name: s3-behavior-sink
+    label: REQUIRED
+    rule: BE-2
+    reason: the fix changes the dangerous operation itself
+    tier: core
+  q22:
+    name: s5-behavior-wrong-state
+    label: NOT_REQUIRED
+    rule: ST-1
+    reason: the behavior does not exist at the fixed revision
+    tier: boundary
+  q23:
+    name: s5-behavior-wrong-context
+    label: NOT_REQUIRED
+    rule: AC-3
+    reason: the context is the statement after the removal point, not before it
+    tier: boundary
+  q24:
+    name: s5-entry-request
+    label: REQUIRED
+    rule: EN-1
+    reason: an exposure claim concerns the request as a whole
+    tier: boundary
+  q25:
+    name: s5-behavior-removed
+    label: REQUIRED
+    rule: AC-3
+    reason: removed by the fix; context = the statement after the removal point
+    tier: boundary
+  q26:
+    name: s7-transform-decode-polarity
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: 'wrong polarity: the decode must be present'
+    tier: boundary
+  q27:
+    name: s7-transform-decode
+    label: REQUIRED
+    rule: QU-1
+    reason: without the decode after the check, the check would see the dots
+    tier: core
+  q28:
+    name: s7-entry-extracted
+    label: REQUIRED
+    rule: EN-2
+    reason: the first extraction of the query parameter
+    tier: boundary
+  q29:
+    name: s7-behavior-check
+    label: REQUIRED
+    rule: BE-1
+    reason: the fix changes (moves) the check
+    tier: boundary
+  q30:
+    name: s8-guard-is-behavior
+    label: NOT_REQUIRED
+    rule: QU-2
+    reason: the nearest changed check is the behavior
+    tier: boundary
+  q31:
+    name: s8-entry-extracted
+    label: REQUIRED
+    rule: EN-2
+    reason: the first extraction of the query parameter
+    tier: boundary
+  q32:
+    name: s8-guard-added
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: 'definitions v2: not necessary, since a verified uploader (account state is not the attacker''s, so
+      any value is admissible) still triggers the effect; v1 labelled it REQUIRED'
+    tier: boundary
+  q33:
+    name: s8-behavior-nearest
+    label: REQUIRED
+    rule: BE-3
+    reason: of the two changed checks, the one nearest the write decides it
+    tier: boundary
+  q34:
+    name: s8-behavior-earlier-guard
+    label: NOT_REQUIRED
+    rule: BE-3
+    reason: the added guard is not the changed check nearest the effect
+    tier: boundary
+  q35:
+    name: s8-guard-added-wrong-context
+    label: NOT_REQUIRED
+    rule: AC-1
+    reason: the context is the first statement after the if (the key definition)
+    tier: boundary
+  q36:
+    name: s4-dispatch-none
+    label: REQUIRED
+    rule: QU-1
+    reason: 're-derived under v2: every admissible execution that bypasses the check dispatches to NoneAlg.verify
+      (the attacker does not hold the key)'
+    tier: core
+  q37:
+    name: s4-entry-header
+    label: NOT_REQUIRED
+    rule: EN-2
+    reason: the input is one key of the header
+    tier: boundary
+  q38:
+    name: s4-behavior-registry
+    label: NOT_REQUIRED
+    rule: BE-2
+    reason: the registry is not a check or transform on the path
+    tier: boundary
+  q39:
+    name: s4-entry-extracted
+    label: REQUIRED
+    rule: EN-2
+    reason: the first extraction of the header field
+    tier: boundary
+  q40:
+    name: s4-dispatch-hmac
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: 're-derived under v2: no admissible execution needs HmacAlg.verify'
+    tier: boundary
+  q41:
+    name: s4-behavior-sink
+    label: REQUIRED
+    rule: BE-2
+    reason: 'the fix changes a registry off the path: the behavior is the accepting statement'
+    tier: boundary
+  q42:
+    name: s6-entry-parameter
+    label: REQUIRED
+    rule: EN-1
+    reason: the parameter holds exactly the input
+    tier: core
+  q43:
+    name: s6-entry-derived
+    label: NOT_REQUIRED
+    rule: EN-3
+    reason: derived from the input
+    tier: boundary
+  q44:
+    name: s6-behavior-check
+    label: REQUIRED
+    rule: BE-1
+    reason: the fix changes the check
+    tier: core
+  q45:
+    name: s6-transform-normalize
+    label: NOT_REQUIRED
+    rule: QU-1
+    reason: the prefix check is bypassed with or without normalization
+    tier: boundary
+  q46:
+    name: s6-behavior-return
+    label: NOT_REQUIRED
+    rule: BE-1
+    reason: 'the fix changes the check: the behavior is the check'
+    tier: boundary
+  q47:
+    name: s9-guard-added-redundant
+    label: REQUIRED
+    rule: QU-1
+    reason: adding the early check to the vulnerable revision would stop every traversal; the nearest changed check
+      is the behavior (BE-3); context = the statement it protects (AC-1)
+    tier: boundary
+  q48:
+    name: s9-guard-added-polarity
+    label: NOT_REQUIRED
+    rule: GU-1
+    reason: 'wrong polarity: the write proceeds only when the written condition is false'
+    tier: boundary

@@ -1,0 +1,77 @@
+{
+  "schema": "rd-v3-provider-heldout-case/v1",
+  "target": "go_direct_argument_binding",
+  "language": "go",
+  "relation": "argument_binding",
+  "files": {
+    "violetbind.go": "package violetbind\n\nfunc stamp(code string, weight int) int {\n\treturn len(code) + weight\n}\n\nfunc grade(tag string, level int) int {\n\treturn len(tag) * level\n}\n\nfunc exercise() int {\n\tlabel := \"iris\"\n\tcount := 4\n\tfirst := stamp(label, count)\n\tsecond := grade(\"stone\", count)\n\treturn first + second\n}\n"
+  },
+  "edges": [
+    {
+      "id": "go-direct-01",
+      "truth": true,
+      "from": {
+        "file": "violetbind.go",
+        "start_line": 14,
+        "end_line": 14,
+        "expression": "label"
+      },
+      "to": {
+        "file": "violetbind.go",
+        "start_line": 3,
+        "end_line": 3,
+        "expression": "code string"
+      }
+    },
+    {
+      "id": "go-direct-02",
+      "truth": true,
+      "from": {
+        "file": "violetbind.go",
+        "start_line": 15,
+        "end_line": 15,
+        "expression": "count"
+      },
+      "to": {
+        "file": "violetbind.go",
+        "start_line": 7,
+        "end_line": 7,
+        "expression": "level int"
+      }
+    },
+    {
+      "id": "go-direct-03",
+      "truth": false,
+      "from": {
+        "file": "violetbind.go",
+        "start_line": 14,
+        "end_line": 14,
+        "expression": "count"
+      },
+      "to": {
+        "file": "violetbind.go",
+        "start_line": 3,
+        "end_line": 3,
+        "expression": "code string"
+      },
+      "false_family": "wrong_argument_index"
+    },
+    {
+      "id": "go-direct-04",
+      "truth": false,
+      "from": {
+        "file": "violetbind.go",
+        "start_line": 14,
+        "end_line": 14,
+        "expression": "label"
+      },
+      "to": {
+        "file": "violetbind.go",
+        "start_line": 7,
+        "end_line": 7,
+        "expression": "tag string"
+      },
+      "false_family": "wrong_callee"
+    }
+  ]
+}

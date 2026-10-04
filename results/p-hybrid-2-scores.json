@@ -1,0 +1,4010 @@
+{
+  "protocol": "h2",
+  "pilot": false,
+  "verdict": "FAIL",
+  "thresholds": {
+    "mean_gain": 0.15,
+    "max_pairs_treatment_below": 2,
+    "false_share_margin": 0.1
+  },
+  "criteria": {
+    "mean_gain": false,
+    "few_pairs_treatment_below": true,
+    "false_share_guard": true,
+    "caddy_pair_treatment_above": false
+  },
+  "pairs_per_fixture": {
+    "authlib-jws-none": 5,
+    "caddy-forward-auth": 5,
+    "filebrowser-archive-backslash": 5
+  },
+  "fixtures_below_minimum": {},
+  "mean_gain": 0.0,
+  "pairs_treatment_below": 0,
+  "pairs_treatment_above": 0,
+  "phases": {
+    "initial": {
+      "verified_coverage": 0.6666666666666666,
+      "located_coverage": 0.6666666666666666,
+      "hops": 88,
+      "proposal_verification_rate": 0.6704545454545454,
+      "contradiction_rate": 0.0,
+      "unsupported": 23,
+      "unsupported_share": 0.26136363636363635
+    },
+    "control": {
+      "verified_coverage": 0.6666666666666666,
+      "located_coverage": 0.6666666666666666,
+      "hops": 93,
+      "proposal_verification_rate": 0.6344086021505376,
+      "contradiction_rate": 0.0,
+      "unsupported": 28,
+      "unsupported_share": 0.3010752688172043
+    },
+    "treatment": {
+      "verified_coverage": 0.6666666666666666,
+      "located_coverage": 0.6666666666666666,
+      "hops": 91,
+      "proposal_verification_rate": 0.6703296703296703,
+      "contradiction_rate": 0.0,
+      "unsupported": 26,
+      "unsupported_share": 0.2857142857142857
+    }
+  },
+  "per_fixture": {
+    "authlib-jws-none": {
+      "initial": 1.0,
+      "control": 1.0,
+      "treatment": 1.0
+    },
+    "caddy-forward-auth": {
+      "initial": 0.3,
+      "control": 0.3,
+      "treatment": 0.3
+    },
+    "filebrowser-archive-backslash": {
+      "initial": 0.7,
+      "control": 0.7,
+      "treatment": 0.7
+    }
+  },
+  "caddy": [
+    {
+      "block": "caddy-forward-auth/r0",
+      "control": [],
+      "treatment": [],
+      "treatment_only_from_uncovered_initial": []
+    },
+    {
+      "block": "caddy-forward-auth/r1",
+      "control": [],
+      "treatment": [],
+      "treatment_only_from_uncovered_initial": []
+    },
+    {
+      "block": "caddy-forward-auth/r2",
+      "control": [],
+      "treatment": [],
+      "treatment_only_from_uncovered_initial": []
+    },
+    {
+      "block": "caddy-forward-auth/r3",
+      "control": [
+        "e08",
+        "e42",
+        "e52",
+        "e54"
+      ],
+      "treatment": [
+        "e08",
+        "e42",
+        "e52",
+        "e54"
+      ],
+      "treatment_only_from_uncovered_initial": []
+    },
+    {
+      "block": "caddy-forward-auth/r4",
+      "control": [
+        "e42",
+        "e52"
+      ],
+      "treatment": [
+        "e42",
+        "e52"
+      ],
+      "treatment_only_from_uncovered_initial": []
+    }
+  ],
+  "novel_hop_validity": {
+    "initial": {
+      "TRUE": 49,
+      "FALSE": 6,
+      "INDETERMINATE": 0,
+      "missing": 0,
+      "false_share": 0.10909090909090909
+    },
+    "control": {
+      "TRUE": 54,
+      "FALSE": 6,
+      "INDETERMINATE": 0,
+      "missing": 0,
+      "false_share": 0.1
+    },
+    "treatment": {
+      "TRUE": 51,
+      "FALSE": 7,
+      "INDETERMINATE": 0,
+      "missing": 0,
+      "false_share": 0.1206896551724138
+    }
+  },
+  "review_agreement": null,
+  "reviewers": {
+    "primary": {
+      "type": "model",
+      "name": "GPT-5.6 Sol, new conversation",
+      "date": "2026-09-30",
+      "attestation": {
+        "independent": true,
+        "saw_arms": false,
+        "saw_verdicts": false
+      }
+    },
+    "secondary": null
+  },
+  "primary_review_kind": "model-blind adjudication",
+  "harness": {
+    "isolation": {},
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "locked_hop_rejected": {},
+    "frozen_analysis_intact": true
+  },
+  "harness_ok": true,
+  "incomplete_blocks": [],
+  "pairs": [
+    {
+      "block": "authlib-jws-none/r0",
+      "fixture": "authlib-jws-none",
+      "repeat": 0,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.37266279999999996,
+        "control": 0.4745476,
+        "treatment": 0.4051276
+      }
+    },
+    {
+      "block": "filebrowser-archive-backslash/r0",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 0,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.2211246,
+        "control": 0.32351979999999997,
+        "treatment": 0.34209740000000005
+      }
+    },
+    {
+      "block": "caddy-forward-auth/r0",
+      "fixture": "caddy-forward-auth",
+      "repeat": 0,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 111, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 195, 3]]"
+          },
+          {
+            "id": "h5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "h6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 209, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 213, 5]]"
+          },
+          {
+            "id": "h7",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h9",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "h10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          }
+        ],
+        "n": 10,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 3,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 111, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 195, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 209, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 213, 5]]"
+          },
+          {
+            "id": "f7",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f11",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          }
+        ],
+        "n": 11,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 4,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 111, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 195, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 210, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 213, 5]]"
+          },
+          {
+            "id": "f7",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          }
+        ],
+        "n": 10,
+        "verified": 7,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 3,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.9433970000000002,
+        "control": 1.2110418,
+        "treatment": 1.2074414
+      }
+    },
+    {
+      "block": "authlib-jws-none/r1",
+      "fixture": "authlib-jws-none",
+      "repeat": 1,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.2443232,
+        "control": 0.3895698,
+        "treatment": 0.27393819999999997
+      }
+    },
+    {
+      "block": "caddy-forward-auth/r1",
+      "fixture": "caddy-forward-auth",
+      "repeat": 1,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "h5",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "h6",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "h9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f5",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f6",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          }
+        ],
+        "n": 10,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 3,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f6",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 6,
+        "unsupported": 3,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.8856740000000002,
+        "control": 1.0589874000000001,
+        "treatment": 1.1113602000000005
+      }
+    },
+    {
+      "block": "filebrowser-archive-backslash/r1",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 1,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.255551,
+        "control": 0.33598819999999996,
+        "treatment": 0.3362326
+      }
+    },
+    {
+      "block": "filebrowser-archive-backslash/r2",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 2,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"field_flow\", [\"node\", \"http/raw.go\", 127, 3], [\"node\", \"http/raw.go\", 131, 4]]"
+          },
+          {
+            "id": "h2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          }
+        ],
+        "n": 2,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 0,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"field_flow\", [\"node\", \"http/raw.go\", 127, 3], [\"node\", \"http/raw.go\", 131, 4]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          }
+        ],
+        "n": 2,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 0,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"field_flow\", [\"node\", \"http/raw.go\", 127, 3], [\"node\", \"http/raw.go\", 131, 4]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          }
+        ],
+        "n": 2,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 0,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.18580100000000002,
+        "control": 0.27909400000000006,
+        "treatment": 0.22842700000000002
+      }
+    },
+    {
+      "block": "caddy-forward-auth/r2",
+      "fixture": "caddy-forward-auth",
+      "repeat": 2,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "h5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "h7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "h9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 10,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 3,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [],
+        "located_golden": [],
+        "verified_coverage": 0.0,
+        "located_coverage": 0.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.6261184,
+        "control": 0.8525372,
+        "treatment": 0.8913067999999998
+      }
+    },
+    {
+      "block": "authlib-jws-none/r2",
+      "fixture": "authlib-jws-none",
+      "repeat": 2,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.398814,
+        "control": 0.5179616,
+        "treatment": 0.43326200000000004
+      }
+    },
+    {
+      "block": "filebrowser-archive-backslash/r3",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 3,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 205, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f6",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 211, 2]]"
+          }
+        ],
+        "n": 6,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 4,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e36"
+            ],
+            "located": [
+              "e36"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 2,
+        "verified_golden": [
+          "e23",
+          "e36"
+        ],
+        "located_golden": [
+          "e23",
+          "e36"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.2521708,
+        "control": 0.34444899999999995,
+        "treatment": 0.352669
+      }
+    },
+    {
+      "block": "caddy-forward-auth/r3",
+      "fixture": "caddy-forward-auth",
+      "repeat": 3,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e54"
+            ],
+            "located": [
+              "e54"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "h5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h6",
+            "relation": "object_composition",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h7",
+            "relation": "guard_property",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e08"
+            ],
+            "located": [
+              "e08"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 5,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "located_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e54"
+            ],
+            "located": [
+              "e54"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f6",
+            "relation": "object_composition",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f7",
+            "relation": "guard_property",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e08"
+            ],
+            "located": [
+              "e08"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 5,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "located_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e54"
+            ],
+            "located": [
+              "e54"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "guard_property",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [
+              "e08"
+            ],
+            "located": [
+              "e08"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 10,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 8,
+        "unsupported": 2,
+        "verified_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "located_golden": [
+          "e08",
+          "e42",
+          "e52",
+          "e54"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.5887570000000002,
+        "control": 0.7420588000000001,
+        "treatment": 0.8124878000000001
+      }
+    },
+    {
+      "block": "authlib-jws-none/r3",
+      "fixture": "authlib-jws-none",
+      "repeat": 3,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.30362959999999994,
+        "control": 0.40094199999999997,
+        "treatment": 0.336786
+      }
+    },
+    {
+      "block": "filebrowser-archive-backslash/r4",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 4,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "h2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 184, 3]]"
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 184, 3], [\"anchor\", \"http/raw.go\", 205, 12]]"
+          },
+          {
+            "id": "h5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 133, 3]]"
+          },
+          {
+            "id": "h6",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          },
+          {
+            "id": "h7",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 190, 3]]"
+          },
+          {
+            "id": "h8",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 190, 3], [\"anchor\", \"http/raw.go\", 211, 12]]"
+          }
+        ],
+        "n": 8,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 6,
+        "verified_golden": [
+          "e23"
+        ],
+        "located_golden": [
+          "e23"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 184, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 184, 3], [\"anchor\", \"http/raw.go\", 205, 12]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 133, 3]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 190, 3]]"
+          },
+          {
+            "id": "f8",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 190, 3], [\"anchor\", \"http/raw.go\", 211, 12]]"
+          }
+        ],
+        "n": 8,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 6,
+        "verified_golden": [
+          "e23"
+        ],
+        "located_golden": [
+          "e23"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]"
+          },
+          {
+            "id": "f2",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [
+              "e23"
+            ],
+            "located": [
+              "e23"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 184, 3]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 184, 3], [\"anchor\", \"http/raw.go\", 205, 12]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 133, 3]]"
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 190, 3]]"
+          },
+          {
+            "id": "f8",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 190, 3], [\"anchor\", \"http/raw.go\", 211, 12]]"
+          }
+        ],
+        "n": 8,
+        "verified": 2,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 2,
+        "unsupported": 6,
+        "verified_golden": [
+          "e23"
+        ],
+        "located_golden": [
+          "e23"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.33566819999999997,
+        "control": 0.44213359999999996,
+        "treatment": 0.4667206
+      }
+    },
+    {
+      "block": "authlib-jws-none/r4",
+      "fixture": "authlib-jws-none",
+      "repeat": 4,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e44"
+            ],
+            "located": [
+              "e44"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e30"
+            ],
+            "located": [
+              "e30"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f3",
+            "relation": "call_typed_attribute",
+            "state": "VERIFIED",
+            "golden": [
+              "e47"
+            ],
+            "located": [
+              "e47"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f4",
+            "relation": "registry_dispatch",
+            "state": "VERIFIED",
+            "golden": [
+              "e48"
+            ],
+            "located": [
+              "e48"
+            ],
+            "unit": null
+          }
+        ],
+        "n": 4,
+        "verified": 4,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 4,
+        "unsupported": 0,
+        "verified_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "located_golden": [
+          "e30",
+          "e44",
+          "e47",
+          "e48"
+        ],
+        "verified_coverage": 1.0,
+        "located_coverage": 1.0
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.2403436,
+        "control": 0.3305092,
+        "treatment": 0.292466
+      }
+    },
+    {
+      "block": "caddy-forward-auth/r4",
+      "fixture": "caddy-forward-auth",
+      "repeat": 4,
+      "validity": {
+        "initial": [
+          "VALID",
+          "completed"
+        ],
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "initial": {
+        "hops": [
+          {
+            "id": "h1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "h3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "h4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "h5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "h6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "h7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "h8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "h9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [
+          "e42",
+          "e52"
+        ],
+        "located_golden": [
+          "e42",
+          "e52"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "control": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f6",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f7",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 9,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 2,
+        "verified_golden": [
+          "e42",
+          "e52"
+        ],
+        "located_golden": [
+          "e42",
+          "e52"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "treatment": {
+        "hops": [
+          {
+            "id": "f1",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e52"
+            ],
+            "located": [
+              "e52"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f2",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]"
+          },
+          {
+            "id": "f3",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]"
+          },
+          {
+            "id": "f4",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3]]"
+          },
+          {
+            "id": "f5",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          },
+          {
+            "id": "f6",
+            "relation": "guard_property",
+            "state": "VERIFIED",
+            "golden": [
+              "e42"
+            ],
+            "located": [
+              "e42"
+            ],
+            "unit": null
+          },
+          {
+            "id": "f7",
+            "relation": "field_flow",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]"
+          },
+          {
+            "id": "f8",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]"
+          },
+          {
+            "id": "f9",
+            "relation": "object_composition",
+            "state": "VERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]"
+          },
+          {
+            "id": "f10",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3]]"
+          },
+          {
+            "id": "f11",
+            "relation": "unsupported",
+            "state": "UNVERIFIED",
+            "golden": [],
+            "located": [],
+            "unit": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]"
+          }
+        ],
+        "n": 11,
+        "verified": 6,
+        "contradicted": 0,
+        "rejected": [],
+        "supported": 7,
+        "unsupported": 4,
+        "verified_golden": [
+          "e42",
+          "e52"
+        ],
+        "located_golden": [
+          "e42",
+          "e52"
+        ],
+        "verified_coverage": 0.5,
+        "located_coverage": 0.5
+      },
+      "gain": 0.0,
+      "costs": {
+        "initial": 0.6416288,
+        "control": 0.7846920000000001,
+        "treatment": 0.9611227999999999
+      }
+    }
+  ]
+}

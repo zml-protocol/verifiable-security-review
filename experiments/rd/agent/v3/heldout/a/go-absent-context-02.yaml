@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-absent-context-02",
+  "language": "go",
+  "cell": "absent_context",
+  "package": "opalstorage",
+  "effect_claim": "Whether a supplied shelf name determines where the item is placed.",
+  "files": {
+    "revision_A": {
+      "opalstorage.go": "package opalstorage\n\ntype ShelfForm struct {\n\tShelf string\n}\n\ntype Store struct {\n\tLast string\n}\n\nfunc (store *Store) Put(value string) {\n\tstore.Last = value\n}\n\nfunc place(form ShelfForm, store *Store) {\n\tchosenShelf := form.Shelf\n\tstore.Put(chosenShelf)\n}\n"
+    },
+    "revision_B": {
+      "opalstorage.go": "package opalstorage\n\ntype ShelfForm struct {\n\tShelf string\n}\n\ntype Store struct {\n\tLast string\n}\n\nfunc (store *Store) Put(value string) {\n\tstore.Last = value\n}\n\nfunc place(form ShelfForm, store *Store) {\n\tstore.Put(form.Shelf)\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "opalstorage.go",
+          "start_line": 16,
+          "end_line": 16,
+          "expression": "chosenShelf := form.Shelf"
+        }
+      },
+      "revision_B": {
+        "state": "absent",
+        "context": {
+          "file": "opalstorage.go",
+          "start_line": 16,
+          "end_line": 16,
+          "expression": "store.Put(form.Shelf)"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "opalstorage.go",
+          "start_line": 17,
+          "end_line": 17,
+          "expression": "store.Put(chosenShelf)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "opalstorage.go",
+          "start_line": 16,
+          "end_line": 16,
+          "expression": "store.Put(form.Shelf)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "nonexistent_present",
+    "wrong_context",
+    "subexpression"
+  ],
+  "forbidden_anchors": []
+}

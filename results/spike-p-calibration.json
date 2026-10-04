@@ -1,0 +1,21 @@
+{
+  "provider": "codeql-2.27.1-taint-path",
+  "relations": {
+    "call_typed_attribute": {
+      "pilot": "pilot-py-attribute",
+      "expressible": true
+    },
+    "registry_dispatch": {
+      "pilot": "pilot-py-registry",
+      "expressible": false
+    },
+    "field_flow": {
+      "pilot": "pilot-go-fieldflow",
+      "expressible": false
+    },
+    "object_composition": {
+      "pilot": "pilot-go-composition",
+      "expressible": false
+    }
+  }
+}

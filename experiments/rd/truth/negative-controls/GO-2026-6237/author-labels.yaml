@@ -1,0 +1,17 @@
+fixture: GO-2026-6237
+package: github.com/insomniacslk/dhcp/dhcpv4/nclient4
+labels:
+  candidate-01: {cwe: 352, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-02: {cwe: 22, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-03: {cwe: 79, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+rationale:
+  candidate-01: >-
+    The complete four-file DHCP client package has no browser/HTTP request, cookie, session, origin,
+    referer, or CSRF facility in either revision; its exposed traffic is DHCP over packet/UDP APIs.
+  candidate-02: >-
+    The complete package has no filesystem/path operation in either revision. The `os` import is
+    used for stderr logging, not a path; all path-traversal regex terms are absent.
+  candidate-03: >-
+    The complete package has no HTML/template/DOM output facility in either revision and all frozen
+    XSS regex terms are absent.
+

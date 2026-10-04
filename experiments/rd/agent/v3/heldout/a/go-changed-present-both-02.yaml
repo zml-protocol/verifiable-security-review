@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-changed-present-both-02",
+  "language": "go",
+  "cell": "changed_present_both",
+  "package": "emberroute",
+  "effect_claim": "Whether a visitor-supplied route is sent to the routing channel.",
+  "files": {
+    "revision_A": {
+      "emberroute.go": "package emberroute\n\ntype RouteInput struct {\n\tRoute string\n}\n\nfunc forward(input RouteInput, router chan<- string) {\n\tselectedRoute := input.Route\n\trouter <- selectedRoute\n}\n"
+    },
+    "revision_B": {
+      "emberroute.go": "package emberroute\n\ntype RouteInput struct {\n\tRoute string\n}\n\nfunc forward(input RouteInput, router chan<- string) {\n\tselectedRoute := wrapRoute(input.Route)\n\trouter <- selectedRoute\n}\n\nfunc wrapRoute(value string) string {\n\treturn \"route/\" + value\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "emberroute.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "selectedRoute := input.Route"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "emberroute.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "selectedRoute := wrapRoute(input.Route)"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "emberroute.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "router <- selectedRoute"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "emberroute.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "router <- selectedRoute"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression",
+    "nearby_statement"
+  ],
+  "forbidden_anchors": [],
+  "changed_slot": "entry"
+}

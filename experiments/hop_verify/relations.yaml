@@ -1,0 +1,86 @@
+# P-Hybrid-1 relation definitions (PREREGISTRATION.md §10.2). The relation ids
+# and their one-line gloss are the frozen Spike P ones (provider_reach/endpoints.yaml);
+# this file adds, per relation, the truth condition a hop is labeled against, the
+# node kinds its endpoints must name, and the single-hop verifier that checks it.
+#
+# Endpoint roles: `node` - the endpoint names one node, which must start exactly
+# where its expression starts; `inside` - the endpoint names a place, which must
+# lie inside the function the relation resolves to.
+#
+# States: CONTRADICTED is only ever produced by the shape check (an endpoint names
+# no node of an allowed kind in the claimed revision's syntax tree: a closed and
+# complete search, §10.5). The relation check itself is data flow, call or type
+# resolution, so it yields VERIFIED or UNVERIFIED only.
+
+relations:
+  call_typed_attribute:
+    gloss: method call on an attribute whose type is set elsewhere
+    truth: >
+      `from` is a call a.b.m(...) and, at run time, it can invoke the function
+      whose body contains `to`.
+    language: python
+    verifier: CallTarget.ql       # the standard call graph (resolveCall), unchanged
+    from: {role: node, kinds: [attribute_method_call]}
+    to: {role: inside, kinds: [function_body]}
+    states: [VERIFIED, UNVERIFIED, CONTRADICTED]
+
+  registry_dispatch:
+    gloss: callee chosen at run time from a registry keyed by input data
+    truth: >
+      `from` is a call r.m(...) and, at run time, it can invoke the method whose
+      body contains `to`. (The registry is the mechanism the verifier must follow;
+      it is not an extra truth condition.)
+    language: python
+    verifier: InstanceDispatch.ql # value flow of instances (standard steps) + method resolution order
+    from: {role: node, kinds: [method_call]}
+    to: {role: inside, kinds: [method_body]}
+    states: [VERIFIED, UNVERIFIED, CONTRADICTED]
+
+  field_flow:
+    gloss: value flowing through locals into a struct field
+    truth: >
+      `from` is a statement defining a local variable, `to` is a keyed struct
+      literal field `f: e` or a field store `x.f = e`, and the value defined at
+      `from` reaches `e` within the function (through local variables and calls
+      that derive their result from it).
+    language: go
+    verifier: FieldFlow.ql        # local taint, standard steps only
+    from: {role: node, kinds: [definition]}
+    to: {role: node, kinds: [keyed_field, field_store]}
+    states: [VERIFIED, UNVERIFIED, CONTRADICTED]
+
+  object_composition:
+    gloss: object stored into a field or collection of another object
+    truth: >
+      `from` is a statement that defines an object (v := e) or modifies one
+      through its variable (v.f = e); `to` is a field store x.g = e'. The object
+      is, by local value flow, one of the values `to` stores (for
+      x.g = append(x.g, ...), the appended arguments) or a direct part of one (a
+      literal element, a keyed value, an & operand or a call argument inside it).
+      One composition step: an object that only reaches the stored value through
+      an earlier store does not count, and the container x itself is not stored.
+    language: go
+    verifier: ObjectComposition.ql
+    from: {role: node, kinds: [definition, field_store]}
+    to: {role: node, kinds: [field_store]}
+    states: [VERIFIED, UNVERIFIED, CONTRADICTED]
+
+  guard_property:
+    gloss: condition that is a property of an object on the path, not on the flow
+    truth: >
+      `from` is a keyed struct literal field anywhere inside the literal (through
+      literal elements, keyed values and &) that initializes a local variable v,
+      and `to` is a field store v.f = e reading that same definition of v.
+    language: go
+    verifier: GuardProperty.ql
+    from: {role: node, kinds: [keyed_field]}
+    to: {role: node, kinds: [field_store]}
+    states: [VERIFIED, UNVERIFIED, CONTRADICTED]
+
+# Shape queries (one per language): every node of every kind above, plus one
+# `file` row per extracted source file (a missing file is a tool failure, never
+# a contradiction).
+shapes: {python: Shapes.ql, go: Shapes.ql}
+
+# The four Spike P gaps (results/spike-p.md) that decide routing (§10.6).
+gaps: [registry_dispatch, field_flow, object_composition, guard_property]

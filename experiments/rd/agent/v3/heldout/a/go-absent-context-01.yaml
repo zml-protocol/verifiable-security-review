@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-absent-context-01",
+  "language": "go",
+  "cell": "absent_context",
+  "package": "silverreset",
+  "effect_claim": "Whether a submitted reset code is published on the reset bus.",
+  "files": {
+    "revision_A": {
+      "silverreset.go": "package silverreset\n\ntype ResetEnvelope struct {\n\tCode string\n}\n\nfunc publish(envelope ResetEnvelope, bus chan<- string, journal chan<- string) {\n\tresetCode := envelope.Code\n\tif resetCode != \"\" {\n\t\tbus <- resetCode\n\t}\n}\n"
+    },
+    "revision_B": {
+      "silverreset.go": "package silverreset\n\ntype ResetEnvelope struct {\n\tCode string\n}\n\nfunc publish(envelope ResetEnvelope, bus chan<- string, journal chan<- string) {\n\tresetCode := envelope.Code\n\tif resetCode != \"\" { journal <- resetCode }\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "silverreset.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "resetCode := envelope.Code"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "silverreset.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "resetCode := envelope.Code"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "silverreset.go",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "bus <- resetCode"
+        }
+      },
+      "revision_B": {
+        "state": "absent",
+        "context": {
+          "file": "silverreset.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "if resetCode != \"\" { journal <- resetCode }"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "nonexistent_present",
+    "nearby_statement",
+    "wrong_context"
+  ],
+  "forbidden_anchors": []
+}

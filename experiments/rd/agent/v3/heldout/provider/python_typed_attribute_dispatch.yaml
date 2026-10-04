@@ -1,0 +1,77 @@
+{
+  "schema": "rd-v3-provider-heldout-case/v1",
+  "target": "python_typed_attribute_dispatch",
+  "language": "python",
+  "relation": "call_typed_attribute",
+  "files": {
+    "topaz_dispatch.py": "class Courier:\n    def convey(self, item):\n        marker = \"courier:\" + item\n        return marker\n\n\nclass Beacon:\n    def convey(self, item):\n        marker = \"beacon:\" + item\n        return marker\n\n\nclass DormantCourier(Courier):\n    def convey(self, item):\n        marker = \"dormant:\" + item\n        return marker\n\n\nclass CourierStation:\n    def __init__(self, channel: Courier):\n        self.channel = channel\n\n\nclass BeaconStation:\n    def __init__(self, channel: Beacon):\n        self.channel = channel\n\n\ndef run_dispatch():\n    north = CourierStation(Courier())\n    south = BeaconStation(Beacon())\n    first = north.channel.convey(\"crystal\")\n    second = south.channel.convey(\"harbor\")\n    return first, second\n"
+  },
+  "edges": [
+    {
+      "id": "python-typed-01",
+      "truth": true,
+      "from": {
+        "file": "topaz_dispatch.py",
+        "start_line": 32,
+        "end_line": 32,
+        "expression": "north.channel.convey(\"crystal\")"
+      },
+      "to": {
+        "file": "topaz_dispatch.py",
+        "start_line": 3,
+        "end_line": 3,
+        "expression": "marker = \"courier:\" + item"
+      }
+    },
+    {
+      "id": "python-typed-02",
+      "truth": true,
+      "from": {
+        "file": "topaz_dispatch.py",
+        "start_line": 33,
+        "end_line": 33,
+        "expression": "south.channel.convey(\"harbor\")"
+      },
+      "to": {
+        "file": "topaz_dispatch.py",
+        "start_line": 9,
+        "end_line": 9,
+        "expression": "marker = \"beacon:\" + item"
+      }
+    },
+    {
+      "id": "python-typed-03",
+      "truth": false,
+      "from": {
+        "file": "topaz_dispatch.py",
+        "start_line": 32,
+        "end_line": 32,
+        "expression": "north.channel.convey(\"crystal\")"
+      },
+      "to": {
+        "file": "topaz_dispatch.py",
+        "start_line": 9,
+        "end_line": 9,
+        "expression": "marker = \"beacon:\" + item"
+      },
+      "false_family": "wrong_receiver_type"
+    },
+    {
+      "id": "python-typed-04",
+      "truth": false,
+      "from": {
+        "file": "topaz_dispatch.py",
+        "start_line": 32,
+        "end_line": 32,
+        "expression": "north.channel.convey(\"crystal\")"
+      },
+      "to": {
+        "file": "topaz_dispatch.py",
+        "start_line": 15,
+        "end_line": 15,
+        "expression": "marker = \"dormant:\" + item"
+      },
+      "false_family": "unreachable_override"
+    }
+  ]
+}

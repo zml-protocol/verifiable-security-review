@@ -1,0 +1,20 @@
+{
+    "base": {
+        "commit": "21f7f50820f3906cebad308b35c816abf746ec3d",
+        "env": "python 3.12.13, authlib 1.5.2, cryptography 45.0.7",
+        "probes": {
+            "T1_default_decoder_unsigned_none": "REJECTED BadSignatureError",
+            "T2_default_decoder_none_with_nonempty_signature": "REJECTED BadSignatureError",
+            "T3_rs256_only_decoder_unsigned_none": "REJECTED UnsupportedAlgorithmError"
+        }
+    },
+    "head": {
+        "commit": "a61c2acb807496e67f32051b5f1b1d5ccf8f0a75",
+        "env": "python 3.12.13, authlib 1.5.2, cryptography 45.0.7",
+        "probes": {
+            "T1_default_decoder_unsigned_none": "ACCEPTED role=admin",
+            "T2_default_decoder_none_with_nonempty_signature": "REJECTED BadSignatureError",
+            "T3_rs256_only_decoder_unsigned_none": "REJECTED UnsupportedAlgorithmError"
+        }
+    }
+}

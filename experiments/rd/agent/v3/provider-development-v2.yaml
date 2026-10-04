@@ -1,0 +1,121 @@
+schema: rd-v3-provider-development/v2
+cases:
+  - id: provider-python-nested-typed-attribute-dispatch
+    target: python_typed_attribute_dispatch
+    language: python
+    relation: call_typed_attribute
+    files:
+      module.py: |
+        class Policy:
+            def inspect(self, value):
+                return "base"
+        class StrictPolicy(Policy):
+            def inspect(self, value):
+                return value != "blocked"
+        class AlternatePolicy(Policy):
+            def inspect(self, value):
+                return value == "alternate"
+        class StrictContainer:
+            checker = StrictPolicy()
+        class AlternateContainer:
+            checker = AlternatePolicy()
+        def run_strict(value):
+            box = StrictContainer()
+            return box.checker.inspect(value)
+        def run_alternate(value):
+            box = AlternateContainer()
+            return box.checker.inspect(value)
+    edges:
+      - id: py-nested-true-strict
+        truth: true
+        from: {file: module.py, start_line: 16, end_line: 16, expression: 'box.checker.inspect(value)'}
+        to: {file: module.py, start_line: 6, end_line: 6, expression: 'return value != "blocked"'}
+      - id: py-nested-true-alternate
+        truth: true
+        from: {file: module.py, start_line: 19, end_line: 19, expression: 'box.checker.inspect(value)'}
+        to: {file: module.py, start_line: 9, end_line: 9, expression: 'return value == "alternate"'}
+      - id: py-nested-false-base
+        truth: false
+        false_family: wrong_receiver_type
+        from: {file: module.py, start_line: 16, end_line: 16, expression: 'box.checker.inspect(value)'}
+        to: {file: module.py, start_line: 3, end_line: 3, expression: 'return "base"'}
+      - id: py-nested-false-alternate
+        truth: false
+        false_family: unreachable_override
+        from: {file: module.py, start_line: 16, end_line: 16, expression: 'box.checker.inspect(value)'}
+        to: {file: module.py, start_line: 9, end_line: 9, expression: 'return value == "alternate"'}
+
+  - id: provider-go-direct-argument-binding
+    target: go_direct_argument_binding
+    language: go
+    relation: argument_binding
+    files:
+      main.go: |
+        package calibration
+        func Forward(value string) string {
+            return Consume(value)
+        }
+        func Pair(left string, right string) string {
+            return Join(left, right)
+        }
+        func Consume(input string) string { return input }
+        func Join(first string, second string) string { return first + second }
+    edges:
+      - id: go-direct-true-consume
+        truth: true
+        from: {file: main.go, start_line: 3, end_line: 3, expression: value}
+        to: {file: main.go, start_line: 8, end_line: 8, expression: 'input string'}
+      - id: go-direct-true-first
+        truth: true
+        from: {file: main.go, start_line: 6, end_line: 6, expression: left}
+        to: {file: main.go, start_line: 9, end_line: 9, expression: 'first string'}
+      - id: go-direct-false-index
+        truth: false
+        false_family: wrong_argument_index
+        from: {file: main.go, start_line: 6, end_line: 6, expression: left}
+        to: {file: main.go, start_line: 9, end_line: 9, expression: 'second string'}
+      - id: go-direct-false-callee
+        truth: false
+        false_family: wrong_callee
+        from: {file: main.go, start_line: 3, end_line: 3, expression: value}
+        to: {file: main.go, start_line: 9, end_line: 9, expression: 'first string'}
+
+  - id: provider-go-callback-argument-binding
+    target: go_callback_argument_binding
+    language: go
+    relation: argument_binding
+    files:
+      main.go: |
+        package calibration
+        type Callback func(string, string) string
+        func Apply(cb Callback, prefix string, value string) string {
+            return cb(prefix, value)
+        }
+        func Clean(prefix string, input string) string { return prefix + input }
+        func Escape(prefix string, input string) string { return prefix + ":" + input }
+        func Unused(prefix string, input string) string { return input + prefix }
+        func UseClean(value string) string {
+            return Apply(Clean, "safe", value)
+        }
+        func UseEscape(value string) string {
+            return Apply(Escape, "quoted", value)
+        }
+    edges:
+      - id: go-callback-true-clean
+        truth: true
+        from: {file: main.go, start_line: 4, end_line: 4, expression: value}
+        to: {file: main.go, start_line: 6, end_line: 6, expression: 'input string'}
+      - id: go-callback-true-escape
+        truth: true
+        from: {file: main.go, start_line: 4, end_line: 4, expression: value}
+        to: {file: main.go, start_line: 7, end_line: 7, expression: 'input string'}
+      - id: go-callback-false-index
+        truth: false
+        false_family: wrong_parameter_index
+        from: {file: main.go, start_line: 4, end_line: 4, expression: value}
+        to: {file: main.go, start_line: 6, end_line: 6, expression: 'prefix string'}
+      - id: go-callback-false-unreachable
+        truth: false
+        false_family: unreachable_callback
+        from: {file: main.go, start_line: 4, end_line: 4, expression: value}
+        to: {file: main.go, start_line: 8, end_line: 8, expression: 'input string'}

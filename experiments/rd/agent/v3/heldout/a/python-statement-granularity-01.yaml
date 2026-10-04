@@ -1,0 +1,85 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-statement-granularity-01",
+  "language": "python",
+  "cell": "statement_granularity",
+  "package": "rose_partition",
+  "effect_claim": "Whether a request header selects the ledger partition used for a write.",
+  "files": {
+    "revision_A": {
+      "rose_partition.py": "def store(request, ledger):\n    partition = request.headers[\"X-Partition\"]\n    ledger.write(partition, request.body)\n"
+    },
+    "revision_B": {
+      "rose_partition.py": "def store(request, ledger):\n    partition = request.headers[\"X-Partition\"]\n    ledger.write(partition, request.body)\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "rose_partition.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "partition = request.headers[\"X-Partition\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "rose_partition.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "partition = request.headers[\"X-Partition\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "rose_partition.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "ledger.write(partition, request.body)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "rose_partition.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "ledger.write(partition, request.body)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "subexpression",
+      "kind": "entry",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "rose_partition.py",
+        "start_line": 2,
+        "end_line": 2,
+        "expression": "request.headers[\"X-Partition\"]"
+      }
+    },
+    {
+      "family": "subexpression",
+      "kind": "behavior",
+      "revision": "revision_B",
+      "anchor": {
+        "file": "rose_partition.py",
+        "start_line": 3,
+        "end_line": 3,
+        "expression": "partition"
+      }
+    }
+  ]
+}

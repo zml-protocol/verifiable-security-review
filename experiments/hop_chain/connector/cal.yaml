@@ -1,0 +1,33 @@
+# Same-object connector calibration pairs (PREREGISTRATION.md §12.1): held out. Written
+# before the connector ran on this module; frozen with the connector; run once after.
+# truth: same | different | not_always (same on some paths only) | unprovable (same object,
+# but only through an alias, a nested field, a captured or indirectly referenced variable;
+# the connector may decline). SAME_OBJECT on `different` or `not_always` is a safety failure.
+set: cal
+fixture: {id: objcal-go, repo: .cache/fixtures/objcal-go, file: cal.go,
+          commit: 34b3b3e6ae67e88aa8167dc5af961957f9bf3f36, language: go, db_build: go build ./...}
+pairs:
+  - {id: cs1, a: [20, "box := Box{Name: \"x\"}"], b: [21, "box.Count = 1"], truth: same}
+  - {id: cs2, a: [21, "box.Count = 1"], b: [23, "box.Name = label"], truth: same}
+  - {id: cs3, a: [29, "box := Box{}"], b: [30, "box.Count = 1"], truth: same}
+  - {id: cs4, a: [33, "box := Box{}"], b: [34, "box.Count = 2"], truth: same}
+  - {id: cs5, a: [40, "box := Box{}"], b: [47, "box.Count = 2"], truth: same}
+  - {id: cs6, a: [43, "box := Box{}"], b: [44, "box.Count = 1"], truth: same}
+  - {id: cs7, a: [74, "other := id(box)"], b: [75, "other.Count = 1"], truth: same}
+  - {id: cs8, a: [101, "box Box"], b: [102, "box.Count = 1"], truth: same}
+  - {id: cs9, a: [62, "box := Box{}"], b: [64, "box.Count = 1"], truth: same}
+  - {id: cd1, a: [29, "box := Box{}"], b: [34, "box.Count = 2"], truth: different}
+  - {id: cd2, a: [33, "box := Box{}"], b: [30, "box.Count = 1"], truth: different}
+  - {id: cd3, a: [40, "box := Box{}"], b: [44, "box.Count = 1"], truth: different}
+  - {id: cd4, a: [43, "box := Box{}"], b: [47, "box.Count = 2"], truth: different}
+  - {id: cd5, a: [73, "box := Box{}"], b: [75, "other.Count = 1"], truth: different}
+  - {id: cd6, a: [53, "box := Box{}"], b: [56, "box = Box{}"], truth: different}
+  - {id: cd7, a: [20, "box := Box{Name: \"x\"}"], b: [30, "box.Count = 1"], truth: different}
+  - {id: cn1, a: [53, "box := Box{}"], b: [55, "box.Count = x"], truth: not_always}
+  - {id: cn2, a: [56, "box = Box{}"], b: [55, "box.Count = x"], truth: not_always}
+  - {id: cn3, a: [62, "box := Box{}"], b: [68, "box.Name = \"z\""], truth: not_always}
+  - {id: cn4, a: [66, "box = Box{Name: \"y\"}"], b: [68, "box.Name = \"z\""], truth: not_always}
+  - {id: cu1, a: [80, "p := &Box{}"], b: [82, "q.Count = 1"], truth: unprovable}
+  - {id: cu2, a: [87, "box := Box{}"], b: [88, "box.In.N = 1"], truth: unprovable}
+  - {id: cu3, a: [93, "box := Box{}"], b: [95, "box.Count = 1"], truth: unprovable}
+  - {id: cu4, a: [107, "p := &Box{}"], b: [109, "p.Count = 2"], truth: unprovable}

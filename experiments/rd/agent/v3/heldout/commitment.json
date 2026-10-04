@@ -1,0 +1,63 @@
+{
+  "schema": "rd-v3-heldout-commitment/v1",
+  "treatment_freeze_sha256": "36935e6eea9b4086884a5eccda1adee766288770aed02d3c58bb8edfdfea3828",
+  "construction_freeze_sha256": "74a4a76c335e61867daf24eb44e037f546413d2925aea071697f38d4babefbf0",
+  "curator": {
+    "role": "non_implementing_curator",
+    "type": "codex-independent-no-context",
+    "independence_attestation": true
+  },
+  "a_cases": [
+    "a/go-claim-specific-entry-01.yaml",
+    "a/go-claim-specific-entry-02.yaml",
+    "a/go-decision-point-01.yaml",
+    "a/go-decision-point-02.yaml",
+    "a/go-changed-present-both-01.yaml",
+    "a/go-changed-present-both-02.yaml",
+    "a/go-absent-context-01.yaml",
+    "a/go-absent-context-02.yaml",
+    "a/go-statement-granularity-01.yaml",
+    "a/go-statement-granularity-02.yaml",
+    "a/python-claim-specific-entry-01.yaml",
+    "a/python-claim-specific-entry-02.yaml",
+    "a/python-decision-point-01.yaml",
+    "a/python-decision-point-02.yaml",
+    "a/python-changed-present-both-01.yaml",
+    "a/python-changed-present-both-02.yaml",
+    "a/python-absent-context-01.yaml",
+    "a/python-absent-context-02.yaml",
+    "a/python-statement-granularity-01.yaml",
+    "a/python-statement-granularity-02.yaml"
+  ],
+  "provider_cases": [
+    "provider/python_typed_attribute_dispatch.yaml",
+    "provider/go_direct_argument_binding.yaml",
+    "provider/go_callback_argument_binding.yaml"
+  ],
+  "files": {
+    "a/go-claim-specific-entry-01.yaml": "830497a471465035939e178853dbf51ad93f169977f8bb4b7ff64ee943f94a44",
+    "a/go-claim-specific-entry-02.yaml": "430416dae098a2717407a330a7a8705fc9f7af22e4f3d81d9dd1cf74a5b68769",
+    "a/go-decision-point-01.yaml": "63366f3581a37cd159b6b5cba0c866210be34c9bcce2a9b8d6b421c8f711b2f3",
+    "a/go-decision-point-02.yaml": "9080262b19ac6f1bab672f1eaf0cdb41ca833f40a7c1a157bff0f6378e7e9656",
+    "a/go-changed-present-both-01.yaml": "8fdaf2c63f19bbbedc7492a6f79a89a2df45074c994e640e7fff4997eea172e2",
+    "a/go-changed-present-both-02.yaml": "b4fcb249a568e231049b7de481374d94b021434b17b8275704faaed0ddcf8bf1",
+    "a/go-absent-context-01.yaml": "16a60d43e2c6fe885f4fccda7f3fa4ca6183548a4ed745ade1062fbb6408e96b",
+    "a/go-absent-context-02.yaml": "38c52c70e649e87a0f0b0864212cb1992c2faafeb99d19340a70e18edbc237b5",
+    "a/go-statement-granularity-01.yaml": "f4fdc0464d2eb5c1e44a5f37becc1a7b656c9aa7f4cf74e3144ab20c6daf5219",
+    "a/go-statement-granularity-02.yaml": "8ac19491f32acc1499b672dcb47ed819e16da52d19072fc3d6561a3ceb563219",
+    "a/python-claim-specific-entry-01.yaml": "07d50fa1a9fe2cae900591b584d34dcf36f66fbd1696c556c4800429481f0ee6",
+    "a/python-claim-specific-entry-02.yaml": "078a08a70e682278fb057d303c2e4af048cc9af72afda20eb3fb82267b69d203",
+    "a/python-decision-point-01.yaml": "c0e51c9accbcf7e58416e046714872a8cdd9ac859591d3fc671c869dbf575a4a",
+    "a/python-decision-point-02.yaml": "624403460a58a7f014589e7e1fcaa3ca82ec8f2b9a8299504a79018b24e6858c",
+    "a/python-changed-present-both-01.yaml": "8a010bd222eff141b7f37602d736ae8ec7a8b97754a4cc48a4ec70baed0b70e7",
+    "a/python-changed-present-both-02.yaml": "7772e7f86da2a66ac581aab3eef158910a7cf120bc2a5c1ed7f8f4932a88bacd",
+    "a/python-absent-context-01.yaml": "8442f830302af2b3d472b1fc29a40ae6908304238218a55f6db9126342975dda",
+    "a/python-absent-context-02.yaml": "62ee570c801a71c73ae345c96881a722d67685ed8241a2818ae1e42797fde18b",
+    "a/python-statement-granularity-01.yaml": "5478de37eb79bdc771fe708d7008e3a25427b8e5127fde273a86d1bbd04bca8d",
+    "a/python-statement-granularity-02.yaml": "6852acff11b83a46bbd38de0ec1f2534d1dfa66c0874c819e1a11d15a4a4529e",
+    "provider/python_typed_attribute_dispatch.yaml": "87cf6be70e59a94119bccb2148299ea1fa2e417abf8c830caf325556790342df",
+    "provider/go_direct_argument_binding.yaml": "cac9adaec9c10e6d5402ee38f09803107a2f293dc69d3277fdfe95f6bacf82e8",
+    "provider/go_callback_argument_binding.yaml": "99f9a7a31fbe537aa25b0832abecfc0f61593f648046c8bcd4401ff79bf4d02b"
+  },
+  "aggregate_sha256": "10b696811d8529459d428fa702fb23e2a4efcb4e04e7cfb263628f783a4cd97f"
+}

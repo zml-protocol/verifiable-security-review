@@ -1,0 +1,352 @@
+diff --git a/litellm/_internal_context.py b/litellm/_internal_context.py
+new file mode 100644
+index 0000000..727ca87
+--- /dev/null
++++ b/litellm/_internal_context.py
+@@ -0,0 +1,13 @@
++"""
++Internal request context for LiteLLM.
++
++Provides a ContextVar-based mechanism for internal signals that must not
++be settable from user input. Context variables are scoped to the current
++asyncio task and cannot be injected via HTTP request bodies.
++"""
++
++from contextvars import ContextVar
++
++# When True, suppresses async logging and billing for internal sub-calls
++# (e.g., emulated file-search steps that make nested LLM calls).
++is_internal_call: ContextVar[bool] = ContextVar("is_internal_call", default=False)
+diff --git a/litellm/proxy/auth/auth_utils.py b/litellm/proxy/auth/auth_utils.py
+index d2f8320..64766bb 100644
+--- a/litellm/proxy/auth/auth_utils.py
++++ b/litellm/proxy/auth/auth_utils.py
+@@ -150,7 +150,7 @@ def is_request_body_safe(
+     A malicious user can set the ﻿api_base to their own domain and invoke POST /chat/completions to intercept and steal the OpenAI API key.
+     Relevant issue: https://huntr.com/bounties/4001e1a2-7b7a-4776-a3ae-e6692ec3d997
+     """
+-    banned_params = ["api_base", "base_url"]
++    banned_params = ["api_base", "base_url", "user_config"]
+ 
+     for param in banned_params:
+         if (
+diff --git a/litellm/proxy/litellm_pre_call_utils.py b/litellm/proxy/litellm_pre_call_utils.py
+index 4ec3192..b0adf7a 100644
+--- a/litellm/proxy/litellm_pre_call_utils.py
++++ b/litellm/proxy/litellm_pre_call_utils.py
+@@ -43,6 +43,8 @@ def _sanitize_for_log(value: Any) -> str:
+         text = repr(value)
+     # Strip CR/LF characters commonly used for log injection
+     return text.replace("\r", "").replace("\n", "")
++
++
+ from litellm.router import Router
+ from litellm.secret_managers.main import get_secret_bool
+ from litellm.types.llms.anthropic import ANTHROPIC_API_HEADERS
+@@ -220,12 +222,12 @@ def _get_dynamic_logging_metadata(
+     user_api_key_dict: UserAPIKeyAuth, proxy_config: ProxyConfig
+ ) -> Optional[TeamCallbackMetadata]:
+     callback_settings_obj: Optional[TeamCallbackMetadata] = None
+-    key_dynamic_logging_settings: Optional[
+-        dict
+-    ] = KeyAndTeamLoggingSettings.get_key_dynamic_logging_settings(user_api_key_dict)
+-    team_dynamic_logging_settings: Optional[
+-        dict
+-    ] = KeyAndTeamLoggingSettings.get_team_dynamic_logging_settings(user_api_key_dict)
++    key_dynamic_logging_settings: Optional[dict] = (
++        KeyAndTeamLoggingSettings.get_key_dynamic_logging_settings(user_api_key_dict)
++    )
++    team_dynamic_logging_settings: Optional[dict] = (
++        KeyAndTeamLoggingSettings.get_team_dynamic_logging_settings(user_api_key_dict)
++    )
+     #########################################################################################
+     # Key-based callbacks
+     #########################################################################################
+@@ -779,11 +781,11 @@ class LiteLLMProxyRequestSetup:
+ 
+         ## KEY-LEVEL SPEND LOGS / TAGS
+         if "tags" in key_metadata and key_metadata["tags"] is not None:
+-            data[_metadata_variable_name][
+-                "tags"
+-            ] = LiteLLMProxyRequestSetup._merge_tags(
+-                request_tags=data[_metadata_variable_name].get("tags"),
+-                tags_to_add=key_metadata["tags"],
++            data[_metadata_variable_name]["tags"] = (
++                LiteLLMProxyRequestSetup._merge_tags(
++                    request_tags=data[_metadata_variable_name].get("tags"),
++                    tags_to_add=key_metadata["tags"],
++                )
+             )
+         if "disable_global_guardrails" in key_metadata and isinstance(
+             key_metadata["disable_global_guardrails"], bool
+@@ -918,6 +920,22 @@ async def add_litellm_data_to_request(  # noqa: PLR0915
+     from litellm.proxy.proxy_server import llm_router, premium_user
+     from litellm.types.proxy.litellm_pre_call_utils import RedactedDict, SecretFields
+ 
++    # Strip internal-only keys from user input before the proxy sets its own.
++    # These keys are injected by the proxy itself below — user-supplied values
++    # must not be trusted.
++    for _internal_key in (
++        "proxy_server_request",
++        "standard_logging_object",
++        "secret_fields",
++    ):
++        data.pop(_internal_key, None)
++    # Strip spoofable auth metadata from user-supplied metadata dict
++    _user_metadata = data.get("metadata")
++    if isinstance(_user_metadata, dict):
++        for _mk in list(_user_metadata.keys()):
++            if _mk.startswith("user_api_key_"):
++                del _user_metadata[_mk]
++
+     _raw_headers: Dict[str, str] = RedactedDict(_safe_get_request_headers(request))
+ 
+     forward_llm_auth = False
+@@ -1079,9 +1097,9 @@ async def add_litellm_data_to_request(  # noqa: PLR0915
+     data[_metadata_variable_name]["litellm_api_version"] = version
+ 
+     if general_settings is not None:
+-        data[_metadata_variable_name][
+-            "global_max_parallel_requests"
+-        ] = general_settings.get("global_max_parallel_requests", None)
++        data[_metadata_variable_name]["global_max_parallel_requests"] = (
++            general_settings.get("global_max_parallel_requests", None)
++        )
+ 
+     ### KEY-LEVEL Controls
+     key_metadata = user_api_key_dict.metadata
+@@ -1881,7 +1899,9 @@ async def move_guardrails_to_metadata(
+     )
+ 
+     # Only check policy engine if no local config (avoid import + registry lookup)
+-    if not (has_key_config or has_team_config or has_project_config or has_request_config):
++    if not (
++        has_key_config or has_team_config or has_project_config or has_request_config
++    ):
+         from litellm.proxy.policy_engine.policy_registry import get_policy_registry
+ 
+         if not get_policy_registry().is_initialized():
+diff --git a/litellm/responses/file_search/emulated_handler.py b/litellm/responses/file_search/emulated_handler.py
+index 74a7d44..532ac8f 100644
+--- a/litellm/responses/file_search/emulated_handler.py
++++ b/litellm/responses/file_search/emulated_handler.py
+@@ -16,6 +16,7 @@ import time
+ import uuid
+ from typing import Any, Dict, Iterable, List, Optional, Tuple, Union, cast
+ 
++from litellm._internal_context import is_internal_call
+ from litellm._logging import verbose_logger
+ from litellm.types.llms.openai import ResponseOutputItem, ResponsesAPIResponse
+ from litellm.types.vector_stores import VectorStoreSearchResult
+@@ -449,15 +450,20 @@ async def aresponses_with_emulated_file_search(
+     # 2. First provider call — provider will call the file_search function.
+     # Mark as an internal sub-call so wrapper_async skips billing callbacks;
+     # the parent litellm_logging_obj (propagated via kwargs) fires once at the end.
+-    first_response: ResponsesAPIResponse = cast(
+-        ResponsesAPIResponse,
+-        await _call_aresponses(
+-            input=input,
+-            model=model,
+-            tools=transformed_tools or None,
+-            **{**kwargs, "_is_litellm_internal_call": True},
+-        ),
+-    )
++    _prev_internal = is_internal_call.get()
++    is_internal_call.set(True)
++    try:
++        first_response: ResponsesAPIResponse = cast(
++            ResponsesAPIResponse,
++            await _call_aresponses(
++                input=input,
++                model=model,
++                tools=transformed_tools or None,
++                **kwargs,
++            ),
++        )
++    finally:
++        is_internal_call.set(_prev_internal)
+ 
+     # 3. Look for a file_search function_call in the output
+     file_search_calls = [
+@@ -566,15 +572,19 @@ async def aresponses_with_emulated_file_search(
+ 
+     # 6. Follow-up call — provider writes the final answer given search results.
+     # Also an internal sub-call; billing is suppressed so the outer call fires once.
+-    final_response: ResponsesAPIResponse = cast(
+-        ResponsesAPIResponse,
+-        await _call_aresponses(
+-            input=follow_up_input,
+-            model=model,
+-            tools=None,  # no tools needed for the answer step
+-            **{**kwargs, "_is_litellm_internal_call": True},
+-        ),
+-    )
++    is_internal_call.set(True)
++    try:
++        final_response: ResponsesAPIResponse = cast(
++            ResponsesAPIResponse,
++            await _call_aresponses(
++                input=follow_up_input,
++                model=model,
++                tools=None,  # no tools needed for the answer step
++                **kwargs,
++            ),
++        )
++    finally:
++        is_internal_call.set(_prev_internal)
+ 
+     # 7. Synthesize OpenAI-format output
+     response_text = _extract_text_from_responses_output(final_response)
+diff --git a/litellm/utils.py b/litellm/utils.py
+index 09df88f..8d6ea5b 100644
+--- a/litellm/utils.py
++++ b/litellm/utils.py
+@@ -51,6 +51,7 @@ import litellm.litellm_core_utils
+ 
+ # audio_utils.utils is lazy-loaded - only imported when needed for transcription calls
+ import litellm.litellm_core_utils.json_validation_rule
++from litellm._internal_context import is_internal_call
+ from litellm._lazy_imports import (
+     _get_default_encoding,
+     _get_modified_max_tokens,
+@@ -213,9 +214,11 @@ _CALL_TYPE_ENUM_MAP: dict = {ct.value: ct for ct in CallTypes}
+ 
+ try:
+     # Python 3.9+
+-    with resources.files("litellm.litellm_core_utils.tokenizers").joinpath(
+-        "anthropic_tokenizer.json"
+-    ).open("r", encoding="utf-8") as f:
++    with (
++        resources.files("litellm.litellm_core_utils.tokenizers")
++        .joinpath("anthropic_tokenizer.json")
++        .open("r", encoding="utf-8") as f
++    ):
+         json_data = json.load(f)
+ except (ImportError, AttributeError, TypeError):
+     with resources.open_text(
+@@ -781,9 +784,9 @@ def function_setup(  # noqa: PLR0915
+         coroutine_checker = get_coroutine_checker_fn()
+ 
+         ## DYNAMIC CALLBACKS ##
+-        dynamic_callbacks: Optional[
+-            List[Union[str, Callable, "CustomLogger"]]
+-        ] = kwargs.pop("callbacks", None)
++        dynamic_callbacks: Optional[List[Union[str, Callable, "CustomLogger"]]] = (
++            kwargs.pop("callbacks", None)
++        )
+         all_callbacks = get_dynamic_callbacks(dynamic_callbacks=dynamic_callbacks)
+ 
+         if len(all_callbacks) > 0:
+@@ -1689,9 +1692,9 @@ def client(original_function):  # noqa: PLR0915
+                         exception=e,
+                         retry_policy=kwargs.get("retry_policy"),
+                     )
+-                    kwargs[
+-                        "retry_policy"
+-                    ] = reset_retry_policy()  # prevent infinite loops
++                    kwargs["retry_policy"] = (
++                        reset_retry_policy()
++                    )  # prevent infinite loops
+                 litellm.num_retries = (
+                     None  # set retries to None to prevent infinite loops
+                 )
+@@ -1738,9 +1741,9 @@ def client(original_function):  # noqa: PLR0915
+                         exception=e,
+                         retry_policy=kwargs.get("retry_policy"),
+                     )
+-                    kwargs[
+-                        "retry_policy"
+-                    ] = reset_retry_policy()  # prevent infinite loops
++                    kwargs["retry_policy"] = (
++                        reset_retry_policy()
++                    )  # prevent infinite loops
+                 litellm.num_retries = (
+                     None  # set retries to None to prevent infinite loops
+                 )
+@@ -1792,7 +1795,8 @@ def client(original_function):  # noqa: PLR0915
+ 
+         model: Optional[str] = args[0] if len(args) > 0 else kwargs.get("model", None)
+         is_completion_with_fallbacks = kwargs.get("fallbacks") is not None
+-        _is_litellm_internal_call = kwargs.pop("_is_litellm_internal_call", False)
++        kwargs.pop("_is_litellm_internal_call", None)  # discard if injected
++        _is_litellm_internal_call = is_internal_call.get()
+ 
+         try:
+             if logging_obj is None:
+@@ -3774,10 +3778,10 @@ def pre_process_non_default_params(
+ 
+     if "response_format" in non_default_params:
+         if provider_config is not None:
+-            non_default_params[
+-                "response_format"
+-            ] = provider_config.get_json_schema_from_pydantic_object(
+-                response_format=non_default_params["response_format"]
++            non_default_params["response_format"] = (
++                provider_config.get_json_schema_from_pydantic_object(
++                    response_format=non_default_params["response_format"]
++                )
+             )
+         else:
+             non_default_params["response_format"] = type_to_response_format_param(
+@@ -3906,16 +3910,16 @@ def pre_process_optional_params(
+                     True  # so that main.py adds the function call to the prompt
+                 )
+                 if "tools" in non_default_params:
+-                    optional_params[
+-                        "functions_unsupported_model"
+-                    ] = non_default_params.pop("tools")
++                    optional_params["functions_unsupported_model"] = (
++                        non_default_params.pop("tools")
++                    )
+                     non_default_params.pop(
+                         "tool_choice", None
+                     )  # causes ollama requests to hang
+                 elif "functions" in non_default_params:
+-                    optional_params[
+-                        "functions_unsupported_model"
+-                    ] = non_default_params.pop("functions")
++                    optional_params["functions_unsupported_model"] = (
++                        non_default_params.pop("functions")
++                    )
+             elif (
+                 litellm.add_function_to_prompt
+             ):  # if user opts to add it to prompt instead
+@@ -4896,9 +4900,7 @@ def _get_order_filtered_deployments(
+ ) -> List:
+     if target_order is not None:
+         filtered = [
+-            d
+-            for d in healthy_deployments
+-            if _get_deployment_order(d) == target_order
++            d for d in healthy_deployments if _get_deployment_order(d) == target_order
+         ]
+         if filtered:
+             return filtered
+@@ -5878,8 +5880,12 @@ def _get_model_info_helper(  # noqa: PLR0915
+                 supports_web_search=_model_info.get("supports_web_search", None),
+                 supports_url_context=_model_info.get("supports_url_context", None),
+                 supports_reasoning=_model_info.get("supports_reasoning", None),
+-                supports_none_reasoning_effort=_model_info.get("supports_none_reasoning_effort", None),
+-                supports_xhigh_reasoning_effort=_model_info.get("supports_xhigh_reasoning_effort", None),
++                supports_none_reasoning_effort=_model_info.get(
++                    "supports_none_reasoning_effort", None
++                ),
++                supports_xhigh_reasoning_effort=_model_info.get(
++                    "supports_xhigh_reasoning_effort", None
++                ),
+                 supports_computer_use=_model_info.get("supports_computer_use", None),
+                 search_context_cost_per_query=_model_info.get(
+                     "search_context_cost_per_query", None
+@@ -7557,9 +7563,9 @@ class ModelResponseIterator:
+         if convert_to_delta is True:
+             _stream_response = ModelResponseStream()
+             _stream_response.choices[0].delta.content = model_response.choices[0].message.content  # type: ignore
+-            self.model_response: Union[
+-                ModelResponse, ModelResponseStream
+-            ] = _stream_response
++            self.model_response: Union[ModelResponse, ModelResponseStream] = (
++                _stream_response
++            )
+         else:
+             self.model_response = model_response
+         self.is_done = False

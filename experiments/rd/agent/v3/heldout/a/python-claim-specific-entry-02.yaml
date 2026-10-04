@@ -1,0 +1,75 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-claim-specific-entry-02",
+  "language": "python",
+  "cell": "claim_specific_entry",
+  "package": "saffron_topic",
+  "effect_claim": "Whether a caller-provided broadcast topic is appended to the delivery channel.",
+  "files": {
+    "revision_A": {
+      "saffron_topic.py": "class Intake:\n    topic = \"\"\n\n\ndef emit(intake, channel):\n    topic_piece = intake.topic\n    decorated_piece = f\"topic:{topic_piece}\"\n    channel.append(decorated_piece)\n"
+    },
+    "revision_B": {
+      "saffron_topic.py": "class Intake:\n    topic = \"\"\n\n\ndef emit(intake, channel):\n    topic_piece = intake.topic\n    channel.append(topic_piece)\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "saffron_topic.py",
+          "start_line": 6,
+          "end_line": 6,
+          "expression": "topic_piece = intake.topic"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "saffron_topic.py",
+          "start_line": 6,
+          "end_line": 6,
+          "expression": "topic_piece = intake.topic"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "saffron_topic.py",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "channel.append(decorated_piece)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "saffron_topic.py",
+          "start_line": 7,
+          "end_line": 7,
+          "expression": "channel.append(topic_piece)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "field_declaration",
+    "later_derivative"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "field_declaration",
+      "kind": "entry",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "saffron_topic.py",
+        "start_line": 2,
+        "end_line": 2,
+        "expression": "topic = \"\""
+      }
+    }
+  ]
+}

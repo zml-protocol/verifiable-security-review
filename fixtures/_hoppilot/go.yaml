@@ -1,0 +1,14 @@
+# P-Hybrid-2 plumbing pilot (PREREGISTRATION.md §11.6): mechanics only, never scored.
+id: hoppilot-go
+kind: synthetic
+repo: {path: .cache/fixtures/hopdev-go}   # fixtures/_hopdev/build.py
+base: c1f9212c84860c6479642f0d648b87d709ae121b
+head: cb7cd3d5a5ead1755aa8b705b8622ee6c8548f78
+hypotheses:
+  - id: H1
+    property_kind: data_flow
+    claim: The Label of the item returned by Name is the caller's raw input with the prefix trimmed.
+    components:
+      - {id: flow, text: "The raw input, with the prefix trimmed, is what Name stores as the returned item's Label."}
+    hints:
+      - {path: flow.go, symbol: Name, note: "entrypoint"}

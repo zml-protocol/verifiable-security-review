@@ -1,0 +1,18 @@
+fixture: GHSA-xcw4-53cc-hv32
+package: mnemosyne-memory
+labels:
+  candidate-01: {cwe: 22, vuln: SUPPORTED, fixed: SUPPORTED}
+  candidate-02: {cwe: 79, vuln: SUPPORTED, fixed: SUPPORTED}
+  candidate-03: {cwe: 89, vuln: INDETERMINATE, fixed: INDETERMINATE}
+rationale:
+  candidate-01: >-
+    In both revisions the HTTP `bank` query parameter is appended to the data directory without a
+    containment check and is then opened by sqlite3, establishing an attacker-controlled path sink.
+  candidate-02: >-
+    In both revisions attacker-controlled HTTP query values and stored memory fields are directly
+    interpolated into an HTMLResponse without HTML escaping, establishing an XSS surface.
+  candidate-03: >-
+    The displayed HTTP search path binds attacker-controlled values and restricts dynamic table and
+    order fragments, but the package has 1,044 broad SQL-regex matches across 36k lines; the supplied
+    excerpts do not establish either an injectable instance or package-wide absence.
+

@@ -1,0 +1,48 @@
+{
+  "schema": "rd-reference-result/v1",
+  "fixture": "GHSA-hx8v-g79f-8w5f",
+  "task_id": "task-04",
+  "disposition": "REFERENCE_UNREALIZABLE",
+  "revisions": [
+    {
+      "canonical_revision": "vuln",
+      "outward_revision": "revision_B",
+      "chain_required": true,
+      "semantic_chain_complete": false,
+      "reason": "The frozen behavior assignment is evaluated by request safety validation before routing; the frozen entry extracts user_config later inside _route_user_config_request. Therefore no forward semantic entry-to-behavior chain exists under the \u00a715.5 direction, independently of provider coverage.\n",
+      "hops": []
+    },
+    {
+      "canonical_revision": "fixed",
+      "outward_revision": "revision_A",
+      "chain_required": true,
+      "semantic_chain_complete": false,
+      "reason": "The same ordering holds after the fix: is_request_body_safe consumes request_data before _route_user_config_request later executes data.pop(\"user_config\").\n",
+      "hops": []
+    }
+  ],
+  "classification": {
+    "revisions": {
+      "revision_A": {
+        "class": "NO_EVIDENCE",
+        "length": null,
+        "verified_edges": 0,
+        "entry_node_candidates": 1,
+        "terminal_node_candidates": 2,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      },
+      "revision_B": {
+        "class": "NO_EVIDENCE",
+        "length": null,
+        "verified_edges": 0,
+        "entry_node_candidates": 1,
+        "terminal_node_candidates": 2,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      }
+    },
+    "full_chain": false,
+    "harness_mismatches": []
+  }
+}

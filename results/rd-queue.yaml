@@ -1,0 +1,117 @@
+seed: 20261002
+pool_sha256: a13f8c5f81fc463db67dc707ebdac110858df003923263bd4772b19f67be4a35
+log_head: f81b5e28eb73696e1c3d3b620ad0cfe3e48046c14ab7f18d4c1f760d06358233
+queues:
+  go:
+  - id: GHSA-fq2j-j8hc-8vw8
+    role: primary
+    position: 1
+    repo: https://github.com/siyuan-note/siyuan
+    fix_commit: 294b8b429dea152cd1df522cddf406054c1619ad
+    cwe_classes:
+    - access-control
+    - information-exposure
+    - path-traversal
+  - id: GHSA-mr3j-p26x-72x4
+    role: primary
+    position: 2
+    repo: https://github.com/go-vikunja/vikunja
+    fix_commit: bc6d843ed4df82a6c89f10aa676a7a33d27bf2fd
+    cwe_classes:
+    - access-control
+  - id: GHSA-rmrf-g9r3-73pm
+    role: primary
+    position: 3
+    repo: https://github.com/open-feature/flagd
+    fix_commit: 25c5fd7e80c26eb2c00b20317b2456fe6f927ea3
+    cwe_classes:
+    - resource-consumption
+  - id: GO-2026-6237
+    role: primary
+    position: 4
+    repo: https://github.com/insomniacslk/dhcp
+    fix_commit: c76316d4aa825673b208730779843d0711021e81
+    cwe_classes:
+    - none
+  - id: GHSA-fwjx-9p69-h25h
+    role: reserve
+    position: 6
+    repo: https://github.com/jandedobbeleer/oh-my-posh
+    fix_commit: edcf3c88f3fb582e84358b385c49d33d04c04224
+    cwe_classes:
+    - CWE-150
+  - id: GHSA-xghw-p77p-3r7x
+    role: reserve
+    position: 7
+    repo: https://github.com/hyperledger/fabric-ca
+    fix_commit: d379df823534d56dec0166a6da8f0415e3beee24
+    cwe_classes:
+    - injection
+  python:
+  - id: GHSA-hx8v-g79f-8w5f
+    role: primary
+    position: 1
+    repo: https://github.com/berriai/litellm
+    fix_commit: 47214be317f45a2d2ac08258362e0481411eb427
+    cwe_classes:
+    - ssrf
+  - id: PYSEC-2026-1868
+    role: primary
+    position: 2
+    repo: https://github.com/reflex-dev/reflex
+    fix_commit: ade12549f3c0ddab3d7382c581bc04a3c1f989ec
+    cwe_classes:
+    - none
+  - id: GHSA-xmfj-7pp5-fxr6
+    role: primary
+    position: 5
+    repo: https://github.com/llamastack/llama-stack
+    fix_commit: b709bd77b6c1fad68a30a4888baa6f2337eaef6f
+    cwe_classes:
+    - information-exposure
+  - id: GHSA-5gfj-64gh-mgmw
+    role: primary
+    position: 18
+    repo: https://github.com/josh-xt/agixt
+    fix_commit: 2079ea5a88fa671a921bf0b5eba887a5a1b73d5f
+    cwe_classes:
+    - path-traversal
+  - id: GHSA-xcw4-53cc-hv32
+    role: reserve
+    position: 21
+    repo: https://github.com/mnemosyne-oss/mnemosyne
+    fix_commit: a0b6b8711a1a485304971710dc3571e29ff9dbeb
+    cwe_classes:
+    - cryptography
+  - id: GHSA-937x-gpqr-72gg
+    role: reserve
+    position: 22
+    repo: https://github.com/jugmac00/flask-reuploaded
+    fix_commit: 5ded76092429c6eb8a4af941b14fbde40a38fff4
+    cwe_classes:
+    - CWE-178
+    - CWE-434
+skipped:
+- id: GHSA-5rmx-256w-8mj9
+  reason: CWE_CLASS_QUOTA
+  classes:
+  - access-control
+- id: GHSA-w48f-wwwf-f5fr
+  reason: CWE_CLASS_QUOTA
+  classes:
+  - access-control
+- id: PYSEC-2026-429
+  reason: CWE_CLASS_QUOTA
+  classes:
+  - none
+- id: PYSEC-2026-1767
+  reason: CWE_CLASS_QUOTA
+  classes:
+  - none
+- id: PYSEC-2026-1137
+  reason: CWE_CLASS_QUOTA
+  classes:
+  - none
+n:
+  go: 6
+  python: 6

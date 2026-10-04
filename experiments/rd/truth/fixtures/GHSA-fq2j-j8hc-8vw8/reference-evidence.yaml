@@ -1,0 +1,20 @@
+schema: rd-reference-evidence/v1
+fixture: GHSA-fq2j-j8hc-8vw8
+revisions:
+  vuln:
+    chain_required: false
+    reason: The frozen behavior slot is absent in the vulnerable revision.
+    hops: []
+  fixed:
+    chain_required: true
+    semantic_chain_complete: true
+    reason: >
+      localPath flows to the IsSensitivePath call argument; the vocabulary has no relation from a
+      predicate argument to the enclosing guard statement that is the frozen behavior anchor.
+    hops:
+      - relation: def_use
+        from: {file: kernel/api/lute.go, start_line: 155, end_line: 155, expression: "localPath := n.TokensStr()"}
+        to: {file: kernel/api/lute.go, start_line: 179, end_line: 179, expression: "localPath"}
+      - relation: unsupported
+        from: {file: kernel/api/lute.go, start_line: 179, end_line: 179, expression: "localPath"}
+        to: {file: kernel/api/lute.go, start_line: 179, end_line: 179, expression: "if util.IsSensitivePath(localPath) {"}

@@ -1,0 +1,225 @@
+{
+  "purpose": "P-Hybrid-2 plumbing pilot (PREREGISTRATION.md \u00a711.8): mechanics only, never scored",
+  "model": "claude-haiku-4-5-20251001",
+  "cli": "2.1.280",
+  "blocks": [
+    "hopdev-go/r0",
+    "hopdev-py/r0"
+  ],
+  "validity": {
+    "hopdev-go/r0": {
+      "initial": [
+        "VALID",
+        "completed"
+      ],
+      "control": [
+        "VALID",
+        "completed"
+      ],
+      "treatment": [
+        "VALID",
+        "completed"
+      ]
+    },
+    "hopdev-py/r0": {
+      "initial": [
+        "VALID",
+        "completed"
+      ],
+      "control": [
+        "VALID",
+        "completed"
+      ],
+      "treatment": [
+        "VALID",
+        "completed"
+      ]
+    }
+  },
+  "harness": {
+    "isolation": {},
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "frozen_analysis_intact": true
+  },
+  "harness_ok": true,
+  "isolation": {
+    "hopdev-go/r0": {
+      "parent_session_unchanged": true,
+      "snapshot_sha256": "893abf9181b13e8a0c12586dde34b064574c6ab773bb34f88dec58d16b22b8aa",
+      "children_snapshot_equal": true,
+      "sessions": {
+        "parent": "ab1891ca-ef9b-47b8-b69b-4bbd6687c047",
+        "control": "69c2fe41-8b08-412e-b6de-e14418901e77",
+        "treatment": "65b30ebf-798d-4479-924e-38d3f95e25a3"
+      }
+    },
+    "hopdev-py/r0": {
+      "parent_session_unchanged": true,
+      "snapshot_sha256": "bdf282a89ca2e1fb9baae2503c7e0f765779e0b0a7a2452e17b3a64d04441011",
+      "children_snapshot_equal": true,
+      "sessions": {
+        "parent": "c2489fff-f6fc-4376-88d9-b7c637be684c",
+        "control": "9de44112-2a73-4775-9cce-f19ec09ce086",
+        "treatment": "c33e5341-5b5a-4ab1-965b-082b595a4a92"
+      }
+    }
+  },
+  "hops": {
+    "hopdev-go/r0": {
+      "initial": [
+        [
+          "h1",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "h2",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "h3",
+          "field_flow",
+          "UNVERIFIED"
+        ],
+        [
+          "h4",
+          "field_flow",
+          "UNVERIFIED"
+        ],
+        [
+          "h5",
+          "field_flow",
+          "VERIFIED"
+        ]
+      ],
+      "control": [
+        [
+          "f1",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "f2",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "f3",
+          "field_flow",
+          "UNVERIFIED"
+        ],
+        [
+          "f4",
+          "field_flow",
+          "UNVERIFIED"
+        ],
+        [
+          "f5",
+          "field_flow",
+          "VERIFIED"
+        ]
+      ],
+      "treatment": [
+        [
+          "f1",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "f2",
+          "field_flow",
+          "VERIFIED"
+        ],
+        [
+          "f3",
+          "field_flow",
+          "VERIFIED"
+        ]
+      ]
+    },
+    "hopdev-py/r0": {
+      "initial": [
+        [
+          "h1",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "h2",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "h3",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "h4",
+          "registry_dispatch",
+          "VERIFIED"
+        ]
+      ],
+      "control": [
+        [
+          "f1",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f2",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f3",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f4",
+          "registry_dispatch",
+          "VERIFIED"
+        ]
+      ],
+      "treatment": [
+        [
+          "f1",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f2",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f3",
+          "registry_dispatch",
+          "VERIFIED"
+        ],
+        [
+          "f4",
+          "registry_dispatch",
+          "VERIFIED"
+        ]
+      ]
+    }
+  },
+  "costs_usd": {
+    "hopdev-go/r0": {
+      "initial": 0.1127812,
+      "control": 0.1495465,
+      "treatment": 0.1352593
+    },
+    "hopdev-py/r0": {
+      "initial": 0.059710599999999996,
+      "control": 0.0960185,
+      "treatment": 0.0800647
+    }
+  },
+  "review_export": "3 units exported; sheet shows repository name, revision, relation, endpoints and code only"
+}

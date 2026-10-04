@@ -1,0 +1,12 @@
+# Judge A = gpt-6-astra (Codex CLI, medium, fresh/isolated), one run.
+# (Raw paste used markdown-escaped underscores / `\[\]`; de-escaped verbatim, content unchanged.)
+labels:
+  item-01: NOT_REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: NOT_REQUIRED
+  item-04: REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: REQUIRED
+  item-08: NOT_REQUIRED
+missing: []

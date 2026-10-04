@@ -1,0 +1,91 @@
+{
+  "codeql": "codeql-bundle-v2.27.1",
+  "files": {
+    "authlib-jws-none.base.json.gz": {
+      "sha256_json": "5374e82185dfc52f06f7c985c36a0c9fb0b72ae631799e8e1937026b7c4abc1b",
+      "shapes": 12385,
+      "rows": {
+        "call_typed_attribute": 45,
+        "registry_dispatch": 1286
+      }
+    },
+    "authlib-jws-none.head.json.gz": {
+      "sha256_json": "fa642aefa1ecb2fc76c5d119b707ff0895f76912769f87eb6f5bdccd7b013df7",
+      "shapes": 12387,
+      "rows": {
+        "call_typed_attribute": 45,
+        "registry_dispatch": 1287
+      }
+    },
+    "caddy-forward-auth.base.json.gz": {
+      "sha256_json": "cde556311e3f4fdfe7827fe4cdcbb67795f64007b89ffc85815ff3214fcc419e",
+      "shapes": 6433,
+      "rows": {
+        "field_flow": 904,
+        "guard_property": 321,
+        "object_composition": 959
+      }
+    },
+    "caddy-forward-auth.head.json.gz": {
+      "sha256_json": "cc7342f6ce796703b1949ce138e5a99e4b8433e9af6e981c84485fa901adf5cf",
+      "shapes": 6442,
+      "rows": {
+        "field_flow": 909,
+        "guard_property": 322,
+        "object_composition": 960
+      }
+    },
+    "filebrowser-archive-backslash.base.json.gz": {
+      "sha256_json": "f6afd5760c30b4e0ce0f816f5e9008b7ceb6543eabe6703d98cf965e46359963",
+      "shapes": 1121,
+      "rows": {
+        "field_flow": 112,
+        "guard_property": 51,
+        "object_composition": 45
+      }
+    },
+    "filebrowser-archive-backslash.head.json.gz": {
+      "sha256_json": "af152c9eb5d18b1f07ae05bc3718a090b10af2a96760232032e3a843aee58280",
+      "shapes": 1133,
+      "rows": {
+        "field_flow": 113,
+        "guard_property": 51,
+        "object_composition": 45
+      }
+    },
+    "hopdev-go.base.json.gz": {
+      "sha256_json": "6663ae486c57bfb10f3ea91cceab3e0bd5b8e42b0db35a88b793dd643df31201",
+      "shapes": 17,
+      "rows": {
+        "field_flow": 4,
+        "guard_property": 2,
+        "object_composition": 3
+      }
+    },
+    "hopdev-go.head.json.gz": {
+      "sha256_json": "0bfcb76c6dcf6ba9bab13971ae16944fc9387d265dc78878db0bd559728c782c",
+      "shapes": 18,
+      "rows": {
+        "field_flow": 4,
+        "guard_property": 2,
+        "object_composition": 3
+      }
+    },
+    "hopdev-py.base.json.gz": {
+      "sha256_json": "281a789ad3d6b558ecd96098a0e245463375eb19ff749c74fcc64fad12bcd8dc",
+      "shapes": 35,
+      "rows": {
+        "call_typed_attribute": 2,
+        "registry_dispatch": 4
+      }
+    },
+    "hopdev-py.head.json.gz": {
+      "sha256_json": "caf36d97cdb33e4c7f915eb62697a9a6184400a8ad231451af5b35b24d98675c",
+      "shapes": 35,
+      "rows": {
+        "call_typed_attribute": 2,
+        "registry_dispatch": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,144 @@
+fixture: GO-2026-6237
+revisions:
+- vuln
+- fixed
+instructions: Label each item REQUIRED / NOT_REQUIRED / INDETERMINATE against the
+  frozen definitions and the code context. You may add a missing required item in
+  the frozen requirement schema (kind + per-revision anchors).
+items:
+- id: item-01
+  kind: behavior
+  behavior:
+    vuln:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 114
+        end_line: 114
+        expression: if !buf.Has(udpHdrLen) {
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 118
+        end_line: 118
+        expression: if ipPayloadLen < udpHdrLen {
+- id: item-02
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 114
+        end_line: 114
+        expression: if !buf.Has(udpHdrLen) {
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 118
+        end_line: 118
+        expression: if ipPayloadLen < udpHdrLen {
+- id: item-03
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 93
+        end_line: 93
+        expression: if err != nil {
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 93
+        end_line: 93
+        expression: if err != nil {
+- id: item-04
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 114
+        end_line: 114
+        expression: if !buf.Has(udpHdrLen) {
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 111
+        end_line: 111
+        expression: continue
+- id: item-05
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 114
+        end_line: 114
+        expression: if !buf.Has(udpHdrLen) {
+    fixed:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 118
+        end_line: 118
+        expression: if ipPayloadLen < udpHdrLen {
+- id: item-06
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)
+- id: item-07
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)
+    fixed:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)
+- id: item-08
+  kind: entry
+  entry:
+    vuln:
+      state: absent
+      context:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)
+    fixed:
+      state: present
+      anchor:
+        file: dhcpv4/nclient4/conn_unix.go
+        start_line: 92
+        end_line: 92
+        expression: n, _, err := upc.PacketConn.ReadFrom(pkt)

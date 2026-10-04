@@ -1,0 +1,573 @@
+# Scorer-only truth for sets/current.yaml (§14). Never shown to a verifier.
+set: current
+truth:
+  b01:
+    name: f3-b
+    label: true
+  b02:
+    name: a2-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: a2-b
+    reason: line 99 comes before the definition at 101
+    skipped_true:
+    - jwt.py:102 dot_count and s.count
+  b03:
+    name: k1-h-reversed
+    label: false
+    kind: reversed
+    of: k1-h
+    reason: the literal at 211 does not read `copyHeaderRoutes`
+  b04:
+    name: f3-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f3-h
+    reason: '`fname` is argument 1, bound to `path`'
+  b05:
+    name: a2-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: a2-h
+    reason: line 99 comes before the definition at 101
+    skipped_true:
+    - jwt.py:102 dot_count and s.count
+  b06:
+    name: f1-b-shift-down
+    label: false
+    kind: shift
+    of: f1-b
+    reason: the loop ranges over `filenames`, not these
+  b07:
+    name: f3-h-shift-up
+    label: false
+    kind: shift
+    of: f3-h
+    reason: '`d` is argument 0, bound to `d`'
+  b08:
+    name: k2-h-reversed
+    label: false
+    kind: reversed
+    of: k2-h
+    reason: a definition is not a field store
+  b09:
+    name: f1-b-shift-up
+    label: false
+    kind: shift
+    of: f1-b
+    reason: the loop ranges over `filenames`, not `w`
+  b10:
+    name: k2-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: k2-h
+    reason: the store at 132 puts dispenser.Val() into Rewrite.URI
+  b11:
+    name: k2-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: k2-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  b12:
+    name: a1-h-shift-up
+    label: false
+    kind: shift
+    of: a1-h
+    reason: '`s = to_bytes(s)` does not read `self`'
+  b13:
+    name: f2-h
+    label: true
+  b14:
+    name: f4-b
+    label: true
+  b15:
+    name: f3-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f3-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  b16:
+    name: f3-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f3-b
+    reason: '`fname` is argument 1, bound to `path`'
+  b17:
+    name: a1-b-reversed
+    label: false
+    kind: reversed
+    of: a1-b
+    reason: a parameter is not a definition or a call
+  b18:
+    name: f2-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f2-b
+    reason: the argument `commonDir` does not read `fname`
+  b19:
+    name: f4-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f4-b
+    reason: the argument `commonPath` does not read `path`
+    skipped_true:
+    - raw.go:125 argument path
+    note_up: 'every candidate above (113, 117) reads `path`: no false candidate'
+  b20:
+    name: f2-b-reversed
+    label: false
+    kind: reversed
+    of: f2-b
+    reason: a call argument does not define a value
+  b21:
+    name: a2-h-shift-down
+    label: false
+    kind: shift
+    of: a2-h
+    reason: the call's arguments do not read `dot_count`
+  b22:
+    name: k1-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: k1-b
+    reason: the store at 131 puts dispenser.Val() into Rewrite.URI
+  b23:
+    name: f1-b
+    label: true
+  b24:
+    name: f3-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f3-b
+    reason: '`fname` is argument 1, bound to `path`'
+  b25:
+    name: k1-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: k1-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  b26:
+    name: k1-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: k1-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  b27:
+    name: f2-h-reversed
+    label: false
+    kind: reversed
+    of: f2-h
+    reason: a call argument does not define a value
+  b28:
+    name: f2-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f2-h
+    reason: the argument `d` does not read `fname`
+  b29:
+    name: k1-h-shift-up
+    label: false
+    kind: shift
+    of: k1-h
+    reason: the right-hand side at 218 does not read `to` (only the literal at 211 does)
+    skipped_true:
+    - caddyfile.go:210 placeholderName (read at 221)
+  b30:
+    name: f2-b-shift-up
+    label: false
+    kind: shift
+    of: f2-b
+    reason: the argument `fname` does not read `commonDir`
+  b31:
+    name: a1-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: a1-h
+    reason: line 102 reads `s` as redefined at 101, not the parameter
+  b32:
+    name: f2-h-shift-down
+    label: false
+    kind: shift
+    of: f2-h
+    reason: the argument `fname` does not read `archiveFiles` or `err`
+  b33:
+    name: k1-h
+    label: true
+  b34:
+    name: a2-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: a2-b
+    reason: the call reads a literal only
+    skipped_true:
+    - jwt.py:104 data
+    - jwt.py:106 data and the JWE call
+  b35:
+    name: k1-h-shift-down
+    label: false
+    kind: shift
+    of: k1-h
+    reason: 218 does not read `err`
+  b36:
+    name: k1-b
+    label: true
+  b37:
+    name: f2-h-shift-up
+    label: false
+    kind: shift
+    of: f2-h
+    reason: the argument `fname` does not read `commonDir`
+  b38:
+    name: k2-h-shift-down
+    label: false
+    kind: shift
+    of: k2-h
+    reason: rpHandler is not stored into goodResponseHandler.Routes
+  b39:
+    name: f1-h
+    label: true
+  b40:
+    name: a2-b-shift-down
+    label: false
+    kind: shift
+    of: a2-b
+    reason: the call's arguments do not read `dot_count`
+  b41:
+    name: f1-b-reversed
+    label: false
+    kind: reversed
+    of: f1-b
+    reason: a range value variable does not define the collection
+  b42:
+    name: f1-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f1-h
+    reason: that loop (in getFiles) ranges over `names`
+  b43:
+    name: f2-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f2-b
+    reason: the argument `d` does not read `fname`
+  b44:
+    name: a2-b-shift-up
+    label: false
+    kind: shift
+    of: a2-b
+    reason: the call does not read `claims_cls`
+    skipped_true:
+    - jwt.py:99 load_key
+    - jwt.py:97 load_key
+  b45:
+    name: f1-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f1-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  b46:
+    name: k1-b-reversed
+    label: false
+    kind: reversed
+    of: k1-b
+    reason: a definition is not a field store
+  b47:
+    name: a2-h-reversed
+    label: false
+    kind: reversed
+    of: a2-h
+    reason: a call does not define a value
+  b48:
+    name: k1-b-shift-up
+    label: false
+    kind: shift
+    of: k1-b
+    reason: goodResponseHandler is the container at 198, not a stored value
+  b49:
+    name: k2-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: k2-h
+    reason: copyHeaderRoutes reaches HandleResponse only through the earlier store at 233
+  b50:
+    name: f3-b-shift-up
+    label: false
+    kind: shift
+    of: f3-b
+    reason: '`d` is argument 0, bound to `d`'
+  b51:
+    name: f3-h
+    label: true
+  b52:
+    name: f2-b-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f2-b
+    expect: anchor_rejected
+    reason: the spans hold different code at head
+  b53:
+    name: a1-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: a1-b
+    reason: line 102 reads `s` as redefined at 101, not the parameter
+  b54:
+    name: a1-h
+    label: true
+  b55:
+    name: f3-h-reversed
+    label: false
+    kind: reversed
+    of: f3-h
+    reason: a parameter is not a call argument
+  b56:
+    name: f1-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f1-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  b57:
+    name: k1-b-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: k1-b
+    reason: handler reaches HandleResponse only through the earlier store at 198
+  b58:
+    name: a2-h-shift-up
+    label: false
+    kind: shift
+    of: a2-h
+    reason: the call does not read `claims_cls`
+    skipped_true:
+    - jwt.py:99 load_key
+    - jwt.py:97 load_key
+  b59:
+    name: k2-h
+    label: true
+  b60:
+    name: f1-h-reversed
+    label: false
+    kind: reversed
+    of: f1-h
+    reason: a range value variable does not define the collection
+  b61:
+    name: f4-b-shift-down
+    label: false
+    kind: shift
+    of: f4-b
+    reason: line 125 does not read `info` or `err`
+    skipped_true:
+    - raw.go:112 commonPath
+  b62:
+    name: f2-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f2-h
+    reason: the argument `commonDir` does not read `fname`
+  b63:
+    name: f4-h-reversed
+    label: false
+    kind: reversed
+    of: f4-h
+    reason: a parameter is not a definition or a call argument
+  b64:
+    name: a2-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: a2-h
+    reason: the call reads a literal only
+    skipped_true:
+    - jwt.py:104 data
+    - jwt.py:106 data and the JWE call
+  b65:
+    name: f2-b-shift-down
+    label: false
+    kind: shift
+    of: f2-b
+    reason: the argument `fname` does not read `archiveFiles` or `err`
+  b66:
+    name: a1-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: a1-b
+    reason: line 99 reads `key`, not `s`
+  b67:
+    name: f4-b-reversed
+    label: false
+    kind: reversed
+    of: f4-b
+    reason: a parameter is not a definition or a call argument
+  b68:
+    name: f3-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f3-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  b69:
+    name: k2-h-shift-up
+    label: false
+    kind: shift
+    of: k2-h
+    reason: '`handler` reaches the stored `copyHeaderRoutes...` only through the slice built at 218: not by local value flow,
+      not a direct part'
+  b70:
+    name: f2-b
+    label: true
+  b71:
+    name: f2-h-wrong-revision
+    label: false
+    kind: wrong_revision
+    of: f2-h
+    expect: anchor_rejected
+    reason: the spans hold different code at base
+  b72:
+    name: f3-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f3-h
+    reason: '`fname` is argument 1, bound to `path`'
+  b73:
+    name: k1-b-shift-down
+    label: false
+    kind: shift
+    of: k1-b
+    reason: rpHandler is not stored into goodResponseHandler.Routes
+  b74:
+    name: f1-b-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: f1-b
+    reason: that loop (in getFiles) ranges over `names`
+  b75:
+    name: a2-b-reversed
+    label: false
+    kind: reversed
+    of: a2-b
+    reason: a call does not define a value
+  b76:
+    name: f4-h-shift-up
+    label: false
+    kind: shift
+    of: f4-h
+    reason: line 125 does not read `d`
+  b77:
+    name: a1-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: a1-h
+    reason: line 99 reads `key`, not `s`
+  b78:
+    name: a1-h-shift-down
+    label: false
+    kind: shift
+    of: a1-h
+    reason: '`s = to_bytes(s)` does not read `key`'
+  b79:
+    name: f1-h-shift-up
+    label: false
+    kind: shift
+    of: f1-h
+    reason: the loop ranges over `filenames`, not `w`
+  b80:
+    name: f3-h-shift-down
+    label: false
+    kind: shift
+    of: f3-h
+    reason: '`commonDir` is argument 2, bound to `commonPath`'
+  b81:
+    name: a1-b-shift-up
+    label: false
+    kind: shift
+    of: a1-b
+    reason: '`s = to_bytes(s)` does not read `self`'
+  b82:
+    name: a2-b
+    label: true
+  b83:
+    name: f3-b-shift-down
+    label: false
+    kind: shift
+    of: f3-b
+    reason: '`commonDir` is argument 2, bound to `commonPath`'
+  b84:
+    name: f4-h-shift-down
+    label: false
+    kind: shift
+    of: f4-h
+    reason: line 125 does not read `info` or `err`
+    skipped_true:
+    - raw.go:112 commonPath
+  b85:
+    name: f1-h-shift-down
+    label: false
+    kind: shift
+    of: f1-h
+    reason: the loop ranges over `filenames`, not these
+  b86:
+    name: k1-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: k1-h
+    reason: the argument `copyHeaderRoutes` does not read `handler`
+  b87:
+    name: a1-h-reversed
+    label: false
+    kind: reversed
+    of: a1-h
+    reason: a parameter is not a definition or a call
+  b88:
+    name: f4-h-wrong-target-down
+    label: false
+    kind: wrong_target
+    of: f4-h
+    reason: the argument `commonPath` does not read `path`
+    skipped_true:
+    - raw.go:125 argument path
+    note_up: 'every candidate above (113, 117) reads `path`: no false candidate'
+  b89:
+    name: f3-b-reversed
+    label: false
+    kind: reversed
+    of: f3-b
+    reason: a parameter is not a call argument
+  b90:
+    name: f4-h
+    label: true
+  b91:
+    name: a2-h
+    label: true
+  b92:
+    name: f4-b-shift-up
+    label: false
+    kind: shift
+    of: f4-b
+    reason: line 125 does not read `d`
+  b93:
+    name: a1-b
+    label: true
+  b94:
+    name: k1-h-wrong-target-up
+    label: false
+    kind: wrong_target
+    of: k1-h
+    reason: the argument `from` at 210 does not read `handler`
+  b95:
+    name: a1-b-shift-down
+    label: false
+    kind: shift
+    of: a1-b
+    reason: '`s = to_bytes(s)` does not read `key`'
+dropped_before_freeze:
+  a1-b-wrong-revision: duplicate of a1-h (identical code at both revisions)
+  a2-b-wrong-revision: duplicate of a2-h (identical code at both revisions)
+  a1-h-wrong-revision: duplicate of a1-b (identical code at both revisions)
+  a2-h-wrong-revision: duplicate of a2-b (identical code at both revisions)
+  f4-b-wrong-revision: duplicate of f4-h (identical code at both revisions)
+  f4-h-wrong-revision: duplicate of f4-b (identical code at both revisions)

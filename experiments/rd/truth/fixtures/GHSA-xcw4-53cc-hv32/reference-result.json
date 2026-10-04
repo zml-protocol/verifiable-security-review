@@ -1,0 +1,83 @@
+{
+  "schema": "rd-reference-result/v1",
+  "fixture": "GHSA-xcw4-53cc-hv32",
+  "task_id": "task-05",
+  "disposition": "PROVIDER_BLIND",
+  "revisions": [
+    {
+      "canonical_revision": "vuln",
+      "outward_revision": "revision_A",
+      "chain_required": false,
+      "semantic_chain_complete": null,
+      "reason": "The frozen behavior slot is absent in the vulnerable revision.",
+      "hops": []
+    },
+    {
+      "canonical_revision": "fixed",
+      "outward_revision": "revision_B",
+      "chain_required": true,
+      "semantic_chain_complete": true,
+      "reason": "The Authorization definition flows into the _validate_jwt call, whose statically resolved method body contains the frozen invalid-signature behavior. The frozen Python typed-attribute relation covers a.b.m(...) calls, not a direct self.m(...) call, so that method-body link is outside the verifier vocabulary.\n",
+      "hops": [
+        {
+          "hop": {
+            "revision": "revision_B",
+            "relation": "def_use",
+            "from": {
+              "file": "mnemosyne/core/sync_server.py",
+              "start_line": 154,
+              "end_line": 154,
+              "expression": "auth = self.headers.get(\"Authorization\", \"\")"
+            },
+            "to": {
+              "file": "mnemosyne/core/sync_server.py",
+              "start_line": 160,
+              "end_line": 160,
+              "expression": "self._validate_jwt(auth[7:])"
+            }
+          },
+          "state": "VERIFIED"
+        },
+        {
+          "hop": {
+            "revision": "revision_B",
+            "relation": "unsupported",
+            "from": {
+              "file": "mnemosyne/core/sync_server.py",
+              "start_line": 160,
+              "end_line": 160,
+              "expression": "self._validate_jwt(auth[7:])"
+            },
+            "to": {
+              "file": "mnemosyne/core/sync_server.py",
+              "start_line": 121,
+              "end_line": 121,
+              "expression": "if not valid_signature:"
+            }
+          },
+          "state": "UNSUPPORTED"
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "revisions": {
+      "revision_A": {
+        "class": "NOT_APPLICABLE",
+        "verified_edges": 0,
+        "harness_mismatches": []
+      },
+      "revision_B": {
+        "class": "INTERNAL_GAP",
+        "length": null,
+        "verified_edges": 1,
+        "entry_node_candidates": 1,
+        "terminal_node_candidates": 1,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      }
+    },
+    "full_chain": false,
+    "harness_mismatches": []
+  }
+}

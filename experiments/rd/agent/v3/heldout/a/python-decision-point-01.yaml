@@ -1,0 +1,62 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-decision-point-01",
+  "language": "python",
+  "cell": "decision_point",
+  "package": "granite_pass",
+  "effect_claim": "Whether a submitted passcode is admitted by the registry check.",
+  "files": {
+    "revision_A": {
+      "granite_pass.py": "def admit(payload, registry):\n    passcode = payload[\"passcode\"]\n    matches = passcode in registry\n    return \"admitted\" if matches else \"refused\"\n"
+    },
+    "revision_B": {
+      "granite_pass.py": "def admit(payload, registry):\n    passcode = payload[\"passcode\"]\n    matches = passcode.startswith(\"Q-\") and passcode in registry\n    return \"admitted\" if matches else \"refused\"\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "granite_pass.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "passcode = payload[\"passcode\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "granite_pass.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "passcode = payload[\"passcode\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "granite_pass.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "return \"admitted\" if matches else \"refused\""
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "granite_pass.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "return \"admitted\" if matches else \"refused\""
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "computed_value"
+  ],
+  "forbidden_anchors": []
+}

@@ -1,0 +1,34 @@
+schema: rd-v3-a-heldout-spec/v1
+instances: 20
+languages: [go, python]
+cases_per_language_cell: 2
+cells:
+  claim_specific_entry:
+    required: first claim-specific repository value, not an upstream container or later derivative
+    lure: upstream request/container, declaration field, or later normalized value
+  decision_point:
+    required: statement that permits or refuses the security-relevant effect
+    lure: comparison result, boolean computation, or sink argument alone
+  changed_present_both:
+    required: changed statement encoded present in both revisions with revision-specific anchors
+    lure: vulnerable-side absent/context encoding for a statement that exists there
+  absent_context:
+    required: absent realization names the exact controlled or supplied context statement
+    lure: invented anchor, nearby statement, or nonexistent present realization
+  statement_granularity:
+    required: exact complete statement
+    lure: subexpression, parameter/declaration field, or enclosing function
+instance_requirements:
+  - syntactically valid two-revision program
+  - exactly one primary cell
+  - at least one plausible forbidden-choice lure
+  - exact entry and behavior truth fixed before execution
+  - no v2 fixture identifiers, paths, literals, or code shapes
+  - no CWE/advisory/commit/canonical-revision labels
+  - distinct identifiers, effect, and primary syntax shape from development in the same cell
+gate:
+  exact_entry_and_behavior_minimum: 16
+  per_language_cell_minimum: 1
+  forbidden_granularity_errors_maximum: 0
+  changed_present_encoded_absent_maximum: 0
+  harness_invariant_failures_maximum: 0

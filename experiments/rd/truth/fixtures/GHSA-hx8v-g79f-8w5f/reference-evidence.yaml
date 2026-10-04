@@ -1,0 +1,19 @@
+schema: rd-reference-evidence/v1
+fixture: GHSA-hx8v-g79f-8w5f
+revisions:
+  vuln:
+    chain_required: true
+    semantic_chain_complete: false
+    reason: >
+      The frozen behavior assignment is evaluated by request safety validation before routing;
+      the frozen entry extracts user_config later inside _route_user_config_request. Therefore no
+      forward semantic entry-to-behavior chain exists under the §15.5 direction, independently of
+      provider coverage.
+    hops: []
+  fixed:
+    chain_required: true
+    semantic_chain_complete: false
+    reason: >
+      The same ordering holds after the fix: is_request_body_safe consumes request_data before
+      _route_user_config_request later executes data.pop("user_config").
+    hops: []

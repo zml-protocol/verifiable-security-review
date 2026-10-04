@@ -1,0 +1,25 @@
+schema: rd-v3-selection-seed-spec/v1
+snapshot: reuse_frozen_rd_osv_snapshot
+target:
+  go: 3
+  python: 3
+reserves:
+  go: 3
+  python: 3
+nonce:
+  supplier: non_implementing_user_or_operator
+  bytes: 32
+  encoding: lowercase_hex
+  reveal: after_treatment_freeze_and_synthetic_gate_pass
+  retries: 0
+  attestation: not_chosen_by_comparing_candidate_orders
+derivation:
+  algorithm: sha256
+  framing: '"rd-v3-selection\0" || treatment_freeze_sha256 || "\0" || nonce_bytes'
+  integer: unsigned_big_endian
+rules:
+  - materialize and commit the queue before manual review
+  - bind nonce, attestation, treatment freeze, exclusions, queue, and selection script hashes
+  - no new snapshot or expanded time window
+  - reserve exhaustion reduces N without backfill
+  - reference disposition never consumes a reserve

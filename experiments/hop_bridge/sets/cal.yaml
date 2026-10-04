@@ -1,0 +1,435 @@
+set: cal
+fixtures:
+  bridgecal-go:
+    language: go
+    repo: .cache/fixtures/bridgecal-go
+    db_build: go build ./...
+    commits:
+      base: 5972c62b7716412094f530e5189b8cde99435e91
+  bridgecal-py:
+    language: python
+    repo: .cache/fixtures/bridgecal-py
+    db_build: null
+    commits:
+      base: 1ef141d1f99f2903d043cafbdb3eb8c1176fe588
+hops:
+- id: c01
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 18
+    end_line: 18
+    expression: body = decode_text(request)
+  to:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.store.save(user, body)
+- id: c02
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 32
+    end_line: 32
+    expression: request, user
+  to:
+    file: cal.py
+    start_line: 33
+    end_line: 33
+    expression: self.store.save(name=user, payload=request)
+- id: c03
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: norm := normalize(n)
+  to:
+    file: cal.go
+    start_line: 34
+    end_line: 34
+    expression: kind, norm
+- id: c04
+  fixture: bridgecal-go
+  revision: base
+  relation: range_element
+  from:
+    file: cal.go
+    start_line: 29
+    end_line: 29
+    expression: names []string
+  to:
+    file: cal.go
+    start_line: 32
+    end_line: 32
+    expression: n := range list
+- id: c05
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 17
+    end_line: 17
+    expression: 'user):'
+  to:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.store.save(user, body)
+- id: c06
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.store.save(user, body)
+  to:
+    file: cal.py
+    start_line: 19
+    end_line: 19
+    expression: body = body.strip()
+- id: c07
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 34
+    end_line: 34
+    expression: norm)
+  to:
+    file: cal.go
+    start_line: 22
+    end_line: 22
+    expression: value string
+- id: c08
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 46
+    end_line: 46
+    expression: b)
+  to:
+    file: cal.go
+    start_line: 27
+    end_line: 27
+    expression: b string
+- id: c09
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 50
+    end_line: 50
+    expression: w := v
+  to:
+    file: cal.go
+    start_line: 53
+    end_line: 53
+    expression: w)
+- id: c10
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 20
+    end_line: 20
+    expression: s string
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: n)
+- id: c11
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 60
+    end_line: 60
+    expression: v)
+  to:
+    file: cal.go
+    start_line: 59
+    end_line: 59
+    expression: s string
+- id: c12
+  fixture: bridgecal-go
+  revision: base
+  relation: range_element
+  from:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: list := names
+  to:
+    file: cal.go
+    start_line: 39
+    end_line: 39
+    expression: f := range fixed
+- id: c13
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 34
+    end_line: 34
+    expression: norm)
+  to:
+    file: cal.go
+    start_line: 22
+    end_line: 22
+    expression: kind string
+- id: c14
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 17
+    end_line: 17
+    expression: request, user
+  to:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: saved = self.store.save(user, body)
+- id: c15
+  fixture: bridgecal-go
+  revision: base
+  relation: range_element
+  from:
+    file: cal.go
+    start_line: 38
+    end_line: 38
+    expression: fixed := []string{"z"}
+  to:
+    file: cal.go
+    start_line: 32
+    end_line: 32
+    expression: n := range list
+- id: c16
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 19
+    end_line: 19
+    expression: body = body.strip()
+  to:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.store.save(user, body)
+- id: c17
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 52
+    end_line: 52
+    expression: w := "short"
+  to:
+    file: cal.go
+    start_line: 53
+    end_line: 53
+    expression: w)
+- id: c18
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 27
+    end_line: 27
+    expression: request, user
+  to:
+    file: cal.py
+    start_line: 30
+    end_line: 30
+    expression: self.store.save(user, inner("x"))
+- id: c19
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 17
+    end_line: 17
+    expression: request, user
+  to:
+    file: cal.py
+    start_line: 18
+    end_line: 18
+    expression: body = decode_text(request)
+- id: c20
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 40
+    end_line: 40
+    expression: f)
+  to:
+    file: cal.go
+    start_line: 18
+    end_line: 18
+    expression: k string
+- id: c21
+  fixture: bridgecal-go
+  revision: base
+  relation: range_element
+  from:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: list := names
+  to:
+    file: cal.go
+    start_line: 32
+    end_line: 32
+    expression: idx, n := range list
+- id: c22
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 18
+    end_line: 18
+    expression: body = decode_text(request)
+  to:
+    file: cal.py
+    start_line: 19
+    end_line: 19
+    expression: body = body.strip()
+- id: c23
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: norm := normalize(n)
+  to:
+    file: cal.go
+    start_line: 34
+    end_line: 34
+    expression: norm)
+- id: c24
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 46
+    end_line: 46
+    expression: a, b)
+  to:
+    file: cal.go
+    start_line: 27
+    end_line: 27
+    expression: b string
+- id: c25
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 49
+    end_line: 49
+    expression: v string
+  to:
+    file: cal.go
+    start_line: 50
+    end_line: 50
+    expression: w := v
+- id: c26
+  fixture: bridgecal-go
+  revision: base
+  relation: argument_binding
+  from:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: n)
+  to:
+    file: cal.go
+    start_line: 20
+    end_line: 20
+    expression: s string
+- id: c27
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 50
+    end_line: 50
+    expression: w := v
+  to:
+    file: cal.go
+    start_line: 55
+    end_line: 55
+    expression: w)
+- id: c28
+  fixture: bridgecal-py
+  revision: base
+  relation: def_use
+  from:
+    file: cal.py
+    start_line: 23
+    end_line: 23
+    expression: request, user
+  to:
+    file: cal.py
+    start_line: 25
+    end_line: 25
+    expression: self.store.save(user, request)
+- id: c29
+  fixture: bridgecal-go
+  revision: base
+  relation: range_element
+  from:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: list := names
+  to:
+    file: cal.go
+    start_line: 32
+    end_line: 32
+    expression: n := range list
+- id: c30
+  fixture: bridgecal-go
+  revision: base
+  relation: def_use
+  from:
+    file: cal.go
+    start_line: 32
+    end_line: 32
+    expression: n := range list
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: n)

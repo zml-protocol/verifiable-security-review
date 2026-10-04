@@ -1,0 +1,25 @@
+schema: rd-negative-control-result/v1
+fixture: GHSA-xcw4-53cc-hv32
+prompt_sha256: c81746ab17b4ed32dca04816687e665946b0ea38b549ee6d53b1834e5342e2e1
+candidates:
+  - id: candidate-01
+    cwe: 22
+    author: {vuln: SUPPORTED, fixed: SUPPORTED}
+    judge_a: {vuln: SUPPORTED, fixed: SUPPORTED}
+    judge_b: {vuln: SUPPORTED, fixed: SUPPORTED}
+    qualifies: false
+  - id: candidate-02
+    cwe: 79
+    author: {vuln: SUPPORTED, fixed: SUPPORTED}
+    judge_a: {vuln: SUPPORTED, fixed: SUPPORTED}
+    judge_b: {vuln: SUPPORTED, fixed: SUPPORTED}
+    qualifies: false
+  - id: candidate-03
+    cwe: 89
+    author: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+    judge_a: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+    judge_b: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+    qualifies: false
+selection_rule: first qualifying candidate in frozen order
+selected: null
+

@@ -1,0 +1,63 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-decision-point-02",
+  "language": "python",
+  "cell": "decision_point",
+  "package": "teal_dispatch",
+  "effect_claim": "Whether a supplied callback address is released to the delivery outbox.",
+  "files": {
+    "revision_A": {
+      "teal_dispatch.py": "def deliver(message, outbox):\n    callback_url = message[\"callback\"]\n    delivery_mode = classify(callback_url)\n    if delivery_mode == \"external\": outbox.append(callback_url)\n\n\ndef classify(value):\n    return \"external\" if value.startswith(\"https:\") else \"local\"\n"
+    },
+    "revision_B": {
+      "teal_dispatch.py": "def deliver(message, outbox):\n    callback_url = message[\"callback\"]\n    delivery_mode = classify(callback_url)\n    if delivery_mode == \"approved\": outbox.append(callback_url)\n\n\ndef classify(value):\n    return \"approved\" if value.endswith(\".relay\") else \"local\"\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "teal_dispatch.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "callback_url = message[\"callback\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "teal_dispatch.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "callback_url = message[\"callback\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "teal_dispatch.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "if delivery_mode == \"external\": outbox.append(callback_url)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "teal_dispatch.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "if delivery_mode == \"approved\": outbox.append(callback_url)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "computed_value",
+    "sink_argument"
+  ],
+  "forbidden_anchors": []
+}

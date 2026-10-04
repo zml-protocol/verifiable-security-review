@@ -1,0 +1,86 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-statement-granularity-02",
+  "language": "python",
+  "cell": "statement_granularity",
+  "package": "umber_session",
+  "effect_claim": "Whether a supplied session key opens the locker used to write a payload.",
+  "files": {
+    "revision_A": {
+      "umber_session.py": "def write_blob(command, locker):\n    session_key = command[\"session_key\"]\n    payload = command[\"payload\"]\n    with locker.open(session_key) as handle: handle.write(payload)\n"
+    },
+    "revision_B": {
+      "umber_session.py": "def write_blob(command, locker):\n    session_key = command[\"session_key\"]\n    payload = command[\"payload\"]\n    with locker.open(session_key) as handle: handle.write(payload)\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "umber_session.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "session_key = command[\"session_key\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "umber_session.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "session_key = command[\"session_key\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "umber_session.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "with locker.open(session_key) as handle: handle.write(payload)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "umber_session.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "with locker.open(session_key) as handle: handle.write(payload)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression",
+    "enclosing_function"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "subexpression",
+      "kind": "behavior",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "umber_session.py",
+        "start_line": 4,
+        "end_line": 4,
+        "expression": "locker.open(session_key)"
+      }
+    },
+    {
+      "family": "enclosing_function",
+      "kind": "behavior",
+      "revision": "revision_B",
+      "anchor": {
+        "file": "umber_session.py",
+        "start_line": 1,
+        "end_line": 1,
+        "expression": "def write_blob(command, locker):"
+      }
+    }
+  ]
+}

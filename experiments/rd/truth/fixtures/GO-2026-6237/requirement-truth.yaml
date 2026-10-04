@@ -1,0 +1,48 @@
+# Requirement truth (A) — GO-2026-6237 (insomniacslk/dhcp)
+# Author-side only; never agent-facing. Canonical vuln/fixed slot keys; anchors
+# {file,start_line,end_line,expression}. Scored items adjudicated by two fresh judges (§15.1).
+fixture: GO-2026-6237
+truth_meta:
+  language: go
+  canonical_revisions:
+    vuln:  {role: parent, commit: a415979eb11e6d3ac6a8949f9e45d7a29f0279af}
+    fixed: {role: fix,    commit: c76316d4aa825673b208730779843d0711021e81}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in package nclient4, attacker-controlled input (a crafted UDP/IPv4 frame whose declared IP payload
+  length is smaller than a UDP header) may lead to an out-of-bounds slice with a negative length,
+  causing a reachable runtime panic (denial of service) while reading from BroadcastRawUDPConn.
+domain: >
+  The attacker controls the bytes delivered to the raw packet connection (the received frame). Every
+  other state may take any value the code allows.
+
+items:
+  - id: entry-raw-frame-read
+    kind: entry
+    author_expected: REQUIRED
+    # EN: the attacker-controlled frame first becomes a program value where ReadFrom reads it off the
+    # raw packet connection into `pkt`. Present (unchanged) on both revisions.
+    entry:
+      vuln:  {state: present, anchor: {file: dhcpv4/nclient4/conn_unix.go, start_line: 92, end_line: 92, expression: "n, _, err := upc.PacketConn.ReadFrom(pkt)"}}
+      fixed: {state: present, anchor: {file: dhcpv4/nclient4/conn_unix.go, start_line: 92, end_line: 92, expression: "n, _, err := upc.PacketConn.ReadFrom(pkt)"}}
+
+  - id: behavior-ip-payload-length-guard
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1/BE-3: the fix adds a length check on the path; among the changed checks the one that
+    # directly decides whether the negative-length panic occurs for the short-payload trigger is
+    # `if ipPayloadLen < udpHdrLen { continue }` (it keeps dhcpLen non-negative). fixed present = that
+    # guard; vuln absent, context (AC-3 diff-aligned) = the statement right after the insertion point,
+    # `if !buf.Has(udpHdrLen) {`.
+    behavior:
+      vuln:  {state: absent,  context: {file: dhcpv4/nclient4/conn_unix.go, start_line: 114, end_line: 114, expression: "if !buf.Has(udpHdrLen) {"}}
+      fixed: {state: present, anchor:  {file: dhcpv4/nclient4/conn_unix.go, start_line: 118, end_line: 118, expression: "if ipPayloadLen < udpHdrLen {"}}
+
+non_scored_notes:
+  secondary_buffer_check:
+    change: "the fix also adds `if !buf.Has(dhcpLen) { continue }` before buf.Consume(dhcpLen) and rebinds dhcpLen to the validated ipPayloadLen"
+    disposition: >
+      Per BE-3 the claim's behavior is the `ipPayloadLen < udpHdrLen` guard (the changed check that
+      directly decides the negative-length panic for the short-payload trigger). The additional
+      `buf.Has(dhcpLen)` check guards a different condition (buffer underflow when dhcpLen is
+      non-negative) and is not the behavior for this claim; recorded as a fact, not a scored item.

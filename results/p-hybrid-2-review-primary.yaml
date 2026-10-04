@@ -1,0 +1,46 @@
+# P-Hybrid-2 blind review, PRIMARY by the §11.6 fallback: model-blind adjudication, not human
+# review. No independent human reviewer was available (stated by the operator, 2026-09-30),
+# so this fresh-conversation model review, obtained as the secondary, is the primary; there is
+# no secondary. The operator confirms it ran in a ChatGPT Temporary Chat or with memory off.
+# The reviewer's reply,
+# pasted by the user on 2026-09-30. Intake changes, syntax only, no label or note changed:
+# - labels quoted (bare TRUE/FALSE are YAML booleans, which propose_score.load_review rejects);
+# - the date quoted (a bare YAML date loads as datetime.date, which the scorer cannot write to JSON);
+# - the inner quotes of a citation marker left in R001's note escaped.
+reviewer: {type: model, name: "GPT-5.6 Sol, new conversation", date: "2026-09-30", attestation: {independent: true, saw_arms: false, saw_verdicts: false}}
+labels:
+  R001: {label: "TRUE", note: "handler is a local definition and is passed into JSONModuleObject inside the HandlersRaw field expression, so its value reaches that keyed field. :chatgpt-content-reference{index=\"0\"}"}
+  R002: {label: "TRUE", note: "The compiled response-handler route can dispatch to the headers handler whose ServeHTTP calls ApplyToRequest; this runtime/framework link is not one of the defined structural relations."}
+  R003: {label: "TRUE", note: "Appending goodResponseHandler installs the response route containing the headers handler, which can later execute the shown request-header logic."}
+  R004: {label: "TRUE", note: "headersToCopy is the map subsequently ranged over to supply from and to to handler.Request.Set.Set; this link is not covered by the defined structural relations."}
+  R005: {label: "TRUE", note: "MatcherSetsRaw guards the route containing the headers handler, so it is runtime control for whether the shown headers ServeHTTP logic runs."}
+  R006: {label: "FALSE", note: "MatcherSetsRaw is inside a Route literal appended to copyHeaderRoutes, not inside the literal that initialized the local variable whose field is later stored."}
+  R007: {label: "TRUE", note: "Match is inside the literal initializing goodResponseHandler, and the later assignment stores to goodResponseHandler.Routes using that same local definition."}
+  R008: {label: "TRUE", note: "Appending goodResponseHandler makes its Routes available to the reverse-proxy response handling that later compiles and serves rh.Routes."}
+  R009: {label: "TRUE", note: "The FileInfo appended inside getFiles is returned through the archiveFiles result, accumulated into allFiles by the caller, and ultimately supplied to Archive; this interprocedural link is unsupported by the named structural relations."}
+  R010: {label: "TRUE", note: "The appended response handler contains the serialized headers handler that can later run ApplyToRequest."}
+  R011: {label: "TRUE", note: "The head revision likewise appends a response handler whose routes contain headers handlers that can execute ApplyToRequest."}
+  R012: {label: "TRUE", note: "placeholderName is used inside the expression constructing the Set field, so the locally defined value reaches that keyed struct field."}
+  R013: {label: "TRUE", note: "handler is a direct call argument inside the Route value appended into goodResponseHandler.Routes, satisfying the one-step composition rule."}
+  R014: {label: "TRUE", note: "allFiles is updated by appending archiveFiles and the resulting local is later passed directly to archiver.Archive."}
+  R015: {label: "TRUE", note: "The FileInfo appended by getFiles flows through the function result and caller accumulation into allFiles, which is then passed to Archive."}
+  R016: {label: "FALSE", note: "The Route first enters copyHeaderRoutes and only later reaches goodResponseHandler.Routes through that earlier store; the definition explicitly excludes such multi-step composition."}
+  R017: {label: "TRUE", note: "The caller invokes getFiles, and nameInArchive is computed inside that called function; this ordinary call edge is not one of the defined relations."}
+  R018: {label: "TRUE", note: "The transformed nameInArchive local is used directly as the NameInArchive keyed field value."}
+  R019: {label: "TRUE", note: "The getFiles call reaches code in that function that applies strings.ReplaceAll to nameInArchive."}
+  R020: {label: "TRUE", note: "The updated allFiles local is later passed directly as the third argument to archiver.Archive."}
+  R021: {label: "TRUE", note: "The shown loop invokes getFiles, whose body computes nameInArchive; this is an interprocedural call link outside the named relations."}
+  R022: {label: "TRUE", note: "The locally defined to value is used as a key within the http.Header expression assigned to the Set field, so it reaches that field expression."}
+  R023: {label: "TRUE", note: "MatcherSetsRaw controls selection of the route containing the headers handler, giving a runtime guard link to ApplyToRequest."}
+  R024: {label: "TRUE", note: "goodResponseHandler is directly appended as a value into rpHandler.HandleResponse, so the defined object is composed into that field in one step."}
+  R025: {label: "TRUE", note: "Match belongs to the literal initializing goodResponseHandler, and the later field store updates Routes on that same local object."}
+  R026: {label: "TRUE", note: "goodResponseHandler is the direct appended argument stored in rpHandler.HandleResponse, satisfying object_composition."}
+  R027: {label: "TRUE", note: "Objects accumulated in getFiles' archiveFiles result are returned to the caller and then appended into allFiles; this return-flow link is outside the named relations."}
+  R028: {label: "TRUE", note: "Serving compiled response routes can invoke the configured headers handler, whose ServeHTTP executes ApplyToRequest."}
+  R029: {label: "TRUE", note: "Appending goodResponseHandler installs routes that the reverse-proxy response path later compiles and serves."}
+  R030: {label: "FALSE", note: "This link is already described by field_flow: the local handler value reaches the HandlersRaw keyed field through JSONModuleObject, so it is not unsupported."}
+  R031: {label: "TRUE", note: "The appended goodResponseHandler contains routes whose serialized headers handlers can execute the shown Request check and ApplyToRequest call."}
+  R032: {label: "TRUE", note: "MatcherSetsRaw is the route condition governing the sibling HandlersRaw route content; that runtime guard relationship is not captured by the defined structural relations."}
+  R033: {label: "FALSE", note: "handler first becomes part of a Route stored in copyHeaderRoutes and reaches goodResponseHandler.Routes only through that earlier store, which the one-step rule excludes."}
+  R034: {label: "TRUE", note: "FileInfo values accumulated into getFiles' archiveFiles result are returned and then appended to the caller's allFiles slice."}
+  R035: {label: "TRUE", note: "The final sanitized nameInArchive value is used directly for the NameInArchive keyed field."}

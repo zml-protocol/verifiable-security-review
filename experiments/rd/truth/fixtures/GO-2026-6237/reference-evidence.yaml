@@ -1,0 +1,24 @@
+schema: rd-reference-evidence/v1
+fixture: GO-2026-6237
+revisions:
+  vuln:
+    chain_required: false
+    reason: The frozen behavior slot is absent in the vulnerable revision.
+    hops: []
+  fixed:
+    chain_required: true
+    semantic_chain_complete: true
+    reason: >
+      ReadFrom mutates pkt through a call argument, which the vocabulary cannot represent. The
+      resulting packet feeds the parsed IPv4 header and payload length; the vocabulary also lacks
+      a relation from that definition to its use in the enclosing guard statement.
+    hops:
+      - relation: unsupported
+        from: {file: dhcpv4/nclient4/conn_unix.go, start_line: 92, end_line: 92, expression: "n, _, err := upc.PacketConn.ReadFrom(pkt)"}
+        to: {file: dhcpv4/nclient4/conn_unix.go, start_line: 102, end_line: 102, expression: "ipHdr := ipv4(buf.Data())"}
+      - relation: def_use
+        from: {file: dhcpv4/nclient4/conn_unix.go, start_line: 102, end_line: 102, expression: "ipHdr := ipv4(buf.Data())"}
+        to: {file: dhcpv4/nclient4/conn_unix.go, start_line: 117, end_line: 117, expression: "ipPayloadLen := int(ipHdr.payloadLength())"}
+      - relation: unsupported
+        from: {file: dhcpv4/nclient4/conn_unix.go, start_line: 117, end_line: 117, expression: "ipPayloadLen := int(ipHdr.payloadLength())"}
+        to: {file: dhcpv4/nclient4/conn_unix.go, start_line: 118, end_line: 118, expression: "if ipPayloadLen < udpHdrLen {"}

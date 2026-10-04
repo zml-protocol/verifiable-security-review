@@ -1,0 +1,52 @@
+{
+  "purpose": "Chain replication plumbing pilot (PREREGISTRATION.md \u00a712.3): mechanics only, never scored",
+  "model": "claude-haiku-4-5-20251001",
+  "cli": "2.1.280",
+  "status": "REPORTED",
+  "harness": {
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "locked_hop_rejected": {},
+    "frozen_verifier_rows_intact": true,
+    "frozen_connector_rows_intact": true
+  },
+  "blocks": [
+    {
+      "block": "hopdev-go/r0",
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "hops": 2,
+      "unsupported": 0,
+      "cost_usd": 0.0753023
+    },
+    {
+      "block": "hopdev-py/r0",
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 2
+        }
+      },
+      "hops": 4,
+      "unsupported": 0,
+      "cost_usd": 0.0516679
+    }
+  ]
+}

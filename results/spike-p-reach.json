@@ -1,0 +1,613 @@
+{
+  "locations": [
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "file": "authlib/jose/rfc7519/jwt.py",
+      "lines": 104,
+      "relation": "call_typed_attribute",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "file": "authlib/jose/rfc7515/jws.py",
+      "lines": "106-109",
+      "relation": "registry_dispatch",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "file": "authlib/jose/rfc7519/jwt.py",
+      "lines": 104,
+      "relation": "call_typed_attribute",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "file": "authlib/jose/rfc7515/jws.py",
+      "lines": "106-109",
+      "relation": "registry_dispatch",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 180,
+      "relation": "guard_property",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 198,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 215,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 182,
+      "relation": "guard_property",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 233,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 240,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "file": "http/raw.go",
+      "lines": 125,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "file": "http/raw.go",
+      "lines": 131,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "file": "http/raw.go",
+      "lines": 125,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "file": "http/raw.go",
+      "lines": 137,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "file": "authlib/jose/rfc7519/jwt.py",
+      "lines": 104,
+      "relation": "call_typed_attribute",
+      "category": "EXPRESSIBLE_NOT_RECOVERED"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "file": "authlib/jose/rfc7515/jws.py",
+      "lines": "106-109",
+      "relation": "registry_dispatch",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "file": "authlib/jose/rfc7519/jwt.py",
+      "lines": 104,
+      "relation": "call_typed_attribute",
+      "category": "EXPRESSIBLE_NOT_RECOVERED"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "file": "authlib/jose/rfc7515/jws.py",
+      "lines": "106-109",
+      "relation": "registry_dispatch",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 180,
+      "relation": "guard_property",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 198,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 215,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 182,
+      "relation": "guard_property",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 233,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "file": "modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go",
+      "lines": 240,
+      "relation": "object_composition",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "file": "http/raw.go",
+      "lines": 125,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "file": "http/raw.go",
+      "lines": 131,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "file": "http/raw.go",
+      "lines": 125,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "file": "http/raw.go",
+      "lines": 137,
+      "relation": "field_flow",
+      "category": "NOT_EXPRESSIBLE"
+    }
+  ],
+  "instances": [
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "relation": "call_typed_attribute",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "relation": "registry_dispatch",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "relation": "call_typed_attribute",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "relation": "registry_dispatch",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "relation": "guard_property",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "relation": "object_composition",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "relation": "guard_property",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "relation": "object_composition",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "relation": "field_flow",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "relation": "field_flow",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "relation": "call_typed_attribute",
+      "expressible": true,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "relation": "registry_dispatch",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "relation": "call_typed_attribute",
+      "expressible": true,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "relation": "registry_dispatch",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "relation": "guard_property",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "relation": "object_composition",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "relation": "guard_property",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "relation": "object_composition",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "relation": "field_flow",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "relation": "field_flow",
+      "expressible": false,
+      "tool_ok": true,
+      "recovered": false
+    }
+  ],
+  "facts": [
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "fact": "base-decode-reaches-verify",
+      "recovered": false,
+      "function_path_found": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "fact": "head-decode-reaches-verify",
+      "recovered": false,
+      "function_path_found": false
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "fact": "base-copy-routes-run-on-2xx",
+      "recovered": false,
+      "function_path_found": true
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "fact": "head-copy-routes-run-on-2xx",
+      "recovered": false,
+      "function_path_found": true
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "fact": "base-stored-path-becomes-entry",
+      "recovered": false,
+      "function_path_found": true
+    },
+    {
+      "provider": "trailmark-0.5.0",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "fact": "head-stored-path-becomes-entry",
+      "recovered": false,
+      "function_path_found": true
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "base",
+      "fact": "base-decode-reaches-verify",
+      "recovered": false,
+      "function_path_found": null
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "authlib-jws-none",
+      "side": "head",
+      "fact": "head-decode-reaches-verify",
+      "recovered": false,
+      "function_path_found": null
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "base",
+      "fact": "base-copy-routes-run-on-2xx",
+      "recovered": false,
+      "function_path_found": null
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "caddy-forward-auth",
+      "side": "head",
+      "fact": "head-copy-routes-run-on-2xx",
+      "recovered": false,
+      "function_path_found": null
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "base",
+      "fact": "base-stored-path-becomes-entry",
+      "recovered": false,
+      "function_path_found": null
+    },
+    {
+      "provider": "codeql-2.27.1-taint-path",
+      "fixture": "filebrowser-archive-backslash",
+      "side": "head",
+      "fact": "head-stored-path-becomes-entry",
+      "recovered": false,
+      "function_path_found": null
+    }
+  ],
+  "expressible": {
+    "trailmark-0.5.0": {
+      "call_typed_attribute": false,
+      "registry_dispatch": false,
+      "guard_property": false,
+      "object_composition": false,
+      "field_flow": false
+    },
+    "codeql-2.27.1-taint-path": {
+      "call_typed_attribute": true,
+      "registry_dispatch": false,
+      "guard_property": false,
+      "object_composition": false,
+      "field_flow": false
+    }
+  },
+  "relation_viability": {
+    "call_typed_attribute": {
+      "state": "EXPRESSIBLE_NOT_RECOVERED",
+      "recovered_by": [],
+      "tool_failures": []
+    },
+    "field_flow": {
+      "state": "NOT_EXPRESSIBLE_BY_ANY",
+      "recovered_by": [],
+      "tool_failures": []
+    },
+    "guard_property": {
+      "state": "NOT_EXPRESSIBLE_BY_ANY",
+      "recovered_by": [],
+      "tool_failures": []
+    },
+    "object_composition": {
+      "state": "NOT_EXPRESSIBLE_BY_ANY",
+      "recovered_by": [],
+      "tool_failures": []
+    },
+    "registry_dispatch": {
+      "state": "NOT_EXPRESSIBLE_BY_ANY",
+      "recovered_by": [],
+      "tool_failures": []
+    }
+  },
+  "decision": "B_GAPS_RECORDED",
+  "providers_recovering_every_fact": [],
+  "location_categories": {
+    "trailmark-0.5.0/call_typed_attribute": {
+      "NOT_EXPRESSIBLE": 2
+    },
+    "trailmark-0.5.0/registry_dispatch": {
+      "NOT_EXPRESSIBLE": 2
+    },
+    "trailmark-0.5.0/guard_property": {
+      "NOT_EXPRESSIBLE": 2
+    },
+    "trailmark-0.5.0/object_composition": {
+      "NOT_EXPRESSIBLE": 4
+    },
+    "trailmark-0.5.0/field_flow": {
+      "NOT_EXPRESSIBLE": 4
+    },
+    "codeql-2.27.1-taint-path/call_typed_attribute": {
+      "EXPRESSIBLE_NOT_RECOVERED": 2
+    },
+    "codeql-2.27.1-taint-path/registry_dispatch": {
+      "NOT_EXPRESSIBLE": 2
+    },
+    "codeql-2.27.1-taint-path/guard_property": {
+      "NOT_EXPRESSIBLE": 2
+    },
+    "codeql-2.27.1-taint-path/object_composition": {
+      "NOT_EXPRESSIBLE": 4
+    },
+    "codeql-2.27.1-taint-path/field_flow": {
+      "NOT_EXPRESSIBLE": 4
+    }
+  }
+}

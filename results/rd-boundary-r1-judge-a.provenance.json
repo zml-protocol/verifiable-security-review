@@ -1,0 +1,67 @@
+{
+  "round": 1,
+  "judge": "a",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "codex_cli": "codex-cli 0.159.2",
+  "started_utc": "2026-10-01T22:35:00+00:00",
+  "exit": 0,
+  "thread_id": "01a0f99b-533c-74b3-8e88-5617814e09a1",
+  "usage": {
+    "input_tokens": 25534,
+    "cached_input_tokens": 6784,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2674,
+    "reasoning_output_tokens": 779
+  },
+  "event_items": [
+    "agent_message"
+  ],
+  "tool_items": [],
+  "errors": [],
+  "format_fix": null,
+  "problems": [],
+  "valid": true,
+  "prompt_sha256": "04210a6dfc2299d9c0995a96cfc110e889ca2276fc29923d1238b256b64cb6fb",
+  "sheet_sha256": "0b5d0c4fa7b5dca1ae2f2aae5bf9f6770a55c76119e0db24e52770977c44840f",
+  "isolation": {
+    "codex_home": "fresh temporary directory with only a link to auth.json (deleted)",
+    "workdir": "empty temporary directory outside any repository (deleted)",
+    "sandbox": "read-only",
+    "features_off": [
+      "shell_tool",
+      "unified_exec",
+      "unified_exec_tty",
+      "code_mode_host",
+      "multi_agent",
+      "view_image",
+      "sleep_tool",
+      "apps",
+      "plugins",
+      "remote_plugin",
+      "plugin_sharing",
+      "hooks",
+      "memories",
+      "browser_use",
+      "browser_use_external",
+      "browser_use_full_cdp_access",
+      "computer_use",
+      "image_generation",
+      "goals",
+      "skill_search",
+      "skill_mcp_dependency_install",
+      "tool_suggest",
+      "in_app_browser",
+      "in_app_local_automation",
+      "worktrees",
+      "workspace_dependencies",
+      "realtime_conversation",
+      "shell_snapshot"
+    ],
+    "web_search": "disabled"
+  },
+  "startup_notices": [
+    "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+  ],
+  "reevaluated": "startup notices before the turn are not tool use"
+}

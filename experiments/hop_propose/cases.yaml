@@ -1,0 +1,10 @@
+# P-Hybrid-2 cases (PREREGISTRATION.md §11.4). One hypothesis (H1) per evaluation fixture.
+# Golden hops are the frozen §10 true hops of experiments/hop_verify (never edited here).
+eval:
+  authlib-jws-none: {case: fixtures/authlib-jws-none/case.yaml, hypothesis: H1, language: python, golden_set: eval}
+  caddy-forward-auth: {case: fixtures/caddy-forward-auth/case.yaml, hypothesis: H1, language: go, golden_set: eval}
+  filebrowser-archive-backslash: {case: fixtures/filebrowser-archive-backslash/case.yaml, hypothesis: H1, language: go, golden_set: eval}
+# Plumbing pilot on the development modules (§11.6): mechanics and invariants, never scored.
+pilot:
+  hopdev-go: {case: fixtures/_hoppilot/go.yaml, hypothesis: H1, language: go, golden_set: dev}
+  hopdev-py: {case: fixtures/_hoppilot/py.yaml, hypothesis: H1, language: python, golden_set: dev}

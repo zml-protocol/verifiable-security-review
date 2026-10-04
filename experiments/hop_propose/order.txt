@@ -1,0 +1,15 @@
+authlib-jws-none r0
+filebrowser-archive-backslash r0
+caddy-forward-auth r0
+authlib-jws-none r1
+caddy-forward-auth r1
+filebrowser-archive-backslash r1
+filebrowser-archive-backslash r2
+caddy-forward-auth r2
+authlib-jws-none r2
+filebrowser-archive-backslash r3
+caddy-forward-auth r3
+authlib-jws-none r3
+filebrowser-archive-backslash r4
+authlib-jws-none r4
+caddy-forward-auth r4

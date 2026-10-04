@@ -1,0 +1,14 @@
+[0m
+> build · deepseek-flash
+```yaml
+labels:
+  item-01: REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: NOT_REQUIRED
+missing: []
+```

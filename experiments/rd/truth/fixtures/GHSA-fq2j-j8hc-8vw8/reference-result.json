@@ -1,0 +1,83 @@
+{
+  "schema": "rd-reference-result/v1",
+  "fixture": "GHSA-fq2j-j8hc-8vw8",
+  "task_id": "task-01",
+  "disposition": "PROVIDER_BLIND",
+  "revisions": [
+    {
+      "canonical_revision": "vuln",
+      "outward_revision": "revision_B",
+      "chain_required": false,
+      "semantic_chain_complete": null,
+      "reason": "The frozen behavior slot is absent in the vulnerable revision.",
+      "hops": []
+    },
+    {
+      "canonical_revision": "fixed",
+      "outward_revision": "revision_A",
+      "chain_required": true,
+      "semantic_chain_complete": true,
+      "reason": "localPath flows to the IsSensitivePath call argument; the vocabulary has no relation from a predicate argument to the enclosing guard statement that is the frozen behavior anchor.\n",
+      "hops": [
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "def_use",
+            "from": {
+              "file": "kernel/api/lute.go",
+              "start_line": 155,
+              "end_line": 155,
+              "expression": "localPath := n.TokensStr()"
+            },
+            "to": {
+              "file": "kernel/api/lute.go",
+              "start_line": 179,
+              "end_line": 179,
+              "expression": "localPath"
+            }
+          },
+          "state": "UNVERIFIED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "unsupported",
+            "from": {
+              "file": "kernel/api/lute.go",
+              "start_line": 179,
+              "end_line": 179,
+              "expression": "localPath"
+            },
+            "to": {
+              "file": "kernel/api/lute.go",
+              "start_line": 179,
+              "end_line": 179,
+              "expression": "if util.IsSensitivePath(localPath) {"
+            }
+          },
+          "state": "UNSUPPORTED"
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "revisions": {
+      "revision_A": {
+        "class": "NO_EVIDENCE",
+        "length": null,
+        "verified_edges": 0,
+        "entry_node_candidates": 1,
+        "terminal_node_candidates": 0,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      },
+      "revision_B": {
+        "class": "NOT_APPLICABLE",
+        "verified_edges": 0,
+        "harness_mismatches": []
+      }
+    },
+    "full_chain": false,
+    "harness_mismatches": []
+  }
+}

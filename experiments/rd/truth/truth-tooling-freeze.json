@@ -1,0 +1,92 @@
+{
+  "frozen_at_rule": "PREREGISTRATION.md \u00a715 (truth tooling production freeze)",
+  "matcher": {
+    "spec": "matcher:node_identity",
+    "provenance": "experiments/rd/truth/matcher-provenance.json",
+    "matcher_sha256": "8570db4645dd4dacc127cb4f19e4831413c36a4f0cf9ef85514f9c8188737c97"
+  },
+  "vocabulary": {
+    "file_sha256": "bd4a143f8d5a1fabe06a3858903c903a7b9a66930d68644a90a025b8503ebbc8",
+    "gate_status": "READY",
+    "relation_groups": [
+      "go/argument_binding",
+      "go/def_use",
+      "go/field_flow",
+      "go/guard_property",
+      "go/object_composition",
+      "go/range_element",
+      "python/call_typed_attribute",
+      "python/def_use",
+      "python/registry_dispatch"
+    ],
+    "admissible_qualifiers": [
+      "guard",
+      "config",
+      "dispatch_target"
+    ],
+    "provider_support_rows": [
+      "codeql/go/argument_binding",
+      "codeql/go/def_use",
+      "codeql/go/field_flow",
+      "codeql/go/guard_property",
+      "codeql/go/object_composition",
+      "codeql/go/range_element",
+      "codeql/python/call_typed_attribute",
+      "codeql/python/def_use",
+      "codeql/python/registry_dispatch"
+    ]
+  },
+  "queue": {
+    "queue_sha256": "58d9f18a9f84cc4f4e48d63656a7c0f26d4f334dc9aef97f384e85cd206eca0e",
+    "log_head": "f81b5e28eb73696e1c3d3b620ad0cfe3e48046c14ab7f18d4c1f760d06358233",
+    "log_tip": "b91d9751346567f9fa8976e65f8d1306d750d433ac1afed0482bf2575a69a7c2",
+    "n": {
+      "go": 6,
+      "python": 6
+    }
+  },
+  "selection": {
+    "pool_sha256": "a13f8c5f81fc463db67dc707ebdac110858df003923263bd4772b19f67be4a35",
+    "seed": 20261002
+  },
+  "tool_rules": {
+    "self_tests_passed": [
+      "agreement",
+      "distractors",
+      "negative_control"
+    ],
+    "truth_statuses": [
+      "INDETERMINATE_TRUTH",
+      "INCOMPLETE_TRUTH_SPEC",
+      "UNCLASSIFIABLE_QUALIFIER_TRUTH",
+      "UNSUPPORTED_REQUIREMENT_TYPE"
+    ],
+    "state_values": [
+      "present",
+      "absent",
+      "NA",
+      "truth_inadmissible"
+    ]
+  },
+  "tool_source_sha256": {
+    "experiments/rd/truth/matcher.py": "8570db4645dd4dacc127cb4f19e4831413c36a4f0cf9ef85514f9c8188737c97",
+    "experiments/rd/truth/goresolver/node_id.go": "f2643aa9f76db56f83caaaf64744dee345812bd64c85606b036ee352d01fe8ad",
+    "experiments/rd/truth/goresolver/go.mod": "e846e713f9c48f7f3442a75c53b792c36d7d5590a9f90c5ec5cebdebb901a4df",
+    "experiments/rd/truth/resolver.py": "eedf2d51575fde6ae706ecb91e4390046bb39c24ed7f81620e52d28108a37df9",
+    "experiments/rd/truth/revision_map.py": "061b89a8916b5f8fde0ab3286003710c7f46494d14d023ff498998469508d4f6",
+    "experiments/rd/truth/anchor_machinery.py": "5fe71d5acc811f944b124c8c08d775dc0c4a8ee396a50272843350e441892282",
+    "experiments/rd/truth/agreement.py": "d0b2018865546941f1a672e0bc49e049d2856f69653d6db76851cebcdafa81e4",
+    "experiments/rd/truth/distractors.py": "5a8b6aa372e5ccdeca40a91cd41ef0624f8cfcc750ba625aedba034a39a238d8",
+    "experiments/rd/truth/negative_control.py": "23f13eb8fe726ab850d0e29dcc017d25623390e829d858ff01b77c0aa54ce4d9",
+    "experiments/rd/truth/templates.py": "ed670fdc45ac1f3e1821d9192f2d3c9327ef0e608c3278e01be491103c2b3fb4",
+    "experiments/rd/truth/vocabulary.py": "0089b475a4244320b567a4bdedb21858997fdfdcb0ee4415001d0cb7c66fe59a",
+    "experiments/rd/truth/freeze.py": "f866ce287f540480b1d823c32d72839f5e20e8a103a7a1696d9cfdd5c000bfd4",
+    "experiments/rd/agent/phases.py": "11427480a8971871f79e5bda2ef85fc1abece617daf196e55bac1404f34b7eeb",
+    "experiments/rd/agent/verifiability.py": "614d66d2d252f14198aa3922fe8d9ea599b0c231f8e281d06419050b51ce97f1"
+  },
+  "designated_truth_dir": "experiments/rd/truth/fixtures",
+  "forbidden_write_roots": [
+    "results",
+    "runs/rd/selection"
+  ]
+}

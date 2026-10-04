@@ -1,0 +1,320 @@
+{
+  "set": "dev",
+  "provenance": {
+    "codeql": "codeql-bundle-v2.27.1",
+    "files": {
+      "experiments/hop_verify/relations.yaml": "0bc810bd3ddb03875168032f8c25ea84b5f55790a8245a31595224752a536f05",
+      "experiments/hop_verify/verify.py": "51e5e1104e287b1823b04920ee9339cef43efae21a6798eff5d31ae00bdbb27a",
+      "experiments/hop_verify/sets/dev.yaml": "c6d8d047155556b4c8231735e846bd3aff3750ca51616f51bdce8ddacbc0f554",
+      "experiments/hop_verify/queries/go/FieldFlow.ql": "d8bea840b112b6aae06ba40b2c00f8a5f4470dc4f1c71e00a2553b6eabb25ce3",
+      "experiments/hop_verify/queries/go/GuardProperty.ql": "ecd70998bb71c152ded12dfdd71659e7de77ababb88d8f300e4ea5ec02ee89f2",
+      "experiments/hop_verify/queries/go/HopCommon.qll": "266fff0724b08833a4c5946c08a507ef1491be6f2aa45648a7c9e572b6cc51b0",
+      "experiments/hop_verify/queries/go/ObjectComposition.ql": "4cc48b6c459a5c08141dcad4f24577e1135f8261280b4c9a663fd1ce8ff48156",
+      "experiments/hop_verify/queries/go/Shapes.ql": "94d29821372cc99c201d5d6e377837ed943b1c5bf5e93e380d2959fd04469925",
+      "experiments/hop_verify/queries/python/CallTarget.ql": "ebb8c9a57718c7ee1aa0b85936feb25568eb96b9525bb057980bba70adab5048",
+      "experiments/hop_verify/queries/python/HopCommon.qll": "9da2c4ba0a7b6bcd92dbe19a026de5b68d6309de86d26d65b5a678aa546424da",
+      "experiments/hop_verify/queries/python/InstanceDispatch.ql": "596ad04328ca952619ab01eb727c3e9b1c7b5e2fe3decc66c49570f78d0d015b",
+      "experiments/hop_verify/queries/python/Shapes.ql": "74b2cadfb5cf2b96ebc47127f878467c7bd321142b512805d65eac36941448e9"
+    },
+    "truth": {
+      "experiments/hop_verify/truth/dev.yaml": "b03117588f847b51c9bc782c5fa444ca6f5b5ea3a2bed14b4c50e1dac720ae0e"
+    }
+  },
+  "relations": {
+    "call_typed_attribute": {
+      "true_hops": 2,
+      "false_hops": 3,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 2,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "dct1": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dct1"
+        },
+        "dct2": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dct2"
+        },
+        "dct3": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dct3"
+        },
+        "dct4": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dct4"
+        },
+        "dct5": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "dct5"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "field_flow": {
+      "true_hops": 4,
+      "false_hops": 4,
+      "true_verified": 4,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 3,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "dff1": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dff1"
+        },
+        "dff2": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dff2"
+        },
+        "dff3": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dff3"
+        },
+        "dff4": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dff4"
+        },
+        "dff5": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dff5"
+        },
+        "dff6": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dff6"
+        },
+        "dff7": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "dff7"
+        },
+        "dff8": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dff8"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "guard_property": {
+      "true_hops": 2,
+      "false_hops": 4,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 1,
+      "true_unverified": 0,
+      "false_unverified": 3,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "dgp1": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dgp1"
+        },
+        "dgp2": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dgp2"
+        },
+        "dgp3": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "dgp3"
+        },
+        "dgp4": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dgp4"
+        },
+        "dgp5": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "dgp5"
+        },
+        "dgp6": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "dgp6"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "object_composition": {
+      "true_hops": 3,
+      "false_hops": 4,
+      "true_verified": 3,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 0,
+      "true_unverified": 0,
+      "false_unverified": 4,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "doc1": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "doc1"
+        },
+        "doc2": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "doc2"
+        },
+        "doc3": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "doc3"
+        },
+        "doc4": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "doc4"
+        },
+        "doc5": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "doc5"
+        },
+        "doc6": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "doc6"
+        },
+        "doc7": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "doc7"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "registry_dispatch": {
+      "true_hops": 5,
+      "false_hops": 4,
+      "true_verified": 5,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 0,
+      "true_unverified": 0,
+      "false_unverified": 4,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "drd1": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "drd1"
+        },
+        "drd2": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "drd2"
+        },
+        "drd3": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "drd3"
+        },
+        "drd4": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "drd4"
+        },
+        "drd5": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "drd5"
+        },
+        "drd6": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "drd6"
+        },
+        "drd7": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "drd7"
+        },
+        "drd8": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "drd8"
+        },
+        "drd9": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "drd9"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    }
+  },
+  "false_hops_by_mutation": {
+    "wrong_revision": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 5,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "wrong_source": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 4,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "reversed": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 1,
+      "CONTRADICTED": 3,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "wrong_target": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 6,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    }
+  }
+}

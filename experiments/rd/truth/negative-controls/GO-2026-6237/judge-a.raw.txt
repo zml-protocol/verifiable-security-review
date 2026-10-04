@@ -1,0 +1,200 @@
+WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir "/tmp" (codex_home: AbsolutePathBuf("/tmp/tmp.80cyRmR7P5/codexhome"))
+OpenAI Codex v0.160.0
+--------
+workdir: /tmp/tmp.nWoYKctyeX
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a1027a-ca4c-7720-86c6-b7bd706865f9
+--------
+user
+# RD negative-control adjudication — GO-2026-6237
+
+You are one of two independent adjudicators. Work only from this message; do not use outside project
+knowledge. Return only the YAML object requested at the end.
+
+For each candidate and each canonical revision, assess this package-wide existential claim:
+
+> In Go package `github.com/insomniacslk/dhcp/dhcpv4/nclient4`, attacker-controlled input may lead to
+> the candidate CWE.
+
+Use exactly one label:
+
+- `SUPPORTED`: the evidence establishes at least one instance of the claim in that revision.
+- `NOT_SUPPORTED`: the evidence establishes that the claim is false in that revision.
+- `INDETERMINATE`: neither conclusion is justified by the evidence.
+
+Judge all six cells independently. A text search match does not by itself establish a CWE. No search
+match is sufficient for `NOT_SUPPORTED` only when the complete inventory and package surface make
+the missing primitive dispositive; otherwise use `INDETERMINATE`. Do not infer a label from the
+candidate order or from the fact that this is a negative-control task.
+
+Candidates, in frozen order:
+
+1. `candidate-01`: CWE-352 Cross-Site Request Forgery
+2. `candidate-02`: CWE-22 Path Traversal
+3. `candidate-03`: CWE-79 Cross-site Scripting
+
+---
+
+# Factual evidence
+
+## Revision and package scope
+
+- Package under adjudication: Go package `dhcpv4/nclient4` in
+  `github.com/insomniacslk/dhcp`.
+- `vuln`: `a415979eb11e6d3ac6a8949f9e45d7a29f0279af`
+- `fixed`: `c76316d4aa825673b208730779843d0711021e81`
+- The already-observed real behavior is a panic while this package parses an attacker-crafted raw
+  UDP/IPv4 frame. The product-source part of the fix changes only
+  `dhcpv4/nclient4/conn_unix.go`, adding IPv4/UDP payload-length checks. A new `_test.go` file is
+  outside the product-source inventory.
+
+## Complete product-source inventory
+
+The inventory rule is tracked `.go` files in this package, excluding `_test.go`, `vendor/`, and
+`testdata/`. The sorted inventories are byte-identical in `vuln` and `fixed` (4 files; the displayed
+list has SHA-256 `bce9af64280f2055e5b6280e29a1d9f8428d48c2fac473071f7ddc9d2135ed37`):
+
+```text
+dhcpv4/nclient4/client.go
+dhcpv4/nclient4/conn_unix.go
+dhcpv4/nclient4/ipv4.go
+dhcpv4/nclient4/lease.go
+```
+
+Line counts are 669/154/360/79 in `vuln` and 669/165/360/79 in `fixed`, in the order above.
+
+The package declaration and imports in the four `vuln` files (the fix does not change any import)
+are:
+
+```go
+// Package nclient4 is a small, minimum-functionality client for DHCPv4.
+//
+// It only supports the 4-way DHCPv4 Discover-Offer-Request-Ack handshake as
+// well as the Request-Ack renewal process.
+package nclient4
+
+// client.go
+import (
+    "bytes"
+    "context"
+    "errors"
+    "fmt"
+    "log"
+    "net"
+    "os"
+    "sync"
+    "sync/atomic"
+    "time"
+    "github.com/insomniacslk/dhcp/dhcpv4"
+)
+
+// conn_unix.go
+import (
+    "errors"
+    "io"
+    "net"
+    "github.com/mdlayher/packet"
+    "github.com/u-root/uio/uio"
+    "golang.org/x/sys/unix"
+)
+
+// ipv4.go
+import (
+    "encoding/binary"
+    "net"
+    "github.com/u-root/uio/uio"
+)
+
+// lease.go
+import (
+    "context"
+    "fmt"
+    "net"
+    "time"
+    "github.com/insomniacslk/dhcp/dhcpv4"
+)
+```
+
+The security-fix hunk in `conn_unix.go` adds these checks and no candidate-related facility:
+
+```diff
++       ipPayloadLen := int(ipHdr.payloadLength())
++       if ipPayloadLen < udpHdrLen {
++           continue
++       }
+        if !buf.Has(udpHdrLen) {
+            continue
+        }
+        udpHdr := udp(buf.Consume(udpHdrLen))
+...
+-       dhcpLen := int(ipHdr.payloadLength()) - udpHdrLen
++       dhcpLen := ipPayloadLen - udpHdrLen
++       if !buf.Has(dhcpLen) {
++           continue
++       }
+        return copy(b, buf.Consume(dhcpLen)), srcAddr, nil
+```
+
+## Frozen-regex scans over the complete inventory
+
+Each scan was case-insensitive, line-numbered, and run over exactly the four paths above. Matches
+would be sorted by byte order. There was no truncation.
+
+### Candidate 01 — CWE-352 Cross-Site Request Forgery
+
+Exact regex:
+
+```text
+csrf|xsrf|same[_-]?site|origin|referer|cookie|session
+```
+
+- `vuln`: 0 matching lines
+- `fixed`: 0 matching lines
+
+### Candidate 02 — CWE-22 Path Traversal
+
+Exact regex:
+
+```text
+path|filepath|realpath|normpath|clean\(|join\(|open\(|readfile|writefile|\.\.[\\/]
+```
+
+- `vuln`: 0 matching lines
+- `fixed`: 0 matching lines
+
+### Candidate 03 — CWE-79 Cross-site Scripting
+
+Exact regex:
+
+```text
+xss|innerhtml|outerhtml|document\.write|html/template|text/template|markupsafe|escape|safehtml|javascript:
+```
+
+- `vuln`: 0 matching lines
+- `fixed`: 0 matching lines
+
+---
+
+Return exactly this schema with all labels replaced, and no Markdown fence or prose:
+
+labels:
+  candidate-01: {vuln: LABEL, fixed: LABEL}
+  candidate-02: {vuln: LABEL, fixed: LABEL}
+  candidate-03: {vuln: LABEL, fixed: LABEL}
+
+codex
+labels:
+  candidate-01: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-02: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+  candidate-03: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+tokens used
+4,358
+labels:
+  candidate-01: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-02: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+  candidate-03: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}

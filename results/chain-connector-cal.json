@@ -1,0 +1,147 @@
+{
+  "set": "cal",
+  "unsafe": [],
+  "counts": {
+    "same": {
+      "SAME_OBJECT": 9,
+      "NOT_PROVEN_SAME": 0
+    },
+    "different": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 7
+    },
+    "not_always": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 4
+    },
+    "unprovable": {
+      "SAME_OBJECT": 0,
+      "NOT_PROVEN_SAME": 4
+    }
+  },
+  "same_coverage": 1.0,
+  "query_sha256": "bdb99f40fdafe0b383fefd9fa861ed4520b1e318fe3e2f8bc9117bb2e840161c",
+  "pairs_sha256": "cc5c9a3f01c248374eaed80ca2920fb08af24934d3d008ba52800b3ec226e36b",
+  "results": [
+    {
+      "id": "cs1",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs2",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs3",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs4",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs5",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs6",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs7",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs8",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cs9",
+      "truth": "same",
+      "state": "SAME_OBJECT"
+    },
+    {
+      "id": "cd1",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd2",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd3",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd4",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd5",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd6",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cd7",
+      "truth": "different",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cn1",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cn2",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cn3",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cn4",
+      "truth": "not_always",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cu1",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cu2",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cu3",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    },
+    {
+      "id": "cu4",
+      "truth": "unprovable",
+      "state": "NOT_PROVEN_SAME"
+    }
+  ]
+}

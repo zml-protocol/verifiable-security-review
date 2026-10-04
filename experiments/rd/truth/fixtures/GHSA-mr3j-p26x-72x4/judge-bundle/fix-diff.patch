@@ -1,0 +1,12 @@
+diff --git a/pkg/models/task_comments.go b/pkg/models/task_comments.go
+index 45f9f8f..648a6fc 100644
+--- a/pkg/models/task_comments.go
++++ b/pkg/models/task_comments.go
+@@ -196,6 +196,7 @@ func (tc *TaskComment) Update(s *xorm.Session, _ web.Auth) error {
+ func getTaskCommentSimple(s *xorm.Session, tc *TaskComment) error {
+ 	exists, err := s.
+ 		Where("id = ?", tc.ID).
++		And("task_id = ?", tc.TaskID).
+ 		NoAutoCondition().
+ 		Get(tc)
+ 	if err != nil {

@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-changed-present-both-02",
+  "language": "python",
+  "cell": "changed_present_both",
+  "package": "azure_route",
+  "effect_claim": "Whether a message-provided route is appended to the route list.",
+  "files": {
+    "revision_A": {
+      "azure_route.py": "def enqueue(message, routes):\n    route_name = message[\"route\"]\n    routes.append(route_name)\n"
+    },
+    "revision_B": {
+      "azure_route.py": "def enqueue(message, routes):\n    route_name = message.get(\"route\", \"fallback\")\n    routes.append(route_name)\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "azure_route.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "route_name = message[\"route\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "azure_route.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "route_name = message.get(\"route\", \"fallback\")"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "azure_route.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "routes.append(route_name)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "azure_route.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "routes.append(route_name)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression",
+    "nearby_statement"
+  ],
+  "forbidden_anchors": [],
+  "changed_slot": "entry"
+}

@@ -1,0 +1,44 @@
+# What the agent may see (hypotheses) plus harness config. Answers live in golden.yaml.
+id: authlib-jws-none
+kind: semantic
+repo:
+  path: .cache/repos/authlib.git
+  url: https://github.com/authlib/authlib
+base: 21f7f50820f3906cebad308b35c816abf746ec3d   # parent of the introducing commit
+head: a61c2acb807496e67f32051b5f1b1d5ccf8f0a75   # "feat: support for the JWS 'none' alg"
+deny_paths: []   # docs/changelog.rst is already denied by DEFAULT_DENY
+notes: Advisory context and truth details live in golden.yaml and truth/.
+
+hypotheses:
+  - id: H1
+    property_kind: authentication
+    claim: >
+      With the default `authlib.jose.jwt` decoder and an RSA JWKS as the key, an
+      attacker-forged JWT whose header is {"alg": "none"} and whose signature
+      segment is empty is accepted, and its claims are returned to the caller.
+    components:
+      - id: algorithm_selection
+        text: "The default `jwt` decoder dispatches a token whose header says `alg: none` to the `none` algorithm instead of rejecting it as unsupported."
+      - id: verification
+        text: The `none` algorithm's signature check succeeds for an empty signature.
+      - id: effect
+        text: When signature verification succeeds, `jwt.decode` returns the token's claims to the caller.
+    hints:
+      - {path: authlib/jose/rfc7519/jwt.py, symbol: decode, note: entrypoint}
+
+  - id: H2
+    property_kind: authentication
+    claim: >
+      With the default `authlib.jose.jwt` decoder and an RSA JWKS as the key, an
+      attacker-forged JWT whose header is {"alg": "none"} and whose signature
+      segment is a non-empty arbitrary value is accepted, and its claims are
+      returned to the caller.
+    components:
+      - id: algorithm_selection
+        text: "The default `jwt` decoder dispatches a token whose header says `alg: none` to the `none` algorithm instead of rejecting it as unsupported."
+      - id: verification
+        text: The `none` algorithm's signature check succeeds for a non-empty signature.
+      - id: effect
+        text: When signature verification succeeds, `jwt.decode` returns the token's claims to the caller.
+    hints:
+      - {path: authlib/jose/rfc7519/jwt.py, symbol: decode, note: entrypoint}

@@ -1,0 +1,1347 @@
+# RD requirement-level boundary cases (adjudicator-facing). Labels: requirement_labels.yaml.
+set: rd-boundary-requirements
+fixtures:
+  rdscen-go:
+    language: go
+    repo: .cache/fixtures/rdscen-go
+    commits:
+      vuln: fbc10d08c0820e094488ed0ab73dc52ba9169d9d
+      fixed: 400d2c06e75f6f29b7f85cabd1a38a2766b3529c
+  rdscen-py:
+    language: python
+    repo: .cache/fixtures/rdscen-py
+    commits:
+      vuln: 9207ba8f62ae1fa0460062b5583b7587eb0f032c
+      fixed: 6b1967a8d5dfcff0613bb790a32059ab5c6b7606
+scenarios:
+  s1:
+    repo_fixture: rdscen-go
+    file: s1.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-862 Missing Authorization.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s2:
+    repo_fixture: rdscen-go
+    file: s2.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-22 Path Traversal.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s3:
+    repo_fixture: rdscen-go
+    file: s3.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-89 SQL Injection.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s5:
+    repo_fixture: rdscen-go
+    file: s5.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-200 Exposure of Sensitive Information.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s7:
+    repo_fixture: rdscen-go
+    file: s7.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-22 Path Traversal.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s8:
+    repo_fixture: rdscen-go
+    file: s8.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-22 Path Traversal.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s4:
+    repo_fixture: rdscen-py
+    file: s4.py
+    domain: The attacker controls header, msg and sig. key is the server's secret; ALGS is as in the code.
+    claim: In package s4, attacker-controlled input may lead to CWE-347 Improper Verification of Cryptographic Signature.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s6:
+    repo_fixture: rdscen-py
+    file: s6.py
+    domain: The attacker controls user_path. base is any directory path the caller passes.
+    claim: In package s6, attacker-controlled input may lead to CWE-22 Path Traversal.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+  s9:
+    repo_fixture: rdscen-go
+    file: s9.go
+    domain: The attacker controls the HTTP request (method, URL, query, headers, body). Every other state (accounts,
+      sessions, policy objects, configuration, environment, files, the root directory) may take any value the code
+      allows.
+    claim: In package scen, attacker-controlled input may lead to CWE-22 Path Traversal.
+    vulnerable_revision: vuln
+    fixed_revision: fixed
+items:
+- id: q01
+  scenario: s1
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: absent
+        context:
+          file: s1.go
+          start_line: 22
+          end_line: 22
+          expression: w.Header().Set("X-Account", u.Name)
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: if !u.IsAdmin {
+- id: q02
+  scenario: s1
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: s.DeleteAll()
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 27
+          end_line: 27
+          expression: s.DeleteAll()
+- id: q03
+  scenario: s1
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 20
+          end_line: 20
+          expression: r *http.Request
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 20
+          end_line: 20
+          expression: r *http.Request
+- id: q04
+  scenario: s1
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: absent
+        context:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: s.DeleteAll()
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: if !u.IsAdmin {
+- id: q05
+  scenario: s1
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 21
+          end_line: 21
+          expression: u := lookup(r)
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 21
+          end_line: 21
+          expression: u := lookup(r)
+- id: q06
+  scenario: s1
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 21
+          end_line: 21
+          expression: u := lookup(r)
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 21
+          end_line: 21
+          expression: u := lookup(r)
+    predicate:
+      vuln:
+        state: absent
+        context:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: s.DeleteAll()
+      fixed:
+        state: present
+        anchor:
+          file: s1.go
+          start_line: 23
+          end_line: 23
+          expression: if !u.IsAdmin {
+- id: q07
+  scenario: s2
+  role: qualifier
+  kind: transform
+  semantic:
+    expected: must_be_absent
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+    transform:
+      vuln:
+        state: absent
+        context:
+          file: s2.go
+          start_line: 17
+          end_line: 17
+          expression: data, err := os.ReadFile(filepath.Join(root, clean))
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 17
+          end_line: 17
+          expression: clean = filepath.Base(clean)
+- id: q08
+  scenario: s2
+  role: qualifier
+  kind: config
+  semantic:
+    expected_condition:
+      op: set
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: if os.Getenv("ALLOW_DOWNLOAD") != "1" {
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: if os.Getenv("ALLOW_DOWNLOAD") != "1" {
+    config:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: os.Getenv("ALLOW_DOWNLOAD")
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: os.Getenv("ALLOW_DOWNLOAD")
+- id: q09
+  scenario: s2
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+- id: q10
+  scenario: s2
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: absent
+        context:
+          file: s2.go
+          start_line: 17
+          end_line: 17
+          expression: data, err := os.ReadFile(filepath.Join(root, clean))
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 17
+          end_line: 17
+          expression: clean = filepath.Base(clean)
+- id: q11
+  scenario: s2
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 10
+          end_line: 10
+          expression: r *http.Request
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 10
+          end_line: 10
+          expression: r *http.Request
+- id: q12
+  scenario: s2
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 17
+          end_line: 17
+          expression: data, err := os.ReadFile(filepath.Join(root, clean))
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 18
+          end_line: 18
+          expression: data, err := os.ReadFile(filepath.Join(root, clean))
+- id: q13
+  scenario: s2
+  role: qualifier
+  kind: config
+  semantic:
+    expected_condition:
+      op: equals
+      value: '1'
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: if os.Getenv("ALLOW_DOWNLOAD") != "1" {
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: if os.Getenv("ALLOW_DOWNLOAD") != "1" {
+    config:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: os.Getenv("ALLOW_DOWNLOAD")
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 11
+          end_line: 11
+          expression: os.Getenv("ALLOW_DOWNLOAD")
+- id: q14
+  scenario: s2
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 15
+          end_line: 15
+          expression: name := r.URL.Query().Get("file")
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 15
+          end_line: 15
+          expression: name := r.URL.Query().Get("file")
+- id: q15
+  scenario: s2
+  role: qualifier
+  kind: transform
+  semantic:
+    expected: must_be_present
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 15
+          end_line: 15
+          expression: name := r.URL.Query().Get("file")
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 15
+          end_line: 15
+          expression: name := r.URL.Query().Get("file")
+    transform:
+      vuln:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+      fixed:
+        state: present
+        anchor:
+          file: s2.go
+          start_line: 16
+          end_line: 16
+          expression: clean := strings.TrimSpace(name)
+- id: q16
+  scenario: s3
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+    predicate:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 22
+          end_line: 22
+          expression: if p.Label != "" {
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 22
+          end_line: 22
+          expression: if p.Label != "" {
+- id: q17
+  scenario: s3
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 25
+          end_line: 25
+          expression: term := r.FormValue("q")
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 25
+          end_line: 25
+          expression: term := r.FormValue("q")
+- id: q18
+  scenario: s3
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: r *http.Request
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: r *http.Request
+    predicate:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 14
+          end_line: 14
+          expression: if r.Method != http.MethodPost {
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 14
+          end_line: 14
+          expression: if r.Method != http.MethodPost {
+- id: q19
+  scenario: s3
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+    predicate:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 18
+          end_line: 18
+          expression: if p.Mode != "raw" {
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 18
+          end_line: 18
+          expression: if p.Mode != "raw" {
+- id: q20
+  scenario: s3
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 13
+          end_line: 13
+          expression: p Policy
+    predicate:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 18
+          end_line: 18
+          expression: if p.Mode != "raw" {
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 18
+          end_line: 18
+          expression: if p.Mode != "raw" {
+- id: q21
+  scenario: s3
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 26
+          end_line: 26
+          expression: rows, err := db.Query(
+      fixed:
+        state: present
+        anchor:
+          file: s3.go
+          start_line: 26
+          end_line: 26
+          expression: rows, err := db.Query(
+- id: q22
+  scenario: s5
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 16
+          end_line: 16
+          expression: fmt.Fprintf(w, "token=%s\n", st.APIToken)
+      fixed:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 16
+          end_line: 16
+          expression: fmt.Fprintf(w, "version=%s\n", st.Version)
+- id: q23
+  scenario: s5
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 16
+          end_line: 16
+          expression: fmt.Fprintf(w, "token=%s\n", st.APIToken)
+      fixed:
+        state: absent
+        context:
+          file: s5.go
+          start_line: 15
+          end_line: 15
+          expression: fmt.Fprintf(w, "ok %s\n", r.URL.Path)
+- id: q24
+  scenario: s5
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 13
+          end_line: 13
+          expression: r *http.Request
+      fixed:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 13
+          end_line: 13
+          expression: r *http.Request
+- id: q25
+  scenario: s5
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s5.go
+          start_line: 16
+          end_line: 16
+          expression: fmt.Fprintf(w, "token=%s\n", st.APIToken)
+      fixed:
+        state: absent
+        context:
+          file: s5.go
+          start_line: 16
+          end_line: 16
+          expression: fmt.Fprintf(w, "version=%s\n", st.Version)
+- id: q26
+  scenario: s7
+  role: qualifier
+  kind: transform
+  semantic:
+    expected: must_be_absent
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+    transform:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 17
+          end_line: 17
+          expression: name, err := url.QueryUnescape(raw)
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 13
+          end_line: 13
+          expression: name, err := url.QueryUnescape(raw)
+- id: q27
+  scenario: s7
+  role: qualifier
+  kind: transform
+  semantic:
+    expected: must_be_present
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+    transform:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 17
+          end_line: 17
+          expression: name, err := url.QueryUnescape(raw)
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 13
+          end_line: 13
+          expression: name, err := url.QueryUnescape(raw)
+- id: q28
+  scenario: s7
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 12
+          end_line: 12
+          expression: raw := r.URL.Query().Get("p")
+- id: q29
+  scenario: s7
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 13
+          end_line: 13
+          expression: if strings.Contains(raw, "..") {
+      fixed:
+        state: present
+        anchor:
+          file: s7.go
+          start_line: 18
+          end_line: 18
+          expression: if strings.Contains(name, "..") {
+- id: q30
+  scenario: s8
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: key := r.URL.Query().Get("key")
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 20
+          end_line: 20
+          expression: key := r.URL.Query().Get("key")
+    predicate:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 17
+          end_line: 17
+          expression: if strings.HasPrefix(key, "/") {
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 21
+          end_line: 21
+          expression: if strings.HasPrefix(key, "/") || strings.Contains(key, "..") {
+- id: q31
+  scenario: s8
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: key := r.URL.Query().Get("key")
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 20
+          end_line: 20
+          expression: key := r.URL.Query().Get("key")
+- id: q32
+  scenario: s8
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 15
+          end_line: 15
+          expression: u Uploader
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 15
+          end_line: 15
+          expression: u Uploader
+    predicate:
+      vuln:
+        state: absent
+        context:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: key := r.URL.Query().Get("key")
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: if !u.Verified {
+- id: q33
+  scenario: s8
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 17
+          end_line: 17
+          expression: if strings.HasPrefix(key, "/") {
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 21
+          end_line: 21
+          expression: if strings.HasPrefix(key, "/") || strings.Contains(key, "..") {
+- id: q34
+  scenario: s8
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: absent
+        context:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: key := r.URL.Query().Get("key")
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: if !u.Verified {
+- id: q35
+  scenario: s8
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 15
+          end_line: 15
+          expression: u Uploader
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 15
+          end_line: 15
+          expression: u Uploader
+    predicate:
+      vuln:
+        state: absent
+        context:
+          file: s8.go
+          start_line: 17
+          end_line: 17
+          expression: if strings.HasPrefix(key, "/") {
+      fixed:
+        state: present
+        anchor:
+          file: s8.go
+          start_line: 16
+          end_line: 16
+          expression: if !u.Verified {
+- id: q36
+  scenario: s4
+  role: qualifier
+  kind: dispatch_target
+  slots:
+    call:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 22
+          end_line: 22
+          expression: alg.verify(msg, sig, key)
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 22
+          end_line: 22
+          expression: alg.verify(msg, sig, key)
+    target:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 7
+          end_line: 7
+          expression: 'def verify(self, msg, sig, key):'
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 7
+          end_line: 7
+          expression: 'def verify(self, msg, sig, key):'
+- id: q37
+  scenario: s4
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 19
+          end_line: 19
+          expression: header, msg, sig, key
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 19
+          end_line: 19
+          expression: header, msg, sig, key
+- id: q38
+  scenario: s4
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 16
+          end_line: 16
+          expression: 'ALGS = {"none": NoneAlg(), "HS256": HmacAlg()}'
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 16
+          end_line: 16
+          expression: 'ALGS = {"HS256": HmacAlg()}'
+- id: q39
+  scenario: s4
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 20
+          end_line: 20
+          expression: name = header["alg"]
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 20
+          end_line: 20
+          expression: name = header["alg"]
+- id: q40
+  scenario: s4
+  role: qualifier
+  kind: dispatch_target
+  slots:
+    call:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 22
+          end_line: 22
+          expression: alg.verify(msg, sig, key)
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 22
+          end_line: 22
+          expression: alg.verify(msg, sig, key)
+    target:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 12
+          end_line: 12
+          expression: 'def verify(self, msg, sig, key):'
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 12
+          end_line: 12
+          expression: 'def verify(self, msg, sig, key):'
+- id: q41
+  scenario: s4
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 8
+          end_line: 8
+          expression: return sig == b""
+      fixed:
+        state: present
+        anchor:
+          file: s4.py
+          start_line: 8
+          end_line: 8
+          expression: return sig == b""
+- id: q42
+  scenario: s6
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 5
+          end_line: 5
+          expression: user_path
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 5
+          end_line: 5
+          expression: user_path
+- id: q43
+  scenario: s6
+  role: entry
+  slots:
+    entry:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 6
+          end_line: 6
+          expression: full = os.path.normpath(os.path.join(base, user_path))
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 6
+          end_line: 6
+          expression: full = os.path.normpath(os.path.join(base, user_path))
+- id: q44
+  scenario: s6
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 7
+          end_line: 7
+          expression: 'if not full.startswith(base):'
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 7
+          end_line: 7
+          expression: 'if os.path.commonpath([full, base]) != base:'
+- id: q45
+  scenario: s6
+  role: qualifier
+  kind: transform
+  semantic:
+    expected: must_be_present
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 5
+          end_line: 5
+          expression: user_path
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 5
+          end_line: 5
+          expression: user_path
+    transform:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 6
+          end_line: 6
+          expression: full = os.path.normpath(os.path.join(base, user_path))
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 6
+          end_line: 6
+          expression: full = os.path.normpath(os.path.join(base, user_path))
+- id: q46
+  scenario: s6
+  role: behavior
+  slots:
+    behavior:
+      vuln:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 9
+          end_line: 9
+          expression: return full
+      fixed:
+        state: present
+        anchor:
+          file: s6.py
+          start_line: 9
+          end_line: 9
+          expression: return full
+- id: q47
+  scenario: s9
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_not_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 11
+          end_line: 11
+          expression: name := r.URL.Query().Get("name")
+      fixed:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 11
+          end_line: 11
+          expression: name := r.URL.Query().Get("name")
+    predicate:
+      vuln:
+        state: absent
+        context:
+          file: s9.go
+          start_line: 12
+          end_line: 12
+          expression: if strings.HasPrefix(name, "/") {
+      fixed:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 12
+          end_line: 12
+          expression: if strings.Contains(name, "..") {
+- id: q48
+  scenario: s9
+  role: qualifier
+  kind: guard
+  semantic:
+    expected: must_hold
+  slots:
+    subject:
+      vuln:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 11
+          end_line: 11
+          expression: name := r.URL.Query().Get("name")
+      fixed:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 11
+          end_line: 11
+          expression: name := r.URL.Query().Get("name")
+    predicate:
+      vuln:
+        state: absent
+        context:
+          file: s9.go
+          start_line: 12
+          end_line: 12
+          expression: if strings.HasPrefix(name, "/") {
+      fixed:
+        state: present
+        anchor:
+          file: s9.go
+          start_line: 12
+          end_line: 12
+          expression: if strings.Contains(name, "..") {

@@ -1,0 +1,39 @@
+{
+  "round": 2,
+  "judge": "b",
+  "model": "deepseek/deepseek-flash",
+  "reasoning_effort": "provider default (not exposed)",
+  "opencode_cli": "opencode v2.0.16",
+  "started_utc": "2026-10-02T00:31:24+00:00",
+  "exit": 0,
+  "session": "ses_f05fa1af8ffe6Q3yoHrxY6HCWE",
+  "event_parts": [
+    "step-start",
+    "text"
+  ],
+  "tool_parts": [],
+  "errors": [],
+  "format_fix": null,
+  "problems": [],
+  "valid": true,
+  "prompt_sha256": "26b13a2e611e5c42cb9136a43d573a5586e8d3e3645f85ae9e4c50efb25f257b",
+  "sheet_sha256": "276613e115368177d81bf3b1603e53b635ccb16890f4b5331bad7f091a7384cb",
+  "isolation": {
+    "home_and_xdg_dirs": "fresh temporary directories (deleted)",
+    "config": {
+      "$schema": "https://opencode.ai/config.json",
+      "autoupdate": false,
+      "share": "disabled",
+      "tools": {
+        "*": false
+      },
+      "permission": {
+        "*": "deny"
+      }
+    },
+    "server": "--standalone",
+    "workdir": "empty temporary directory outside any repository (deleted)",
+    "credential": "DEEPSEEK_API_KEY passed via the subprocess environment, read from the user's OpenCode auth.json, not written anywhere",
+    "catalog": "copy of the public models.json"
+  }
+}

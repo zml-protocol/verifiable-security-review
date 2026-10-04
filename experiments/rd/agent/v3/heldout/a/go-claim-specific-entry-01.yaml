@@ -1,0 +1,75 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-claim-specific-entry-01",
+  "language": "go",
+  "cell": "claim_specific_entry",
+  "package": "lanternquota",
+  "effect_claim": "Whether the submitted report label is included in an exported audit bundle.",
+  "files": {
+    "revision_A": {
+      "lanternquota.go": "package lanternquota\n\ntype ExportRequest struct {\n\tReportLabel string\n}\n\nfunc assemble(req ExportRequest) string {\n\trequestedLabel := req.ReportLabel\n\tfoldedLabel := foldLabel(requestedLabel)\n\treturn \"bundle:\" + foldedLabel\n}\n\nfunc foldLabel(value string) string {\n\treturn \"[\" + value + \"]\"\n}\n"
+    },
+    "revision_B": {
+      "lanternquota.go": "package lanternquota\n\ntype ExportRequest struct {\n\tReportLabel string\n}\n\nfunc assemble(req ExportRequest) string {\n\trequestedLabel := req.ReportLabel\n\treturn \"bundle:\" + requestedLabel\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "lanternquota.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "requestedLabel := req.ReportLabel"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "lanternquota.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "requestedLabel := req.ReportLabel"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "lanternquota.go",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "return \"bundle:\" + foldedLabel"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "lanternquota.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "return \"bundle:\" + requestedLabel"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "field_declaration",
+    "later_derivative"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "field_declaration",
+      "kind": "entry",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "lanternquota.go",
+        "start_line": 4,
+        "end_line": 4,
+        "expression": "ReportLabel string"
+      }
+    }
+  ]
+}

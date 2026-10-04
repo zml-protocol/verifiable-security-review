@@ -1,0 +1,63 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-claim-specific-entry-02",
+  "language": "go",
+  "cell": "claim_specific_entry",
+  "package": "coralpager",
+  "effect_claim": "Whether a supplied pager topic is forwarded onto the notification queue.",
+  "files": {
+    "revision_A": {
+      "coralpager.go": "package coralpager\n\nfunc dispatch(attributes map[string]string, queue chan<- string) bool {\n\ttopicToken, exists := attributes[\"pager_topic\"]\n\tif !exists {\n\t\treturn false\n\t}\n\tcanonicalTopic := bracket(topicToken)\n\tqueue <- canonicalTopic\n\treturn true\n}\n\nfunc bracket(value string) string {\n\treturn \"<\" + value + \">\"\n}\n"
+    },
+    "revision_B": {
+      "coralpager.go": "package coralpager\n\nfunc dispatch(attributes map[string]string, queue chan<- string) bool {\n\ttopicToken, exists := attributes[\"pager_topic\"]\n\tif !exists {\n\t\treturn false\n\t}\n\tqueue <- topicToken\n\treturn true\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "coralpager.go",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "topicToken, exists := attributes[\"pager_topic\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "coralpager.go",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "topicToken, exists := attributes[\"pager_topic\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "coralpager.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "queue <- canonicalTopic"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "coralpager.go",
+          "start_line": 8,
+          "end_line": 8,
+          "expression": "queue <- topicToken"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "upstream_container",
+    "later_derivative"
+  ],
+  "forbidden_anchors": []
+}

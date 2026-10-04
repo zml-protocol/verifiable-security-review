@@ -1,0 +1,106 @@
+# Label every case. Labels are quoted strings: relations "TRUE" | "FALSE" | "INDETERMINATE";
+# requirements "REQUIRED" | "NOT_REQUIRED" | "INDETERMINATE".
+reviewer:
+  type: ""        # "model" (or "human")
+  name: ""        # e.g. "<model name>, new conversation"
+  date: ""        # "YYYY-MM-DD"
+  attestation:
+    independent: true          # never saw this project's history, labels or expected answers
+    saw_author_labels: false
+    saw_project_history: false
+relations:
+  r01: {label: "", note: ""}
+  r02: {label: "", note: ""}
+  r03: {label: "", note: ""}
+  r04: {label: "", note: ""}
+  r05: {label: "", note: ""}
+  r06: {label: "", note: ""}
+  r07: {label: "", note: ""}
+  r08: {label: "", note: ""}
+  r09: {label: "", note: ""}
+  r10: {label: "", note: ""}
+  r11: {label: "", note: ""}
+  r12: {label: "", note: ""}
+  r13: {label: "", note: ""}
+  r14: {label: "", note: ""}
+  r15: {label: "", note: ""}
+  r16: {label: "", note: ""}
+  r17: {label: "", note: ""}
+  r18: {label: "", note: ""}
+  r19: {label: "", note: ""}
+  r20: {label: "", note: ""}
+  r21: {label: "", note: ""}
+  r22: {label: "", note: ""}
+  r23: {label: "", note: ""}
+  r24: {label: "", note: ""}
+  r25: {label: "", note: ""}
+  r26: {label: "", note: ""}
+  r27: {label: "", note: ""}
+  r28: {label: "", note: ""}
+  r29: {label: "", note: ""}
+  r30: {label: "", note: ""}
+  r31: {label: "", note: ""}
+  r32: {label: "", note: ""}
+  r33: {label: "", note: ""}
+  r34: {label: "", note: ""}
+  r35: {label: "", note: ""}
+  r36: {label: "", note: ""}
+  r37: {label: "", note: ""}
+  r38: {label: "", note: ""}
+  r39: {label: "", note: ""}
+  r40: {label: "", note: ""}
+  r41: {label: "", note: ""}
+  r42: {label: "", note: ""}
+  r43: {label: "", note: ""}
+  r44: {label: "", note: ""}
+  r45: {label: "", note: ""}
+  r46: {label: "", note: ""}
+  r47: {label: "", note: ""}
+  r48: {label: "", note: ""}
+requirements:
+  q01: {label: "", note: ""}
+  q02: {label: "", note: ""}
+  q03: {label: "", note: ""}
+  q04: {label: "", note: ""}
+  q05: {label: "", note: ""}
+  q06: {label: "", note: ""}
+  q07: {label: "", note: ""}
+  q08: {label: "", note: ""}
+  q09: {label: "", note: ""}
+  q10: {label: "", note: ""}
+  q11: {label: "", note: ""}
+  q12: {label: "", note: ""}
+  q13: {label: "", note: ""}
+  q14: {label: "", note: ""}
+  q15: {label: "", note: ""}
+  q16: {label: "", note: ""}
+  q17: {label: "", note: ""}
+  q18: {label: "", note: ""}
+  q19: {label: "", note: ""}
+  q20: {label: "", note: ""}
+  q21: {label: "", note: ""}
+  q22: {label: "", note: ""}
+  q23: {label: "", note: ""}
+  q24: {label: "", note: ""}
+  q25: {label: "", note: ""}
+  q26: {label: "", note: ""}
+  q27: {label: "", note: ""}
+  q28: {label: "", note: ""}
+  q29: {label: "", note: ""}
+  q30: {label: "", note: ""}
+  q31: {label: "", note: ""}
+  q32: {label: "", note: ""}
+  q33: {label: "", note: ""}
+  q34: {label: "", note: ""}
+  q35: {label: "", note: ""}
+  q36: {label: "", note: ""}
+  q37: {label: "", note: ""}
+  q38: {label: "", note: ""}
+  q39: {label: "", note: ""}
+  q40: {label: "", note: ""}
+  q41: {label: "", note: ""}
+  q42: {label: "", note: ""}
+  q43: {label: "", note: ""}
+  q44: {label: "", note: ""}
+  q45: {label: "", note: ""}
+  q46: {label: "", note: ""}

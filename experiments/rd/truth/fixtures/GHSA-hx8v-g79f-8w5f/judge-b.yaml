@@ -1,0 +1,10 @@
+labels:
+  item-01: NOT_REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: REQUIRED
+  item-04: REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: NOT_REQUIRED
+missing: []

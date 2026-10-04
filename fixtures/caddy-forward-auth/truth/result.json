@@ -1,0 +1,40 @@
+{
+    "toolchain": "go version go1.26.8 linux/amd64",
+    "env": "GOTOOLCHAIN=local GOFLAGS=-mod=readonly CGO_ENABLED=0",
+    "base": {
+        "commit": "00f948c6056f6968b07e2b92d537c0a61559e2ed",
+        "version": "unknown",
+        "P1_auth_omits_header_client_sends_admin": {
+            "x_user_id": [
+                "{http.reverse_proxy.header.X-User-Id}"
+            ]
+        },
+        "P2_auth_returns_alice_client_sends_admin": {
+            "x_user_id": [
+                "alice"
+            ]
+        },
+        "P3_auth_omits_header_client_sends_none": {
+            "x_user_id": [
+                "{http.reverse_proxy.header.X-User-Id}"
+            ]
+        }
+    },
+    "head": {
+        "commit": "05cfb121ec3f214c0e45206c188f34bad4d4eb8c",
+        "version": "unknown",
+        "P1_auth_omits_header_client_sends_admin": {
+            "x_user_id": [
+                "admin"
+            ]
+        },
+        "P2_auth_returns_alice_client_sends_admin": {
+            "x_user_id": [
+                "alice"
+            ]
+        },
+        "P3_auth_omits_header_client_sends_none": {
+            "x_user_id": []
+        }
+    }
+}

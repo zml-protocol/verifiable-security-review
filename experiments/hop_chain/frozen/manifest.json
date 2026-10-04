@@ -1,0 +1,29 @@
+{
+  "query_sha256": "bdb99f40fdafe0b383fefd9fa861ed4520b1e318fe3e2f8bc9117bb2e840161c",
+  "files": {
+    "hopdev-go.base.same_object.json.gz": {
+      "sha256_json": "8e287eebbf99584bc100ffe35cfb9008d0d583884a90ba60f06e1065be58a2e3",
+      "rows": 10
+    },
+    "hopdev-go.head.same_object.json.gz": {
+      "sha256_json": "60671d760753e3d203baaa172e80b1041a7fc307dba045fdc4c27cf75a1de4cf",
+      "rows": 9
+    },
+    "caddy-forward-auth.base.same_object.json.gz": {
+      "sha256_json": "fc2ce327570f7f1b8cf8b8dfbf6a25700a0f1fd16f9949ba88104e932024478f",
+      "rows": 3339
+    },
+    "caddy-forward-auth.head.same_object.json.gz": {
+      "sha256_json": "b19a3115f38753262f268c1ad12a3c608eecb37255ff33711cc39f793bda6eb4",
+      "rows": 3345
+    },
+    "filebrowser-archive-backslash.base.same_object.json.gz": {
+      "sha256_json": "50b922fadb1de82e430af2b420db708e0cac8dad8cda5645ddd04cbd05636eaf",
+      "rows": 441
+    },
+    "filebrowser-archive-backslash.head.same_object.json.gz": {
+      "sha256_json": "08274899dbad8792de8658fbaa3abcfd95d01a1f4b9a68a4772f853806395f5e",
+      "rows": 447
+    }
+  }
+}

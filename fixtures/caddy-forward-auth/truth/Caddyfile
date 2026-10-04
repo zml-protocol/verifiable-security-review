@@ -1,0 +1,13 @@
+{
+	admin off
+	auto_https off
+	persist_config off
+}
+
+:18080 {
+	forward_auth 127.0.0.1:18081 {
+		uri /auth
+		copy_headers X-User-ID
+	}
+	reverse_proxy 127.0.0.1:18082
+}

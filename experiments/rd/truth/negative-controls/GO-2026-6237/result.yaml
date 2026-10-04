@@ -1,0 +1,28 @@
+schema: rd-negative-control-result/v1
+fixture: GO-2026-6237
+prompt_sha256: fcc2bbe5c7cfea26327b037b2591fc76c34537766f07e901ec0a56819782d17a
+candidates:
+  - id: candidate-01
+    cwe: 352
+    author: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    judge_a: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    judge_b: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    qualifies: true
+  - id: candidate-02
+    cwe: 22
+    author: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    judge_a: {vuln: INDETERMINATE, fixed: INDETERMINATE}
+    judge_b: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    qualifies: false
+  - id: candidate-03
+    cwe: 79
+    author: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    judge_a: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    judge_b: {vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+    qualifies: true
+selection_rule: first qualifying candidate in frozen order
+selected:
+  id: candidate-01
+  cwe: 352
+  name: Cross-Site Request Forgery
+

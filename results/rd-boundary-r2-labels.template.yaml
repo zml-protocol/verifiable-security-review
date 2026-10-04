@@ -1,0 +1,31 @@
+# Label every case. Labels are quoted strings: relations "TRUE" | "FALSE" | "INDETERMINATE";
+# requirements "REQUIRED" | "NOT_REQUIRED" | "INDETERMINATE".
+reviewer:
+  type: ""        # "model" (or "human")
+  name: ""        # e.g. "<model name>, new conversation"
+  date: ""        # "YYYY-MM-DD"
+  attestation:
+    independent: true          # never saw this project's history, labels or expected answers
+    saw_author_labels: false
+    saw_project_history: false
+relations: {}
+requirements:
+  q06: {label: "", note: ""}
+  q07: {label: "", note: ""}
+  q08: {label: "", note: ""}
+  q13: {label: "", note: ""}
+  q15: {label: "", note: ""}
+  q16: {label: "", note: ""}
+  q18: {label: "", note: ""}
+  q19: {label: "", note: ""}
+  q20: {label: "", note: ""}
+  q26: {label: "", note: ""}
+  q27: {label: "", note: ""}
+  q30: {label: "", note: ""}
+  q32: {label: "", note: ""}
+  q35: {label: "", note: ""}
+  q36: {label: "", note: ""}
+  q40: {label: "", note: ""}
+  q45: {label: "", note: ""}
+  q47: {label: "", note: ""}
+  q48: {label: "", note: ""}

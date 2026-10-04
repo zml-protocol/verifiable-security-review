@@ -1,0 +1,20 @@
+fixture: GHSA-fq2j-j8hc-8vw8
+package: SiYuan
+labels:
+  candidate-01: {cwe: 22, vuln: SUPPORTED, fixed: INDETERMINATE}
+  candidate-02: {cwe: 79, vuln: INDETERMINATE, fixed: INDETERMINATE}
+  candidate-03: {cwe: 89, vuln: INDETERMINATE, fixed: INDETERMINATE}
+rationale:
+  candidate-01: >-
+    The already-frozen real fixture directly establishes attacker-controlled absolute-path handling
+    and a file copy/read disclosure in the vulnerable revision. The fixed revision rejects that
+    trigger, but the 95k-line product retains extensive attacker-controlled path/file functionality;
+    the supplied evidence does not decide whether another traversal remains or prove its absence.
+  candidate-02: >-
+    The 95k-line product contains HTML generation, unescaping, explicit historical XSS comments,
+    and hundreds of broad matches. The supplied evidence establishes neither a present exploitable
+    XSS flow nor package-wide absence in either revision.
+  candidate-03: >-
+    The package exposes authenticated raw-SQL/search functionality and contains extensive dynamic
+    SQL. The evidence does not decide whether any flow constitutes SQL injection rather than an
+    intentional privileged query interface, and cannot establish package-wide absence.

@@ -1,0 +1,40 @@
+{
+  "round": 2,
+  "groups": [
+    "config",
+    "dispatch_target",
+    "guard",
+    "transform"
+  ],
+  "definitions": {
+    "file": "experiments/rd/definitions.yaml",
+    "sha256": "edb1f89ddf11297b99362aa95b25fcd271f26b19b1ce1a5dd766a895af896b64"
+  },
+  "cases": {
+    "relation_cases.yaml": "00f71ba80c19b270738e144ef7a3f28599e1256c6082d855a0cd54d023f003de",
+    "requirement_cases.yaml": "e34e9bbbeb1fd8f38ae519d8866f29b8484e27882630a742b1e52845f6b1686d"
+  },
+  "sheet_sha256": "276613e115368177d81bf3b1603e53b635ccb16890f4b5331bad7f091a7384cb",
+  "relations": [],
+  "requirements": [
+    "q06",
+    "q07",
+    "q08",
+    "q13",
+    "q15",
+    "q16",
+    "q18",
+    "q19",
+    "q20",
+    "q26",
+    "q27",
+    "q30",
+    "q32",
+    "q35",
+    "q36",
+    "q40",
+    "q45",
+    "q47",
+    "q48"
+  ]
+}

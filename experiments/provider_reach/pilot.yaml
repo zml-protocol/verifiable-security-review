@@ -1,0 +1,112 @@
+# Spike P pilot on NON-evaluation code only (PREREGISTRATION.md §9.5).
+#
+# codeql_role:
+#   plumbing     must resolve both endpoints AND yield a path through expect_lines
+#   calibration  must resolve both endpoints; whether a path covers expect_lines
+#                decides the CodeQL expressibility of `calibrates`
+#   info         must resolve both endpoints; the path is only reported
+# trailmark_must_find_path: Trailmark must also find a function-level path.
+fixtures:
+  pilot-python-notes:
+    language: python
+    repo: .cache/fixtures/synthetic-notes
+    commits: {base: 90aad20d7de5b7d04a230eda91322346f8f62e53, head: 90aad20d7de5b7d04a230eda91322346f8f62e53}
+    build: null
+    endpoints:
+      base: &notes
+        source: {file: app/notes.py, line: 16, name: note_id}
+        sink: {file: app/store.py, line: 8, name: note_id}
+      head: *notes
+    expect_lines: [{file: app/notes.py, line: 20, contains: "notes.delete(note_id)"}]
+    codeql_role: info
+    # notes.delete is an instance-method call Trailmark leaves as proxy.unresolved
+    # (observed on synthetic-notes before §9)
+    trailmark_must_find_path: false
+  pilot-py-direct:
+    language: python
+    repo: .cache/fixtures/pilot-pyregistry
+    commits: {base: 6575bbbfc492d089eb8a79c405e0f59727191706, head: 6575bbbfc492d089eb8a79c405e0f59727191706}
+    build: null
+    endpoints:
+      base: &direct
+        source: {file: registry.py, line: 41, name: value}
+        sink: {file: registry.py, line: 45, name: item}
+      head: *direct
+    expect_lines: [{file: registry.py, line: 42, contains: "return inner(value)"}]
+    codeql_role: plumbing
+    trailmark_must_find_path: true
+  pilot-py-attribute:
+    language: python
+    repo: .cache/fixtures/pilot-pyregistry
+    commits: {base: 6575bbbfc492d089eb8a79c405e0f59727191706, head: 6575bbbfc492d089eb8a79c405e0f59727191706}
+    build: null
+    endpoints:
+      base: &attribute
+        source: {file: registry.py, line: 37, name: ticket}
+        sink: {file: registry.py, line: 27, name: ticket}
+      head: *attribute
+    expect_lines: [{file: registry.py, line: 38, contains: "self._engine.run(ticket)"}]
+    codeql_role: calibration
+    calibrates: call_typed_attribute
+    trailmark_must_find_path: false
+  pilot-py-registry:
+    language: python
+    repo: .cache/fixtures/pilot-pyregistry
+    commits: {base: 6575bbbfc492d089eb8a79c405e0f59727191706, head: 6575bbbfc492d089eb8a79c405e0f59727191706}
+    build: null
+    endpoints:
+      base: &registry
+        source: {file: registry.py, line: 27, name: ticket}
+        sink: {file: registry.py, line: 12, name: proof}
+      head: *registry
+    # the registry selection (29) and the dispatched call (30) on one path
+    expect_lines: [{file: registry.py, line: 29, contains: "TABLE[label]"},
+                   {file: registry.py, line: 30, contains: "chosen.check(label, proof)"}]
+    codeql_role: calibration
+    calibrates: registry_dispatch
+    trailmark_must_find_path: false
+  pilot-go-fieldflow:
+    language: go
+    repo: .cache/fixtures/pilot-goflow
+    commits: {base: 85a958392c86ed1c11e3ccf978962981fe4bdd07, head: 85a958392c86ed1c11e3ccf978962981fe4bdd07}
+    build: go build ./
+    endpoints:
+      base: &fieldflow
+        source: {file: flow.go, line: 19, name: names}
+        sink: {file: flow.go, line: 24, name: out}
+      head: *fieldflow
+    expect_lines: [{file: flow.go, line: 28, contains: "strings.TrimPrefix(path"},
+                   {file: flow.go, line: 29, contains: "strings.ReplaceAll(name"},
+                   {file: flow.go, line: 30, contains: "Entry{{Name: name}}"}]
+    codeql_role: calibration
+    calibrates: field_flow
+    trailmark_must_find_path: true
+  pilot-go-composition:
+    language: go
+    repo: .cache/fixtures/pilot-goflow
+    commits: {base: 85a958392c86ed1c11e3ccf978962981fe4bdd07, head: 85a958392c86ed1c11e3ccf978962981fe4bdd07}
+    build: go build ./
+    endpoints:
+      base: &composition
+        source: {file: flow.go, line: 33, name: extra}
+        sink: {file: flow.go, line: 38, name: p}
+      head: *composition
+    expect_lines: [{file: flow.go, line: 35, contains: "good.Routes = append(good.Routes, extra)"},
+                   {file: flow.go, line: 37, contains: "p.HandleResponse = append(p.HandleResponse, good)"}]
+    codeql_role: calibration
+    calibrates: object_composition
+    trailmark_must_find_path: true
+  pilot-go-call:
+    # endpoints in two functions joined by a plain call
+    language: go
+    repo: .cache/fixtures/pilot-goflow
+    commits: {base: 85a958392c86ed1c11e3ccf978962981fe4bdd07, head: 85a958392c86ed1c11e3ccf978962981fe4bdd07}
+    build: go build ./
+    endpoints:
+      base: &call
+        source: {file: flow.go, line: 19, name: names}
+        sink: {file: flow.go, line: 27, name: path}
+      head: *call
+    expect_lines: [{file: flow.go, line: 22, contains: "collect(n)"}]
+    codeql_role: plumbing
+    trailmark_must_find_path: true

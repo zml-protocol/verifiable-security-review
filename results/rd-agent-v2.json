@@ -1,0 +1,521 @@
+{
+  "schema": "rd-score/v1",
+  "protocol": "rd-v2",
+  "status": "REPORTED",
+  "harness_ok": true,
+  "harness_problems": {},
+  "metrics": {
+    "a": {
+      "entry": {
+        "recall": {
+          "numerator": 3,
+          "denominator": 5,
+          "rate": 0.6,
+          "wilson95": [
+            0.2307,
+            0.8824
+          ]
+        },
+        "precision": {
+          "numerator": 3,
+          "denominator": 5,
+          "rate": 0.6,
+          "wilson95": [
+            0.2307,
+            0.8824
+          ]
+        }
+      },
+      "behavior": {
+        "recall": {
+          "numerator": 2,
+          "denominator": 5,
+          "rate": 0.4,
+          "wilson95": [
+            0.1176,
+            0.7693
+          ]
+        },
+        "precision": {
+          "numerator": 2,
+          "denominator": 5,
+          "rate": 0.4,
+          "wilson95": [
+            0.1176,
+            0.7693
+          ]
+        }
+      },
+      "qualifier": {
+        "recall": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "precision": {
+          "numerator": 0,
+          "denominator": 1,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.7935
+          ]
+        }
+      }
+    },
+    "b_full_chain": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4345
+      ]
+    },
+    "b_correct_verified": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4345
+      ]
+    },
+    "b_correct_verified_reference_realizable_subset": {
+      "numerator": 0,
+      "denominator": 4,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4899
+      ]
+    },
+    "c_real_attribution_accuracy": {
+      "numerator": 3,
+      "denominator": 5,
+      "rate": 0.6,
+      "wilson95": [
+        0.2307,
+        0.8824
+      ]
+    },
+    "negative_control_false_supported_rate": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.6576
+      ]
+    },
+    "negative_control_missing_conclusions": 0,
+    "unsupported_proposal_burden": 0
+  },
+  "failure_categories": {
+    "A_CORRECT_PROVIDER_BLIND": 1,
+    "A_WRONG_B_UNREALIZABLE": 1,
+    "A_WRONG_C_CORRECT": 3
+  },
+  "tasks": [
+    {
+      "task_id": "task-03",
+      "role": "real",
+      "fixture": "GO-2026-6237",
+      "attempt": "attempt-1",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unsupported_proposals": 0,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 1
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 1
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [
+          {
+            "truth": "entry-raw-frame-read",
+            "agent": "agent-entry"
+          },
+          {
+            "truth": "behavior-ip-payload-length-guard",
+            "agent": "agent-behavior"
+          }
+        ],
+        "truth_matching": true,
+        "unmatched_truth": [],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "b": {
+        "revisions": {
+          "revision_A": {
+            "class": "INTERNAL_GAP",
+            "length": null,
+            "verified_edges": 5,
+            "entry_node_candidates": 1,
+            "terminal_node_candidates": 0,
+            "qualifier_obligations": 0,
+            "harness_mismatches": []
+          },
+          "revision_B": {
+            "class": "NOT_APPLICABLE",
+            "verified_edges": 0,
+            "harness_mismatches": []
+          }
+        },
+        "full_chain": false,
+        "harness_mismatches": []
+      },
+      "c": {
+        "canonical_statuses": {
+          "fixed": "NOT_SUPPORTED",
+          "vuln": "NOT_SUPPORTED"
+        },
+        "attribution": "NOT_SUPPORTED",
+        "expected": "FIX_IMPLICATED",
+        "correct": false
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "A_CORRECT_PROVIDER_BLIND"
+    },
+    {
+      "task_id": "task-04",
+      "role": "real",
+      "fixture": "GHSA-hx8v-g79f-8w5f",
+      "attempt": "attempt-1",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unsupported_proposals": 0,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 1
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [
+          {
+            "truth": "entry-user-config-extraction",
+            "agent": "agent-entry"
+          }
+        ],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "behavior-user-config-ban"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": [
+          {
+            "truth": "behavior-user-config-ban",
+            "agent": "agent-behavior",
+            "revisions": [
+              "revision_A"
+            ]
+          }
+        ]
+      },
+      "b": {
+        "revisions": {
+          "revision_A": {
+            "class": "NO_EVIDENCE",
+            "length": null,
+            "verified_edges": 0,
+            "entry_node_candidates": 1,
+            "terminal_node_candidates": 2,
+            "qualifier_obligations": 0,
+            "harness_mismatches": []
+          },
+          "revision_B": {
+            "class": "NOT_APPLICABLE",
+            "verified_edges": 4,
+            "harness_mismatches": []
+          }
+        },
+        "full_chain": false,
+        "harness_mismatches": []
+      },
+      "c": {
+        "canonical_statuses": {
+          "fixed": "NOT_SUPPORTED",
+          "vuln": "SUPPORTED"
+        },
+        "attribution": "FIX_IMPLICATED",
+        "expected": "FIX_IMPLICATED",
+        "correct": true
+      },
+      "reference_disposition": "REFERENCE_UNREALIZABLE",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_C_CORRECT"
+    },
+    {
+      "task_id": "task-02",
+      "role": "real",
+      "fixture": "GHSA-mr3j-p26x-72x4",
+      "attempt": "attempt-1",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a"
+      ],
+      "unsupported_proposals": 0,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "behavior-task-scope-constraint",
+          "entry-readone-request"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_B_UNREALIZABLE"
+    },
+    {
+      "task_id": "task-06",
+      "role": "negative_control",
+      "fixture": "GO-2026-6237",
+      "attempt": "attempt-2",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unsupported_proposals": 0,
+      "b": {
+        "revisions": {
+          "revision_A": {
+            "class": "INTERNAL_GAP",
+            "length": null,
+            "verified_edges": 6,
+            "entry_node_candidates": 1,
+            "terminal_node_candidates": 0,
+            "qualifier_obligations": 0,
+            "harness_mismatches": []
+          },
+          "revision_B": {
+            "class": "NOT_APPLICABLE",
+            "verified_edges": 5,
+            "harness_mismatches": []
+          }
+        },
+        "full_chain": false,
+        "harness_mismatches": []
+      },
+      "c": {
+        "canonical_statuses": {
+          "fixed": "NOT_SUPPORTED",
+          "vuln": "NOT_SUPPORTED"
+        },
+        "attribution": "NOT_SUPPORTED",
+        "expected": "NOT_SUPPORTED",
+        "correct": true
+      }
+    },
+    {
+      "task_id": "task-05",
+      "role": "real",
+      "fixture": "GHSA-xcw4-53cc-hv32",
+      "attempt": "attempt-1",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unsupported_proposals": 0,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 1
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 1,
+            "matched": 0
+          }
+        },
+        "pairs": [
+          {
+            "truth": "entry-authorization-header",
+            "agent": "agent-entry"
+          }
+        ],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "behavior-invalid-signature-guard"
+        ],
+        "extra_qualifiers": [
+          "agent-q1"
+        ],
+        "partial_revision_matches": []
+      },
+      "b": {
+        "revisions": {
+          "revision_A": {
+            "class": "NOT_APPLICABLE",
+            "verified_edges": 2,
+            "harness_mismatches": []
+          },
+          "revision_B": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "verified_edges": 3,
+            "entry_node_candidates": 1,
+            "terminal_node_candidates": 2,
+            "qualifier_obligations": 1,
+            "harness_mismatches": []
+          }
+        },
+        "full_chain": false,
+        "harness_mismatches": []
+      },
+      "c": {
+        "canonical_statuses": {
+          "vuln": "SUPPORTED",
+          "fixed": "NOT_SUPPORTED"
+        },
+        "attribution": "FIX_IMPLICATED",
+        "expected": "FIX_IMPLICATED",
+        "correct": true
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_C_CORRECT"
+    },
+    {
+      "task_id": "task-01",
+      "role": "real",
+      "fixture": "GHSA-fq2j-j8hc-8vw8",
+      "attempt": "attempt-1",
+      "run_status": "VALID",
+      "phases_locked": [
+        "a",
+        "b",
+        "c"
+      ],
+      "unsupported_proposals": 0,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 1,
+            "matched": 1
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [
+          {
+            "truth": "behavior-sensitive-path-guard",
+            "agent": "agent-behavior"
+          }
+        ],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-localpath"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "b": {
+        "revisions": {
+          "revision_A": {
+            "class": "INTERNAL_GAP",
+            "length": null,
+            "verified_edges": 7,
+            "entry_node_candidates": 1,
+            "terminal_node_candidates": 0,
+            "qualifier_obligations": 0,
+            "harness_mismatches": []
+          },
+          "revision_B": {
+            "class": "NOT_APPLICABLE",
+            "verified_edges": 4,
+            "harness_mismatches": []
+          }
+        },
+        "full_chain": false,
+        "harness_mismatches": []
+      },
+      "c": {
+        "canonical_statuses": {
+          "fixed": "NOT_SUPPORTED",
+          "vuln": "SUPPORTED"
+        },
+        "attribution": "FIX_IMPLICATED",
+        "expected": "FIX_IMPLICATED",
+        "correct": true
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_C_CORRECT"
+    }
+  ]
+}

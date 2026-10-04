@@ -1,0 +1,46 @@
+# §14 bridge relations (PREREGISTRATION.md §14.2): three hop relations implementing the four
+# semantic steps. Cross-function call resolution is part of argument_binding (a standalone
+# call -> callee-body relation would lose which argument carries the value). Same contract as
+# the P-Hybrid-1 relations: truth condition, endpoint node kinds, one verifier; CONTRADICTED only
+# from the closed-world shape check; the relation check itself is VERIFIED or UNVERIFIED.
+relations:
+  go:
+    def_use:
+      gloss: a defined value read in computing a later definition or a call argument
+      truth: >
+        `from` defines a value (a local definition, a parameter, or a range value variable);
+        `to` is a later definition whose right-hand side, or a call argument whose expression,
+        reads that value by local value flow within the function.
+      verifier: DefUse.ql
+      from: {role: node, kinds: [definition, parameter, range_value]}
+      to: {role: node, kinds: [definition, call_argument]}
+    argument_binding:
+      gloss: a call argument bound to the parameter of the function the call runs
+      truth: >
+        `from` is argument i of a call that can run, at run time, the function whose parameter
+        i is `to` (a variadic tail receives a slice, not the argument, so it never counts). The
+        verifier follows static resolution only: interface dispatch or a function value that
+        can reach the function is a true hop it leaves UNVERIFIED.
+      verifier: ArgumentBinding.ql
+      from: {role: node, kinds: [call_argument]}
+      to: {role: node, kinds: [parameter]}
+    range_element:
+      gloss: a collection's elements bound to the value variable of a range over it
+      truth: >
+        `from` defines a collection (a local definition or a parameter), and `to` is the value
+        variable of a `range` whose ranged expression is that same value by local value flow.
+      verifier: RangeElement.ql
+      from: {role: node, kinds: [definition, parameter]}
+      to: {role: node, kinds: [range_value]}
+  python:
+    def_use:
+      gloss: a defined value read in computing a later definition or a call
+      truth: >
+        `from` is a parameter or a single-name definition; `to` is a later single-name
+        definition whose right-hand side, or a call one of whose arguments, reads that value
+        by local value flow within the function.
+      verifier: DefUse.ql
+      from: {role: node, kinds: [parameter, definition]}
+      to: {role: node, kinds: [definition, call]}
+
+shapes: {go: BridgeShapes.ql, python: BridgeShapes.ql}

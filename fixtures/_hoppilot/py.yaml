@@ -1,0 +1,14 @@
+# P-Hybrid-2 plumbing pilot (PREREGISTRATION.md §11.6): mechanics only, never scored.
+id: hoppilot-py
+kind: synthetic
+repo: {path: .cache/fixtures/hopdev-py}   # fixtures/_hopdev/build.py
+base: 61c4eed6f5d805832dae9a7b0cd161e85593cc31
+head: d50487a726d25de1fc437535651015170782e6f4
+hypotheses:
+  - id: H1
+    property_kind: dispatch
+    claim: Reader.verify accepts a signature exactly when the check registered for the requested kind accepts it.
+    components:
+      - {id: dispatch, text: "Reader.verify runs the check of the entry registered under the requested kind."}
+    hints:
+      - {path: dev.py, symbol: verify, note: "entrypoint: Reader.verify"}

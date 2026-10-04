@@ -1,0 +1,45 @@
+# Requirement truth (A) — GHSA-mr3j-p26x-72x4 (Vikunja)
+# Author-side only; never agent-facing. Canonical vuln/fixed slot keys; anchors
+# {file,start_line,end_line,expression}. Scored items adjudicated by two fresh judges (§15.1).
+fixture: GHSA-mr3j-p26x-72x4
+truth_meta:
+  language: go
+  canonical_revisions:
+    vuln:  {role: parent, commit: 2da89258e53068253dcf8ef17d4dad141dba7d31}
+    fixed: {role: fix,    commit: bc6d843ed4df82a6c89f10aa676a7a33d27bf2fd}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in package models, attacker-controlled input may lead to CWE-862 Missing Authorization: a task
+  comment belonging to one task is read through a request that names a different task.
+domain: >
+  The attacker controls the HTTP request, including the task id and comment id path parameters.
+  Every other state (accounts, sessions, roles, configuration, environment, the database contents)
+  may take any value the code allows.
+
+items:
+  - id: entry-readone-request
+    kind: entry
+    author_expected: REQUIRED
+    # EN-1: for a missing-authorization claim about the request as a whole, the entry is the request
+    # parameter holding the attacker input. Here the exposed handler is TaskComment.ReadOne and the
+    # attacker-controlled task id + comment id are bound onto its receiver `tc`. Present on both
+    # revisions (the fix inserts a line above, so the signature shifts: vuln L228, fixed L229).
+    entry:
+      vuln:  {state: present, anchor: {file: pkg/models/task_comments.go, start_line: 228, end_line: 228, expression: "func (tc *TaskComment) ReadOne(s *xorm.Session, _ web.Auth) (err error) {"}}
+      fixed: {state: present, anchor: {file: pkg/models/task_comments.go, start_line: 229, end_line: 229, expression: "func (tc *TaskComment) ReadOne(s *xorm.Session, _ web.Auth) (err error) {"}}
+
+  - id: behavior-task-scope-constraint
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1: the fix adds a check on the path (the task-scope constraint on the comment lookup);
+    # the behavior is that added check. fixed present = the added `.And("task_id = ?", tc.TaskID)`
+    # in getTaskCommentSimple. vuln absent, context (AC-3 diff-aligned) = the statement right after
+    # the insertion point, i.e. the `NoAutoCondition().` chain element that followed `Where(id=...)`.
+    behavior:
+      vuln:  {state: absent,  context: {file: pkg/models/task_comments.go, start_line: 199, end_line: 199, expression: "NoAutoCondition()."}}
+      fixed: {state: present, anchor:  {file: pkg/models/task_comments.go, start_line: 199, end_line: 199, expression: "And(\"task_id = ?\", tc.TaskID)."}}
+
+non_scored_notes:
+  single_line_fix: >
+    The entire fix is one added query constraint in getTaskCommentSimple (pkg/models/task_comments.go);
+    there is no separate guard/config/dispatch_target qualifier to adjudicate for this claim.

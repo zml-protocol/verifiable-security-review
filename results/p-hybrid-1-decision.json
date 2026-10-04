@@ -1,0 +1,35 @@
+{
+  "decision": "HYBRID_2_LIMITED_SCOPE",
+  "classes": {
+    "call_typed_attribute": {
+      "cal": "SUPPORTED",
+      "eval": "SUPPORTED"
+    },
+    "field_flow": {
+      "cal": "SUPPORTED",
+      "eval": "SUPPORTED"
+    },
+    "guard_property": {
+      "cal": "SUPPORTED",
+      "eval": "SUPPORTED"
+    },
+    "object_composition": {
+      "cal": "SUPPORTED",
+      "eval": "SUPPORTED"
+    },
+    "registry_dispatch": {
+      "cal": "SUPPORTED",
+      "eval": "SUPPORTED"
+    }
+  },
+  "unsafe": [],
+  "inconclusive": [],
+  "verifiable_in_hybrid_2": [
+    "call_typed_attribute",
+    "field_flow",
+    "guard_property",
+    "object_composition",
+    "registry_dispatch"
+  ],
+  "blind_spots": []
+}

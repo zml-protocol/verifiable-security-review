@@ -1,0 +1,29 @@
+{
+  "matcher": {
+    "file": "experiments/rd/truth/matcher.py",
+    "function": "node_identity",
+    "spec": "matcher:node_identity",
+    "sha256": "8570db4645dd4dacc127cb4f19e4831413c36a4f0cf9ef85514f9c8188737c97"
+  },
+  "identity_tuple": [
+    "language",
+    "revision",
+    "path",
+    "node_type",
+    "structural_path",
+    "content_digest"
+  ],
+  "resolvers": {
+    "python": {
+      "parser": "cpython-stdlib-ast",
+      "python_version": "3.13"
+    },
+    "go": {
+      "parser": "go/parser(mode=0)",
+      "go_version": "go1.26.8",
+      "helper": "experiments/rd/truth/goresolver/node_id.go",
+      "helper_sha256": "f2643aa9f76db56f83caaaf64744dee345812bd64c85606b036ee352d01fe8ad",
+      "go_mod_sha256": "e846e713f9c48f7f3442a75c53b792c36d7d5590a9f90c5ec5cebdebb901a4df"
+    }
+  }
+}

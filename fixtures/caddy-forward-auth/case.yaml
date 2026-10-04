@@ -1,0 +1,48 @@
+# What the agent may see (hypotheses) plus harness config. Answers live in golden.yaml.
+id: caddy-forward-auth
+kind: semantic
+repo:
+  path: .cache/repos/caddy.git
+  url: https://github.com/caddyserver/caddy
+base: 00f948c6056f6968b07e2b92d537c0a61559e2ed   # parent of the introducing commit
+head: 05cfb121ec3f214c0e45206c188f34bad4d4eb8c   # PR #6608 (squash)
+deny_paths: []
+notes: Advisory context and truth details live in golden.yaml and truth/.
+
+hypotheses:
+  - id: H1
+    property_kind: identity_injection
+    claim: >
+      A site is configured with `forward_auth <auth-service> { uri /auth;
+      copy_headers X-User-ID }` in front of `reverse_proxy <app>`, and the app
+      trusts X-User-ID as the authenticated identity. Clients can send arbitrary
+      request headers, and the auth service may approve a request with a 2xx
+      response that does not include X-User-ID. For such a request, a
+      client-supplied X-User-ID header reaches the app unchanged.
+    components:
+      - id: configuration
+        text: "`copy_headers X-User-ID` is compiled into request-header operations that run when the auth response has a 2xx status."
+      - id: overwrite
+        text: When the 2xx auth response lacks X-User-ID, no operation replaces or removes the client's X-User-ID before the request is proxied.
+      - id: effect
+        text: Request headers present after forward_auth's response handling are sent to the upstream by reverse_proxy.
+    hints:
+      - {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, symbol: parseCaddyfile, note: "entrypoint: forward_auth directive"}
+      - {path: modules/caddyhttp/headers/headers.go, symbol: ServeHTTP, note: "sink: request header operations"}
+
+  - id: H2
+    property_kind: identity_injection
+    claim: >
+      Same configuration as H1. When the auth service approves a request with a
+      2xx response that includes `X-User-ID: alice`, the app receives the
+      client-supplied X-User-ID value instead of `alice`.
+    components:
+      - id: configuration
+        text: "`copy_headers X-User-ID` is compiled into request-header operations that run when the auth response has a 2xx status."
+      - id: overwrite
+        text: When the 2xx auth response includes X-User-ID, the client's X-User-ID is left in place instead of being replaced by the auth response's value.
+      - id: effect
+        text: Request headers present after forward_auth's response handling are sent to the upstream by reverse_proxy.
+    hints:
+      - {path: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, symbol: parseCaddyfile, note: "entrypoint: forward_auth directive"}
+      - {path: modules/caddyhttp/headers/headers.go, symbol: ServeHTTP, note: "sink: request header operations"}

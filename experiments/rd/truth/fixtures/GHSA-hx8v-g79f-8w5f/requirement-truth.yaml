@@ -1,0 +1,52 @@
+# Requirement truth (A) — GHSA-hx8v-g79f-8w5f (LiteLLM)
+# Author-side only; never agent-facing. Canonical vuln/fixed slots; anchors are
+# {file,start_line,end_line,expression}. Author self-review must finish before any judge run.
+fixture: GHSA-hx8v-g79f-8w5f
+truth_meta:
+  language: python
+  canonical_revisions:
+    vuln:  {role: parent, commit: 93faf321df159b1ef65a98cc29a70958a96d184a}
+    fixed: {role: fix,    commit: 47214be317f45a2d2ac08258362e0481411eb427}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in LiteLLM Proxy, an authenticated caller-controlled `user_config` request field containing a
+  nested `api_base` may lead to CWE-918 Server-Side Request Forgery by steering the proxy's outbound
+  request to a host chosen by the caller.
+domain: >
+  The attacker has a valid virtual key and controls the proxy request body, including `user_config`
+  and its nested `api_base`. Every other state (proxy configuration, models, credentials,
+  environment, network, and destination services) may take any value the code allows.
+
+items:
+  - id: entry-user-config-extraction
+    kind: entry
+    author_expected: REQUIRED
+    # EN-2: `user_config` is one field of the larger request-body object. This is the first
+    # single-name definition that extracts that field as its own value on the vulnerable routing
+    # path. It is unchanged and present in both revisions.
+    entry:
+      vuln:  {state: present, anchor: {file: litellm/proxy/route_llm_request.py, start_line: 18, end_line: 18, expression: 'router_config = data.pop("user_config")'}}
+      fixed: {state: present, anchor: {file: litellm/proxy/route_llm_request.py, start_line: 18, end_line: 18, expression: 'router_config = data.pop("user_config")'}}
+
+  - id: behavior-user-config-ban
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1: the fix changes the request-body guard's banned-parameter check by adding user_config.
+    # The assignment directly determines which keys the immediately following membership check
+    # rejects. It exists at both revisions with different content.
+    behavior:
+      vuln:  {state: present, anchor: {file: litellm/proxy/auth/auth_utils.py, start_line: 153, end_line: 153, expression: 'banned_params = ["api_base", "base_url"]'}}
+      fixed: {state: present, anchor: {file: litellm/proxy/auth/auth_utils.py, start_line: 153, end_line: 153, expression: 'banned_params = ["api_base", "base_url", "user_config"]'}}
+
+non_scored_notes:
+  same_commit_changes: >
+    The commit also moves an internal-call signal into a ContextVar, reformats nearby code, and
+    strips separately spoofable internal/metadata keys at the proxy boundary. Those changes do not
+    establish this `user_config.api_base` SSRF claim and are not scored requirements.
+  authentication_scenario: >
+    A valid virtual key is stated in the claim domain because the advisory says exploitation requires
+    an authenticated caller. It is scenario input, not a separate qualifier.
+  client_side_credentials_setting: >
+    `allow_client_side_credentials` is not necessary for the vulnerable effect: with the setting
+    absent/false, the vulnerable revision still admits `user_config` because that key is missing from
+    its banned list. It is therefore not a claim-necessary config qualifier under QU-1.

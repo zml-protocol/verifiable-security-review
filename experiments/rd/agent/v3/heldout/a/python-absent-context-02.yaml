@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-absent-context-02",
+  "language": "python",
+  "cell": "absent_context",
+  "package": "ivory_bucket",
+  "effect_claim": "Whether a supplied bucket name determines the selected destination.",
+  "files": {
+    "revision_A": {
+      "ivory_bucket.py": "class Bucket:\n    def __init__(self):\n        self.last = None\n\n    def select(self, value):\n        self.last = value\n\n\ndef choose(form, bucket):\n    bucket_name = form[\"bucket\"]\n    bucket.select(bucket_name)\n"
+    },
+    "revision_B": {
+      "ivory_bucket.py": "class Bucket:\n    def __init__(self):\n        self.last = None\n\n    def select(self, value):\n        self.last = value\n\n\ndef choose(form, bucket):\n    bucket.select(form[\"bucket\"])\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ivory_bucket.py",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "bucket_name = form[\"bucket\"]"
+        }
+      },
+      "revision_B": {
+        "state": "absent",
+        "context": {
+          "file": "ivory_bucket.py",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "bucket.select(form[\"bucket\"])"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "ivory_bucket.py",
+          "start_line": 11,
+          "end_line": 11,
+          "expression": "bucket.select(bucket_name)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "ivory_bucket.py",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "bucket.select(form[\"bucket\"])"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "nonexistent_present",
+    "wrong_context",
+    "subexpression"
+  ],
+  "forbidden_anchors": []
+}

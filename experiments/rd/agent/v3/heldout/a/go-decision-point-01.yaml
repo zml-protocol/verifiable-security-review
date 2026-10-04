@@ -1,0 +1,62 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-decision-point-01",
+  "language": "go",
+  "cell": "decision_point",
+  "package": "quartzlease",
+  "effect_claim": "Whether a submitted lease ticket is allowed to reserve worker capacity.",
+  "files": {
+    "revision_A": {
+      "quartzlease.go": "package quartzlease\n\ntype LeaseEnvelope struct {\n\tTicket string\n\tSlots  int\n}\n\nfunc reserve(envelope LeaseEnvelope) bool {\n\tleaseTicket := envelope.Ticket\n\taccepted := envelope.Slots > 0 && len(leaseTicket) > 3\n\treturn accepted\n}\n"
+    },
+    "revision_B": {
+      "quartzlease.go": "package quartzlease\n\ntype LeaseEnvelope struct {\n\tTicket string\n\tSlots  int\n}\n\nfunc reserve(envelope LeaseEnvelope) bool {\n\tleaseTicket := envelope.Ticket\n\taccepted := envelope.Slots > 1 && len(leaseTicket) > 5\n\treturn accepted\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "quartzlease.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "leaseTicket := envelope.Ticket"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "quartzlease.go",
+          "start_line": 9,
+          "end_line": 9,
+          "expression": "leaseTicket := envelope.Ticket"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "quartzlease.go",
+          "start_line": 11,
+          "end_line": 11,
+          "expression": "return accepted"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "quartzlease.go",
+          "start_line": 11,
+          "end_line": 11,
+          "expression": "return accepted"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "computed_value"
+  ],
+  "forbidden_anchors": []
+}

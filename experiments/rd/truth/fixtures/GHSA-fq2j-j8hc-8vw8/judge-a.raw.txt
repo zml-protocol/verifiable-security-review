@@ -1,0 +1,16 @@
+Judge A = gpt-6-astra (local Codex CLI, medium, fresh/isolated), one run. Verbatim output:
+
+labels:
+item-01: NOT_REQUIRED
+item-02: NOT_REQUIRED
+item-03: NOT_REQUIRED
+item-04: NOT_REQUIRED
+item-05: REQUIRED
+item-06: NOT_REQUIRED
+item-07: REQUIRED
+item-08: NOT_REQUIRED
+missing: [
+
+NOTE: labels are complete and identical to Judge B. The `missing:` field is TRUNCATED/malformed
+(`missing: [` with no close). Per the frozen format-only correction rule (§15.1), Judge A's session
+must re-send the `missing` field in valid YAML (format only, no content change) before freeze.

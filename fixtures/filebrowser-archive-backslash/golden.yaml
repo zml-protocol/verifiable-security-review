@@ -1,0 +1,160 @@
+# Expected answers. Never exposed to the agent. Truth values are backed by
+# truth/result.json (entries for `..\..\evil.sh` and `a\b.txt` on both sides).
+# facts: any one evidence set suffices; every location in that set must be cited.
+case: filebrowser-archive-backslash
+notes: >
+  CVE-2026-62843 / GHSA-83xp-526h-j3ww and CVE-2026-54093 / GHSA-gxjx-7m74-hcq8.
+  The head commit also carries two unrelated security fixes (login DoS,
+  symlink escape). truth/result.json: the rewrite does not add any `..` check,
+  so the naive-Windows vector survives (H3).
+
+hypotheses:
+  H1:
+    # CVE-2026-62843: the rewrite manufactures POSIX traversal.
+    truth: {base: false, head: true}
+    components:
+      entrypoint: {base: supported, head: supported}
+      normalization: {base: contradicted, head: supported}
+      sanitization: {base: supported, head: supported}
+    attribution:
+      static_only: CHANGE_IMPLICATED
+      with_execution: REGRESSION          # base entry ..\..\evil.sh (posix-safe), head ../../evil.sh (escapes)
+    facts:
+      - id: base-stored-path-becomes-entry
+        revision: base
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 131}]
+      - id: head-stored-path-becomes-entry
+        revision: head
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 137}]
+      - id: base-backslash-kept
+        revision: base
+        component: normalization
+        statement: only filepath.ToSlash is applied, which leaves backslashes alone on Linux
+        evidence_sets:
+          - [{path: http/raw.go, lines: 127}]
+      - id: head-backslash-to-slash
+        revision: head
+        component: normalization
+        statement: backslashes are rewritten to `/` with no `..` check before the name is used
+        evidence_sets:
+          - [{path: http/raw.go, lines: 133}]
+    notes: >
+      Insufficient on its own: the code comment above the ReplaceAll (it
+      describes the Windows problem, not what happens on Linux), or the
+      rawDirHandler call site without the name derivation in getFiles.
+
+  H2:
+    # CVE-2026-54093: what the commit actually removed is backslashes in entry names.
+    truth: {base: true, head: false}
+    components:
+      entrypoint: {base: supported, head: supported}
+      normalization: {base: supported, head: contradicted}
+    attribution:
+      static_only: FIX_IMPLICATED
+      with_execution: FIXED               # contains_backslash: true on base, false on head
+    facts:
+      - id: base-stored-path-becomes-entry
+        revision: base
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 131}]
+      - id: head-stored-path-becomes-entry
+        revision: head
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 137}]
+      - id: base-backslash-kept
+        revision: base
+        component: normalization
+        statement: only filepath.ToSlash is applied, which leaves backslashes alone on Linux
+        evidence_sets:
+          - [{path: http/raw.go, lines: 127}]
+      - id: head-backslash-removed
+        revision: head
+        component: normalization
+        statement: every backslash is rewritten to `/`
+        evidence_sets:
+          - [{path: http/raw.go, lines: 133}]
+
+  H3:
+    # Trap: a security fix that leaves the naive-Windows vector in place.
+    truth: {base: true, head: true}
+    components:
+      entrypoint: {base: supported, head: supported}
+      normalization: {base: supported, head: supported}
+      sanitization: {base: supported, head: supported}
+    attribution:
+      static_only: PRE_EXISTING
+      with_execution: PRE_EXISTING        # escapes_windows_extractor: true on both sides
+    facts:
+      - id: base-stored-path-becomes-entry
+        revision: base
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 131}]
+      - id: head-stored-path-becomes-entry
+        revision: head
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 137}]
+      - id: base-dotdot-kept
+        revision: base
+        component: normalization
+        statement: the name keeps its `..\..\` segments
+        evidence_sets:
+          - [{path: http/raw.go, lines: 127}]
+      - id: head-dotdot-kept
+        revision: head
+        component: normalization
+        statement: the rewrite turns `..\..\` into `../../` and does not remove `..` segments
+        evidence_sets:
+          - [{path: http/raw.go, lines: 133}]
+    notes: >
+      The head comment above the ReplaceAll claims the Windows zip-slip is
+      addressed; the claim fails because no `..` segment is rejected.
+
+  H4:
+    # Negative control on the changed line: a backslash without `..` never escapes.
+    truth: {base: false, head: false}
+    components:
+      entrypoint: {base: supported, head: supported}
+      normalization: {base: contradicted, head: contradicted}
+      sanitization: {base: supported, head: supported}
+    attribution:
+      static_only: NOT_SUPPORTED
+      with_execution: NOT_SUPPORTED       # a\b.txt -> a\b.txt / a/b.txt, escapes nowhere
+    facts:
+      - id: base-stored-path-becomes-entry
+        revision: base
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 131}]
+      - id: head-stored-path-becomes-entry
+        revision: head
+        component: entrypoint
+        statement: the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name
+        evidence_sets:
+          - [{path: http/raw.go, lines: 125}, {path: http/raw.go, lines: 137}]
+      - id: base-no-dotdot-introduced
+        revision: base
+        component: normalization
+        statement: the transformation only touches separators, so no `..` segment can appear
+        evidence_sets:
+          - [{path: http/raw.go, lines: 127}]
+      - id: head-no-dotdot-introduced
+        revision: head
+        component: normalization
+        statement: rewriting `\` to `/` turns a\b.txt into a/b.txt, which stays inside the extraction directory
+        evidence_sets:
+          - [{path: http/raw.go, lines: 133}]

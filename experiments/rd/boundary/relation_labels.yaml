@@ -1,0 +1,291 @@
+# The author's labels for relation_cases.yaml. Never shown to adjudicators.
+set: rd-boundary-relations
+labels:
+  r01:
+    name: du-through-local
+    label: true
+    rule: DU-1
+    reason: b reads a, which holds the parameter's value
+    tier: core
+  r02:
+    name: oc-initial-version
+    label: false
+    rule: OC-4
+    reason: the spread version of batch is defined by the later append
+    tier: boundary
+  r03:
+    name: gp-nested-field
+    label: true
+    rule: GP-1
+    reason: a keyed field inside &Meta{...} of cfg's initializer
+    tier: core
+  r04:
+    name: pd-overwritten
+    label: false
+    rule: DU-2
+    reason: body is reassigned before
+    tier: core
+  r05:
+    name: oc-direct-argument
+    label: true
+    rule: OC-1
+    reason: an appended argument
+    tier: core
+  r06:
+    name: ct-overridden-base
+    label: false
+    rule: CT-1
+    reason: AuditStore overrides save; Store.save cannot run
+    tier: boundary
+  r07:
+    name: ab-interface
+    label: true
+    rule: AB-1
+    reason: 'Use passes a *memSink as sink: the interface call can run its Put'
+    tier: boundary
+  r08:
+    name: pd-comprehension-body
+    label: false
+    rule: DU-3
+    reason: the read is in the comprehension body
+    tier: boundary
+  r09:
+    name: re-local
+    label: true
+    rule: RE-2
+    reason: ranging over the defined value
+    tier: core
+  r10:
+    name: ab-variadic-tail
+    label: false
+    rule: AB-2
+    reason: x goes into the variadic tail
+    tier: boundary
+  r11:
+    name: du-definition-to-definition
+    label: true
+    rule: DU-1
+    reason: the right-hand side reads b
+    tier: core
+  r12:
+    name: du-selector-base
+    label: true
+    rule: DU-4
+    reason: t is read as a selector base
+    tier: boundary
+  r13:
+    name: rd-registered
+    label: true
+    rule: RD-1
+    reason: Upper is registered
+    tier: core
+  r14:
+    name: oc-the-earlier-store-itself
+    label: true
+    rule: OC-1
+    reason: m is the stored value
+    tier: core
+  r15:
+    name: re-map-value
+    label: true
+    rule: RE-4
+    reason: map values are elements
+    tier: boundary
+  r16:
+    name: gp-redefined
+    label: false
+    rule: GP-2
+    reason: cfg is redefined before this store
+    tier: core
+  r17:
+    name: rd-unregistered
+    label: false
+    rule: RD-1
+    reason: Hidden is never registered
+    tier: core
+  r18:
+    name: pd-lambda
+    label: false
+    rule: DU-3
+    reason: body is read only inside the lambda
+    tier: boundary
+  r19:
+    name: rd-registered-plain
+    label: true
+    rule: RD-1
+    reason: Plain is registered
+    tier: core
+  r20:
+    name: du-overwritten
+    label: false
+    rule: DU-2
+    reason: a is overwritten before
+    tier: core
+  r21:
+    name: pd-parameter-keyword
+    label: true
+    rule: DU-1
+    reason: the keyword argument name=user
+    tier: core
+  r22:
+    name: oc-spread
+    label: true
+    rule: OC-3
+    reason: 'the spread container''s defining statement: one step'
+    tier: boundary
+  r23:
+    name: re-index
+    label: false
+    rule: RE-1
+    reason: a one-variable range binds the index
+    tier: core
+  r24:
+    name: ab-first-argument
+    label: true
+    rule: AB-4
+    reason: argument 0 binds prefix
+    tier: core
+  r25:
+    name: ct-override
+    label: true
+    rule: CT-1
+    reason: self.store only holds an AuditStore
+    tier: core
+  r26:
+    name: ab-static
+    label: true
+    rule: AB-4
+    reason: argument 0 of a static method call
+    tier: core
+  r27:
+    name: pd-receiver-base
+    label: true
+    rule: DU-4
+    reason: request is read as the call receiver
+    tier: boundary
+  r28:
+    name: du-closure
+    label: false
+    rule: DU-3
+    reason: the read is inside a function literal
+    tier: boundary
+  r29:
+    name: re-copy
+    label: true
+    rule: RE-2
+    reason: list holds names
+    tier: boundary
+  r30:
+    name: ff-overwritten
+    label: false
+    rule: FF-2
+    reason: tag is overwritten before the literal
+    tier: core
+  r31:
+    name: oc-container
+    label: false
+    rule: OC-6
+    reason: x is the container, not a stored value
+    tier: core
+  r32:
+    name: ab-function-value
+    label: true
+    rule: AB-1
+    reason: apply holds clean
+    tier: boundary
+  r33:
+    name: ab-receiver
+    label: false
+    rule: AB-3
+    reason: the receiver is not an argument
+    tier: core
+  r34:
+    name: ff-closure
+    label: false
+    rule: FF-3
+    reason: name reaches the field only through the closure
+    tier: boundary
+  r35:
+    name: oc-element-via-container
+    label: false
+    rule: OC-3
+    reason: 'the element reaches the field only through the local container: two steps'
+    tier: boundary
+  r36:
+    name: oc-value-copy
+    label: false
+    rule: OC-7
+    reason: w is a copy of v; the stored object v was not modified
+    tier: boundary
+  r37:
+    name: oc-earlier-store
+    label: false
+    rule: OC-5
+    reason: m reaches the stored value only by being read back from holder.Meta
+    tier: boundary
+  r38:
+    name: ff-multi-definition
+    label: true
+    rule: FF-1
+    reason: rest is one of the variables the statement defines
+    tier: boundary
+  r39:
+    name: ff-through-local
+    label: true
+    rule: FF-4
+    reason: name reaches name2 by assignment
+    tier: core
+  r40:
+    name: pd-outer-iterable
+    label: true
+    rule: DU-3
+    reason: the outermost iterable is evaluated in the function
+    tier: boundary
+  r41:
+    name: oc-pointer-alias
+    label: true
+    rule: OC-7
+    reason: 'p and pm hold the same pointer: the modified object is stored'
+    tier: boundary
+  r42:
+    name: ab-function-value-other
+    label: false
+    rule: AB-1
+    reason: shout has the same signature but is never assigned to apply
+    tier: boundary
+  r43:
+    name: pd-reassigned-parameter
+    label: false
+    rule: DU-2
+    reason: user is reassigned to None before
+    tier: boundary
+  r44:
+    name: pd-keyword
+    label: true
+    rule: DU-1
+    reason: a keyword argument reads body
+    tier: core
+  r45:
+    name: re-field
+    label: false
+    rule: RE-3
+    reason: ranges over a field of t
+    tier: boundary
+  r46:
+    name: ab-interface-unreachable
+    label: false
+    rule: AB-1
+    reason: nopSink implements Sink, but no nopSink value can reach sink (unexported, never built)
+    tier: boundary
+  r47:
+    name: du-multi-definition
+    label: true
+    rule: DU-5
+    reason: k is one of the variables the statement defines
+    tier: boundary
+  r48:
+    name: gp-sibling
+    label: true
+    rule: GP-3
+    reason: 'structural: a sibling field holds too'
+    tier: boundary

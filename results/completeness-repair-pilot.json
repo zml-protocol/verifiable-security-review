@@ -1,0 +1,56 @@
+{
+  "purpose": "Completeness Repair plumbing pilot (PREREGISTRATION.md \u00a713.7): mechanics only, never scored",
+  "model": "claude-haiku-4-5-20251001",
+  "cli": "2.1.280",
+  "force_fork": true,
+  "status": "PILOT",
+  "harness": {
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "isolation": {},
+    "locked_hop_rejected": {},
+    "eligibility_mismatch": [],
+    "frozen_verifier_rows_intact": true
+  },
+  "blocks": [
+    {
+      "block": "hopdev-go/i0",
+      "initial": {
+        "base": "FULL_CHAIN",
+        "head": "ENTRY_GAP"
+      },
+      "eligible": true,
+      "outcome": "Both",
+      "finals": {
+        "control": {
+          "base": "FULL_CHAIN",
+          "head": "FULL_CHAIN"
+        },
+        "treatment": {
+          "base": "FULL_CHAIN",
+          "head": "FULL_CHAIN"
+        }
+      }
+    },
+    {
+      "block": "hopdev-py/i0",
+      "initial": {
+        "base": "FULL_CHAIN",
+        "head": "FULL_CHAIN"
+      },
+      "eligible": false,
+      "outcome": "Both",
+      "finals": {
+        "control": {
+          "base": "FULL_CHAIN",
+          "head": "FULL_CHAIN"
+        },
+        "treatment": {
+          "base": "FULL_CHAIN",
+          "head": "FULL_CHAIN"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+# What the agent may see (hypotheses) plus harness config. Answers live in golden.yaml.
+id: synthetic-notes
+kind: synthetic
+repo:
+  path: .cache/fixtures/synthetic-notes   # built by fixtures/synthetic-notes/build.py
+base: base
+head: head
+deny_paths: []
+notes: >
+  Harness smoke-test fixture. Two true hypotheses (one regression, one
+  pre-existing) and two negative controls, one of which (H4) sits right next
+  to the regression in the same refactor.
+
+hypotheses:
+  - id: H1
+    property_kind: authorization
+    claim: An authenticated user can delete a note owned by another user via DELETE /notes/<note_id>.
+    components:
+      - id: entrypoint
+        text: DELETE /notes/<note_id> is reachable by any authenticated user.
+      - id: control
+        text: No check on the path restricts deletion to the note's owner.
+      - id: effect
+        text: The request deletes the note from storage.
+    hints:
+      - {path: app/notes.py, symbol: delete_note, note: entrypoint}
+      - {path: app/store.py, symbol: delete, note: sensitive sink}
+
+  - id: H2
+    property_kind: authentication
+    claim: An unauthenticated request can delete notes via DELETE /notes/<note_id>.
+    components:
+      - id: entrypoint
+        text: DELETE /notes/<note_id> is reachable without logging in.
+      - id: effect
+        text: The request deletes the note from storage.
+    hints:
+      - {path: app/notes.py, symbol: delete_note, note: entrypoint}
+      - {path: app/store.py, symbol: delete, note: sensitive sink}
+
+  - id: H3
+    property_kind: information_disclosure
+    claim: Any authenticated user can list every user's email address via GET /users.
+    components:
+      - id: entrypoint
+        text: GET /users is reachable by any authenticated user.
+      - id: control
+        text: No role or ownership check limits which users are returned.
+      - id: effect
+        text: The response includes other users' email addresses.
+    hints:
+      - {path: app/store.py, symbol: all, note: sensitive sink}
+
+  - id: H4
+    property_kind: authorization
+    claim: An authenticated user can read a note owned by another user via GET /notes/<note_id>.
+    components:
+      - id: entrypoint
+        text: GET /notes/<note_id> is reachable by any authenticated user.
+      - id: control
+        text: No check on the path restricts reading to the note's owner.
+      - id: effect
+        text: The response returns the note's content.
+    hints:
+      - {path: app/notes.py, symbol: get_note, note: entrypoint}
+      - {path: app/store.py, symbol: get, note: sensitive sink}

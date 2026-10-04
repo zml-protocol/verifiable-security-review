@@ -1,0 +1,315 @@
+{
+  "schema": "rd-score/v1",
+  "protocol": "rd-v1",
+  "status": "HARNESS_INVALID",
+  "harness_ok": false,
+  "harness_problems": {
+    "task-03": [
+      "a: exposed tool surface drift"
+    ],
+    "task-04": [
+      "a: missing execution metadata"
+    ]
+  },
+  "metrics": {
+    "a": {
+      "entry": {
+        "recall": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.4345
+          ]
+        },
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        }
+      },
+      "behavior": {
+        "recall": {
+          "numerator": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "wilson95": [
+            0.0,
+            0.4345
+          ]
+        },
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        }
+      },
+      "qualifier": {
+        "recall": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        },
+        "precision": {
+          "numerator": 0,
+          "denominator": 0,
+          "rate": null,
+          "wilson95": null
+        }
+      }
+    },
+    "b_full_chain": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4345
+      ]
+    },
+    "b_correct_verified": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4345
+      ]
+    },
+    "b_correct_verified_reference_realizable_subset": {
+      "numerator": 0,
+      "denominator": 4,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4899
+      ]
+    },
+    "c_real_attribution_accuracy": {
+      "numerator": 0,
+      "denominator": 5,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.4345
+      ]
+    },
+    "negative_control_false_supported_rate": {
+      "numerator": 0,
+      "denominator": 2,
+      "rate": 0.0,
+      "wilson95": [
+        0.0,
+        0.6576
+      ]
+    },
+    "negative_control_missing_conclusions": 1,
+    "unsupported_proposal_burden": 0
+  },
+  "failure_categories": {
+    "A_WRONG_B_UNREALIZABLE": 2,
+    "RUN_MISSING": 3
+  },
+  "tasks": [
+    {
+      "task_id": "task-03",
+      "role": "real",
+      "fixture": "GO-2026-6237",
+      "attempt": "attempt-3",
+      "run_status": "INFRA_INVALID",
+      "phases_locked": [],
+      "unsupported_proposals": null,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-raw-frame-read",
+          "behavior-ip-payload-length-guard"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_B_UNREALIZABLE"
+    },
+    {
+      "task_id": "task-04",
+      "role": "real",
+      "fixture": "GHSA-hx8v-g79f-8w5f",
+      "attempt": "attempt-1",
+      "run_status": "INFRA_INVALID",
+      "phases_locked": [],
+      "unsupported_proposals": null,
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-user-config-extraction",
+          "behavior-user-config-ban"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "REFERENCE_UNREALIZABLE",
+      "correct_verified_implementation": false,
+      "failure_category": "A_WRONG_B_UNREALIZABLE"
+    },
+    {
+      "task_id": "task-02",
+      "status": "MISSING",
+      "role": "real",
+      "fixture": "GHSA-mr3j-p26x-72x4",
+      "phases_locked": [],
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-readone-request",
+          "behavior-task-scope-constraint"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "RUN_MISSING"
+    },
+    {
+      "task_id": "task-06",
+      "status": "MISSING",
+      "role": "negative_control",
+      "fixture": "GO-2026-6237",
+      "phases_locked": []
+    },
+    {
+      "task_id": "task-05",
+      "status": "MISSING",
+      "role": "real",
+      "fixture": "GHSA-xcw4-53cc-hv32",
+      "phases_locked": [],
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-authorization-header",
+          "behavior-invalid-signature-guard"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "RUN_MISSING"
+    },
+    {
+      "task_id": "task-01",
+      "status": "MISSING",
+      "role": "real",
+      "fixture": "GHSA-fq2j-j8hc-8vw8",
+      "phases_locked": [],
+      "a": {
+        "counts": {
+          "entry": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "behavior": {
+            "truth": 1,
+            "proposed": 0,
+            "matched": 0
+          },
+          "qualifier": {
+            "truth": 0,
+            "proposed": 0,
+            "matched": 0
+          }
+        },
+        "pairs": [],
+        "truth_matching": false,
+        "unmatched_truth": [
+          "entry-localpath",
+          "behavior-sensitive-path-guard"
+        ],
+        "extra_qualifiers": [],
+        "partial_revision_matches": []
+      },
+      "reference_disposition": "PROVIDER_BLIND",
+      "correct_verified_implementation": false,
+      "failure_category": "RUN_MISSING"
+    }
+  ]
+}

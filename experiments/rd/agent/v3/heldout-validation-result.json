@@ -1,0 +1,39 @@
+{
+  "schema": "rd-v3-heldout-validation-result/v1",
+  "recorded_at_utc": "2026-10-04T00:24:42Z",
+  "status": "CALIBRATION_INVALID",
+  "terminal": true,
+  "commitment": {
+    "path": "experiments/rd/agent/v3/heldout/commitment.json",
+    "commit_sha": "d2f655ec9bacedb36a4db5b7c242c7fe4fc4c490",
+    "commitment_sha256": "fd7412f06c5ec6dd1888a67fec033261b8cf94ecd483ec1858690595c8f82f8a",
+    "aggregate_sha256": "10b696811d8529459d428fa702fb23e2a4efcb4e04e7cfb263628f783a4cd97f"
+  },
+  "validator": {
+    "command": "uv run python experiments/rd/agent/v3/rdv3_gate.py validate experiments/rd/agent/v3/heldout/commitment.json",
+    "exit_code": 1,
+    "failed_task_id": "go-claim-specific-entry-02",
+    "failed_slot": "behavior.revision_A",
+    "anchor": {
+      "file": "coralpager.go",
+      "start_line": 9,
+      "end_line": 9,
+      "expression": "queue <- canonicalTopic"
+    },
+    "resolved_node_type": "*ast.SendStmt",
+    "reason": "Frozen A statement identity rejected the anchor because *ast.SendStmt is not an accepted statement node type."
+  },
+  "execution": {
+    "claude_sessions_started": 0,
+    "provider_challenges_started": 0,
+    "api_equivalent_spend_usd": 0,
+    "terminal_overshoot_usd": 0
+  },
+  "disposition": {
+    "batch_repaired": false,
+    "replacement_batch_requested": false,
+    "a_heldout_started": false,
+    "formal_tranche_started": false,
+    "rule": "The one-shot curator contract makes materialization failure terminal; no case may be repaired, replaced, reordered, or regenerated."
+  }
+}

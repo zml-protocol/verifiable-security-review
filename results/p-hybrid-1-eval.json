@@ -1,0 +1,448 @@
+{
+  "set": "eval",
+  "provenance": {
+    "codeql": "codeql-bundle-v2.27.1",
+    "files": {
+      "experiments/hop_verify/relations.yaml": "0bc810bd3ddb03875168032f8c25ea84b5f55790a8245a31595224752a536f05",
+      "experiments/hop_verify/verify.py": "51e5e1104e287b1823b04920ee9339cef43efae21a6798eff5d31ae00bdbb27a",
+      "experiments/hop_verify/sets/eval.yaml": "ece505341cbbf1639ac6976018716978b17e11e31b63eb7b06e3532a5834383d",
+      "experiments/hop_verify/queries/go/FieldFlow.ql": "d8bea840b112b6aae06ba40b2c00f8a5f4470dc4f1c71e00a2553b6eabb25ce3",
+      "experiments/hop_verify/queries/go/GuardProperty.ql": "ecd70998bb71c152ded12dfdd71659e7de77ababb88d8f300e4ea5ec02ee89f2",
+      "experiments/hop_verify/queries/go/HopCommon.qll": "266fff0724b08833a4c5946c08a507ef1491be6f2aa45648a7c9e572b6cc51b0",
+      "experiments/hop_verify/queries/go/ObjectComposition.ql": "4cc48b6c459a5c08141dcad4f24577e1135f8261280b4c9a663fd1ce8ff48156",
+      "experiments/hop_verify/queries/go/Shapes.ql": "94d29821372cc99c201d5d6e377837ed943b1c5bf5e93e380d2959fd04469925",
+      "experiments/hop_verify/queries/python/CallTarget.ql": "ebb8c9a57718c7ee1aa0b85936feb25568eb96b9525bb057980bba70adab5048",
+      "experiments/hop_verify/queries/python/HopCommon.qll": "9da2c4ba0a7b6bcd92dbe19a026de5b68d6309de86d26d65b5a678aa546424da",
+      "experiments/hop_verify/queries/python/InstanceDispatch.ql": "596ad04328ca952619ab01eb727c3e9b1c7b5e2fe3decc66c49570f78d0d015b",
+      "experiments/hop_verify/queries/python/Shapes.ql": "74b2cadfb5cf2b96ebc47127f878467c7bd321142b512805d65eac36941448e9"
+    },
+    "truth": {
+      "experiments/hop_verify/truth/eval.yaml": "f33b04ecfe14a21b16deaa3a9bf2b2e8fb2c90b3005581b846beaf3bdffdfac1"
+    }
+  },
+  "relations": {
+    "guard_property": {
+      "true_hops": 2,
+      "false_hops": 10,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 2,
+      "true_unverified": 0,
+      "false_unverified": 8,
+      "caught_by_anchor": 2,
+      "tool_failures": 0,
+      "hops": {
+        "e01": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "c-gp-b-reversed"
+        },
+        "e03": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-b-shift-down"
+        },
+        "e05": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-h-shift-up"
+        },
+        "e13": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-b-wrong-target-up"
+        },
+        "e15": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "c-gp-h-reversed"
+        },
+        "e17": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-h-shift-down"
+        },
+        "e27": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-h-wrong-target-down"
+        },
+        "e38": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "c-gp-b-wrong-revision"
+        },
+        "e40": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "c-gp-h-wrong-revision"
+        },
+        "e42": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "c-gp-h"
+        },
+        "e43": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-h-wrong-target-up"
+        },
+        "e52": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "c-gp-b"
+        },
+        "e53": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-b-wrong-target-down"
+        },
+        "e62": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-gp-b-shift-up"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "object_composition": {
+      "true_hops": 2,
+      "false_hops": 10,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 0,
+      "true_unverified": 0,
+      "false_unverified": 10,
+      "caught_by_anchor": 2,
+      "tool_failures": 0,
+      "hops": {
+        "e02": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-h-reversed"
+        },
+        "e06": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-h-wrong-target-up"
+        },
+        "e08": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "c-oc-h"
+        },
+        "e09": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-b-reversed"
+        },
+        "e10": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-b-shift-up"
+        },
+        "e19": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-h-shift-up"
+        },
+        "e24": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-b-wrong-target-down"
+        },
+        "e26": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "c-oc-h-wrong-revision"
+        },
+        "e29": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "c-oc-b-wrong-revision"
+        },
+        "e39": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-b-shift-down"
+        },
+        "e45": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-b-wrong-target-up"
+        },
+        "e49": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-h-shift-down"
+        },
+        "e54": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "c-oc-b"
+        },
+        "e60": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "c-oc-h-wrong-target-down"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "field_flow": {
+      "true_hops": 2,
+      "false_hops": 10,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 2,
+      "true_unverified": 0,
+      "false_unverified": 8,
+      "caught_by_anchor": 2,
+      "tool_failures": 0,
+      "hops": {
+        "e04": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-b-wrong-target-up"
+        },
+        "e11": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "f-ff-b-reversed"
+        },
+        "e21": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-b-shift-up"
+        },
+        "e22": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "f-ff-b-wrong-revision"
+        },
+        "e23": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "f-ff-b"
+        },
+        "e31": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "f-ff-h-reversed"
+        },
+        "e35": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-b-wrong-target-down"
+        },
+        "e36": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "f-ff-h"
+        },
+        "e46": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-h-shift-down"
+        },
+        "e50": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-h-wrong-target-down"
+        },
+        "e51": {
+          "label": false,
+          "state": "ANCHOR_REJECTED",
+          "name": "f-ff-h-wrong-revision"
+        },
+        "e56": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-h-wrong-target-up"
+        },
+        "e57": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-b-shift-down"
+        },
+        "e59": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "f-ff-h-shift-up"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "registry_dispatch": {
+      "true_hops": 2,
+      "false_hops": 8,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 2,
+      "true_unverified": 0,
+      "false_unverified": 6,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "e07": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-b-shift-down"
+        },
+        "e18": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-h-shift-down"
+        },
+        "e25": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "a-rd-b-reversed"
+        },
+        "e28": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-b-wrong-target"
+        },
+        "e30": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "a-rd-b"
+        },
+        "e33": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-b-shift-up"
+        },
+        "e34": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "a-rd-h-reversed"
+        },
+        "e41": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-h-wrong-target"
+        },
+        "e48": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "a-rd-h"
+        },
+        "e55": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-rd-h-shift-up"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    },
+    "call_typed_attribute": {
+      "true_hops": 2,
+      "false_hops": 8,
+      "true_verified": 2,
+      "false_verified": 0,
+      "true_contradicted": 0,
+      "false_contradicted": 2,
+      "true_unverified": 0,
+      "false_unverified": 6,
+      "caught_by_anchor": 0,
+      "tool_failures": 0,
+      "hops": {
+        "e12": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-b-shift-down"
+        },
+        "e14": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "a-ct-h-reversed"
+        },
+        "e16": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-h-shift-down"
+        },
+        "e20": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-b-wrong-target"
+        },
+        "e32": {
+          "label": false,
+          "state": "CONTRADICTED",
+          "name": "a-ct-b-reversed"
+        },
+        "e37": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-h-shift-up"
+        },
+        "e44": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "a-ct-b"
+        },
+        "e47": {
+          "label": true,
+          "state": "VERIFIED",
+          "name": "a-ct-h"
+        },
+        "e58": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-b-shift-up"
+        },
+        "e61": {
+          "label": false,
+          "state": "UNVERIFIED",
+          "name": "a-ct-h-wrong-target"
+        }
+      },
+      "false_verification_rate": 0.0,
+      "true_hop_coverage": 1.0,
+      "verification_precision": 1.0,
+      "class": "SUPPORTED"
+    }
+  },
+  "false_hops_by_mutation": {
+    "reversed": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 2,
+      "CONTRADICTED": 8,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "shift": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 20,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    },
+    "wrong_target": {
+      "VERIFIED": 0,
+      "UNVERIFIED": 16,
+      "CONTRADICTED": 0,
+      "ANCHOR_REJECTED": 0,
+      "TOOL_FAILURE": 0
+    }
+  }
+}

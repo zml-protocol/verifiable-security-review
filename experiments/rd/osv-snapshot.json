@@ -1,0 +1,47 @@
+{
+  "purpose": "PREREGISTRATION.md \u00a715.2: the frozen OSV snapshot the RD candidate pool is built from",
+  "window_published": [
+    "2026-01-01T00:00:00Z",
+    "2026-09-30T00:00:00Z"
+  ],
+  "local_dir": ".cache/osv/2026-10-01",
+  "files": {
+    "Go": {
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/Go/all.zip",
+      "file": "Go-all.zip",
+      "bytes": 11990304,
+      "sha256": "a5adccdc495c6f6f13642defb745560a24e152ddb9bfd600bfbe5673f3379669",
+      "retrieved_mtime_utc": "2026-10-01T21:09:41+00:00",
+      "last_modified": "Thu, 01 Oct 2026 21:02:38 GMT",
+      "etag": "\"33b04949d927441cd1eaa41a37ad149c\"",
+      "x_goog_generation": "1790888558130551"
+    },
+    "PyPI": {
+      "url": "https://osv-vulnerabilities.storage.googleapis.com/PyPI/all.zip",
+      "file": "PyPI-all.zip",
+      "bytes": 35334064,
+      "sha256": "f0a355eb751d07203ba77f243e02c65bb2092b3f1e0e392a7f65c436a12b1103",
+      "retrieved_mtime_utc": "2026-10-01T21:09:42+00:00",
+      "last_modified": "Thu, 01 Oct 2026 19:47:51 GMT",
+      "etag": "\"b4c60a1d83c1b909071db591a8003880\"",
+      "x_goog_generation": "1790884071039006"
+    }
+  },
+  "durable_copies": [
+    {
+      "location": "Z:\\WF\\secreview\\2026-10-01",
+      "medium": "the user's NAS (a Windows drive mapped as Z:)",
+      "verified_at_utc": "2026-10-01T21:48:01+00:00",
+      "verification": "byte sizes and SHA-256 (Windows Get-FileHash) equal the manifest for both zips; the bytes are identical to the local copy, which passed osv_verify.py (size, SHA-256, zip integrity)"
+    }
+  ],
+  "restore": "copy the two zips from a durable copy into local_dir (or any directory) and run `uv run python experiments/rd/osv_verify.py <dir>`; build the candidate pool only from a copy that passes",
+  "restore_drills": [
+    {
+      "at_utc": "2026-10-01T22:14:36+00:00",
+      "from": "Z:\\WF\\secreview\\2026-10-01",
+      "to": "a new temporary directory (osv-restore-drill-20261001T221351Z)",
+      "result": "OK: osv_verify.py passed (byte sizes, SHA-256, zip integrity) on the restored copy"
+    }
+  ]
+}

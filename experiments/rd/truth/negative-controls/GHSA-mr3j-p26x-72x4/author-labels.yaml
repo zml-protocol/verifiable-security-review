@@ -1,0 +1,21 @@
+fixture: GHSA-mr3j-p26x-72x4
+package: Vikunja
+labels:
+  candidate-01: {cwe: 918, vuln: INDETERMINATE, fixed: INDETERMINATE}
+  candidate-02: {cwe: 502, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-03: {cwe: 601, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+rationale:
+  candidate-01: >-
+    User-configurable webhook targets reach an HTTP client, but both revisions install explicit SSRF
+    protection unless an operator permits non-routable targets. The supplied evidence does not
+    decide whether an admissible configuration/use is CWE-918 or prove package-wide absence.
+  candidate-02: >-
+    The complete risky-deserialization scan finds one gob decoder over the application's own Redis
+    cache bytes into caller-provided concrete values; the matching write path uses gob.Encoder.
+    Remaining matches are JSON/CSV/text serialization. No untrusted arbitrary-object deserializer
+    or attacker-controlled serialized-object entry is present in either revision.
+  candidate-03: >-
+    The complete redirect scan contains OAuth redirect_uri configuration/documentation and CSS/API
+    documentation strings but no server-side redirect response primitive or request-controlled
+    redirect target in either revision.
+

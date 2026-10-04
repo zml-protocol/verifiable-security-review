@@ -1,0 +1,77 @@
+{
+  "schema": "rd-v3-provider-heldout-case/v1",
+  "target": "go_callback_argument_binding",
+  "language": "go",
+  "relation": "argument_binding",
+  "files": {
+    "willowcallback.go": "package willowcallback\n\ntype Transformer func(string, int) string\n\nfunc braid(word string, rounds int) string {\n\treturn word\n}\n\nfunc polish(text string, limit int) string {\n\treturn text\n}\n\nfunc dormant(mark string, depth int) string {\n\treturn mark\n}\n\nfunc invoke(fn Transformer, seed string, times int) string {\n\treturn fn(seed, times)\n}\n\nfunc exercise(usePolish bool) string {\n\tvar chosen Transformer = braid\n\tif usePolish {\n\t\tchosen = polish\n\t}\n\treturn invoke(chosen, \"willow\", 3)\n}\n"
+  },
+  "edges": [
+    {
+      "id": "go-callback-01",
+      "truth": true,
+      "from": {
+        "file": "willowcallback.go",
+        "start_line": 18,
+        "end_line": 18,
+        "expression": "seed"
+      },
+      "to": {
+        "file": "willowcallback.go",
+        "start_line": 5,
+        "end_line": 5,
+        "expression": "word string"
+      }
+    },
+    {
+      "id": "go-callback-02",
+      "truth": true,
+      "from": {
+        "file": "willowcallback.go",
+        "start_line": 18,
+        "end_line": 18,
+        "expression": "seed"
+      },
+      "to": {
+        "file": "willowcallback.go",
+        "start_line": 9,
+        "end_line": 9,
+        "expression": "text string"
+      }
+    },
+    {
+      "id": "go-callback-03",
+      "truth": false,
+      "from": {
+        "file": "willowcallback.go",
+        "start_line": 18,
+        "end_line": 18,
+        "expression": "seed"
+      },
+      "to": {
+        "file": "willowcallback.go",
+        "start_line": 13,
+        "end_line": 13,
+        "expression": "mark string"
+      },
+      "false_family": "unreachable_callback"
+    },
+    {
+      "id": "go-callback-04",
+      "truth": false,
+      "from": {
+        "file": "willowcallback.go",
+        "start_line": 18,
+        "end_line": 18,
+        "expression": "seed"
+      },
+      "to": {
+        "file": "willowcallback.go",
+        "start_line": 5,
+        "end_line": 5,
+        "expression": "rounds int"
+      },
+      "false_family": "wrong_parameter_index"
+    }
+  ]
+}

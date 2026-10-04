@@ -1,0 +1,144 @@
+fixture: GHSA-fwjx-9p69-h25h
+revisions:
+- vuln
+- fixed
+instructions: Label each item REQUIRED / NOT_REQUIRED / INDETERMINATE against the
+  frozen definitions and the code context. You may add a missing required item in
+  the frozen requirement schema (kind + per-revision anchors).
+items:
+- id: item-01
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+    fixed:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+- id: item-02
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 677
+        end_line: 677
+        expression: if isHyperlink {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 682
+        end_line: 682
+        expression: if isControlRune(s) {
+- id: item-03
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 677
+        end_line: 677
+        expression: if isHyperlink {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 674
+        end_line: 674
+        expression: return
+- id: item-04
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 673
+        end_line: 673
+        expression: if isInvisible {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 673
+        end_line: 673
+        expression: if isInvisible {
+- id: item-05
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 677
+        end_line: 677
+        expression: if isHyperlink {
+    fixed:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 682
+        end_line: 682
+        expression: if isControlRune(s) {
+- id: item-06
+  kind: entry
+  entry:
+    vuln:
+      state: absent
+      context:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+- id: item-07
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 672
+        end_line: 672
+        expression: func write(s rune) {
+- id: item-08
+  kind: behavior
+  behavior:
+    vuln:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 677
+        end_line: 677
+        expression: if isHyperlink {
+    fixed:
+      state: present
+      anchor:
+        file: src/terminal/writer.go
+        start_line: 682
+        end_line: 682
+        expression: if isControlRune(s) {

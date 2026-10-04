@@ -1,0 +1,41 @@
+diff --git a/kernel/api/lute.go b/kernel/api/lute.go
+index a391195..7db179e 100644
+--- a/kernel/api/lute.go
++++ b/kernel/api/lute.go
+@@ -176,6 +176,11 @@ func html2BlockDOM(c *gin.Context) {
+ 				return ast.WalkContinue
+ 			}
+ 
++			if util.IsSensitivePath(localPath) {
++				logging.LogWarnf("skip copying asset [%s] due to sensitive path", localPath)
++				return ast.WalkContinue
++			}
++
+ 			name := filepath.Base(localPath)
+ 			ext := filepath.Ext(name)
+ 			name = name[0 : len(name)-len(ext)]
+diff --git a/kernel/api/router.go b/kernel/api/router.go
+index 4e64caa..00ffbb3 100644
+--- a/kernel/api/router.go
++++ b/kernel/api/router.go
+@@ -171,7 +171,7 @@ func ServeAPI(ginServer *gin.Engine) {
+ 	ginServer.Handle("POST", "/api/tag/removeTag", model.CheckAuth, model.CheckAdminRole, model.CheckReadonly, removeTag)
+ 
+ 	ginServer.Handle("POST", "/api/lute/spinBlockDOM", model.CheckAuth, spinBlockDOM) // 未测试
+-	ginServer.Handle("POST", "/api/lute/html2BlockDOM", model.CheckAuth, html2BlockDOM)
++	ginServer.Handle("POST", "/api/lute/html2BlockDOM", model.CheckAuth, model.CheckAdminRole, model.CheckReadonly, html2BlockDOM)
+ 	ginServer.Handle("POST", "/api/lute/copyStdMarkdown", model.CheckAuth, copyStdMarkdown)
+ 
+ 	ginServer.Handle("POST", "/api/query/sql", model.CheckAuth, model.CheckAdminRole, model.CheckReadonly, SQL)
+diff --git a/kernel/util/path.go b/kernel/util/path.go
+index 0dee81e..a050d13 100644
+--- a/kernel/util/path.go
++++ b/kernel/util/path.go
+@@ -361,7 +361,6 @@ func IsSensitivePath(p string) bool {
+ 		"/.",
+ 		"/etc",
+ 		"/root",
+-		"/etc",
+ 		"/var",
+ 		"/proc",
+ 		"/sys",

@@ -1,0 +1,21 @@
+fixture: GHSA-hx8v-g79f-8w5f
+package: LiteLLM Proxy
+labels:
+  candidate-01: {cwe: 502, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+  candidate-02: {cwe: 601, vuln: SUPPORTED, fixed: SUPPORTED}
+  candidate-03: {cwe: 611, vuln: NOT_SUPPORTED, fixed: NOT_SUPPORTED}
+rationale:
+  candidate-01: >-
+    Across the complete LiteLLM Proxy source inventory, the frozen scan finds no unsafe
+    object-deserialization primitive. The only implementation named deserialize parses JSON with
+    json.loads; the remaining hits are comments or call sites, including comments that explicitly
+    avoid pickle. The separate router-settings conversion uses yaml.safe_load.
+  candidate-02: >-
+    In both revisions, the mounted BYOK OAuth POST endpoint accepts redirect_uri from a form,
+    restricts only its scheme to http or https, then returns a 302 RedirectResponse to that
+    caller-chosen URI. No host or registered-URI binding is shown.
+  candidate-03: >-
+    Across the complete LiteLLM Proxy source inventory, the sole frozen-regex hit is a comment whose
+    words "External" and "identity" satisfy external.*entity. No XML parser, DTD, entity-resolution,
+    or XML external-entity facility is present in the scan evidence.
+

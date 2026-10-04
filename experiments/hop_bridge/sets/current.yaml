@@ -1,0 +1,1355 @@
+# §14 current-fixture bridge hops (provider-only). True hops follow the path from each long-frozen
+# Spike P source endpoint to the §12 local entry; mutations follow the P-Hybrid-1 rules. Truth in
+# truth/current.yaml. Caddy base needs only the frozen object_composition; Caddy head needs
+# def_use into a local slice, then object_composition (§14.3).
+set: current
+fixtures:
+  authlib-jws-none:
+    language: python
+    repo: .cache/repos/authlib.git
+    commits:
+      base: 21f7f50820f3906cebad308b35c816abf746ec3d
+      head: a61c2acb807496e67f32051b5f1b1d5ccf8f0a75
+  caddy-forward-auth:
+    language: go
+    repo: .cache/repos/caddy.git
+    commits:
+      base: 00f948c6056f6968b07e2b92d537c0a61559e2ed
+      head: 05cfb121ec3f214c0e45206c188f34bad4d4eb8c
+  filebrowser-archive-backslash:
+    language: go
+    repo: .cache/repos/filebrowser.git
+    commits:
+      base: 0231b7ebdfbe77a6c54027d30c4856c3fd81ee4d
+      head: 847d08bdd135e5c3659f2e6dea2f0cd36617af9b
+hops:
+- id: b01
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b02
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 99
+    end_line: 99
+    expression: load_key = create_load_key(prepare_raw_key(key))
+- id: b03
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+- id: b04
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: d *data
+- id: b05
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 99
+    end_line: 99
+    expression: load_key = create_load_key(prepare_raw_key(key))
+- id: b06
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 170
+    end_line: 170
+    expression: extension, archiver, err := parseQueryAlgorithm(r)
+  to:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+- id: b07
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: d, fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b08
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 233
+    end_line: 233
+    expression: goodResponseHandler.Routes = append(goodResponseHandler.Routes, copyHeaderRoutes...)
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+- id: b09
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 164
+    end_line: 164
+    expression: w http.ResponseWriter
+  to:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+- id: b10
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 132
+    end_line: 132
+    expression: rpHandler.Rewrite.URI = dispenser.Val()
+- id: b11
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 233
+    end_line: 233
+    expression: goodResponseHandler.Routes = append(goodResponseHandler.Routes, copyHeaderRoutes...)
+- id: b12
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: self, s, key
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b13
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+- id: b14
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b15
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b16
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: commonPath string
+- id: b17
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+- id: b18
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: commonDir)
+- id: b19
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: commonPath)
+- id: b20
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+- id: b21
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 102
+    end_line: 102
+    expression: dot_count = s.count(b".")
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b22
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 185
+    end_line: 185
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 131
+    end_line: 131
+    expression: rpHandler.Rewrite.URI = dispenser.Val()
+- id: b23
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 165
+    end_line: 165
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+- id: b24
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: d *data
+- id: b25
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 185
+    end_line: 185
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 198
+    end_line: 198
+    expression: goodResponseHandler.Routes = append(
+- id: b26
+  fixture: caddy-forward-auth
+  revision: base
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+- id: b27
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+- id: b28
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: d, fname, commonDir
+- id: b29
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 209
+    end_line: 209
+    expression: to := http.CanonicalHeaderKey(headersToCopy[from])
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+- id: b30
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 175
+    end_line: 175
+    expression: commonDir := fileutils.CommonPrefix(filepath.Separator, filenames...)
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+- id: b31
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 102
+    end_line: 102
+    expression: dot_count = s.count(b".")
+- id: b32
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: archiveFiles, err := getFiles(d, fname, commonDir)
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+- id: b33
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+- id: b34
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 108
+    end_line: 108
+    expression: DecodeError("Invalid input segments length")
+- id: b35
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 245
+    end_line: 245
+    expression: err = rpHandler.UnmarshalCaddyfile(dispenser)
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+- id: b36
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 185
+    end_line: 185
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 198
+    end_line: 198
+    expression: goodResponseHandler.Routes = append(
+- id: b37
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 181
+    end_line: 181
+    expression: commonDir := fileutils.CommonPrefix(filepath.Separator, filenames...)
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+- id: b38
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 240
+    end_line: 240
+    expression: rpHandler.HandleResponse = append(rpHandler.HandleResponse, goodResponseHandler)
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 233
+    end_line: 233
+    expression: goodResponseHandler.Routes = append(goodResponseHandler.Routes, copyHeaderRoutes...)
+- id: b39
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 171
+    end_line: 171
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+- id: b40
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 102
+    end_line: 102
+    expression: dot_count = s.count(b".")
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b41
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 165
+    end_line: 165
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+- id: b42
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 171
+    end_line: 171
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 156
+    end_line: 156
+    expression: name := range names
+- id: b43
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: d, fname, commonDir
+- id: b44
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 94
+    end_line: 94
+    expression: claims_cls = JWTClaims
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b45
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 165
+    end_line: 165
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+- id: b46
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 198
+    end_line: 198
+    expression: goodResponseHandler.Routes = append(
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 185
+    end_line: 185
+    expression: handler := &headers.Handler{
+- id: b47
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b48
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 178
+    end_line: 178
+    expression: goodResponseHandler := caddyhttp.ResponseHandler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 198
+    end_line: 198
+    expression: goodResponseHandler.Routes = append(
+- id: b49
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 240
+    end_line: 240
+    expression: rpHandler.HandleResponse = append(rpHandler.HandleResponse, goodResponseHandler)
+- id: b50
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: d, fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b51
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b52
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+- id: b53
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 102
+    end_line: 102
+    expression: dot_count = s.count(b".")
+- id: b54
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b55
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+- id: b56
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 171
+    end_line: 171
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+- id: b57
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 185
+    end_line: 185
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 215
+    end_line: 215
+    expression: rpHandler.HandleResponse = append(rpHandler.HandleResponse, goodResponseHandler)
+- id: b58
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 94
+    end_line: 94
+    expression: claims_cls = JWTClaims
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b59
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes = append(copyHeaderRoutes, caddyhttp.Route{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 233
+    end_line: 233
+    expression: goodResponseHandler.Routes = append(goodResponseHandler.Routes, copyHeaderRoutes...)
+- id: b60
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 171
+    end_line: 171
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+- id: b61
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 117
+    end_line: 117
+    expression: info, err := d.user.Fs.Stat(path)
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b62
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: commonDir)
+- id: b63
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b64
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 108
+    end_line: 108
+    expression: DecodeError("Invalid input segments length")
+- id: b65
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: archiveFiles, err := getFiles(d, fname, commonDir)
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+- id: b66
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 99
+    end_line: 99
+    expression: load_key = create_load_key(prepare_raw_key(key))
+- id: b67
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b68
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b69
+  fixture: caddy-forward-auth
+  revision: head
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 233
+    end_line: 233
+    expression: goodResponseHandler.Routes = append(goodResponseHandler.Routes, copyHeaderRoutes...)
+- id: b70
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 178
+    end_line: 178
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+- id: b71
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+  to:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+- id: b72
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: fname, commonDir
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: commonPath string
+- id: b73
+  fixture: caddy-forward-auth
+  revision: base
+  relation: object_composition
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 215
+    end_line: 215
+    expression: rpHandler.HandleResponse = append(rpHandler.HandleResponse, goodResponseHandler)
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 198
+    end_line: 198
+    expression: goodResponseHandler.Routes = append(
+- id: b74
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 165
+    end_line: 165
+    expression: filenames, err := parseQueryFiles(r, file, d.user)
+  to:
+    file: http/raw.go
+    start_line: 150
+    end_line: 150
+    expression: name := range names
+- id: b75
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b76
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: d *data
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b77
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 99
+    end_line: 99
+    expression: load_key = create_load_key(prepare_raw_key(key))
+- id: b78
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b79
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 170
+    end_line: 170
+    expression: w http.ResponseWriter
+  to:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+- id: b80
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 185
+    end_line: 185
+    expression: commonDir)
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b81
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: self, s, key
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b82
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b83
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: commonDir)
+  to:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+- id: b84
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 117
+    end_line: 117
+    expression: info, err := d.user.Fs.Stat(path)
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b85
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: range_element
+  from:
+    file: http/raw.go
+    start_line: 176
+    end_line: 176
+    expression: extension, archiver, err := parseQueryAlgorithm(r)
+  to:
+    file: http/raw.go
+    start_line: 184
+    end_line: 184
+    expression: fname := range filenames
+- id: b86
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 218
+    end_line: 218
+    expression: copyHeaderRoutes, caddyhttp.Route{
+- id: b87
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+- id: b88
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: commonPath)
+- id: b89
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: argument_binding
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 179
+    end_line: 179
+    expression: fname, commonDir
+- id: b90
+  fixture: filebrowser-archive-backslash
+  revision: head
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: path, commonPath string
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b91
+  fixture: authlib-jws-none
+  revision: head
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 104
+    end_line: 104
+    expression: self._jws.deserialize_compact(s, load_key, decode_payload)
+- id: b92
+  fixture: filebrowser-archive-backslash
+  revision: base
+  relation: def_use
+  from:
+    file: http/raw.go
+    start_line: 112
+    end_line: 112
+    expression: d *data
+  to:
+    file: http/raw.go
+    start_line: 125
+    end_line: 125
+    expression: nameInArchive := strings.TrimPrefix(path, commonPath)
+- id: b93
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: s, key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)
+- id: b94
+  fixture: caddy-forward-auth
+  revision: head
+  relation: def_use
+  from:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 211
+    end_line: 211
+    expression: handler := &headers.Handler{
+  to:
+    file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go
+    start_line: 210
+    end_line: 210
+    expression: from)
+- id: b95
+  fixture: authlib-jws-none
+  revision: base
+  relation: def_use
+  from:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 80
+    end_line: 80
+    expression: key, claims_cls
+  to:
+    file: authlib/jose/rfc7519/jwt.py
+    start_line: 101
+    end_line: 101
+    expression: s = to_bytes(s)

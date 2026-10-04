@@ -1,0 +1,142 @@
+{
+  "verdict": "FAIL",
+  "experiment_success": false,
+  "metric_success": false,
+  "criteria": {
+    "treatment_evidence_complete>=0.60": false,
+    "gain>=0.20": false,
+    "treatment_attribution>=0.80_and_drop<=0.10": true
+  },
+  "harness": {
+    "control": {
+      "ok": true,
+      "failing": {}
+    },
+    "treatment": {
+      "ok": true,
+      "failing": {}
+    }
+  },
+  "pairs": 80,
+  "pairs_per_cell": {
+    "authlib-jws-none/H1/forward": 5,
+    "authlib-jws-none/H1/swapped": 5,
+    "authlib-jws-none/H2/forward": 5,
+    "authlib-jws-none/H2/swapped": 5,
+    "caddy-forward-auth/H1/forward": 5,
+    "caddy-forward-auth/H1/swapped": 5,
+    "caddy-forward-auth/H2/forward": 5,
+    "caddy-forward-auth/H2/swapped": 5,
+    "filebrowser-archive-backslash/H1/forward": 5,
+    "filebrowser-archive-backslash/H1/swapped": 5,
+    "filebrowser-archive-backslash/H2/forward": 5,
+    "filebrowser-archive-backslash/H2/swapped": 5,
+    "filebrowser-archive-backslash/H3/forward": 5,
+    "filebrowser-archive-backslash/H3/swapped": 5,
+    "filebrowser-archive-backslash/H4/forward": 5,
+    "filebrowser-archive-backslash/H4/swapped": 5
+  },
+  "cells_below_minimum": {},
+  "dropped_pairs": [],
+  "overall": {
+    "control": {
+      "n": 80,
+      "evidence_complete_correct": 0.1375,
+      "attribution_correct": 0.975,
+      "path_fact_citation": 0.23125,
+      "flip_fact_citation": 0.9470588235294117
+    },
+    "treatment": {
+      "n": 80,
+      "evidence_complete_correct": 0.2125,
+      "attribution_correct": 0.975,
+      "path_fact_citation": 0.375,
+      "flip_fact_citation": 0.9764705882352941
+    }
+  },
+  "gain_evidence_complete": 0.075,
+  "by_fixture": {
+    "authlib-jws-none": {
+      "control": {
+        "n": 20,
+        "evidence_complete_correct": 0.05,
+        "attribution_correct": 1,
+        "path_fact_citation": 0.225,
+        "flip_fact_citation": 0.94
+      },
+      "treatment": {
+        "n": 20,
+        "evidence_complete_correct": 0.3,
+        "attribution_correct": 1,
+        "path_fact_citation": 0.575,
+        "flip_fact_citation": 0.96
+      }
+    },
+    "caddy-forward-auth": {
+      "control": {
+        "n": 20,
+        "evidence_complete_correct": 0,
+        "attribution_correct": 0.9,
+        "path_fact_citation": 0,
+        "flip_fact_citation": 0.875
+      },
+      "treatment": {
+        "n": 20,
+        "evidence_complete_correct": 0,
+        "attribution_correct": 1,
+        "path_fact_citation": 0,
+        "flip_fact_citation": 1
+      }
+    },
+    "filebrowser-archive-backslash": {
+      "control": {
+        "n": 40,
+        "evidence_complete_correct": 0.25,
+        "attribution_correct": 1,
+        "path_fact_citation": 0.35,
+        "flip_fact_citation": 0.9875
+      },
+      "treatment": {
+        "n": 40,
+        "evidence_complete_correct": 0.275,
+        "attribution_correct": 0.95,
+        "path_fact_citation": 0.4625,
+        "flip_fact_citation": 0.975
+      }
+    }
+  },
+  "evidence_complete_by_hypothesis": {
+    "authlib-jws-none/H1": {
+      "control": 0.1,
+      "treatment": 0.3
+    },
+    "authlib-jws-none/H2": {
+      "control": 0,
+      "treatment": 0.3
+    },
+    "caddy-forward-auth/H1": {
+      "control": 0,
+      "treatment": 0
+    },
+    "caddy-forward-auth/H2": {
+      "control": 0,
+      "treatment": 0
+    },
+    "filebrowser-archive-backslash/H1": {
+      "control": 0.5,
+      "treatment": 0.7
+    },
+    "filebrowser-archive-backslash/H2": {
+      "control": 0,
+      "treatment": 0.1
+    },
+    "filebrowser-archive-backslash/H3": {
+      "control": 0.4,
+      "treatment": 0.2
+    },
+    "filebrowser-archive-backslash/H4": {
+      "control": 0.1,
+      "treatment": 0.1
+    }
+  }
+}

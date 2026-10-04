@@ -1,0 +1,27 @@
+schema: rd-reference-evidence/v1
+fixture: GHSA-mr3j-p26x-72x4
+revisions:
+  vuln:
+    chain_required: false
+    reason: The frozen behavior slot is absent in the vulnerable revision.
+    hops: []
+  fixed:
+    chain_required: true
+    semantic_chain_complete: true
+    reason: >
+      The request-bound receiver reaches getTaskCommentSimple through its call argument and formal
+      parameter, then tc.TaskID supplies the added query constraint. The vocabulary cannot attach
+      the method entry or the call argument to the enclosing fluent-call statement.
+    hops:
+      - relation: unsupported
+        from: {file: pkg/models/task_comments.go, start_line: 229, end_line: 229, expression: "func (tc *TaskComment) ReadOne(s *xorm.Session, _ web.Auth) (err error) {"}
+        to: {file: pkg/models/task_comments.go, start_line: 230, end_line: 230, expression: "tc"}
+      - relation: argument_binding
+        from: {file: pkg/models/task_comments.go, start_line: 230, end_line: 230, expression: "tc"}
+        to: {file: pkg/models/task_comments.go, start_line: 196, end_line: 196, expression: "tc"}
+      - relation: def_use
+        from: {file: pkg/models/task_comments.go, start_line: 196, end_line: 196, expression: "tc"}
+        to: {file: pkg/models/task_comments.go, start_line: 199, end_line: 199, expression: "tc.TaskID"}
+      - relation: unsupported
+        from: {file: pkg/models/task_comments.go, start_line: 199, end_line: 199, expression: "tc.TaskID"}
+        to: {file: pkg/models/task_comments.go, start_line: 199, end_line: 199, expression: 'And("task_id = ?", tc.TaskID).'}

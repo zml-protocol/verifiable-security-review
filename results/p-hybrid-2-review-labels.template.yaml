@@ -1,0 +1,46 @@
+# Label each item TRUE | FALSE | INDETERMINATE. The scorer requires the reviewer block;
+# independent: not involved in this project, never saw its golden, verifiers or protocol.
+reviewer:
+  type:   # human | model
+  name:
+  date:
+  attestation:
+    independent:   # true
+    saw_arms:   # false
+    saw_verdicts:   # false
+labels:
+  R001: {label: , note: }
+  R002: {label: , note: }
+  R003: {label: , note: }
+  R004: {label: , note: }
+  R005: {label: , note: }
+  R006: {label: , note: }
+  R007: {label: , note: }
+  R008: {label: , note: }
+  R009: {label: , note: }
+  R010: {label: , note: }
+  R011: {label: , note: }
+  R012: {label: , note: }
+  R013: {label: , note: }
+  R014: {label: , note: }
+  R015: {label: , note: }
+  R016: {label: , note: }
+  R017: {label: , note: }
+  R018: {label: , note: }
+  R019: {label: , note: }
+  R020: {label: , note: }
+  R021: {label: , note: }
+  R022: {label: , note: }
+  R023: {label: , note: }
+  R024: {label: , note: }
+  R025: {label: , note: }
+  R026: {label: , note: }
+  R027: {label: , note: }
+  R028: {label: , note: }
+  R029: {label: , note: }
+  R030: {label: , note: }
+  R031: {label: , note: }
+  R032: {label: , note: }
+  R033: {label: , note: }
+  R034: {label: , note: }
+  R035: {label: , note: }

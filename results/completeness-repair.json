@@ -1,0 +1,2419 @@
+{
+  "protocol": "r1",
+  "pilot": false,
+  "status": "INCONCLUSIVE_OPPORTUNITY",
+  "targets": {
+    "K_eligible_pairs": 12,
+    "M_initials": 30,
+    "N_sanity": 5
+  },
+  "pooled": {
+    "T_only": 1,
+    "C_only": 2
+  },
+  "criteria": {
+    "pooled_sign_test_p": 0.875,
+    "pooled_significant": false,
+    "each_fixture_T_only_at_least_C_only": false
+  },
+  "per_fixture": {
+    "caddy-forward-auth": {
+      "valid_initials": 30,
+      "initially_full": 28,
+      "eligible": 2,
+      "complete_pairs": 2,
+      "outcomes": {
+        "T_only": 1,
+        "C_only": 1,
+        "Both": 0,
+        "Neither": 0
+      },
+      "transitions": {
+        "control:QUALIFIER_GAP->QUALIFIER_GAP": 2,
+        "treatment:QUALIFIER_GAP->FULL_CHAIN": 2,
+        "control:QUALIFIER_GAP->FULL_CHAIN": 2,
+        "treatment:QUALIFIER_GAP->QUALIFIER_GAP": 2
+      },
+      "reached_target": true,
+      "opportunity_met": false
+    },
+    "filebrowser-archive-backslash": {
+      "valid_initials": 30,
+      "initially_full": 25,
+      "eligible": 5,
+      "complete_pairs": 5,
+      "outcomes": {
+        "T_only": 0,
+        "C_only": 1,
+        "Both": 4,
+        "Neither": 0
+      },
+      "transitions": {
+        "control:ENTRY_GAP->FULL_CHAIN": 10,
+        "treatment:ENTRY_GAP->FULL_CHAIN": 8,
+        "treatment:ENTRY_GAP->ENTRY_GAP": 2
+      },
+      "reached_target": true,
+      "opportunity_met": false
+    },
+    "authlib-jws-none": {
+      "valid_initials": 5,
+      "initially_full": 5,
+      "eligible": 0,
+      "complete_pairs": 0,
+      "outcomes": {
+        "T_only": 0,
+        "C_only": 0,
+        "Both": 0,
+        "Neither": 0
+      },
+      "transitions": {},
+      "reached_target": true,
+      "opportunity_met": true
+    }
+  },
+  "harness": {
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "isolation": {},
+    "locked_hop_rejected": {},
+    "eligibility_mismatch": [],
+    "frozen_verifier_rows_intact": true
+  },
+  "harness_ok": true,
+  "config_mismatch": {},
+  "blocks": [
+    {
+      "block": "caddy-forward-auth/i0",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i1",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i2",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "QUALIFIER_GAP",
+            "length": 1,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "QUALIFIER_GAP",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 5,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "QUALIFIER_GAP",
+              "length": 1,
+              "verified_edges": 2
+            },
+            "head": {
+              "class": "QUALIFIER_GAP",
+              "length": 1,
+              "verified_edges": 2
+            }
+          },
+          "full": false,
+          "rejected": [],
+          "hops": 5,
+          "unsupported": 0,
+          "verified": 4
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 3
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 3
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 6,
+          "unsupported": 0,
+          "verified": 6
+        }
+      },
+      "outcome": "T_only"
+    },
+    {
+      "block": "caddy-forward-auth/i3",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i4",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i5",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i6",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 8,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i7",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 7,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i8",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 8,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i9",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i10",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "QUALIFIER_GAP",
+            "length": 1,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "QUALIFIER_GAP",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 3
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 3
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 2
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 6,
+          "unsupported": 0,
+          "verified": 5
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "QUALIFIER_GAP",
+              "length": 1,
+              "verified_edges": 2
+            },
+            "head": {
+              "class": "QUALIFIER_GAP",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": false,
+          "rejected": [],
+          "hops": 8,
+          "unsupported": 0,
+          "verified": 3
+        }
+      },
+      "outcome": "C_only"
+    },
+    {
+      "block": "caddy-forward-auth/i11",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i12",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 7,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i13",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i14",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 9,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i15",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i16",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i17",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i18",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i19",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i20",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i21",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i22",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 9,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i23",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i24",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 7,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i25",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i26",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i27",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i28",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 6
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "caddy-forward-auth/i29",
+      "fixture": "caddy-forward-auth",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 3
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 0,
+        "verified": 5
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i0",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i1",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i2",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i3",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 4,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i4",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i5",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i6",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i7",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 4,
+          "unsupported": 2,
+          "verified": 2
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 4,
+          "unsupported": 2,
+          "verified": 2
+        }
+      },
+      "outcome": "Both"
+    },
+    {
+      "block": "filebrowser-archive-backslash/i8",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i9",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i10",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i11",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 4,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i12",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 4,
+          "unsupported": 2,
+          "verified": 2
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "ENTRY_GAP",
+              "length": null,
+              "longest_suffix_edges": 1,
+              "qualified": true,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "ENTRY_GAP",
+              "length": null,
+              "longest_suffix_edges": 1,
+              "qualified": true,
+              "verified_edges": 1
+            }
+          },
+          "full": false,
+          "rejected": [],
+          "hops": 6,
+          "unsupported": 4,
+          "verified": 2
+        }
+      },
+      "outcome": "C_only"
+    },
+    {
+      "block": "filebrowser-archive-backslash/i13",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i14",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i15",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i16",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i17",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 4,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i18",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 4,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i19",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 8,
+        "unsupported": 6,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 8,
+          "unsupported": 6,
+          "verified": 2
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 8,
+          "unsupported": 6,
+          "verified": 2
+        }
+      },
+      "outcome": "Both"
+    },
+    {
+      "block": "filebrowser-archive-backslash/i20",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i21",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i22",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 6,
+        "unsupported": 4,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i23",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i24",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i25",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 2,
+          "unsupported": 0,
+          "verified": 2
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 2,
+          "unsupported": 0,
+          "verified": 2
+        }
+      },
+      "outcome": "Both"
+    },
+    {
+      "block": "filebrowser-archive-backslash/i26",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "ENTRY_GAP",
+            "length": null,
+            "longest_suffix_edges": 1,
+            "qualified": true,
+            "verified_edges": 1
+          }
+        },
+        "full": false,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": true,
+      "forked": true,
+      "children": {
+        "control": [
+          "VALID",
+          "completed"
+        ],
+        "treatment": [
+          "VALID",
+          "completed"
+        ]
+      },
+      "finals": {
+        "control": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 4,
+          "unsupported": 2,
+          "verified": 2
+        },
+        "treatment": {
+          "revisions": {
+            "base": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            },
+            "head": {
+              "class": "FULL_CHAIN",
+              "length": 1,
+              "verified_edges": 1
+            }
+          },
+          "full": true,
+          "rejected": [],
+          "hops": 4,
+          "unsupported": 2,
+          "verified": 2
+        }
+      },
+      "outcome": "Both"
+    },
+    {
+      "block": "filebrowser-archive-backslash/i27",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 2,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i28",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "filebrowser-archive-backslash/i29",
+      "fixture": "filebrowser-archive-backslash",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 1,
+            "verified_edges": 1
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 2,
+        "unsupported": 0,
+        "verified": 2
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "authlib-jws-none/i0",
+      "fixture": "authlib-jws-none",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "authlib-jws-none/i1",
+      "fixture": "authlib-jws-none",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "authlib-jws-none/i2",
+      "fixture": "authlib-jws-none",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "authlib-jws-none/i3",
+      "fixture": "authlib-jws-none",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    },
+    {
+      "block": "authlib-jws-none/i4",
+      "fixture": "authlib-jws-none",
+      "parent": [
+        "VALID",
+        "completed"
+      ],
+      "initial": {
+        "revisions": {
+          "base": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          },
+          "head": {
+            "class": "FULL_CHAIN",
+            "length": 2,
+            "verified_edges": 2
+          }
+        },
+        "full": true,
+        "rejected": [],
+        "hops": 4,
+        "unsupported": 0,
+        "verified": 4
+      },
+      "runtime_eligibility_matches": true,
+      "eligible": false,
+      "forked": false
+    }
+  ]
+}

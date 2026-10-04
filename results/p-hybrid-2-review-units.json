@@ -1,0 +1,1042 @@
+{
+ "R001": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h5"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f5"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f7"
+   }
+  ]
+ },
+ "R002": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f5"
+   }
+  ]
+ },
+ "R003": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h5"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f5"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f5"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f4"
+   }
+  ]
+ },
+ "R004": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 111, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 195, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f4"
+   }
+  ]
+ },
+ "R005": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f11"
+   }
+  ]
+ },
+ "R006": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f8"
+   }
+  ]
+ },
+ "R007": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 181, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f6"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h5"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f5"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f5"
+   }
+  ]
+ },
+ "R008": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f4"
+   }
+  ]
+ },
+ "R009": {
+  "key": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 205, 2]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "control",
+    "hop_id": "f3"
+   }
+  ]
+ },
+ "R010": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f4"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f4"
+   }
+  ]
+ },
+ "R011": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h9"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "initial",
+    "hop_id": "h9"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "control",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f10"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h9"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f9"
+   }
+  ]
+ },
+ "R012": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 210, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 213, 5]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f6"
+   }
+  ]
+ },
+ "R013": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 185, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f1"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f1"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f2"
+   }
+  ]
+ },
+ "R014": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 190, 3], [\"anchor\", \"http/raw.go\", 211, 12]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h8"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f8"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f8"
+   }
+  ]
+ },
+ "R015": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 211, 2]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "control",
+    "hop_id": "f6"
+   }
+  ]
+ },
+ "R016": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 218, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h8"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "treatment",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f8"
+   }
+  ]
+ },
+ "R017": {
+  "key": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 179, 3], [\"anchor\", \"http/raw.go\", 125, 3]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "treatment",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "treatment",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "treatment",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f1"
+   }
+  ]
+ },
+ "R018": {
+  "key": "[\"filebrowser-archive-backslash\", \"base\", \"field_flow\", [\"node\", \"http/raw.go\", 127, 3], [\"node\", \"http/raw.go\", 131, 4]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "treatment",
+    "hop_id": "f1"
+   }
+  ]
+ },
+ "R019": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 133, 3]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h5"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f5"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f5"
+   }
+  ]
+ },
+ "R020": {
+  "key": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 184, 3], [\"anchor\", \"http/raw.go\", 205, 12]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h4"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f4"
+   }
+  ]
+ },
+ "R021": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 185, 3], [\"anchor\", \"http/raw.go\", 125, 3]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r0",
+    "phase": "treatment",
+    "hop_id": "f3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r1",
+    "phase": "treatment",
+    "hop_id": "f3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "control",
+    "hop_id": "f4"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r3",
+    "phase": "treatment",
+    "hop_id": "f3"
+   }
+  ]
+ },
+ "R022": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"field_flow\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 209, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 213, 5]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f6"
+   }
+  ]
+ },
+ "R023": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f10"
+   }
+  ]
+ },
+ "R024": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 178, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 215, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f3"
+   }
+  ]
+ },
+ "R025": {
+  "key": "[\"caddy-forward-auth\", \"base\", \"guard_property\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 179, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 198, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f2"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h1"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f1"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f1"
+   }
+  ]
+ },
+ "R026": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 180, 2], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h9"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h8"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "initial",
+    "hop_id": "h8"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "control",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r2",
+    "phase": "treatment",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "initial",
+    "hop_id": "h8"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "control",
+    "hop_id": "f8"
+   },
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f9"
+   }
+  ]
+ },
+ "R027": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"unsupported\", [\"anchor\", \"http/raw.go\", 135, 3], [\"anchor\", \"http/raw.go\", 190, 3]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h7"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f7"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f7"
+   }
+  ]
+ },
+ "R028": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 94, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f11"
+   }
+  ]
+ },
+ "R029": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/reverseproxy/reverseproxy.go\", 958, 3]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r4",
+    "phase": "treatment",
+    "hop_id": "f10"
+   }
+  ]
+ },
+ "R030": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f5"
+   }
+  ]
+ },
+ "R031": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 240, 2], [\"anchor\", \"modules/caddyhttp/headers/headers.go\", 93, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "initial",
+    "hop_id": "h10"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "control",
+    "hop_id": "f10"
+   },
+   {
+    "block": "caddy-forward-auth/r0",
+    "phase": "treatment",
+    "hop_id": "f10"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "initial",
+    "hop_id": "h9"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f9"
+   },
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "treatment",
+    "hop_id": "f9"
+   }
+  ]
+ },
+ "R032": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"unsupported\", [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 219, 4], [\"anchor\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 224, 4]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r1",
+    "phase": "control",
+    "hop_id": "f10"
+   }
+  ]
+ },
+ "R033": {
+  "key": "[\"caddy-forward-auth\", \"head\", \"object_composition\", [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 211, 3], [\"node\", \"modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go\", 233, 2]]",
+  "occurrences": [
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "caddy-forward-auth/r3",
+    "phase": "control",
+    "hop_id": "f6"
+   }
+  ]
+ },
+ "R034": {
+  "key": "[\"filebrowser-archive-backslash\", \"base\", \"unsupported\", [\"anchor\", \"http/raw.go\", 129, 3], [\"anchor\", \"http/raw.go\", 184, 3]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f3"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f3"
+   }
+  ]
+ },
+ "R035": {
+  "key": "[\"filebrowser-archive-backslash\", \"head\", \"field_flow\", [\"node\", \"http/raw.go\", 133, 3], [\"node\", \"http/raw.go\", 137, 4]]",
+  "occurrences": [
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "initial",
+    "hop_id": "h2"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "control",
+    "hop_id": "f2"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r2",
+    "phase": "treatment",
+    "hop_id": "f2"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "initial",
+    "hop_id": "h6"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "control",
+    "hop_id": "f6"
+   },
+   {
+    "block": "filebrowser-archive-backslash/r4",
+    "phase": "treatment",
+    "hop_id": "f6"
+   }
+  ]
+ }
+}

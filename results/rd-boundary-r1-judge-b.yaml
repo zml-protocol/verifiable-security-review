@@ -1,0 +1,104 @@
+reviewer:
+  type: "model"
+  name: "GPT-6, new conversation"
+  date: "2026-10-01"
+  attestation:
+    independent: true
+    saw_author_labels: false
+    saw_project_history: false
+relations:
+  r01: {label: "TRUE", note: ""}
+  r02: {label: "FALSE", note: "The spread uses the version defined on line 40."}
+  r03: {label: "TRUE", note: ""}
+  r04: {label: "FALSE", note: "The value is overwritten on line 47."}
+  r05: {label: "TRUE", note: ""}
+  r06: {label: "FALSE", note: "AuditStore overrides Store.save."}
+  r07: {label: "TRUE", note: ""}
+  r08: {label: "FALSE", note: "The read is inside the comprehension body."}
+  r09: {label: "TRUE", note: ""}
+  r10: {label: "FALSE", note: "Variadic tail arguments do not bind the slice parameter."}
+  r11: {label: "TRUE", note: ""}
+  r12: {label: "TRUE", note: ""}
+  r13: {label: "TRUE", note: ""}
+  r14: {label: "TRUE", note: ""}
+  r15: {label: "TRUE", note: ""}
+  r16: {label: "FALSE", note: "cfg is redefined on line 102."}
+  r17: {label: "FALSE", note: "No Hidden instance enters the registry."}
+  r18: {label: "FALSE", note: "The body read occurs only inside the lambda."}
+  r19: {label: "TRUE", note: ""}
+  r20: {label: "FALSE", note: "a is overwritten on line 112."}
+  r21: {label: "TRUE", note: ""}
+  r22: {label: "TRUE", note: ""}
+  r23: {label: "FALSE", note: "The one-variable range binds an index."}
+  r24: {label: "TRUE", note: ""}
+  r25: {label: "TRUE", note: ""}
+  r26: {label: "TRUE", note: ""}
+  r27: {label: "TRUE", note: ""}
+  r28: {label: "FALSE", note: "The read is inside a closure."}
+  r29: {label: "TRUE", note: ""}
+  r30: {label: "FALSE", note: "tag is overwritten on line 83."}
+  r31: {label: "FALSE", note: "The store container is not a stored value."}
+  r32: {label: "TRUE", note: ""}
+  r33: {label: "FALSE", note: "A receiver is not an argument."}
+  r34: {label: "FALSE", note: "name reaches Tags only through a captured closure read."}
+  r35: {label: "FALSE", note: "Element insertion and container spread are separate hops."}
+  r36: {label: "FALSE", note: "w is a struct copy distinct from v."}
+  r37: {label: "FALSE", note: "m reaches the store through an earlier field store."}
+  r38: {label: "TRUE", note: ""}
+  r39: {label: "TRUE", note: ""}
+  r40: {label: "TRUE", note: "The outermost iterable is evaluated in the enclosing function."}
+  r41: {label: "TRUE", note: "p and pm hold the same pointer."}
+  r42: {label: "FALSE", note: "apply cannot hold shout in this program."}
+  r43: {label: "FALSE", note: "user is overwritten on line 52."}
+  r44: {label: "TRUE", note: ""}
+  r45: {label: "FALSE", note: "The range is over a field of t."}
+  r46: {label: "FALSE", note: "No obtainable nopSink value can reach this receiver."}
+  r47: {label: "TRUE", note: ""}
+  r48: {label: "TRUE", note: "Sibling keyed fields count structurally."}
+requirements:
+  q01: {label: "NOT_REQUIRED", note: "The absent context must be the statement after the insertion."}
+  q02: {label: "NOT_REQUIRED", note: "The added authorization check is the behavior."}
+  q03: {label: "REQUIRED", note: ""}
+  q04: {label: "REQUIRED", note: ""}
+  q05: {label: "NOT_REQUIRED", note: "The request parameter is the entry."}
+  q06: {label: "NOT_REQUIRED", note: "The behavior cannot also be a qualifier."}
+  q07: {label: "NOT_REQUIRED", note: "The added transform is the behavior."}
+  q08: {label: "NOT_REQUIRED", note: "The configuration must equal 1; being set is insufficient."}
+  q09: {label: "NOT_REQUIRED", note: "This value is derived after extraction."}
+  q10: {label: "REQUIRED", note: ""}
+  q11: {label: "NOT_REQUIRED", note: "The claimed input is the extracted file parameter."}
+  q12: {label: "NOT_REQUIRED", note: "The added transform is the behavior."}
+  q13: {label: "REQUIRED", note: ""}
+  q14: {label: "REQUIRED", note: ""}
+  q15: {label: "INDETERMINATE", note: "The triggering input is unspecified; trimming may or may not affect traversal."}
+  q16: {label: "NOT_REQUIRED", note: "The label check does not decide SQL injection."}
+  q17: {label: "REQUIRED", note: ""}
+  q18: {label: "NOT_REQUIRED", note: "The request method is an attacker-satisfied input condition."}
+  q19: {label: "REQUIRED", note: ""}
+  q20: {label: "NOT_REQUIRED", note: "The written condition must be false."}
+  q21: {label: "REQUIRED", note: ""}
+  q22: {label: "NOT_REQUIRED", note: "The removed behavior is absent at fixed."}
+  q23: {label: "NOT_REQUIRED", note: "The context must follow the removal point."}
+  q24: {label: "REQUIRED", note: ""}
+  q25: {label: "REQUIRED", note: ""}
+  q26: {label: "NOT_REQUIRED", note: "Decoding must be present for the triggering traversal."}
+  q27: {label: "REQUIRED", note: ""}
+  q28: {label: "REQUIRED", note: ""}
+  q29: {label: "REQUIRED", note: ""}
+  q30: {label: "NOT_REQUIRED", note: "This check is the behavior."}
+  q31: {label: "REQUIRED", note: ""}
+  q32: {label: "INDETERMINATE", note: "Relevance depends on the unspecified uploader's Verified value."}
+  q33: {label: "REQUIRED", note: ""}
+  q34: {label: "NOT_REQUIRED", note: "The changed key check nearest the effect is the behavior."}
+  q35: {label: "NOT_REQUIRED", note: "The absent guard context must be the key extraction."}
+  q36: {label: "REQUIRED", note: ""}
+  q37: {label: "NOT_REQUIRED", note: "The alg header field first becomes a value at its extraction."}
+  q38: {label: "NOT_REQUIRED", note: "The registry change is off the path; the verification effect is the behavior."}
+  q39: {label: "REQUIRED", note: ""}
+  q40: {label: "NOT_REQUIRED", note: "HmacAlg is not the dispatch target producing the claimed weakness."}
+  q41: {label: "REQUIRED", note: ""}
+  q42: {label: "REQUIRED", note: ""}
+  q43: {label: "NOT_REQUIRED", note: "The parameter already holds the claimed input."}
+  q44: {label: "REQUIRED", note: ""}
+  q45: {label: "INDETERMINATE", note: "Transform relevance depends on the unspecified triggering path and base."}
+  q46: {label: "NOT_REQUIRED", note: "The changed containment check is the behavior."}

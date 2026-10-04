@@ -1,0 +1,44 @@
+# P-Hybrid-2 agent-facing relation vocabulary (PREREGISTRATION.md §11.2). Identical in both
+# arms and in the initial phase. Relation ids, glosses, node kinds and roles are the frozen
+# ones of experiments/hop_verify/relations.yaml; the descriptions restate its truth
+# conditions without mentioning any checker. This vocabulary is itself a hint (§11.8).
+
+relations:
+  call_typed_attribute: >
+    Method call on an attribute whose type is set elsewhere. `from` is a call a.b.m(...);
+    at run time it can invoke the function whose body contains `to`.
+  registry_dispatch: >
+    Callee chosen at run time from a registry keyed by input data. `from` is a call
+    r.m(...) whose receiver comes out of such a registry or collection; at run time it can
+    invoke the method whose body contains `to`.
+  field_flow: >
+    Value flowing through locals into a struct field. `from` defines a local variable; `to`
+    is a keyed struct literal field f: e or a field store x.f = e; the value defined at
+    `from` reaches e within the function (through local variables, and calls that derive
+    their result from it).
+  object_composition: >
+    Object stored into a field or collection of another object. `from` defines an object
+    (v := e) or modifies one through its variable (v.f = e); `to` is a field store x.g = e'
+    that puts that object into x's field: the object is one of the stored values (for
+    x.g = append(x.g, ...), one of the appended arguments) or a direct part of one (a
+    literal element, a keyed value, an & operand or a call argument inside it). One
+    composition step only: an object that reaches the stored value only through an earlier
+    store does not count, and the container x itself is not stored.
+  guard_property: >
+    Condition that is a property of an object on the path, not on the flow. `from` is a
+    keyed struct literal field anywhere inside the literal (through literal elements, keyed
+    values and &) that initializes a local variable v; `to` is a field store v.f = e that
+    reads that same definition of v.
+  unsupported: >
+    A link that none of the relations above describes (for example one made at run time
+    by a framework). It is recorded as you state it; no relation-specific meaning is
+    attached to it.
+
+kinds:
+  attribute_method_call: "a call a.b.m(...) (a method called on an attribute); named by where the call starts"
+  method_call: "a call r.m(...); named by where the call starts"
+  function_body: "any place inside a function, its def line included"
+  method_body: "any place inside a method of a class, its def line included"
+  definition: "a statement defining a local variable (v := e, v = e, var v = e); named by where the statement starts"
+  field_store: "a statement storing into one field (x.f = e, including x.f = append(x.f, ...)); named by where the statement starts"
+  keyed_field: "a keyed field f: e of a struct literal; named by where its key starts"

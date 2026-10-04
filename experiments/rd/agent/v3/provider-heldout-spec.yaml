@@ -1,0 +1,35 @@
+schema: rd-v3-provider-heldout-spec/v1
+eligible_targets:
+  - id: python_typed_attribute_dispatch
+    language: python
+    relation: call_typed_attribute
+    true_cases: 2
+    false_cases: 2
+    false_families: [wrong_receiver_type, unreachable_override]
+  - id: go_direct_argument_binding
+    language: go
+    relation: argument_binding
+    true_cases: 2
+    false_cases: 2
+    false_families: [wrong_argument_index, wrong_callee]
+  - id: go_callback_argument_binding
+    language: go
+    relation: argument_binding
+    true_cases: 2
+    false_cases: 2
+    false_families: [unreachable_callback, wrong_parameter_index]
+ineligible_targets:
+  - id: scalar_to_guard
+    reason: no admitted relation permits a predicate destination
+  - id: lexical_control_dependency
+    reason: no admitted relation entails predicate-to-controlled-statement flow
+  - id: generic_same_object_expansion
+    reason: adding Python or broader object equivalence would change frozen chain semantics
+curator_requirements:
+  - do not copy development identifiers or control-flow layouts
+  - freeze exact endpoints and true/false labels before provider execution
+  - include at least the listed false family once for each target
+  - never replace a missed true case or unsafe false case
+gate:
+  false_verified_maximum: 0
+  partial_and_unsupported_are_valid: true

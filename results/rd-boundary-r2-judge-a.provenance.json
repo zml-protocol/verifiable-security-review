@@ -1,0 +1,66 @@
+{
+  "round": 2,
+  "judge": "a",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "codex_cli": "codex-cli 0.159.2",
+  "started_utc": "2026-10-02T00:31:24+00:00",
+  "exit": 0,
+  "thread_id": "01a0fa05-e424-7cf1-87c0-9ae4262f9dd8",
+  "usage": {
+    "input_tokens": 20826,
+    "cached_input_tokens": 6784,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1023,
+    "reasoning_output_tokens": 426
+  },
+  "event_items": [
+    "agent_message"
+  ],
+  "startup_notices": [
+    "Code Mode is unavailable because code-mode host is disabled. Code mode will fail closed; enable `features.code_mode_host` and install `codex-code-mode-host`."
+  ],
+  "tool_items": [],
+  "errors": [],
+  "format_fix": null,
+  "problems": [],
+  "valid": true,
+  "prompt_sha256": "26b13a2e611e5c42cb9136a43d573a5586e8d3e3645f85ae9e4c50efb25f257b",
+  "sheet_sha256": "276613e115368177d81bf3b1603e53b635ccb16890f4b5331bad7f091a7384cb",
+  "isolation": {
+    "codex_home": "fresh temporary directory with only a link to auth.json (deleted)",
+    "workdir": "empty temporary directory outside any repository (deleted)",
+    "sandbox": "read-only",
+    "features_off": [
+      "shell_tool",
+      "unified_exec",
+      "unified_exec_tty",
+      "code_mode_host",
+      "multi_agent",
+      "view_image",
+      "sleep_tool",
+      "apps",
+      "plugins",
+      "remote_plugin",
+      "plugin_sharing",
+      "hooks",
+      "memories",
+      "browser_use",
+      "browser_use_external",
+      "browser_use_full_cdp_access",
+      "computer_use",
+      "image_generation",
+      "goals",
+      "skill_search",
+      "skill_mcp_dependency_install",
+      "tool_suggest",
+      "in_app_browser",
+      "in_app_local_automation",
+      "worktrees",
+      "workspace_dependencies",
+      "realtime_conversation",
+      "shell_snapshot"
+    ],
+    "web_search": "disabled"
+  }
+}

@@ -1,0 +1,129 @@
+# P-Hybrid-1 development set (PREREGISTRATION.md §10). The verifiers were
+# developed against these hops; their results here are informational only.
+# Truth labels live in truth/dev.yaml and are read by the scorer only.
+set: dev
+fixtures:
+  hopdev-go:
+    language: go
+    repo: .cache/fixtures/hopdev-go
+    build: fixtures/_hopdev/build.py
+    commits: {base: c1f9212c84860c6479642f0d648b87d709ae121b, head: cb7cd3d5a5ead1755aa8b705b8622ee6c8548f78}
+    db_build: go build ./...
+  hopdev-py:
+    language: python
+    repo: .cache/fixtures/hopdev-py
+    build: fixtures/_hopdev/build.py
+    commits: {base: 61c4eed6f5d805832dae9a7b0cd161e85593cc31, head: d50487a726d25de1fc437535651015170782e6f4}
+    db_build: null
+
+hops:
+  # field_flow
+  - {id: dff1, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 27, end_line: 27, expression: "label := strings.TrimPrefix(raw, prefix)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"}}
+  - {id: dff2, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 28, end_line: 28, expression: "label = filepath.ToSlash(label)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"}}
+  - {id: dff3, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 29, end_line: 29, expression: "other := strings.ToUpper(raw)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"}}
+  - {id: dff4, fixture: hopdev-go, revision: head, relation: field_flow,
+     from: {file: flow.go, start_line: 27, end_line: 27, expression: "label := strings.TrimPrefix(raw, prefix)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"}}
+  - {id: dff5, fixture: hopdev-go, revision: head, relation: field_flow,
+     from: {file: flow.go, start_line: 29, end_line: 29, expression: "other := strings.ToUpper(raw)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"}}
+  - {id: dff6, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 27, end_line: 27, expression: "label := strings.TrimPrefix(raw, prefix)"},
+     to: {file: flow.go, start_line: 31, end_line: 31, expression: "Size: len(raw)"}}
+  - {id: dff7, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 31, end_line: 31, expression: "Label: label"},
+     to: {file: flow.go, start_line: 27, end_line: 27, expression: "label := strings.TrimPrefix(raw, prefix)"}}
+  - {id: dff8, fixture: hopdev-go, revision: base, relation: field_flow,
+     from: {file: flow.go, start_line: 49, end_line: 49, expression: "clean := strings.TrimSpace(raw)"},
+     to: {file: flow.go, start_line: 50, end_line: 50, expression: "it.Label = clean"}}
+  # object_composition
+  - {id: doc1, fixture: hopdev-go, revision: base, relation: object_composition,
+     from: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: doc2, fixture: hopdev-go, revision: base, relation: object_composition,
+     from: {file: flow.go, start_line: 35, end_line: 35, expression: "ok := Stage{"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: doc3, fixture: hopdev-go, revision: head, relation: object_composition,
+     from: {file: flow.go, start_line: 35, end_line: 35, expression: "ok := Stage{"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: doc4, fixture: hopdev-go, revision: head, relation: object_composition,
+     from: {file: flow.go, start_line: 40, end_line: 40, expression: "ok = Stage{When: &Matcher{Codes: []int{5}}}"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: doc5, fixture: hopdev-go, revision: base, relation: object_composition,
+     from: {file: flow.go, start_line: 40, end_line: 40, expression: "fallback := Stage{When: &Matcher{Codes: []int{5}}}"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: doc6, fixture: hopdev-go, revision: base, relation: object_composition,
+     from: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  - {id: doc7, fixture: hopdev-go, revision: base, relation: object_composition,
+     from: {file: flow.go, start_line: 35, end_line: 35, expression: "ok := Stage{"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  # guard_property
+  - {id: dgp1, fixture: hopdev-go, revision: base, relation: guard_property,
+     from: {file: flow.go, start_line: 37, end_line: 37, expression: "Codes: []int{2}"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  - {id: dgp2, fixture: hopdev-go, revision: head, relation: guard_property,
+     from: {file: flow.go, start_line: 37, end_line: 37, expression: "Codes: []int{2}"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  - {id: dgp3, fixture: hopdev-go, revision: head, relation: guard_property,
+     from: {file: flow.go, start_line: 40, end_line: 40, expression: "Codes: []int{5}"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  - {id: dgp4, fixture: hopdev-go, revision: base, relation: guard_property,
+     from: {file: flow.go, start_line: 40, end_line: 40, expression: "Codes: []int{5}"},
+     to: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"}}
+  - {id: dgp5, fixture: hopdev-go, revision: base, relation: guard_property,
+     from: {file: flow.go, start_line: 37, end_line: 37, expression: "Codes: []int{2}"},
+     to: {file: flow.go, start_line: 43, end_line: 43, expression: "p.Stages = append(p.Stages, ok)"}}
+  - {id: dgp6, fixture: hopdev-go, revision: base, relation: guard_property,
+     from: {file: flow.go, start_line: 41, end_line: 41, expression: "ok.Steps = append(ok.Steps, step)"},
+     to: {file: flow.go, start_line: 37, end_line: 37, expression: "Codes: []int{2}"}}
+  # call_typed_attribute
+  - {id: dct1, fixture: hopdev-py, revision: base, relation: call_typed_attribute,
+     from: {file: dev.py, start_line: 53, end_line: 53, expression: "self._codec.decode(blob, key)"},
+     to: {file: dev.py, start_line: 6, end_line: 6, expression: "return blob"}}
+  - {id: dct2, fixture: hopdev-py, revision: head, relation: call_typed_attribute,
+     from: {file: dev.py, start_line: 53, end_line: 53, expression: "self._codec.decode(blob, key)"},
+     to: {file: dev.py, start_line: 6, end_line: 6, expression: "return blob"}}
+  - {id: dct3, fixture: hopdev-py, revision: head, relation: call_typed_attribute,
+     from: {file: dev.py, start_line: 53, end_line: 53, expression: "self._codec.decode(blob, key)"},
+     to: {file: dev.py, start_line: 11, end_line: 11, expression: "return key"}}
+  - {id: dct4, fixture: hopdev-py, revision: base, relation: call_typed_attribute,
+     from: {file: dev.py, start_line: 56, end_line: 56, expression: "self._mirror.decode(blob, key)"},
+     to: {file: dev.py, start_line: 6, end_line: 6, expression: "return blob"}}
+  - {id: dct5, fixture: hopdev-py, revision: base, relation: call_typed_attribute,
+     from: {file: dev.py, start_line: 6, end_line: 6, expression: "return blob"},
+     to: {file: dev.py, start_line: 53, end_line: 53, expression: "self._codec.decode(blob, key)"}}
+  # registry_dispatch
+  - {id: drd1, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 60, end_line: 60, expression: "chosen.check(data, sig)"},
+     to: {file: dev.py, start_line: 26, end_line: 26, expression: "return sig == \"\""}}
+  - {id: drd2, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 60, end_line: 60, expression: "chosen.check(data, sig)"},
+     to: {file: dev.py, start_line: 33, end_line: 33, expression: "return False"}}
+  - {id: drd3, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 60, end_line: 60, expression: "chosen.check(data, sig)"},
+     to: {file: dev.py, start_line: 40, end_line: 40, expression: "return True"}}
+  - {id: drd4, fixture: hopdev-py, revision: head, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 60, end_line: 60, expression: "chosen.check(data, sig)"},
+     to: {file: dev.py, start_line: 26, end_line: 26, expression: "return sig == \"\""}}
+  - {id: drd5, fixture: hopdev-py, revision: head, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 60, end_line: 60, expression: "chosen.check(data, sig)"},
+     to: {file: dev.py, start_line: 40, end_line: 40, expression: "return True"}}
+  - {id: drd6, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 83, end_line: 83, expression: "handler.handle(x)"},
+     to: {file: dev.py, start_line: 65, end_line: 65, expression: "return x + 1"}}
+  - {id: drd7, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 83, end_line: 83, expression: "handler.handle(x)"},
+     to: {file: dev.py, start_line: 75, end_line: 75, expression: "return -x"}}
+  - {id: drd8, fixture: hopdev-py, revision: head, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 83, end_line: 83, expression: "handler.handle(x)"},
+     to: {file: dev.py, start_line: 75, end_line: 75, expression: "return -x"}}
+  - {id: drd9, fixture: hopdev-py, revision: base, relation: registry_dispatch,
+     from: {file: dev.py, start_line: 83, end_line: 83, expression: "handler.handle(x)"},
+     to: {file: dev.py, start_line: 26, end_line: 26, expression: "return sig == \"\""}}

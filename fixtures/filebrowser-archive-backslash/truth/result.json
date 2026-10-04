@@ -1,0 +1,96 @@
+{
+    "toolchain": "go version go1.26.8 linux/amd64",
+    "env": "GOTOOLCHAIN=local GOFLAGS=-mod=readonly CGO_ENABLED=0",
+    "base": {
+        "commit": "0231b7ebdfbe77a6c54027d30c4856c3fd81ee4d",
+        "probe": {
+            "common_dir": "/dir",
+            "tar": [
+                {
+                    "contains_backslash": true,
+                    "entry": "..\\..\\evil.sh",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": true
+                },
+                {
+                    "contains_backslash": true,
+                    "entry": "a\\b.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "plain.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                }
+            ],
+            "zip": [
+                {
+                    "contains_backslash": true,
+                    "entry": "..\\..\\evil.sh",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": true
+                },
+                {
+                    "contains_backslash": true,
+                    "entry": "a\\b.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "plain.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                }
+            ]
+        }
+    },
+    "head": {
+        "commit": "847d08bdd135e5c3659f2e6dea2f0cd36617af9b",
+        "probe": {
+            "common_dir": "/dir",
+            "tar": [
+                {
+                    "contains_backslash": false,
+                    "entry": "../../evil.sh",
+                    "escapes_posix_extractor": true,
+                    "escapes_windows_extractor": true
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "a/b.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "plain.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                }
+            ],
+            "zip": [
+                {
+                    "contains_backslash": false,
+                    "entry": "../../evil.sh",
+                    "escapes_posix_extractor": true,
+                    "escapes_windows_extractor": true
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "a/b.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                },
+                {
+                    "contains_backslash": false,
+                    "entry": "plain.txt",
+                    "escapes_posix_extractor": false,
+                    "escapes_windows_extractor": false
+                }
+            ]
+        }
+    }
+}

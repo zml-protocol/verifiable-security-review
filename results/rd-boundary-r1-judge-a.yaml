@@ -1,0 +1,104 @@
+reviewer:
+  type: "model"
+  name: "GPT-6, new conversation"
+  date: "2026-10-01"
+  attestation:
+    independent: true
+    saw_author_labels: false
+    saw_project_history: false
+relations:
+  r01: {label: "TRUE", note: "Local assignment flow through a."}
+  r02: {label: "FALSE", note: "The append assignment defines a newer version."}
+  r03: {label: "TRUE", note: "Nested keyed fields count."}
+  r04: {label: "FALSE", note: "The original body value was overwritten."}
+  r05: {label: "TRUE", note: ""}
+  r06: {label: "FALSE", note: "AuditStore overrides save."}
+  r07: {label: "TRUE", note: "Use supplies a memSink receiver."}
+  r08: {label: "FALSE", note: "The read is inside the comprehension body."}
+  r09: {label: "TRUE", note: ""}
+  r10: {label: "FALSE", note: "Variadic tail arguments do not bind the slice parameter."}
+  r11: {label: "TRUE", note: ""}
+  r12: {label: "TRUE", note: "Reading the selector base counts."}
+  r13: {label: "TRUE", note: ""}
+  r14: {label: "TRUE", note: ""}
+  r15: {label: "TRUE", note: "Map values are elements."}
+  r16: {label: "FALSE", note: "cfg was redefined."}
+  r17: {label: "FALSE", note: "No Hidden instance enters the registry."}
+  r18: {label: "FALSE", note: "The body read occurs only inside the lambda."}
+  r19: {label: "TRUE", note: ""}
+  r20: {label: "FALSE", note: "a was overwritten."}
+  r21: {label: "TRUE", note: ""}
+  r22: {label: "TRUE", note: "This defines the spread container's reaching version."}
+  r23: {label: "FALSE", note: "A one-variable range binds the index."}
+  r24: {label: "TRUE", note: ""}
+  r25: {label: "TRUE", note: ""}
+  r26: {label: "TRUE", note: ""}
+  r27: {label: "TRUE", note: "Reading the call receiver counts."}
+  r28: {label: "FALSE", note: "The read is inside a closure."}
+  r29: {label: "TRUE", note: ""}
+  r30: {label: "FALSE", note: "tag was overwritten."}
+  r31: {label: "FALSE", note: "The destination container is not a stored value."}
+  r32: {label: "TRUE", note: ""}
+  r33: {label: "FALSE", note: "Receivers are not arguments."}
+  r34: {label: "FALSE", note: "The value reaches Tags only through a closure."}
+  r35: {label: "FALSE", note: "Element construction and container spread are separate hops."}
+  r36: {label: "FALSE", note: "w is a distinct struct copy."}
+  r37: {label: "FALSE", note: "The value is read back through an earlier field store."}
+  r38: {label: "TRUE", note: ""}
+  r39: {label: "TRUE", note: ""}
+  r40: {label: "TRUE", note: "The outermost iterable is evaluated in the enclosing function."}
+  r41: {label: "TRUE", note: "p and pm hold the same pointer."}
+  r42: {label: "FALSE", note: "apply cannot hold shout."}
+  r43: {label: "FALSE", note: "The user parameter was overwritten."}
+  r44: {label: "TRUE", note: ""}
+  r45: {label: "FALSE", note: "The range traverses a field, not t itself."}
+  r46: {label: "FALSE", note: "No nopSink reaches the receiver or is obtainable externally."}
+  r47: {label: "TRUE", note: ""}
+  r48: {label: "TRUE", note: "Structural sibling fields count."}
+requirements:
+  q01: {label: "NOT_REQUIRED", note: "Absent context must be DeleteAll, after the insertion."}
+  q02: {label: "NOT_REQUIRED", note: "The added authorization check is the behavior."}
+  q03: {label: "REQUIRED", note: ""}
+  q04: {label: "REQUIRED", note: ""}
+  q05: {label: "NOT_REQUIRED", note: "The request parameter is the entry."}
+  q06: {label: "NOT_REQUIRED", note: "The behavior cannot also be a qualifier."}
+  q07: {label: "NOT_REQUIRED", note: "The added transform is the behavior."}
+  q08: {label: "NOT_REQUIRED", note: "The configuration must equal 1, not merely be set."}
+  q09: {label: "NOT_REQUIRED", note: "This value is derived after extraction."}
+  q10: {label: "REQUIRED", note: ""}
+  q11: {label: "NOT_REQUIRED", note: "The input is the extracted file parameter."}
+  q12: {label: "NOT_REQUIRED", note: "The added Base transform is the behavior."}
+  q13: {label: "REQUIRED", note: ""}
+  q14: {label: "REQUIRED", note: ""}
+  q15: {label: "INDETERMINATE", note: "TrimSpace relevance depends on the unspecified triggering input's whitespace."}
+  q16: {label: "NOT_REQUIRED", note: "Label affects only a response header."}
+  q17: {label: "REQUIRED", note: ""}
+  q18: {label: "NOT_REQUIRED", note: "The request method is an input condition."}
+  q19: {label: "REQUIRED", note: ""}
+  q20: {label: "NOT_REQUIRED", note: "The predicate must be false."}
+  q21: {label: "REQUIRED", note: ""}
+  q22: {label: "NOT_REQUIRED", note: "The removed behavior is absent at fixed."}
+  q23: {label: "NOT_REQUIRED", note: "Absent context must follow the removal."}
+  q24: {label: "REQUIRED", note: ""}
+  q25: {label: "REQUIRED", note: ""}
+  q26: {label: "NOT_REQUIRED", note: "Decoding must be present for this bypass."}
+  q27: {label: "REQUIRED", note: ""}
+  q28: {label: "REQUIRED", note: ""}
+  q29: {label: "REQUIRED", note: ""}
+  q30: {label: "NOT_REQUIRED", note: "This check is the behavior."}
+  q31: {label: "REQUIRED", note: ""}
+  q32: {label: "INDETERMINATE", note: "Adding this guard blocks the triggering input only if u.Verified is false; its value is unspecified."}
+  q33: {label: "REQUIRED", note: "This is the changed check nearest the effect."}
+  q34: {label: "NOT_REQUIRED", note: "The later changed path check is the behavior."}
+  q35: {label: "NOT_REQUIRED", note: "The absent context must be the key extraction."}
+  q36: {label: "REQUIRED", note: "The implementation still exists at fixed despite becoming unreachable."}
+  q37: {label: "NOT_REQUIRED", note: "The entry is the extraction of alg."}
+  q38: {label: "NOT_REQUIRED", note: "The registry change is off the effect's execution path."}
+  q39: {label: "REQUIRED", note: ""}
+  q40: {label: "NOT_REQUIRED", note: "HmacAlg is not the implementation producing the claimed effect."}
+  q41: {label: "REQUIRED", note: ""}
+  q42: {label: "REQUIRED", note: ""}
+  q43: {label: "NOT_REQUIRED", note: "The parameter already holds the input."}
+  q44: {label: "REQUIRED", note: ""}
+  q45: {label: "INDETERMINATE", note: "Transform relevance depends on the triggering path; an absolute normalized sibling path can pass unchanged."}
+  q46: {label: "NOT_REQUIRED", note: "The changed containment check is the behavior."}

@@ -1,0 +1,121 @@
+{
+  "schema": "rd-reference-result/v1",
+  "fixture": "GHSA-mr3j-p26x-72x4",
+  "task_id": "task-02",
+  "disposition": "PROVIDER_BLIND",
+  "revisions": [
+    {
+      "canonical_revision": "vuln",
+      "outward_revision": "revision_B",
+      "chain_required": false,
+      "semantic_chain_complete": null,
+      "reason": "The frozen behavior slot is absent in the vulnerable revision.",
+      "hops": []
+    },
+    {
+      "canonical_revision": "fixed",
+      "outward_revision": "revision_A",
+      "chain_required": true,
+      "semantic_chain_complete": true,
+      "reason": "The request-bound receiver reaches getTaskCommentSimple through its call argument and formal parameter, then tc.TaskID supplies the added query constraint. The vocabulary cannot attach the method entry or the call argument to the enclosing fluent-call statement.\n",
+      "hops": [
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "unsupported",
+            "from": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 229,
+              "end_line": 229,
+              "expression": "func (tc *TaskComment) ReadOne(s *xorm.Session, _ web.Auth) (err error) {"
+            },
+            "to": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 230,
+              "end_line": 230,
+              "expression": "tc"
+            }
+          },
+          "state": "UNSUPPORTED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "argument_binding",
+            "from": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 230,
+              "end_line": 230,
+              "expression": "tc"
+            },
+            "to": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 196,
+              "end_line": 196,
+              "expression": "tc"
+            }
+          },
+          "state": "VERIFIED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "def_use",
+            "from": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 196,
+              "end_line": 196,
+              "expression": "tc"
+            },
+            "to": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 199,
+              "end_line": 199,
+              "expression": "tc.TaskID"
+            }
+          },
+          "state": "VERIFIED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "unsupported",
+            "from": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 199,
+              "end_line": 199,
+              "expression": "tc.TaskID"
+            },
+            "to": {
+              "file": "pkg/models/task_comments.go",
+              "start_line": 199,
+              "end_line": 199,
+              "expression": "And(\"task_id = ?\", tc.TaskID)."
+            }
+          },
+          "state": "UNSUPPORTED"
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "revisions": {
+      "revision_A": {
+        "class": "INTERNAL_GAP",
+        "length": null,
+        "verified_edges": 2,
+        "entry_node_candidates": 0,
+        "terminal_node_candidates": 0,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      },
+      "revision_B": {
+        "class": "NOT_APPLICABLE",
+        "verified_edges": 0,
+        "harness_mismatches": []
+      }
+    },
+    "full_chain": false,
+    "harness_mismatches": []
+  }
+}

@@ -1,0 +1,22 @@
+schema: rd-reference-evidence/v1
+fixture: GHSA-xcw4-53cc-hv32
+revisions:
+  vuln:
+    chain_required: false
+    reason: The frozen behavior slot is absent in the vulnerable revision.
+    hops: []
+  fixed:
+    chain_required: true
+    semantic_chain_complete: true
+    reason: >
+      The Authorization definition flows into the _validate_jwt call, whose statically resolved
+      method body contains the frozen invalid-signature behavior. The frozen Python typed-attribute
+      relation covers a.b.m(...) calls, not a direct self.m(...) call, so that method-body link is
+      outside the verifier vocabulary.
+    hops:
+      - relation: def_use
+        from: {file: mnemosyne/core/sync_server.py, start_line: 154, end_line: 154, expression: 'auth = self.headers.get("Authorization", "")'}
+        to: {file: mnemosyne/core/sync_server.py, start_line: 160, end_line: 160, expression: "self._validate_jwt(auth[7:])"}
+      - relation: unsupported
+        from: {file: mnemosyne/core/sync_server.py, start_line: 160, end_line: 160, expression: "self._validate_jwt(auth[7:])"}
+        to: {file: mnemosyne/core/sync_server.py, start_line: 121, end_line: 121, expression: "if not valid_signature:"}

@@ -1,0 +1,63 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-claim-specific-entry-01",
+  "language": "python",
+  "cell": "claim_specific_entry",
+  "package": "indigo_alias",
+  "effect_claim": "Whether the submitted display alias is included in a prepared profile record.",
+  "files": {
+    "revision_A": {
+      "indigo_alias.py": "def prepare(envelope):\n    requested_alias = envelope[\"display_alias\"]\n    folded_alias = requested_alias.casefold()\n    return {\"alias\": folded_alias}\n"
+    },
+    "revision_B": {
+      "indigo_alias.py": "def prepare(envelope):\n    requested_alias = envelope[\"display_alias\"]\n    return {\"alias\": requested_alias}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "indigo_alias.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "requested_alias = envelope[\"display_alias\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "indigo_alias.py",
+          "start_line": 2,
+          "end_line": 2,
+          "expression": "requested_alias = envelope[\"display_alias\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "indigo_alias.py",
+          "start_line": 4,
+          "end_line": 4,
+          "expression": "return {\"alias\": folded_alias}"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "indigo_alias.py",
+          "start_line": 3,
+          "end_line": 3,
+          "expression": "return {\"alias\": requested_alias}"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "upstream_container",
+    "later_derivative"
+  ],
+  "forbidden_anchors": []
+}

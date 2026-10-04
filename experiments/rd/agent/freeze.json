@@ -1,0 +1,219 @@
+{
+  "schema": "rd-agent-freeze/v2",
+  "protocol": "rd-v2",
+  "created_from_commit": "52354cec7da0f8caf0424a78c5c00983e4ffbf6b",
+  "prior_invalid_run": {
+    "protocol": "rd-v1",
+    "result": "results/rd-agent-v1.json",
+    "result_sha256": "96a3eab7095bb9cfc6d47f0ab55c77f6f778f2d5283f3473d06f6de7578a55dc",
+    "status": "HARNESS_INVALID",
+    "reason": "sandbox DNS failure before any usable interaction"
+  },
+  "execution": {
+    "model": "claude-sonnet-5",
+    "effort": "high",
+    "claude_code_version": "2.1.280",
+    "phase_budget_usd": {
+      "a": 3.0,
+      "b": 3.0,
+      "c": 1.0
+    },
+    "cumulative_session_cap_usd": {
+      "a": 3.0,
+      "b": 6.0,
+      "c": 7.0
+    },
+    "phase_timeout_seconds": {
+      "a": 1200,
+      "b": 1800,
+      "c": 600
+    },
+    "launch_ceiling_usd": 42.0
+  },
+  "files": {
+    "experiments/rd/agent/PROTOCOL.md": "7eeae2f5df39e73155f75db5a3867aeb492b22c7330c1938a8f61577ed0c1efd",
+    "experiments/rd/agent/README.md": "95659249fae4ea69a9e3aae4e147f1a92c3e1a808af788f33b3c2312454fdafc",
+    "experiments/rd/agent/manifest.yaml": "b49b98928e0bf2f9e0d6650087b2b491c7bd159bb9ac4e05328c8499f4ade797",
+    "experiments/rd/agent/order.txt": "bad84dafeafbcca5c81d5d561c4fb87a261799600b06b3b3485f41627853c5af",
+    "experiments/rd/agent/phases.py": "11427480a8971871f79e5bda2ef85fc1abece617daf196e55bac1404f34b7eeb",
+    "experiments/rd/agent/verifiability.py": "614d66d2d252f14198aa3922fe8d9ea599b0c231f8e281d06419050b51ce97f1",
+    "experiments/rd/agent/schema.py": "910cd59c01b7c61389d23899b0f07faac4746e1f1c9e21037b5e255da9cddd27",
+    "experiments/rd/agent/source.py": "4fecabfbdfbac6fa5634abca05cefd031d54a256a437b0f9e7323111e59fd68a",
+    "experiments/rd/agent/session.py": "625b635a45dedffba983194be163d27a323a1a4d1379705ede20d615a4baa87b",
+    "experiments/rd/agent/mcp_server.py": "1e0df352a24b756a12db1bb7eb4978a7a641796e940cad60fea56e2ed30427fb",
+    "experiments/rd/agent/tasks.py": "efa3dd8b41ed706879a0d065f8ceee4aa8a364e4e33d4eb7a805108e1867552f",
+    "experiments/rd/agent/analysis.py": "fd57b85a31b075d8e9f7ee0a796479d58fc8f45f104d9405a518f7b97902e31c",
+    "experiments/rd/agent/graph.py": "2b4dffc40058e8d0cf473327fc771f8b2bcedefe5c5120de699bfbb6e92bf74a",
+    "experiments/rd/agent/reference.py": "03ccf619d703d283d5df652da833e0d8a900bf2d381860fcf20b9b6eb24485f9",
+    "experiments/rd/agent/run.py": "389c802badaf8fd2e5e5898b53b5baa3bbecd285b94089901bceb8a67e2a4bab",
+    "experiments/rd/agent/score.py": "bbf6462ee4bffe0151423c361c7160a89cdf0c9c6c7f18c9347ff7d806992b44",
+    "experiments/rd/agent/pilot.py": "0af4fad15384a2708ba6e1943d4d993e090b7fddc046afd1c7ff51403c8e5060",
+    "experiments/rd/agent/freeze.py": "ed505e211e351251904fb0582fd37dcc02a8684538f8e6698c2d5dd4f096301a",
+    "experiments/rd/agent/prompt-a.md": "013c978adfddad999a9bcbb93c154dcd53dd294f6e01010fcf896e0ab1ae23db",
+    "experiments/rd/agent/prompt-b.md": "54b126b3502aac91a823254b457e3c57f9aedd98aac7c7d387c213fef6736a5f",
+    "experiments/rd/agent/prompt-c.md": "0965561870a87cc892ecffba3da582771e26b42b0cce899a184973cf8ac51e6b",
+    "experiments/rd/agent/pilot/build.py": "497cb828b85bc5d8b8271aa167668b63cf97751a4559d7b24898fe8a6be8cbf6",
+    "experiments/rd/agent/pilot/source-a/go.mod": "c594985f8bd5417a6ffee99e8af0bcfead6333102326bf79f94f061b3280b485",
+    "experiments/rd/agent/pilot/source-a/main.go": "0987a1b1da721941ab30232872649c63b62a1272bcd704dba391086ab29258ea",
+    "experiments/rd/agent/pilot/source-b/go.mod": "c594985f8bd5417a6ffee99e8af0bcfead6333102326bf79f94f061b3280b485",
+    "experiments/rd/agent/pilot/source-b/main.go": "eae5e290053c0fdae5df6e75128a686f7a8c565a7261d6bbcc9fefaf0faca3c6",
+    "PREREGISTRATION.md": "b611b9e79ea8e7c3a6c304a5d05de0d65990f571563bec28991df134b045aa24",
+    "pyproject.toml": "ab0645a9a7689712dd7de75fea0f14b7fba4e90d3492607af255a92b0a8353f7",
+    "uv.lock": "b7cb91e374cd07eed72685e8e38025050c1a5398d53faef6c4be6eb86c383995",
+    "tests/test_rd_agent.py": "6b2b603a78bc25e259f1390f0bc2e974c3e789fd59446f1d4bb83877b3f2486b",
+    "tests/test_rd_protocol.py": "6e09bcce0d4b7cf4748465de489433628f8f769eaaf49cae52a8ca3cdff2e72c",
+    "results/rd-vocabulary.json": "bd4a143f8d5a1fabe06a3858903c903a7b9a66930d68644a90a025b8503ebbc8",
+    "results/rd-candidate-pool.json": "a13f8c5f81fc463db67dc707ebdac110858df003923263bd4772b19f67be4a35",
+    "results/rd-agent-v1.json": "96a3eab7095bb9cfc6d47f0ab55c77f6f778f2d5283f3473d06f6de7578a55dc",
+    "experiments/rd/truth/matcher.py": "8570db4645dd4dacc127cb4f19e4831413c36a4f0cf9ef85514f9c8188737c97",
+    "experiments/rd/truth/resolver.py": "eedf2d51575fde6ae706ecb91e4390046bb39c24ed7f81620e52d28108a37df9",
+    "experiments/rd/truth/agreement.py": "d0b2018865546941f1a672e0bc49e049d2856f69653d6db76851cebcdafa81e4",
+    "experiments/rd/truth/vocabulary.py": "0089b475a4244320b567a4bdedb21858997fdfdcb0ee4415001d0cb7c66fe59a",
+    "experiments/rd/truth/revision_map.py": "061b89a8916b5f8fde0ab3286003710c7f46494d14d023ff498998469508d4f6",
+    "experiments/rd/truth/matcher-provenance.json": "dd2c24431d0bddb55272da562a14a22038721abb33b5aa97a0938cbb09091726",
+    "experiments/rd/truth/truth-tooling-freeze.json": "0fc7f7afd8273a67d49336906a448203512de5679987559588115523128dca5f",
+    "experiments/agent_verify/validity.py": "e83ca2dee1a95a66cd372e42899b0223259adc0b80ea7a6e2314fab7744e5851",
+    "experiments/hop_verify/verify.py": "51e5e1104e287b1823b04920ee9339cef43efae21a6798eff5d31ae00bdbb27a",
+    "experiments/provider_reach/reach.py": "869155b154514768f0d2381608a935a0a03108b5dc72d6ef32864a34821afb28",
+    "experiments/hop_verify/relations.yaml": "0bc810bd3ddb03875168032f8c25ea84b5f55790a8245a31595224752a536f05",
+    "experiments/hop_bridge/relations.yaml": "6a832c783bbbdbf751248dc7541a13cae99519a7ebee7d063fa3e05721bd2ff9",
+    "experiments/hop_chain/chain.py": "7c26ccf0578020f20a3b1412c78ac7bdd60457d44300ff52fa60d2f627e3fbb1",
+    "experiments/hop_chain/connector.py": "b3d3c517ac126f99b8056cabe7e3106091d64c93eadf120ffd111ccfaac7b051",
+    "experiments/hop_chain/queries/go/SameObject.ql": "bdb99f40fdafe0b383fefd9fa861ed4520b1e318fe3e2f8bc9117bb2e840161c",
+    "src/spike/anchors.py": "0f8b3a9f76f04fa78c1ffc3ee65bd298fa3b838c15a4ada2a97e0f0511b80049",
+    "src/spike/gitrepo.py": "64a7324e71e7b380cce6cdcd47f66804d4254d65e43e74b2794b410a36516c9e",
+    "src/spike/hops.py": "20343e15adb411bcbdfd32271b44fb45fb79793a1757a39dbcf75d3b24c4d3e3",
+    "src/spike/linemap.py": "0d36b1920fac9dc0c1a329f1f4d330be24032b183f48d3152bfbd4f3274131e3",
+    "src/spike/models.py": "67d77618030e25ffbc6c3b03bc931b08b4cb9b40a8c062b71e8134711b63cd01",
+    "src/spike/session.py": "14b3bd999ca0a21ce3f1b2ce1df37d563162db698b82e42ed6c2a4014abd7296",
+    "experiments/hop_verify/queries/go/FieldFlow.ql": "d8bea840b112b6aae06ba40b2c00f8a5f4470dc4f1c71e00a2553b6eabb25ce3",
+    "experiments/hop_verify/queries/go/GuardProperty.ql": "ecd70998bb71c152ded12dfdd71659e7de77ababb88d8f300e4ea5ec02ee89f2",
+    "experiments/hop_verify/queries/go/HopCommon.qll": "266fff0724b08833a4c5946c08a507ef1491be6f2aa45648a7c9e572b6cc51b0",
+    "experiments/hop_verify/queries/go/ObjectComposition.ql": "4cc48b6c459a5c08141dcad4f24577e1135f8261280b4c9a663fd1ce8ff48156",
+    "experiments/hop_verify/queries/go/Shapes.ql": "94d29821372cc99c201d5d6e377837ed943b1c5bf5e93e380d2959fd04469925",
+    "experiments/hop_verify/queries/python/CallTarget.ql": "ebb8c9a57718c7ee1aa0b85936feb25568eb96b9525bb057980bba70adab5048",
+    "experiments/hop_verify/queries/python/HopCommon.qll": "9da2c4ba0a7b6bcd92dbe19a026de5b68d6309de86d26d65b5a678aa546424da",
+    "experiments/hop_verify/queries/python/InstanceDispatch.ql": "596ad04328ca952619ab01eb727c3e9b1c7b5e2fe3decc66c49570f78d0d015b",
+    "experiments/hop_verify/queries/python/Shapes.ql": "74b2cadfb5cf2b96ebc47127f878467c7bd321142b512805d65eac36941448e9",
+    "experiments/hop_bridge/queries/go/ArgumentBinding.ql": "3c7722bde8252a534821115b11afbbd69b81a04024639cebc1f135922b0cc649",
+    "experiments/hop_bridge/queries/go/BridgeCommon.qll": "52170cc1d5ee9df61ca60bbe77f99339f9c7a9af32f461e8ff37e02d70980ce0",
+    "experiments/hop_bridge/queries/go/BridgeShapes.ql": "defee9b8b9694536f745e1830208073dfd767ebcc9ce07f2015d237232bb8f9a",
+    "experiments/hop_bridge/queries/go/DefUse.ql": "3e89237431b62ff9b9d60f77f2eea96721aee0b1dc710d01378ae9f5242f3c9e",
+    "experiments/hop_bridge/queries/go/RangeElement.ql": "f4dfe82c8eaef9dce6d3d7ba6fc5f12725bc294f21fa554ed86476210c02b853",
+    "experiments/hop_bridge/queries/python/BridgeCommon.qll": "e7bda48f0e72012cafac00e6497970728ca2bc0a5cecc9b5eab3588cb20d9775",
+    "experiments/hop_bridge/queries/python/BridgeShapes.ql": "217550782bace70da44a3d0defa01f44240e21718c14f25890a3e3955d9ba7b9",
+    "experiments/hop_bridge/queries/python/DefUse.ql": "5a48e410407ef7378f9185b0fba4f74460a9b1601905d66778abd21773209e26",
+    "experiments/rd/truth/fixtures/GO-2026-6237/requirement-truth.yaml": "8a6c3d67c9880001c2067ce249faf476b9d4a09e08a7dd4323a7581fbe02bc5d",
+    "experiments/rd/truth/fixtures/GO-2026-6237/reference-evidence.yaml": "2cdcdcb51d56605c35d790f9dbaedce8991497d31ce910c78f2a4448834fd7fb",
+    "experiments/rd/truth/fixtures/GO-2026-6237/reference-result.json": "bcd549e2881cd2ce2c4f28124f8dc263e0857c187f8799d880f135205149781e",
+    "experiments/rd/truth/fixtures/GHSA-hx8v-g79f-8w5f/requirement-truth.yaml": "02e269ae8517f36534d64c8317daa1ff3b5b943450022f79563b13af2ef060cc",
+    "experiments/rd/truth/fixtures/GHSA-hx8v-g79f-8w5f/reference-evidence.yaml": "95a6857dec1b0a9f0e2ce56619d38a3dfd36b267d142e22caf319cb4e93ee066",
+    "experiments/rd/truth/fixtures/GHSA-hx8v-g79f-8w5f/reference-result.json": "473bb9af88c43c20a631ad7266803aa38587914c195daf409fee6f1150a24cc5",
+    "experiments/rd/truth/fixtures/GHSA-mr3j-p26x-72x4/requirement-truth.yaml": "c72c5bcda9bdd10c9645e1dec021014935d63915aac3e23037a964f91b66cdc0",
+    "experiments/rd/truth/fixtures/GHSA-mr3j-p26x-72x4/reference-evidence.yaml": "19e1c5c458bd909a8018c36e1b8ece07d25b9873b73be33e7479df70666344b4",
+    "experiments/rd/truth/fixtures/GHSA-mr3j-p26x-72x4/reference-result.json": "d3a997d4a35c7f4ec2b9d40615dffbbf80d031814f63f3116f417eb1f3a85295",
+    "experiments/rd/truth/fixtures/GHSA-xcw4-53cc-hv32/requirement-truth.yaml": "4d8fd4ee6d1290c4108ce7a948913014ec37956168817f591615a009f0920b6f",
+    "experiments/rd/truth/fixtures/GHSA-xcw4-53cc-hv32/reference-evidence.yaml": "bf72b9f61f4ea8c35cc8df216f566c11b6907ba91a7f06d17806a0164f4ffa02",
+    "experiments/rd/truth/fixtures/GHSA-xcw4-53cc-hv32/reference-result.json": "3a86f6c58918a5f25c5d2be8c6c4cdac02695d03d9a6779dbcc1c5adcaea3b6f",
+    "experiments/rd/truth/fixtures/GHSA-fq2j-j8hc-8vw8/requirement-truth.yaml": "5b607758188f12a7a7efc857f58ff6861da2e9db885d83db241b2b71d90fd30a",
+    "experiments/rd/truth/fixtures/GHSA-fq2j-j8hc-8vw8/reference-evidence.yaml": "30c3ba29ee3295b805a0c3c9e8906a2be105f30fa81825616d27a525cd4e1d19",
+    "experiments/rd/truth/fixtures/GHSA-fq2j-j8hc-8vw8/reference-result.json": "4b45d9b4c27c55976cae298c4f7ae3a297d765ab77652d9b3c17bb1da2f4a2ca",
+    "experiments/rd/truth/negative-controls/GO-2026-6237/result.yaml": "7461b9b3df2465ea7de70c01f337070ea00c2cf6dec7c821b0769e425897778c"
+  },
+  "analysis": {
+    "task-03": {
+      "revision_A": {
+        "sha256_gzip": "577bf0e10f9dde0b9b406d186947e081e919f6912449abc9f81ffc05a173601d",
+        "sha256_json": "b70874e89faa2979dddac52816b73250ab1562e48285b7375292d865e8d2f35e",
+        "commit": "c76316d4aa825673b208730779843d0711021e81",
+        "tree": "1bbfed596559c73a36439bd2ec21ba91b606f3cf"
+      },
+      "revision_B": {
+        "sha256_gzip": "4e1121729bec54a00d72948e06eae5cdab5e7d557bdb45b605cdcbe27aa4b06c",
+        "sha256_json": "0c5167b2356a6a719c675b5872666686929018361b688b085798745f918c4b60",
+        "commit": "a415979eb11e6d3ac6a8949f9e45d7a29f0279af",
+        "tree": "472aa06925f9928051d3a7c22a0f7ea87f5d451d"
+      }
+    },
+    "task-04": {
+      "revision_A": {
+        "sha256_gzip": "fbbd550dd2fabf62ddfa81b82634f74b93931f75a6a2169a5634b70040c93ad7",
+        "sha256_json": "94363d3593dd3a0e099e1e85d5b808802c2eaef6a66fcde30a5a511eb5ce4642",
+        "commit": "47214be317f45a2d2ac08258362e0481411eb427",
+        "tree": "b7b2e63c7526476ef2083c91f08bab1e7255b372"
+      },
+      "revision_B": {
+        "sha256_gzip": "59d1d68e0ef6d30715eed813eaa9850d88b628309cdc972515255ee6aa80c35a",
+        "sha256_json": "ed9bb6c0f040728c7be7d5249f67cf1310af04f011490fcaeea85245cd3c5664",
+        "commit": "93faf321df159b1ef65a98cc29a70958a96d184a",
+        "tree": "ca95c1f3e8728801365fdb219d17244ae15bcc72"
+      }
+    },
+    "task-02": {
+      "revision_A": {
+        "sha256_gzip": "339bc984002e82b473e146d449788b684635ae2c04162d20f01733d4cbf2412e",
+        "sha256_json": "b6c6030d9dacdf0226498daac561299c8263cb2bb29112e6947f47dd93ddddf3",
+        "commit": "bc6d843ed4df82a6c89f10aa676a7a33d27bf2fd",
+        "tree": "595c2a0638336ce948c77aef7c86d098bc9662c8"
+      },
+      "revision_B": {
+        "sha256_gzip": "cac31451bdbda2a64006675d64f8ba546df189f9bf4e00a9a5d81096c09a90ae",
+        "sha256_json": "daf89d2494a89e59ce1654cdaf1caf29f1d4c18649663e1cb844c9d33a70d118",
+        "commit": "2da89258e53068253dcf8ef17d4dad141dba7d31",
+        "tree": "253e4f9f9e7e1e56cf220ba06cba291c68153556"
+      }
+    },
+    "task-06": {
+      "revision_A": {
+        "sha256_gzip": "f905d9490654161bd18e993cce8934695049a970a3f36c8884e49f817999ae1e",
+        "sha256_json": "d8dfbb613dc47ff905b7ab777434e3202a6c3110bca7041f3268bc9049f2c556",
+        "commit": "c76316d4aa825673b208730779843d0711021e81",
+        "tree": "1bbfed596559c73a36439bd2ec21ba91b606f3cf"
+      },
+      "revision_B": {
+        "sha256_gzip": "683163b106f94d3cb47911c735c34388cee074df71343bc96a5431b3852e44d8",
+        "sha256_json": "c8fb3308427ed17c43d49f740a35fd3e46ede513cc2a4f39239a8ba3dad4d437",
+        "commit": "a415979eb11e6d3ac6a8949f9e45d7a29f0279af",
+        "tree": "472aa06925f9928051d3a7c22a0f7ea87f5d451d"
+      }
+    },
+    "task-05": {
+      "revision_A": {
+        "sha256_gzip": "7e15a0027c61e663fe81ac6827b39769eb58d16c71b5ca49b7d8f1067750d768",
+        "sha256_json": "fbecf23d54023ac9e8f212dd19c649478eee735935e24772528228e27c7aea0c",
+        "commit": "6cba87a3c2f08e127c7df4893a306737e8064859",
+        "tree": "a6b4a39991c47bfae86e2aee38534de324aec502"
+      },
+      "revision_B": {
+        "sha256_gzip": "1d8b4171800e570ec67ecb4d058418d22d7577fa46f8e978fa53ce1c231f96bd",
+        "sha256_json": "5ca9e2288870d04d7f59f66027a0a964699a65ffc4767a4a855378969cb4c08a",
+        "commit": "a0b6b8711a1a485304971710dc3571e29ff9dbeb",
+        "tree": "cd8294d936e083f044af361cc4b5d6ce015e178b"
+      }
+    },
+    "task-01": {
+      "revision_A": {
+        "sha256_gzip": "7a25f3882ccc668682be84b37acfb29091fe6fc8111f167e888decaf267a9bdf",
+        "sha256_json": "b97196fa745df96afe454be3b1536105a50615a0094545ef7381f4ea85f7240a",
+        "commit": "294b8b429dea152cd1df522cddf406054c1619ad",
+        "tree": "54c5bb70905f891983fbaa0a50274e7eea46ad00"
+      },
+      "revision_B": {
+        "sha256_gzip": "aa2070b330b7c287461915ac9c06b2150d485e5e4b29b983ad1bbe8d4ec6a84f",
+        "sha256_json": "917e08f5151c62c52bd6d677bb5acee923c60b0dac41b90fa8fe9630405fb3ba",
+        "commit": "b0c770c394619dfb645bbcfabbe64dce81b50949",
+        "tree": "8dd4373a2642ec726c81ab22b3c4d21f3ea02f19"
+      }
+    }
+  },
+  "pilot": {
+    "result_sha256": "be19cdcb44d6c85d2ebd774394becc392f943ad24a070579c5fdfd02208c81c4",
+    "synthetic_source": {
+      "repo": "/home/yuzuki/WF/secreview/.cache/rd/agent-pilot",
+      "revision_A": "cf0e6ca906acd67d5598eea883525bb4f27caefe",
+      "revision_B": "0adec0946760f7febdfc21363c958d184fc210ec",
+      "tree_A": "cad68046ff764d1968c460bd552d682c5e6ee3d9",
+      "tree_B": "9eb9381668d76de6fd768c0a538f6124ac172abf"
+    }
+  }
+}

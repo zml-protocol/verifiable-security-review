@@ -1,0 +1,64 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "python-changed-present-both-01",
+  "language": "python",
+  "cell": "changed_present_both",
+  "package": "plum_journal",
+  "effect_claim": "Whether a submitted event note is recorded in the journal.",
+  "files": {
+    "revision_A": {
+      "plum_journal.py": "class Journal:\n    def __init__(self):\n        self.last = None\n\n    def record(self, value):\n        self.last = value\n\n\ndef submit(packet, journal):\n    event_note = packet[\"note\"]\n    journal.record(event_note)\n"
+    },
+    "revision_B": {
+      "plum_journal.py": "class Journal:\n    def __init__(self):\n        self.last = None\n\n    def record(self, value):\n        self.last = value\n\n\ndef submit(packet, journal):\n    event_note = packet[\"note\"]\n    journal.record(scrub_note(event_note))\n\n\ndef scrub_note(value):\n    return value.replace(\"|\", \"_\")\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "plum_journal.py",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "event_note = packet[\"note\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "plum_journal.py",
+          "start_line": 10,
+          "end_line": 10,
+          "expression": "event_note = packet[\"note\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "plum_journal.py",
+          "start_line": 11,
+          "end_line": 11,
+          "expression": "journal.record(event_note)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "plum_journal.py",
+          "start_line": 11,
+          "end_line": 11,
+          "expression": "journal.record(scrub_note(event_note))"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "sink_argument",
+    "subexpression"
+  ],
+  "forbidden_anchors": [],
+  "changed_slot": "behavior"
+}

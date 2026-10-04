@@ -1,0 +1,69 @@
+{
+  "schema": "rd-agent-v3-result/v1",
+  "protocol": "rd-v3",
+  "status": "CALIBRATION_INVALID",
+  "terminal": true,
+  "measurement_started": false,
+  "inference": "NONE",
+  "gate_phase": "heldout_materialization_validation",
+  "bindings": {
+    "treatment_freeze": "experiments/rd/agent/v3/treatment-freeze-v2.json",
+    "treatment_freeze_sha256": "36935e6eea9b4086884a5eccda1adee766288770aed02d3c58bb8edfdfea3828",
+    "construction_freeze": "experiments/rd/agent/v3/construction-freeze-v2.json",
+    "construction_freeze_sha256": "74a4a76c335e61867daf24eb44e037f546413d2925aea071697f38d4babefbf0",
+    "heldout_commitment": "experiments/rd/agent/v3/heldout/commitment.json",
+    "heldout_commitment_sha256": "fd7412f06c5ec6dd1888a67fec033261b8cf94ecd483ec1858690595c8f82f8a",
+    "heldout_aggregate_sha256": "10b696811d8529459d428fa702fb23e2a4efcb4e04e7cfb263628f783a4cd97f",
+    "heldout_commit": "d2f655ec9bacedb36a4db5b7c242c7fe4fc4c490",
+    "validation_result_commit": "906442d"
+  },
+  "batch": {
+    "curator_role": "non_implementing_curator",
+    "curator_type": "codex-independent-no-context",
+    "independence_attestation": true,
+    "a_cases": 20,
+    "provider_cases": 3,
+    "replacement_requested": false,
+    "repair_performed": false
+  },
+  "failure": {
+    "task_id": "go-claim-specific-entry-02",
+    "slot": "behavior.revision_A",
+    "anchor": {
+      "file": "coralpager.go",
+      "start_line": 9,
+      "end_line": 9,
+      "expression": "queue <- canonicalTopic"
+    },
+    "resolved_node_type": "*ast.SendStmt",
+    "accepted_go_statement_nodes": [
+      "*ast.AssignStmt",
+      "*ast.ReturnStmt",
+      "*ast.IfStmt"
+    ],
+    "classification": "PUBLIC_CONTRACT_VALIDATOR_MISMATCH",
+    "reason": "The independent-curator contract required an exact complete statement, but the frozen validator's narrower node whitelist was not part of the public schema supplied to the curator. The selected Go send statement is complete syntax but is rejected by the frozen whitelist."
+  },
+  "execution": {
+    "claude_sessions_started": 0,
+    "provider_challenges_started": 0,
+    "formal_tasks_started": 0,
+    "api_equivalent_spend_usd": 0,
+    "terminal_overshoot_usd": 0,
+    "authorized_heldout_launch_ceiling_usd": 60
+  },
+  "metrics": {
+    "a": null,
+    "provider": null,
+    "b": null,
+    "c1": null,
+    "c2": null
+  },
+  "disposition": {
+    "fresh_fixture_selection_started": false,
+    "formal_tranche_started": false,
+    "v4_allowed": false,
+    "project_closed_by_frozen_terminal_rule": true,
+    "prior_valid_measurement": "results/rd-agent-v2.json"
+  }
+}

@@ -1,0 +1,18 @@
+# §13 semantic task contract (PREREGISTRATION.md §13.2). Shown in every phase and both arms,
+# identical within a fixture. No line numbers. The evidence statements are the frozen golden
+# path-fact statements, verbatim (a test holds them equal to fixtures/*/golden.yaml); they are
+# a strong semantic hint and make §13 a new interface, not comparable with §12's 18/30.
+generic: |-
+  Verification contract. At each revision, your hops must form one connected chain: every hop
+  starts where the previous hop ended (at the same code, inside the function that hop reached,
+  or at the same object). The chain starts where the evidence statement below starts and ends
+  where it ends. If the statement makes the behavior depend on a condition that is a property
+  of an object on the chain, a hop must attach that condition to the chain. Hops with the
+  relation `unsupported` are not part of the chain.
+statements:
+  authlib-jws-none: "jwt.decode hands the token to JWS deserialize_compact, which accepts it only if the selected algorithm's verify returns True"
+  caddy-forward-auth: "the copy-header routes sit in the response handler that matches 2xx auth responses, and that handler is attached to the auth request's reverse proxy"
+  filebrowser-archive-backslash: "the stored file path is turned into nameInArchive, which is passed to the archiver as the entry name"
+pilot_statements:   # plumbing pilot only (§13.7), matching experiments/hop_chain/pilot_anchors.yaml
+  hopdev-go: "the raw input, with the prefix trimmed, is stored as the returned item's Label"
+  hopdev-py: "Reader.verify selects an entry from the registry by kind and runs that entry's check"

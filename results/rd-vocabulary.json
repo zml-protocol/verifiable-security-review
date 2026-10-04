@@ -1,0 +1,134 @@
+{
+  "gate_status": "READY",
+  "truth_vocabulary": {
+    "behavior": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "config": {
+      "round": 2,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "dispatch_target": {
+      "round": 2,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "entry": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/argument_binding": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/def_use": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/field_flow": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/guard_property": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/object_composition": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "go/range_element": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "guard": {
+      "round": 2,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "python/call_typed_attribute": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "python/def_use": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "python/registry_dispatch": {
+      "round": 1,
+      "outcome": "ADMISSIBLE",
+      "indeterminate_rules": []
+    },
+    "transform": {
+      "round": 2,
+      "outcome": "EXIT_VOCABULARY",
+      "indeterminate_rules": []
+    }
+  },
+  "provider_support": {
+    "codeql/go/argument_binding": {
+      "status": "PARTIAL",
+      "blind_spots": [
+        "ab-function-value",
+        "ab-interface"
+      ],
+      "disagreements": []
+    },
+    "codeql/go/def_use": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/go/field_flow": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/go/guard_property": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/go/object_composition": {
+      "status": "PARTIAL",
+      "blind_spots": [
+        "oc-pointer-alias"
+      ],
+      "disagreements": []
+    },
+    "codeql/go/range_element": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/python/call_typed_attribute": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/python/def_use": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    },
+    "codeql/python/registry_dispatch": {
+      "status": "SUPPORTED",
+      "blind_spots": [],
+      "disagreements": []
+    }
+  },
+  "b_phase": "SUPPORTED and PARTIAL verifiers make hops of their relation-language pair machine-verifiable. For UNSUPPORTED and NON_CONFORMANT pairs an agent may still state the relation, but the system only ever marks it unsupported / unverified, never VERIFIED. Agents learn only whether a pair is verifiable, not the synthetic blind spots.",
+  "coverage_note": "synthetic boundary coverage is limited (1-5 cases per side)"
+}

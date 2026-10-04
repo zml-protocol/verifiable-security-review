@@ -1,0 +1,102 @@
+{
+  "schema": "rd-reference-result/v1",
+  "fixture": "GO-2026-6237",
+  "task_id": "task-03",
+  "disposition": "PROVIDER_BLIND",
+  "revisions": [
+    {
+      "canonical_revision": "vuln",
+      "outward_revision": "revision_B",
+      "chain_required": false,
+      "semantic_chain_complete": null,
+      "reason": "The frozen behavior slot is absent in the vulnerable revision.",
+      "hops": []
+    },
+    {
+      "canonical_revision": "fixed",
+      "outward_revision": "revision_A",
+      "chain_required": true,
+      "semantic_chain_complete": true,
+      "reason": "ReadFrom mutates pkt through a call argument, which the vocabulary cannot represent. The resulting packet feeds the parsed IPv4 header and payload length; the vocabulary also lacks a relation from that definition to its use in the enclosing guard statement.\n",
+      "hops": [
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "unsupported",
+            "from": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 92,
+              "end_line": 92,
+              "expression": "n, _, err := upc.PacketConn.ReadFrom(pkt)"
+            },
+            "to": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 102,
+              "end_line": 102,
+              "expression": "ipHdr := ipv4(buf.Data())"
+            }
+          },
+          "state": "UNSUPPORTED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "def_use",
+            "from": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 102,
+              "end_line": 102,
+              "expression": "ipHdr := ipv4(buf.Data())"
+            },
+            "to": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 117,
+              "end_line": 117,
+              "expression": "ipPayloadLen := int(ipHdr.payloadLength())"
+            }
+          },
+          "state": "UNVERIFIED"
+        },
+        {
+          "hop": {
+            "revision": "revision_A",
+            "relation": "unsupported",
+            "from": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 117,
+              "end_line": 117,
+              "expression": "ipPayloadLen := int(ipHdr.payloadLength())"
+            },
+            "to": {
+              "file": "dhcpv4/nclient4/conn_unix.go",
+              "start_line": 118,
+              "end_line": 118,
+              "expression": "if ipPayloadLen < udpHdrLen {"
+            }
+          },
+          "state": "UNSUPPORTED"
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "revisions": {
+      "revision_A": {
+        "class": "NO_EVIDENCE",
+        "length": null,
+        "verified_edges": 0,
+        "entry_node_candidates": 1,
+        "terminal_node_candidates": 0,
+        "qualifier_obligations": 0,
+        "harness_mismatches": []
+      },
+      "revision_B": {
+        "class": "NOT_APPLICABLE",
+        "verified_edges": 0,
+        "harness_mismatches": []
+      }
+    },
+    "full_chain": false,
+    "harness_mismatches": []
+  }
+}

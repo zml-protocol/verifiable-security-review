@@ -1,0 +1,7 @@
+# seed 20261003; one independent conversation per task
+task-03
+task-04
+task-02
+task-06
+task-05
+task-01

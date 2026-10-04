@@ -1,0 +1,51 @@
+# Requirement truth (A) — GHSA-xghw-p77p-3r7x (hyperledger/fabric-ca)
+# Author-side only; never agent-facing. §15.2 reserve substituted in for oh-my-posh (last Go reserve).
+# Canonical vuln/fixed slot keys; anchors {file,start_line,end_line,expression}.
+fixture: GHSA-xghw-p77p-3r7x
+truth_meta:
+  language: go
+  canonical_revisions:
+    vuln:  {role: parent, commit: 489a658619140e5332c8e72632037728564a3173}
+    fixed: {role: fix,    commit: d379df823534d56dec0166a6da8f0415e3beee24}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in package ldap, attacker-controlled input (an authentication username containing LDAP filter
+  metacharacters such as *, (, ), \) may lead to LDAP injection (CWE injection): the username is
+  interpolated into the LDAP search filter unescaped, so a metacharacter changes the filter's meaning
+  (e.g. * becomes a wildcard, turning an equality lookup into a substring match).
+domain: >
+  The attacker controls the username presented for the LDAP user lookup. Every other state
+  (directory contents, configuration, the user filter template) may take any value the code allows.
+
+items:
+  - id: entry-getuser-username
+    kind: entry
+    author_expected: REQUIRED
+    # EN-1: the exposed method Client.GetUser(username, ...) takes exactly the attacker-controlled
+    # value as its `username` parameter; that parameter is the entry. Present on both revisions (the
+    # signature is unchanged; it resolves to GetUser's declaration, which sits at a different
+    # top-level index per revision because the fix inserts a type above it — identity carries the
+    # revision, so this is expected).
+    entry:
+      vuln:  {state: present, anchor: {file: lib/server/ldap/client.go, start_line: 164, end_line: 164, expression: "func (lc *Client) GetUser(username string, attrNames []string) (causer.User, error) {"}}
+      fixed: {state: present, anchor: {file: lib/server/ldap/client.go, start_line: 172, end_line: 172, expression: "func (lc *Client) GetUser(username string, attrNames []string) (causer.User, error) {"}}
+
+  - id: behavior-escape-filter
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1: the fix adds a transform on the path — ldap.EscapeFilter neutralizes filter
+    # metacharacters in the username before it is formatted into the search filter. A changed
+    # transform is a valid behavior (transform left only the *qualifier* vocabulary, not behavior).
+    # fixed present = the escape transform. vuln absent, context (AC-2: the first statement that
+    # reads the would-be-transformed value) = the fmt.Sprintf that interpolates the unescaped username.
+    behavior:
+      vuln:  {state: absent,  context: {file: lib/server/ldap/client.go, start_line: 175, end_line: 175, expression: "fmt.Sprintf(lc.UserFilter, username),"}}
+      fixed: {state: present, anchor:  {file: lib/server/ldap/client.go, start_line: 180, end_line: 180, expression: "escapedUsername := ldap.EscapeFilter(username)"}}
+
+non_scored_notes:
+  test_enabling_refactor:
+    change: "the fix also adds a `Connection` interface and changes `AdminConn *ldap.Conn` to that interface"
+    disposition: "test-enabling refactor (makes the LDAP connection stubbable; it is why the parent fails to compile the fix's test under the TEST route). Not a security requirement."
+  dial_api_update:
+    change: "the fix switches ldap.Dial/ldap.DialTLS to ldap.DialURL"
+    disposition: "a deprecated-API update unrelated to the injection claim; not a requirement."

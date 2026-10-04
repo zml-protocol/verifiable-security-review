@@ -1,0 +1,98 @@
+# §14 bridge development set (informational). Truth in truth/dev.yaml.
+set: dev
+fixtures:
+  bridgedev-go: {language: go, repo: .cache/fixtures/bridgedev-go, db_build: go build ./...,
+                 commits: {base: 6670bc511d71b3d627a21eeb605fb261617e60a5}}
+  bridgedev-py: {language: python, repo: .cache/fixtures/bridgedev-py, db_build: null,
+                 commits: {base: 1b33f7106d7b18e2401f5a77b822e0542a47411f}}
+hops:
+  - {id: g1, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 27, end_line: 27, expression: "items := raw"},
+     to: {file: bridge.go, start_line: 29, end_line: 29, expression: "item := range items"}}
+  - {id: g2, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 27, end_line: 27, expression: "items := raw"},
+     to: {file: bridge.go, start_line: 37, end_line: 37, expression: "o := range other"}}
+  - {id: g3, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 36, end_line: 36, expression: "other := []string{\"x\"}"},
+     to: {file: bridge.go, start_line: 29, end_line: 29, expression: "item := range items"}}
+  - {id: g4, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 26, end_line: 26, expression: "raw []string"},
+     to: {file: bridge.go, start_line: 29, end_line: 29, expression: "item := range items"}}
+  - {id: g5, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 29, end_line: 29, expression: "item := range items"},
+     to: {file: bridge.go, start_line: 27, end_line: 27, expression: "items := raw"}}
+  - {id: g20, fixture: bridgedev-go, revision: base, relation: range_element,
+     from: {file: bridge.go, start_line: 27, end_line: 27, expression: "items := raw"},
+     to: {file: bridge.go, start_line: 33, end_line: 33, expression: "i := range items"}}
+  - {id: g6, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 29, end_line: 29, expression: "item := range items"},
+     to: {file: bridge.go, start_line: 30, end_line: 30, expression: "item)"}}
+  - {id: g7, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 30, end_line: 30, expression: "cleaned := clean(item)"},
+     to: {file: bridge.go, start_line: 31, end_line: 31, expression: "cleaned)"}}
+  - {id: g8, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 30, end_line: 30, expression: "cleaned := clean(item)"},
+     to: {file: bridge.go, start_line: 31, end_line: 31, expression: "prefix, cleaned"}}
+  - {id: g9, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 19, end_line: 19, expression: "raw string"},
+     to: {file: bridge.go, start_line: 20, end_line: 20, expression: "name := strings.TrimPrefix(raw, prefix)"}}
+  - {id: g10, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 54, end_line: 54, expression: "t := v"},
+     to: {file: bridge.go, start_line: 56, end_line: 56, expression: "t)"}}
+  - {id: g11, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 55, end_line: 55, expression: "t = \"const\""},
+     to: {file: bridge.go, start_line: 56, end_line: 56, expression: "t)"}}
+  - {id: g12, fixture: bridgedev-go, revision: base, relation: def_use,
+     from: {file: bridge.go, start_line: 53, end_line: 53, expression: "v string"},
+     to: {file: bridge.go, start_line: 56, end_line: 56, expression: "t)"}}
+  - {id: g13, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 30, end_line: 30, expression: "item)"},
+     to: {file: bridge.go, start_line: 17, end_line: 17, expression: "p string"}}
+  - {id: g14, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 31, end_line: 31, expression: "cleaned)"},
+     to: {file: bridge.go, start_line: 19, end_line: 19, expression: "raw string"}}
+  - {id: g15, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 31, end_line: 31, expression: "cleaned)"},
+     to: {file: bridge.go, start_line: 19, end_line: 19, expression: "prefix, raw"}}
+  - {id: g16, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 45, end_line: 45, expression: "w)"},
+     to: {file: bridge.go, start_line: 15, end_line: 15, expression: "s string"}}
+  - {id: g17, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 50, end_line: 50, expression: "x, b)"},
+     to: {file: bridge.go, start_line: 24, end_line: 24, expression: "parts ...string"}}
+  - {id: g19, fixture: bridgedev-go, revision: base, relation: argument_binding,
+     from: {file: bridge.go, start_line: 17, end_line: 17, expression: "p string"},
+     to: {file: bridge.go, start_line: 30, end_line: 30, expression: "item)"}}
+  - {id: p1, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 17, end_line: 17, expression: "token, key"},
+     to: {file: bridge.py, start_line: 18, end_line: 18, expression: "token = to_text(token)"}}
+  - {id: p2, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 18, end_line: 18, expression: "token = to_text(token)"},
+     to: {file: bridge.py, start_line: 19, end_line: 19, expression: "self._box.open(key, token)"}}
+  - {id: p3, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 17, end_line: 17, expression: "key):"},
+     to: {file: bridge.py, start_line: 19, end_line: 19, expression: "self._box.open(key, token)"}}
+  - {id: p4, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 22, end_line: 22, expression: "token, key"},
+     to: {file: bridge.py, start_line: 24, end_line: 24, expression: "self._box.open(key, token)"}}
+  - {id: p5, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 23, end_line: 23, expression: "token = \"fixed\""},
+     to: {file: bridge.py, start_line: 24, end_line: 24, expression: "self._box.open(key, token)"}}
+  - {id: p6, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 22, end_line: 22, expression: "token, key"},
+     to: {file: bridge.py, start_line: 23, end_line: 23, expression: "token = \"fixed\""}}
+  - {id: p7, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 26, end_line: 26, expression: "token, key"},
+     to: {file: bridge.py, start_line: 28, end_line: 28, expression: "self._box.open(name, \"x\")"}}
+  - {id: p8, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 26, end_line: 26, expression: "key):"},
+     to: {file: bridge.py, start_line: 27, end_line: 27, expression: "name = to_text(key)"}}
+  - {id: p9, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 27, end_line: 27, expression: "name = to_text(key)"},
+     to: {file: bridge.py, start_line: 28, end_line: 28, expression: "self._box.open(name, \"x\")"}}
+  - {id: p10, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 19, end_line: 19, expression: "self._box.open(key, token)"},
+     to: {file: bridge.py, start_line: 18, end_line: 18, expression: "token = to_text(token)"}}
+  - {id: p11, fixture: bridgedev-py, revision: base, relation: def_use,
+     from: {file: bridge.py, start_line: 18, end_line: 18, expression: "token = to_text(token)"},
+     to: {file: bridge.py, start_line: 24, end_line: 24, expression: "self._box.open(key, token)"}}

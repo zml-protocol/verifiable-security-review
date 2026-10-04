@@ -1,0 +1,57 @@
+# Requirement truth (A) — GHSA-xcw4-53cc-hv32 (Mnemosyne)
+# Author-side only; never agent-facing. Canonical vuln/fixed slots; anchors are
+# {file,start_line,end_line,expression}. Author self-review must finish before any judge run.
+fixture: GHSA-xcw4-53cc-hv32
+truth_meta:
+  language: python
+  canonical_revisions:
+    vuln:  {role: parent, commit: 6cba87a3c2f08e127c7df4893a306737e8064859}
+    fixed: {role: fix,    commit: a0b6b8711a1a485304971710dc3571e29ff9dbeb}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in a JWT-configured Mnemosyne sync server, an unauthenticated network client-controlled
+  Authorization header containing a well-formed, unexpired HS256 bearer JWT with a forged signature
+  may bypass authentication (CWE-347) and gain read or modification access to sync data.
+domain: >
+  The sync endpoint is network-reachable and has a JWT secret configured. The attacker controls the
+  HTTP Authorization header, including the bearer token's header, payload, and signature, but does
+  not know the configured secret and has no valid credential. The triggering token declares HS256,
+  has a future expiration, is otherwise well-formed, and has an invalid signature. Every other state
+  (sync data, accounts, environment, and server configuration) may take any value the code allows.
+
+items:
+  - id: entry-authorization-header
+    kind: entry
+    author_expected: REQUIRED
+    # EN-2: the claim names the Authorization header, one part of the larger HTTP request. This is
+    # the first statement in the JWT path that extracts that header value from the request object.
+    entry:
+      vuln:  {state: present, anchor: {file: mnemosyne/core/sync_server.py, start_line: 100, end_line: 100, expression: 'auth = self.headers.get("Authorization", "")'}}
+      fixed: {state: present, anchor: {file: mnemosyne/core/sync_server.py, start_line: 154, end_line: 154, expression: 'auth = self.headers.get("Authorization", "")'}}
+
+  - id: behavior-invalid-signature-guard
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1/BE-3: the fixed revision adds the guard that rejects a failed HMAC comparison. For the
+    # narrow triggering token, format and HS256 checks pass, this guard directly decides rejection,
+    # and later expiry processing is not reached. AC-1 places the absent-revision context at the
+    # counterpart of the first statement after the guard.
+    behavior:
+      vuln:  {state: absent,  context: {file: mnemosyne/core/sync_server.py, start_line: 121, end_line: 121, expression: 'exp = payload.get("exp", 0)'}}
+      fixed: {state: present, anchor:  {file: mnemosyne/core/sync_server.py, start_line: 121, end_line: 121, expression: "if not valid_signature:"}}
+
+non_scored_notes:
+  same_commit_jwt_hardening: >
+    The commit also validates JWT segment count and JSON types, requires the HS256 algorithm, handles
+    malformed signature text, and changes expiration validation. Those checks are security-relevant
+    for other JWT inputs but are not necessary to establish the claim for the stated well-formed,
+    HS256, future-expiry token with an invalid signature, so they are not scored requirements.
+  configured_secret_and_reachability: >
+    A configured JWT secret and a network-reachable sync endpoint are stated scenario conditions.
+    They are not separately scored qualifiers: the claim is expressly limited to that deployment
+    domain, and neither condition describes a guard/config property on the behavior's data path that
+    varies within the admissible executions of the stated scenario.
+  sync_endpoint_dispatch: >
+    `_check_auth` gates `/sync/status`, `/sync/push`, and `/sync/pull`. Endpoint dispatch and the
+    downstream read/write operations establish the advisory-backed impact but are not the changed
+    check that decides acceptance of the triggering forged token.

@@ -1,0 +1,86 @@
+{
+  "schema": "rd-v3-a-heldout-case/v1",
+  "task_id": "go-statement-granularity-01",
+  "language": "go",
+  "cell": "statement_granularity",
+  "package": "cobaltsegment",
+  "effect_claim": "Whether a request header selects the storage segment used for an object.",
+  "files": {
+    "revision_A": {
+      "cobaltsegment.go": "package cobaltsegment\n\ntype SegmentRequest struct {\n\tHeaders map[string]string\n\tPayload string\n}\n\ntype Vault struct {\n\tLastSegment string\n}\n\nfunc (vault *Vault) Place(segment string, payload string) {\n\tvault.LastSegment = segment\n}\n\nfunc save(incoming SegmentRequest, vault *Vault) {\n\tsegment := incoming.Headers[\"X-Segment\"]\n\tvault.Place(segment, incoming.Payload)\n}\n"
+    },
+    "revision_B": {
+      "cobaltsegment.go": "package cobaltsegment\n\ntype SegmentRequest struct {\n\tHeaders map[string]string\n\tPayload string\n}\n\ntype Vault struct {\n\tLastSegment string\n}\n\nfunc (vault *Vault) Place(segment string, payload string) {\n\tvault.LastSegment = segment\n}\n\nfunc save(incoming SegmentRequest, vault *Vault) {\n\tsegment := incoming.Headers[\"X-Segment\"]\n\tvault.Place(segment, incoming.Payload)\n}\n"
+    }
+  },
+  "expected": {
+    "entry": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "cobaltsegment.go",
+          "start_line": 17,
+          "end_line": 17,
+          "expression": "segment := incoming.Headers[\"X-Segment\"]"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "cobaltsegment.go",
+          "start_line": 17,
+          "end_line": 17,
+          "expression": "segment := incoming.Headers[\"X-Segment\"]"
+        }
+      }
+    },
+    "behavior": {
+      "revision_A": {
+        "state": "present",
+        "anchor": {
+          "file": "cobaltsegment.go",
+          "start_line": 18,
+          "end_line": 18,
+          "expression": "vault.Place(segment, incoming.Payload)"
+        }
+      },
+      "revision_B": {
+        "state": "present",
+        "anchor": {
+          "file": "cobaltsegment.go",
+          "start_line": 18,
+          "end_line": 18,
+          "expression": "vault.Place(segment, incoming.Payload)"
+        }
+      }
+    }
+  },
+  "lure_families": [
+    "subexpression",
+    "field_declaration"
+  ],
+  "forbidden_anchors": [
+    {
+      "family": "subexpression",
+      "kind": "entry",
+      "revision": "revision_A",
+      "anchor": {
+        "file": "cobaltsegment.go",
+        "start_line": 17,
+        "end_line": 17,
+        "expression": "incoming.Headers[\"X-Segment\"]"
+      }
+    },
+    {
+      "family": "field_declaration",
+      "kind": "entry",
+      "revision": "revision_B",
+      "anchor": {
+        "file": "cobaltsegment.go",
+        "start_line": 4,
+        "end_line": 4,
+        "expression": "Headers map[string]string"
+      }
+    }
+  ]
+}

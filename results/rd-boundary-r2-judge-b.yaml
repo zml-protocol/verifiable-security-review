@@ -1,0 +1,29 @@
+reviewer:
+  type: "model"
+  name: "DeepSeek V4.1 Flash, new conversation"
+  date: "2026-10-01"
+  attestation:
+    independent: true
+    saw_author_labels: false
+    saw_project_history: false
+relations: {}
+requirements:
+  q06: {label: "NOT_REQUIRED", note: "The admin check added by the fix is the behavior under BE-1 (a check added on the path); QU-2 excludes the chosen behavior from also being a qualifier."}
+  q07: {label: "NOT_REQUIRED", note: "filepath.Base is the transform added by the fix, i.e. the behavior (BE-1); QU-2 forbids it as a qualifier."}
+  q08: {label: "NOT_REQUIRED", note: "The code compares ALLOW_DOWNLOAD with a specific value, so op set is insufficient; CF-1 requires equals \"1\"."}
+  q13: {label: "REQUIRED", note: "Traversal requires os.Getenv(\"ALLOW_DOWNLOAD\") == \"1\" in every admissible execution; equals \"1\" is the right condition."}
+  q15: {label: "NOT_REQUIRED", note: "strings.TrimSpace is not necessary; a name like \"../x\" traverses with or without trimming."}
+  q16: {label: "NOT_REQUIRED", note: "The p.Label header check does not decide the SQL injection; it is a sibling condition without QU-1 necessity."}
+  q18: {label: "NOT_REQUIRED", note: "The request method is attacker-chosen input (QU-3), so the method check is not a qualifier."}
+  q19: {label: "REQUIRED", note: "The query runs only when p.Mode == \"raw\", so the predicate p.Mode != \"raw\" is false in every admissible execution; must_not_hold is correct."}
+  q20: {label: "NOT_REQUIRED", note: "Wrong polarity: the effect needs p.Mode == \"raw\", i.e. the predicate false (must_not_hold), not must_hold."}
+  q26: {label: "NOT_REQUIRED", note: "QueryUnescape is present in the vulnerable execution that produces the effect, so must_be_absent is wrong."}
+  q27: {label: "REQUIRED", note: "Without QueryUnescape the encoded \"%2e%2e\" bypass cannot decode, so no traversal remains; the transform is necessary."}
+  q30: {label: "NOT_REQUIRED", note: "The key check is the changed check nearest the effect (BE-3), hence the behavior; QU-2 excludes it as a qualifier."}
+  q32: {label: "NOT_REQUIRED", note: "The added !u.Verified guard is not necessary: a verified caller can still traverse, so adding it does not stop the effect in every admissible execution."}
+  q35: {label: "NOT_REQUIRED", note: "Not necessary (verified users still traverse) and the absent context is wrong: the guard's protected statement is key := ...@16, not the HasPrefix if."}
+  q36: {label: "REQUIRED", note: "Improper signature acceptance occurs only when the call dispatches to NoneAlg.verify, so every admissible execution reaches that target."}
+  q40: {label: "NOT_REQUIRED", note: "HmacAlg.verify performs the proper verification; reaching it is not needed for the improper-verification effect."}
+  q45: {label: "NOT_REQUIRED", note: "Normalization is not necessary for the traversal: without it a path such as base+\"_evil\" or \"...\" still passes the prefix check and escapes."}
+  q47: {label: "REQUIRED", note: "All traversal here needs \"..\"; adding strings.Contains(name, \"..\") stops the effect in every admissible execution, and must_not_hold is the correct polarity."}
+  q48: {label: "NOT_REQUIRED", note: "Wrong polarity: the effect occurs only when the predicate is false (must_not_hold), not when it is true."}

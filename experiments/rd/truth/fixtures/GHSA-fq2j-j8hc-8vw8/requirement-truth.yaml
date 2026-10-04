@@ -1,0 +1,54 @@
+# Requirement truth (A) — GHSA-fq2j-j8hc-8vw8 (SiYuan)
+# Author-side only; never agent-facing. Canonical revision slot keys vuln/fixed; the frozen seed map
+# (revision_map.py) assigns outward revision_A/revision_B once at sheet/reconciliation time — not
+# baked here. Anchors: {file, start_line, end_line, expression}. Scored items are adjudicated by two
+# fresh judges (§15.1); route hardening is recorded as a non-scored note (not a requirement).
+fixture: GHSA-fq2j-j8hc-8vw8
+truth_meta:
+  language: go
+  canonical_revisions:
+    vuln:  {role: parent, commit: b0c770c394619dfb645bbcfabbe64dce81b50949}
+    fixed: {role: fix,    commit: 294b8b429dea152cd1df522cddf406054c1619ad}
+  outward_mapping: applied by revision_map.seed_revision_map at sheet/reconciliation; not baked here
+claim: >
+  attacker-controlled input may lead to CWE-200 exposure of sensitive information via CWE-22 path
+  handling (a local filesystem path taken from the request reaches a copy/read that returns its
+  contents).
+domain: >
+  The attacker controls the HTTP request (method, URL, query, headers, body). Every other state
+  (accounts, sessions, roles, readonly/config, environment, files, the root directory) may take any
+  value the code allows.
+
+items:
+  - id: entry-localpath
+    kind: entry
+    author_expected: REQUIRED
+    # First extraction of the attacker-controlled local path inside the handler; later TrimPrefix /
+    # PathUnescape results are derived, not the entry. Present (unchanged) on both revisions.
+    entry:
+      vuln:  {state: present, anchor: {file: kernel/api/lute.go, start_line: 155, end_line: 155, expression: "localPath := n.TokensStr()"}}
+      fixed: {state: present, anchor: {file: kernel/api/lute.go, start_line: 155, end_line: 155, expression: "localPath := n.TokensStr()"}}
+
+  - id: behavior-sensitive-path-guard
+    kind: behavior
+    author_expected: REQUIRED
+    # The fix adds a check immediately before the asset-copy block; by the frozen BE rule the
+    # behavior is that added check. fixed: present (the guard). vuln: absent, context = the statement
+    # after the insertion point (the copy-block it gates), per the frozen absent-context rule.
+    behavior:
+      vuln:  {state: absent,  context: {file: kernel/api/lute.go, start_line: 179, end_line: 179, expression: "name := filepath.Base(localPath)"}}
+      fixed: {state: present, anchor:  {file: kernel/api/lute.go, start_line: 179, end_line: 179, expression: "if util.IsSensitivePath(localPath) {"}}
+
+# Non-scored fixture notes (facts about the commit, NOT requirements; not adjudicated, not scored):
+non_scored_notes:
+  route_hardening:
+    change: "kernel/api/router.go:174 adds model.CheckAdminRole, model.CheckReadonly to the /api/lute/html2BlockDOM route"
+    disposition: >
+      Security-relevant route hardening, but NOT a claim-level necessary condition under the general
+      path-disclosure claim (an admin and a non-readonly state can equally supply the malicious
+      path, QU-1), and it is outside the frozen qualifier schema (route-layer reachability/authz, not
+      a property of an object on the behavior's data path). Recorded as a fact only; it is neither a
+      scored qualifier nor an UNSUPPORTED_REQUIREMENT_TYPE item.
+  path_cleanup:
+    change: "kernel/util/path.go removes a duplicate \"/etc\" entry in IsSensitivePath"
+    disposition: "no-op cleanup (the first \"/etc\" still matches); changes neither executable truth nor any necessary condition; not a requirement."

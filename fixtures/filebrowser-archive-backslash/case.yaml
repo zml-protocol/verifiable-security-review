@@ -1,0 +1,81 @@
+# What the agent may see (hypotheses) plus harness config. Answers live in golden.yaml.
+id: filebrowser-archive-backslash
+kind: semantic
+repo:
+  path: .cache/repos/filebrowser.git
+  url: https://github.com/filebrowser/filebrowser
+base: 0231b7ebdfbe77a6c54027d30c4856c3fd81ee4d   # parent of the fix commit
+head: 847d08bdd135e5c3659f2e6dea2f0cd36617af9b   # fixes CVE-2026-54093, introduces CVE-2026-62843
+deny_paths: []
+notes: Advisory context and truth details live in golden.yaml and truth/.
+
+hypotheses:
+  - id: H1
+    property_kind: path_traversal
+    claim: >
+      File Browser runs on a Linux host. A user who can create files stores a
+      file literally named `..\..\evil.sh` in directory /dir, and a user
+      downloads /dir as an archive. The archive entry for that file, split on
+      `/` only (as POSIX extractors do), contains `..` segments that climb out of
+      the extraction directory.
+    components:
+      - id: entrypoint
+        text: Downloading a directory as an archive derives each entry name from the stored file's path.
+      - id: normalization
+        text: For the stored name `..\..\evil.sh`, the resulting entry name contains `..` segments separated by `/`.
+      - id: sanitization
+        text: Nothing rejects, strips or rewrites `..` segments in entry names before they are written to the archive.
+    hints:
+      - {path: http/raw.go, symbol: rawDirHandler, note: entrypoint}
+
+  - id: H2
+    property_kind: path_traversal
+    claim: >
+      File Browser runs on a Linux host. A user who can create files stores a
+      file literally named `..\..\evil.sh` in directory /dir, and a user
+      downloads /dir as an archive. The archive entry name for that file contains
+      backslash characters, which Windows extractors treat as path separators and
+      which `../`-based zip-slip checks do not recognize.
+    components:
+      - id: entrypoint
+        text: Downloading a directory as an archive derives each entry name from the stored file's path.
+      - id: normalization
+        text: Backslashes in the stored file name are carried into the entry name unchanged.
+    hints:
+      - {path: http/raw.go, symbol: rawDirHandler, note: entrypoint}
+
+  - id: H3
+    property_kind: path_traversal
+    claim: >
+      File Browser runs on a Linux host. A user who can create files stores a
+      file literally named `..\..\evil.sh` in directory /dir, and a user
+      downloads /dir as an archive. The archive entry for that file, split on
+      both `/` and `\` (as naive Windows extractors do), contains `..` segments
+      that climb out of the extraction directory.
+    components:
+      - id: entrypoint
+        text: Downloading a directory as an archive derives each entry name from the stored file's path.
+      - id: normalization
+        text: For the stored name `..\..\evil.sh`, the resulting entry name contains `..` segments, whether separated by `\` or by `/`.
+      - id: sanitization
+        text: Nothing rejects, strips or rewrites `..` segments in entry names before they are written to the archive.
+    hints:
+      - {path: http/raw.go, symbol: rawDirHandler, note: entrypoint}
+
+  - id: H4
+    property_kind: path_traversal
+    claim: >
+      File Browser runs on a Linux host. A user who can create files stores a
+      file literally named `a\b.txt` (a backslash but no `..` segments) in
+      directory /dir, and a user downloads /dir as an archive. The archive entry
+      for that file, split on `/` or on both `/` and `\`, climbs out of the
+      extraction directory.
+    components:
+      - id: entrypoint
+        text: Downloading a directory as an archive derives each entry name from the stored file's path.
+      - id: normalization
+        text: For the stored name `a\b.txt`, the resulting entry name contains `..` segments.
+      - id: sanitization
+        text: Nothing rejects, strips or rewrites `..` segments in entry names before they are written to the archive.
+    hints:
+      - {path: http/raw.go, symbol: rawDirHandler, note: entrypoint}

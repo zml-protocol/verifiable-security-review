@@ -1,0 +1,582 @@
+# P-Hybrid-1 calibration set (PREREGISTRATION.md §10): held out. Written before
+# any verifier ran on it, frozen with the verifiers, run once after the freeze.
+# Truth labels live in truth/cal.yaml and are read by the scorer only.
+set: cal
+fixtures:
+  hopcal-go:
+    language: go
+    repo: .cache/fixtures/hopcal-go
+    build: fixtures/_hopcal/build.py
+    commits:
+      base: b3abc1f9cd13dc2bb6bf9b88a084b78a33fd67f0
+      head: 87fc86eb9e8a4672d3f7a37003bd0b1fb7b428fb
+    db_build: go build ./...
+  hopcal-py:
+    language: python
+    repo: .cache/fixtures/hopcal-py
+    build: fixtures/_hopcal/build.py
+    commits:
+      base: 127c814bbd150bb8869154c682610427ff1ae70f
+      head: d144876c56c86bb94bec1a0c426ef49c37d6a559
+    db_build: null
+hops:
+- id: c01
+  fixture: hopcal-py
+  revision: head
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+  to:
+    file: cal.py
+    start_line: 38
+    end_line: 38
+    expression: return text.strip()
+- id: c02
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'
+  to:
+    file: cal.go
+    start_line: 21
+    end_line: 21
+    expression: value := strings.TrimSpace(raw)
+- id: c03
+  fixture: hopcal-go
+  revision: base
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 30
+    end_line: 30
+    expression: 'Methods: []string{"POST"}'
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c04
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 39
+    end_line: 39
+    expression: v := strings.TrimSpace(raw)
+  to:
+    file: cal.go
+    start_line: 40
+    end_line: 40
+    expression: h.Value = v
+- id: c05
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 61
+    end_line: 61
+    expression: PIPELINE[0].apply(text)
+  to:
+    file: cal.py
+    start_line: 28
+    end_line: 28
+    expression: return text.upper()
+- id: c06
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 20
+    end_line: 20
+    expression: key := strings.ToUpper(name)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Key: key'
+- id: c07
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 73
+    end_line: 73
+    expression: codec.encode(value)
+  to:
+    file: cal.py
+    start_line: 88
+    end_line: 88
+    expression: return "j"
+- id: c08
+  fixture: hopcal-go
+  revision: head
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 28
+    end_line: 28
+    expression: 'Methods: []string{"GET"}'
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c09
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+  to:
+    file: cal.py
+    start_line: 33
+    end_line: 33
+    expression: return text.lower()
+- id: c10
+  fixture: hopcal-go
+  revision: head
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 20
+    end_line: 20
+    expression: key := strings.ToUpper(name)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'
+- id: c11
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 27
+    end_line: 27
+    expression: get := Rule{
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c12
+  fixture: hopcal-go
+  revision: head
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 30
+    end_line: 30
+    expression: 'get = Rule{Methods: []string{"POST"}}'
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c13
+  fixture: hopcal-go
+  revision: base
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 28
+    end_line: 28
+    expression: 'Methods: []string{"GET"}'
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c14
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 28
+    end_line: 28
+    expression: return text.upper()
+  to:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+- id: c15
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 61
+    end_line: 61
+    expression: PIPELINE[0].apply(text)
+  to:
+    file: cal.py
+    start_line: 38
+    end_line: 38
+    expression: return text.strip()
+- id: c16
+  fixture: hopcal-py
+  revision: head
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+  to:
+    file: cal.py
+    start_line: 33
+    end_line: 33
+    expression: return text.lower()
+- id: c17
+  fixture: hopcal-go
+  revision: base
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+  to:
+    file: cal.go
+    start_line: 28
+    end_line: 28
+    expression: 'Methods: []string{"GET"}'
+- id: c18
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 27
+    end_line: 27
+    expression: get := Rule{
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c19
+  fixture: hopcal-go
+  revision: head
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 30
+    end_line: 30
+    expression: 'Methods: []string{"POST"}'
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c20
+  fixture: hopcal-py
+  revision: base
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 23
+    end_line: 23
+    expression: self.cache.fetch(key)
+  to:
+    file: cal.py
+    start_line: 6
+    end_line: 6
+    expression: return key
+- id: c21
+  fixture: hopcal-py
+  revision: base
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 23
+    end_line: 23
+    expression: self.cache.fetch(key)
+  to:
+    file: cal.py
+    start_line: 11
+    end_line: 11
+    expression: return None
+- id: c22
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c23
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 21
+    end_line: 21
+    expression: value := strings.TrimSpace(raw)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'
+- id: c24
+  fixture: hopcal-py
+  revision: head
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.backend.fetch(key)
+  to:
+    file: cal.py
+    start_line: 11
+    end_line: 11
+    expression: return None
+- id: c25
+  fixture: hopcal-go
+  revision: head
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 27
+    end_line: 27
+    expression: get := Rule{
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c26
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+  to:
+    file: cal.py
+    start_line: 38
+    end_line: 38
+    expression: return text.strip()
+- id: c27
+  fixture: hopcal-py
+  revision: head
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.backend.fetch(key)
+  to:
+    file: cal.py
+    start_line: 6
+    end_line: 6
+    expression: return key
+- id: c28
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 30
+    end_line: 30
+    expression: 'post := Rule{Methods: []string{"POST"}}'
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c29
+  fixture: hopcal-py
+  revision: base
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.backend.fetch(key)
+  to:
+    file: cal.py
+    start_line: 6
+    end_line: 6
+    expression: return key
+- id: c30
+  fixture: hopcal-go
+  revision: base
+  relation: guard_property
+  from:
+    file: cal.go
+    start_line: 28
+    end_line: 28
+    expression: 'Methods: []string{"GET"}'
+  to:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+- id: c31
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 31
+    end_line: 31
+    expression: get.Headers = append(get.Headers, h)
+  to:
+    file: cal.go
+    start_line: 33
+    end_line: 33
+    expression: r.Rules = append(r.Rules, get)
+- id: c32
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 20
+    end_line: 20
+    expression: key := strings.ToUpper(name)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'
+- id: c33
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 73
+    end_line: 73
+    expression: codec.encode(value)
+  to:
+    file: cal.py
+    start_line: 95
+    end_line: 95
+    expression: return "y"
+- id: c34
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 22
+    end_line: 22
+    expression: value = strings.ToLower(value)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'
+- id: c35
+  fixture: hopcal-go
+  revision: base
+  relation: object_composition
+  from:
+    file: cal.go
+    start_line: 30
+    end_line: 30
+    expression: 'post := Rule{Methods: []string{"POST"}}'
+  to:
+    file: cal.go
+    start_line: 34
+    end_line: 34
+    expression: r.Rules = append(r.Rules, post)
+- id: c36
+  fixture: hopcal-py
+  revision: base
+  relation: call_typed_attribute
+  from:
+    file: cal.py
+    start_line: 6
+    end_line: 6
+    expression: return key
+  to:
+    file: cal.py
+    start_line: 20
+    end_line: 20
+    expression: self.backend.fetch(key)
+- id: c37
+  fixture: hopcal-go
+  revision: base
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 21
+    end_line: 21
+    expression: value := strings.TrimSpace(raw)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Key: key'
+- id: c38
+  fixture: hopcal-py
+  revision: head
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 73
+    end_line: 73
+    expression: codec.encode(value)
+  to:
+    file: cal.py
+    start_line: 95
+    end_line: 95
+    expression: return "y"
+- id: c39
+  fixture: hopcal-py
+  revision: base
+  relation: registry_dispatch
+  from:
+    file: cal.py
+    start_line: 54
+    end_line: 54
+    expression: t.apply(text)
+  to:
+    file: cal.py
+    start_line: 28
+    end_line: 28
+    expression: return text.upper()
+- id: c40
+  fixture: hopcal-go
+  revision: head
+  relation: field_flow
+  from:
+    file: cal.go
+    start_line: 21
+    end_line: 21
+    expression: value := strings.TrimSpace(raw)
+  to:
+    file: cal.go
+    start_line: 23
+    end_line: 23
+    expression: 'Value: value'

@@ -1,0 +1,57 @@
+schema: rd-agent-tasks/v1
+protocol: rd-v2
+selection_seed: 20261003
+model: claude-sonnet-5
+effort: high
+tasks:
+  task-01:
+    fixture: GHSA-fq2j-j8hc-8vw8
+    role: real
+    package: SiYuan
+    cwe: 200
+    cwe_name: Exposure of Sensitive Information to an Unauthorized Actor
+    language: go
+    expected_attribution: FIX_IMPLICATED
+  task-02:
+    fixture: GHSA-mr3j-p26x-72x4
+    role: real
+    package: Vikunja models
+    cwe: 862
+    cwe_name: Missing Authorization
+    language: go
+    expected_attribution: FIX_IMPLICATED
+    note: frozen claim uses CWE-862; the advisory alias CWE-639 is not agent-facing
+  task-03:
+    fixture: GO-2026-6237
+    role: real
+    package: github.com/insomniacslk/dhcp/dhcpv4/nclient4
+    cwe: 400
+    cwe_name: Uncontrolled Resource Consumption
+    language: go
+    expected_attribution: FIX_IMPLICATED
+    note: frozen claim's denial-of-service effect is represented by CWE-400
+  task-04:
+    fixture: GHSA-hx8v-g79f-8w5f
+    role: real
+    package: LiteLLM Proxy
+    cwe: 918
+    cwe_name: Server-Side Request Forgery
+    language: python
+    expected_attribution: FIX_IMPLICATED
+  task-05:
+    fixture: GHSA-xcw4-53cc-hv32
+    role: real
+    package: Mnemosyne sync server
+    cwe: 347
+    cwe_name: Improper Verification of Cryptographic Signature
+    language: python
+    expected_attribution: FIX_IMPLICATED
+  task-06:
+    fixture: GO-2026-6237
+    role: negative_control
+    package: github.com/insomniacslk/dhcp/dhcpv4/nclient4
+    cwe: 352
+    cwe_name: Cross-Site Request Forgery
+    language: go
+    expected_attribution: NOT_SUPPORTED
+    source: experiments/rd/truth/negative-controls/GO-2026-6237/result.yaml

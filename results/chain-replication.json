@@ -1,0 +1,869 @@
+{
+  "protocol": "c1",
+  "pilot": false,
+  "status": "REPORTED",
+  "overall": {
+    "valid_blocks": 30,
+    "full_chain_blocks": 18,
+    "wilson95": [
+      0.4232,
+      0.7541
+    ]
+  },
+  "per_fixture": {
+    "authlib-jws-none": {
+      "valid_blocks": 10,
+      "full_chain_blocks": 10,
+      "wilson95": [
+        0.7225,
+        1.0
+      ],
+      "revision_classes": {
+        "FULL_CHAIN": 20,
+        "QUALIFIER_GAP": 0,
+        "ENTRY_GAP": 0,
+        "INTERNAL_GAP": 0,
+        "NO_EVIDENCE": 0
+      }
+    },
+    "caddy-forward-auth": {
+      "valid_blocks": 10,
+      "full_chain_blocks": 3,
+      "wilson95": [
+        0.1078,
+        0.6032
+      ],
+      "revision_classes": {
+        "FULL_CHAIN": 6,
+        "QUALIFIER_GAP": 12,
+        "ENTRY_GAP": 0,
+        "INTERNAL_GAP": 1,
+        "NO_EVIDENCE": 1
+      }
+    },
+    "filebrowser-archive-backslash": {
+      "valid_blocks": 10,
+      "full_chain_blocks": 5,
+      "wilson95": [
+        0.2366,
+        0.7634
+      ],
+      "revision_classes": {
+        "FULL_CHAIN": 10,
+        "QUALIFIER_GAP": 0,
+        "ENTRY_GAP": 10,
+        "INTERNAL_GAP": 0,
+        "NO_EVIDENCE": 0
+      }
+    }
+  },
+  "harness": {
+    "context_leak": {},
+    "foreign_tools": {},
+    "harness_errors": 0,
+    "locked_hop_rejected": {},
+    "frozen_verifier_rows_intact": true,
+    "frozen_connector_rows_intact": true
+  },
+  "harness_ok": true,
+  "invalid_blocks": [],
+  "blocks": [
+    {
+      "block": "filebrowser-archive-backslash/r0",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 0,
+      "revisions": {
+        "base": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 2,
+      "unsupported": 0,
+      "novel": 2,
+      "golden_verified": [],
+      "cost_usd": 0.2250314
+    },
+    {
+      "block": "caddy-forward-auth/r0",
+      "fixture": "caddy-forward-auth",
+      "repeat": 0,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 3
+        }
+      },
+      "full_chain": false,
+      "hops": 10,
+      "unsupported": 5,
+      "novel": 8,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.6340646000000001
+    },
+    {
+      "block": "authlib-jws-none/r0",
+      "fixture": "authlib-jws-none",
+      "repeat": 0,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.27919359999999993
+    },
+    {
+      "block": "authlib-jws-none/r1",
+      "fixture": "authlib-jws-none",
+      "repeat": 1,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.27237
+    },
+    {
+      "block": "filebrowser-archive-backslash/r1",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 1,
+      "revisions": {
+        "base": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 4,
+      "unsupported": 2,
+      "novel": 4,
+      "golden_verified": [],
+      "cost_usd": 0.19952840000000002
+    },
+    {
+      "block": "caddy-forward-auth/r1",
+      "fixture": "caddy-forward-auth",
+      "repeat": 1,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": false,
+      "hops": 7,
+      "unsupported": 2,
+      "novel": 5,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.6773477999999999
+    },
+    {
+      "block": "caddy-forward-auth/r2",
+      "fixture": "caddy-forward-auth",
+      "repeat": 2,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 3
+        }
+      },
+      "full_chain": false,
+      "hops": 9,
+      "unsupported": 4,
+      "novel": 9,
+      "golden_verified": [],
+      "cost_usd": 0.8416745999999998
+    },
+    {
+      "block": "filebrowser-archive-backslash/r2",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 2,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 2,
+      "novel": 2,
+      "golden_verified": [
+        "e23",
+        "e36"
+      ],
+      "cost_usd": 0.212494
+    },
+    {
+      "block": "authlib-jws-none/r2",
+      "fixture": "authlib-jws-none",
+      "repeat": 2,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.2366812
+    },
+    {
+      "block": "caddy-forward-auth/r3",
+      "fixture": "caddy-forward-auth",
+      "repeat": 3,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 3
+        }
+      },
+      "full_chain": false,
+      "hops": 9,
+      "unsupported": 3,
+      "novel": 7,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.6933646
+    },
+    {
+      "block": "filebrowser-archive-backslash/r3",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 3,
+      "revisions": {
+        "base": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 2,
+      "unsupported": 0,
+      "novel": 2,
+      "golden_verified": [],
+      "cost_usd": 0.3070808
+    },
+    {
+      "block": "authlib-jws-none/r3",
+      "fixture": "authlib-jws-none",
+      "repeat": 3,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.24570479999999997
+    },
+    {
+      "block": "caddy-forward-auth/r4",
+      "fixture": "caddy-forward-auth",
+      "repeat": 4,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 7,
+      "unsupported": 3,
+      "novel": 5,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.6506046000000001
+    },
+    {
+      "block": "authlib-jws-none/r4",
+      "fixture": "authlib-jws-none",
+      "repeat": 4,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.22696600000000003
+    },
+    {
+      "block": "filebrowser-archive-backslash/r4",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 4,
+      "revisions": {
+        "base": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 6,
+      "unsupported": 4,
+      "novel": 6,
+      "golden_verified": [],
+      "cost_usd": 0.25457399999999997
+    },
+    {
+      "block": "caddy-forward-auth/r5",
+      "fixture": "caddy-forward-auth",
+      "repeat": 5,
+      "revisions": {
+        "base": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "QUALIFIER_GAP",
+          "length": 1,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": false,
+      "hops": 7,
+      "unsupported": 2,
+      "novel": 5,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.632813
+    },
+    {
+      "block": "filebrowser-archive-backslash/r5",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 5,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": true,
+      "hops": 2,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e23",
+        "e36"
+      ],
+      "cost_usd": 0.20182419999999998
+    },
+    {
+      "block": "authlib-jws-none/r5",
+      "fixture": "authlib-jws-none",
+      "repeat": 5,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.22714240000000002
+    },
+    {
+      "block": "authlib-jws-none/r6",
+      "fixture": "authlib-jws-none",
+      "repeat": 6,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.27130380000000004
+    },
+    {
+      "block": "filebrowser-archive-backslash/r6",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 6,
+      "revisions": {
+        "base": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "ENTRY_GAP",
+          "length": null,
+          "longest_suffix_edges": 1,
+          "qualified": true,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": false,
+      "hops": 4,
+      "unsupported": 2,
+      "novel": 4,
+      "golden_verified": [],
+      "cost_usd": 0.221457
+    },
+    {
+      "block": "caddy-forward-auth/r6",
+      "fixture": "caddy-forward-auth",
+      "repeat": 6,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 3
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 3
+        }
+      },
+      "full_chain": true,
+      "hops": 11,
+      "unsupported": 3,
+      "novel": 9,
+      "golden_verified": [
+        "e08",
+        "e54"
+      ],
+      "cost_usd": 0.7938033999999999
+    },
+    {
+      "block": "filebrowser-archive-backslash/r7",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 7,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 2,
+      "novel": 2,
+      "golden_verified": [
+        "e23",
+        "e36"
+      ],
+      "cost_usd": 0.2336746
+    },
+    {
+      "block": "caddy-forward-auth/r7",
+      "fixture": "caddy-forward-auth",
+      "repeat": 7,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 3
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 3
+        }
+      },
+      "full_chain": true,
+      "hops": 8,
+      "unsupported": 2,
+      "novel": 6,
+      "golden_verified": [
+        "e42",
+        "e52"
+      ],
+      "cost_usd": 0.6416724
+    },
+    {
+      "block": "authlib-jws-none/r7",
+      "fixture": "authlib-jws-none",
+      "repeat": 7,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.28626379999999996
+    },
+    {
+      "block": "filebrowser-archive-backslash/r8",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 8,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 2,
+      "novel": 2,
+      "golden_verified": [
+        "e23",
+        "e36"
+      ],
+      "cost_usd": 0.4099454
+    },
+    {
+      "block": "caddy-forward-auth/r8",
+      "fixture": "caddy-forward-auth",
+      "repeat": 8,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 3
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 9,
+      "unsupported": 3,
+      "novel": 9,
+      "golden_verified": [],
+      "cost_usd": 0.5400292
+    },
+    {
+      "block": "authlib-jws-none/r8",
+      "fixture": "authlib-jws-none",
+      "repeat": 8,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.2804212
+    },
+    {
+      "block": "authlib-jws-none/r9",
+      "fixture": "authlib-jws-none",
+      "repeat": 9,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 2,
+          "verified_edges": 2
+        }
+      },
+      "full_chain": true,
+      "hops": 4,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e30",
+        "e44",
+        "e47",
+        "e48"
+      ],
+      "cost_usd": 0.2340982
+    },
+    {
+      "block": "filebrowser-archive-backslash/r9",
+      "fixture": "filebrowser-archive-backslash",
+      "repeat": 9,
+      "revisions": {
+        "base": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "FULL_CHAIN",
+          "length": 1,
+          "verified_edges": 1
+        }
+      },
+      "full_chain": true,
+      "hops": 2,
+      "unsupported": 0,
+      "novel": 0,
+      "golden_verified": [
+        "e23",
+        "e36"
+      ],
+      "cost_usd": 0.1972824
+    },
+    {
+      "block": "caddy-forward-auth/r9",
+      "fixture": "caddy-forward-auth",
+      "repeat": 9,
+      "revisions": {
+        "base": {
+          "class": "INTERNAL_GAP",
+          "length": null,
+          "entry_prefix": false,
+          "verified_edges": 1
+        },
+        "head": {
+          "class": "NO_EVIDENCE",
+          "length": null,
+          "verified_edges": 0
+        }
+      },
+      "full_chain": false,
+      "hops": 7,
+      "unsupported": 3,
+      "novel": 7,
+      "golden_verified": [],
+      "cost_usd": 0.9244808
+    }
+  ]
+}

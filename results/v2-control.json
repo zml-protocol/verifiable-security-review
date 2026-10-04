@@ -1,0 +1,4999 @@
+{
+  "provenance": {
+    "scored_at": "2026-09-28T04:02:27+00:00",
+    "harness_commit": "faeff0974b7a44ab19f319f693d765eb3c0290ff",
+    "harness_dirty": false,
+    "scorer_sha256": "9775bcb0835ae2caf8b5abc50629d11371cb8318c67801403a5a75b2f8c9ca62",
+    "goldens_sha256": {
+      "fixtures/authlib-jws-none/golden.yaml": "b989add378634f046ca3b35ad4595f688900c4b2631fe13a83f42cc8fb9da4b1",
+      "fixtures/caddy-forward-auth/golden.yaml": "fd555534aa53958f6ec8d96a43aab4103a0f2659b8f3d319de780b633005dc83",
+      "fixtures/filebrowser-archive-backslash/golden.yaml": "e58f89ec4c6400e16e6a617a17d83478e1b0008f697b0f5274121a8c7eb1ff40"
+    }
+  },
+  "harness_invariants": {
+    "anchor_audit_failures": 0,
+    "accepted_revision_mismatches": 0,
+    "harness_errors": 0,
+    "runs_with_foreign_tools": 0,
+    "runs_with_context_leak": 0,
+    "infra_invalid_slots": 0,
+    "infra_invalid_rate": 0.0
+  },
+  "metrics": {
+    "valid_runs": 80,
+    "outcomes": {
+      "completed": 80
+    },
+    "finished_rate": 1,
+    "attribution_correct_rate": 0.975,
+    "attribution_correct_rate_forward": 0.975,
+    "evidence_complete_correct_rate": 0.1375,
+    "fact_coverage": 0.598125,
+    "fact_coverage_by_condition": {
+      "forward": 0.58875,
+      "swapped": 0.6075,
+      "identity_base": null,
+      "identity_head": null
+    },
+    "component_accuracy": 0.9479166666666666,
+    "negative_control_false_supported_rate": 0,
+    "false_supported_revision_rate": 0.0,
+    "forward_correct_by_true_hypothesis": {
+      "authlib-jws-none/H1": 1,
+      "caddy-forward-auth/H1": 0.8,
+      "filebrowser-archive-backslash/H1": 1,
+      "filebrowser-archive-backslash/H2": 1,
+      "filebrowser-archive-backslash/H3": 1
+    },
+    "repeat_agreement": 0.975,
+    "swap_mirror_consistency": 0.9782608695652174,
+    "identity_inconsistency_rate": null,
+    "identity_component_agreement": null,
+    "identity_runs_with_change_language": null,
+    "attempt_citation_error_rate": 0.13191489361702127,
+    "runs_with_attempted_revision_mismatch": 0.2125,
+    "served_models": [
+      "claude-sonnet-5"
+    ],
+    "api_key_sources": [
+      "none"
+    ],
+    "cost_usd": 27.9968294
+  },
+  "cells": {
+    "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.867,
+      "fact_coverage": 0.56,
+      "attribution_majority": "CHANGE_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "CHANGE_IMPLICATED"
+    },
+    "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.867,
+      "fact_coverage": 0.76,
+      "attribution_majority": "FIX_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.2,
+      "expected_attribution": "FIX_IMPLICATED"
+    },
+    "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.9,
+      "fact_coverage": 0.55,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.8,
+      "fact_coverage": 0.6,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.933,
+      "fact_coverage": 0.5,
+      "attribution_majority": "CHANGE_IMPLICATED",
+      "attribution_agreement": 0.8,
+      "attribution_correct": 0.8,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "CHANGE_IMPLICATED"
+    },
+    "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.5,
+      "attribution_majority": "FIX_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "FIX_IMPLICATED"
+    },
+    "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.45,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.967,
+      "fact_coverage": 0.3,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 0.8,
+      "attribution_correct": 0.8,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.8,
+      "attribution_majority": "CHANGE_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.4,
+      "expected_attribution": "CHANGE_IMPLICATED"
+    },
+    "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.967,
+      "fact_coverage": 0.8,
+      "attribution_majority": "FIX_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.6,
+      "expected_attribution": "FIX_IMPLICATED"
+    },
+    "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.55,
+      "attribution_majority": "FIX_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "FIX_IMPLICATED"
+    },
+    "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.45,
+      "attribution_majority": "CHANGE_IMPLICATED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "CHANGE_IMPLICATED"
+    },
+    "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.8,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.4,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 1.0,
+      "fact_coverage": 0.8,
+      "attribution_majority": "PRE_EXISTING",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.4,
+      "expected_attribution": "PRE_EXISTING"
+    },
+    "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.933,
+      "fact_coverage": 0.5,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0,
+      "expected_attribution": "NOT_SUPPORTED"
+    },
+    "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control": {
+      "n": 5,
+      "finished": 1,
+      "component_accuracy": 0.933,
+      "fact_coverage": 0.65,
+      "attribution_majority": "NOT_SUPPORTED",
+      "attribution_agreement": 1.0,
+      "attribution_correct": 1,
+      "evidence_complete_correct": 0.2,
+      "expected_attribution": "NOT_SUPPORTED"
+    }
+  },
+  "runs": [
+    {
+      "run": "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-accepts-empty@head": true,
+        "head-default-decoder-allows-none@head": false
+      },
+      "fact_coverage": 0.4,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "bad_symbol": 1,
+        "quote_not_found": 2,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 34,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.34343720000000005,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-accepts-empty@head": true,
+        "head-default-decoder-allows-none@head": false
+      },
+      "fact_coverage": 0.4,
+      "evidence_complete_correct": false,
+      "submissions": 16,
+      "errors": {
+        "quote_not_found": 5
+      },
+      "citation_errors": 5,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 41,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.3904738000000001,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": true,
+        "head-decode-reaches-verify@head": true,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-accepts-empty@head": true,
+        "head-default-decoder-allows-none@head": false
+      },
+      "fact_coverage": 0.8,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 3
+      },
+      "citation_errors": 3,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 35,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.34910860000000005,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-accepts-empty@head": true,
+        "head-default-decoder-allows-none@head": true
+      },
+      "fact_coverage": 0.6,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 3
+      },
+      "citation_errors": 3,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 35,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.3613364,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-accepts-empty@head": true,
+        "head-default-decoder-allows-none@head": true
+      },
+      "fact_coverage": 0.6,
+      "evidence_complete_correct": false,
+      "submissions": 14,
+      "errors": {
+        "quote_not_found": 6
+      },
+      "citation_errors": 6,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 37,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.43983759999999994,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": false,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-accepts-empty@base": true,
+        "head-default-decoder-allows-none@base": true
+      },
+      "fact_coverage": 0.6,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.24446159999999997,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": true,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-accepts-empty@base": true,
+        "head-default-decoder-allows-none@base": true
+      },
+      "fact_coverage": 0.8,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.18470760000000003,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": false,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-accepts-empty@base": true,
+        "head-default-decoder-allows-none@base": true
+      },
+      "fact_coverage": 0.6,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2373966,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": true,
+        "head-decode-reaches-verify@base": true,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-accepts-empty@base": true,
+        "head-default-decoder-allows-none@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.26982920000000005,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H1/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "authlib-jws-none",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": true,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-accepts-empty@base": true,
+        "head-default-decoder-allows-none@base": true
+      },
+      "fact_coverage": 0.8,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2667096,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-requires-empty@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.22548939999999998,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": true,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-requires-empty@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 1,
+        "unchanged": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2685204,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-requires-empty@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {
+        "bad_symbol": 1,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2387508,
+      "components": {
+        "base": {
+          "algorithm_selection": "no_evidence",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-requires-empty@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 28,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.24718479999999998,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@base": false,
+        "head-decode-reaches-verify@head": false,
+        "base-none-verify-rejects@base": true,
+        "head-none-verify-requires-empty@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2653104,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": true,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-requires-empty@base": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "unknown_anchor": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 33,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.3494828,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONFLICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": true,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-requires-empty@base": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 34,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.3268024,
+      "components": {
+        "base": {
+          "algorithm_selection": "no_evidence",
+          "verification": "conflicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": false,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-requires-empty@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 34,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.36941280000000004,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": false,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-requires-empty@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2976554,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "authlib-jws-none/H2/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "authlib-jws-none",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-decode-reaches-verify@head": false,
+        "head-decode-reaches-verify@base": false,
+        "base-none-verify-rejects@head": true,
+        "head-none-verify-requires-empty@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 0,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2518712,
+      "components": {
+        "base": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "algorithm_selection": "supported",
+          "verification": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "INCOMPLETE"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "UNDETERMINED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": false,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-skipped-when-absent@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 12,
+      "errors": {
+        "quote_not_found": 2,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 3,
+      "tool_calls": 34,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.5652708,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "no_evidence"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-skipped-when-absent@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 35,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.6263948,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-skipped-when-absent@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 11,
+      "errors": {
+        "quote_not_found": 3,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 3,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 38,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.6261503999999998,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-skipped-when-absent@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "unchanged": 1,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 41,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.6974490000000002,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-skipped-when-absent@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 3,
+      "tool_calls": 40,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.8777916,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-skipped-when-absent@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 2,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 39,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.8061288000000001,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-skipped-when-absent@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 36,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.6613950000000001,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-skipped-when-absent@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 13,
+      "errors": {
+        "quote_not_found": 3,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 3,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 44,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.7073132000000001,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-skipped-when-absent@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 17,
+      "errors": {
+        "quote_not_found": 6,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 6,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 45,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.8110071999999998,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H1/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-skipped-when-absent@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "bad_symbol": 1,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 3,
+      "tool_calls": 51,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.9988086000000002,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "supported",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-runs-when-present@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 29,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.6838642000000003,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-runs-when-present@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 13,
+      "errors": {
+        "quote_not_found": 4,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 4,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 28,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.4667954,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-runs-when-present@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 22,
+      "errors": {
+        "quote_not_found": 11,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 11,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 44,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.5847824,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-runs-when-present@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 11,
+      "errors": {
+        "quote_not_found": 2,
+        "revision_mismatch": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 2,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 31,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.42028,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@base": false,
+        "head-copy-routes-run-on-2xx@head": false,
+        "base-unconditional-set@base": true,
+        "head-set-runs-when-present@head": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "bad_symbol": 1,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 35,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.5662744,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-runs-when-present@base": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 11,
+      "errors": {
+        "unchanged": 2,
+        "revision_mismatch": 2,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 2,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.5008058000000001,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-runs-when-present@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "bad_symbol": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 30,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.4857234,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "INCOMPLETE"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "UNDETERMINED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": false,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-runs-when-present@base": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 11,
+      "errors": {
+        "unchanged": 1,
+        "quote_not_found": 3,
+        "revision_mismatch": 1,
+        "quote_ambiguous": 1
+      },
+      "citation_errors": 4,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.4637542,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "no_evidence",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-runs-when-present@base": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 12,
+      "errors": {
+        "unchanged": 1,
+        "quote_not_found": 1,
+        "revision_mismatch": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 34,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.5004398,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "caddy-forward-auth/H2/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "caddy-forward-auth",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-copy-routes-run-on-2xx@head": false,
+        "head-copy-routes-run-on-2xx@base": false,
+        "base-unconditional-set@head": true,
+        "head-set-runs-when-present@base": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "unchanged": 1,
+        "revision_mismatch": 2
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 2,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 31,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.4317856,
+      "components": {
+        "base": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        },
+        "head": {
+          "configuration": "supported",
+          "overwrite": "contradicted",
+          "effect": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-to-slash@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.23928380000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": true,
+        "base-backslash-kept@base": true,
+        "head-backslash-to-slash@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.29068460000000007,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-to-slash@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.258158,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": true,
+        "base-backslash-kept@base": true,
+        "head-backslash-to-slash@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.26598740000000004,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-to-slash@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 12,
+      "errors": {
+        "revision_mismatch": 1,
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 1,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2839404,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-to-slash@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "bad_symbol": 1
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.28496720000000003,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-backslash-kept@head": true,
+        "head-backslash-to-slash@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.28146819999999995,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-backslash-kept@head": true,
+        "head-backslash-to-slash@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 28,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.30011060000000006,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-backslash-kept@head": true,
+        "head-backslash-to-slash@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 9,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 3,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2357724,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H1/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H1",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-to-slash@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2046498,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-removed@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 19,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.17022860000000004,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-removed@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 5,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.14439839999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-removed@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.1502406,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-removed@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 5,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.1580354,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "FIX_IMPLICATED",
+      "expected_attribution": "FIX_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-backslash-kept@base": true,
+        "head-backslash-removed@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.17200000000000001,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-removed@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 5,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.20641759999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-removed@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 5,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.16505139999999996,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-removed@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 6,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 15,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.15522380000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-removed@base": false
+      },
+      "fact_coverage": 0.25,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 16,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.1493936,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H2/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H2",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 1,
+      "attribution": "CHANGE_IMPLICATED",
+      "expected_attribution": "CHANGE_IMPLICATED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-backslash-kept@head": true,
+        "head-backslash-removed@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.1684774,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": false,
+        "base-dotdot-kept@base": true,
+        "head-dotdot-kept@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.29585799999999995,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": true,
+        "base-dotdot-kept@base": true,
+        "head-dotdot-kept@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.17947100000000002,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-dotdot-kept@base": true,
+        "head-dotdot-kept@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "bad_symbol": 1,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.30978320000000004,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": true,
+        "base-dotdot-kept@base": true,
+        "head-dotdot-kept@head": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.28157119999999997,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": true,
+        "head-stored-path-becomes-entry@head": false,
+        "base-dotdot-kept@base": true,
+        "head-dotdot-kept@head": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.293701,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": false,
+        "base-dotdot-kept@head": true,
+        "head-dotdot-kept@base": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "bad_symbol": 1,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 23,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.28696859999999996,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-dotdot-kept@head": true,
+        "head-dotdot-kept@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 20,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2222496,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-dotdot-kept@head": true,
+        "head-dotdot-kept@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 26,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2693952,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": false,
+        "base-dotdot-kept@head": true,
+        "head-dotdot-kept@base": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 28,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.24722679999999997,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H3/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H3",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": false,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "SUPPORTED",
+        "head": "SUPPORTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 0,
+      "attribution": "PRE_EXISTING",
+      "expected_attribution": "PRE_EXISTING",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-dotdot-kept@head": true,
+        "head-dotdot-kept@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 2
+      },
+      "citation_errors": 2,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 31,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.34755980000000003,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "supported",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.6666666666666666,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-no-dotdot-introduced@base": true,
+        "head-no-dotdot-introduced@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 9,
+      "errors": {
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.22137339999999994,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "no_evidence"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "no_evidence"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-no-dotdot-introduced@base": true,
+        "head-no-dotdot-introduced@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {
+        "bad_symbol": 1,
+        "quote_not_found": 1
+      },
+      "citation_errors": 1,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 27,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.35007479999999996,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-no-dotdot-introduced@base": true,
+        "head-no-dotdot-introduced@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {
+        "bad_symbol": 2
+      },
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 25,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.26365320000000003,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-no-dotdot-introduced@base": true,
+        "head-no-dotdot-introduced@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 10,
+      "errors": {
+        "quote_not_found": 3
+      },
+      "citation_errors": 3,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2633446,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/forward/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "forward",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@base": false,
+        "head-stored-path-becomes-entry@head": false,
+        "base-no-dotdot-introduced@base": true,
+        "head-no-dotdot-introduced@head": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.24869039999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control/r0",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 1,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": false,
+        "base-no-dotdot-introduced@head": true,
+        "head-no-dotdot-introduced@base": true
+      },
+      "fact_coverage": 0.75,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2506056,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "contradicted"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control/r1",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": true,
+        "head-stored-path-becomes-entry@base": true,
+        "base-no-dotdot-introduced@head": true,
+        "head-no-dotdot-introduced@base": true
+      },
+      "fact_coverage": 1,
+      "evidence_complete_correct": true,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2783144,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control/r2",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 0.8333333333333334,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-no-dotdot-introduced@head": true,
+        "head-no-dotdot-introduced@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 22,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2162986,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "no_evidence"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control/r3",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-no-dotdot-introduced@head": true,
+        "head-no-dotdot-introduced@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 7,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 1,
+      "tool_calls": 21,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.23774399999999998,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    },
+    {
+      "run": "filebrowser-archive-backslash/H4/swapped/claude_claude-sonnet-5_high_control/r4",
+      "case": "filebrowser-archive-backslash",
+      "hypothesis": "H4",
+      "condition": "swapped",
+      "agent": "claude_claude-sonnet-5_high_control",
+      "negative_control": true,
+      "validity": "VALID",
+      "outcome": "completed",
+      "attempt": 2,
+      "finished": true,
+      "served_models": [
+        "claude-sonnet-5"
+      ],
+      "component_accuracy": 1.0,
+      "revisions": {
+        "base": "CONTRADICTED",
+        "head": "CONTRADICTED"
+      },
+      "false_supported_revisions": [],
+      "unsupported_revisions_expected": 2,
+      "attribution": "NOT_SUPPORTED",
+      "expected_attribution": "NOT_SUPPORTED",
+      "attribution_correct": true,
+      "facts_covered": {
+        "base-stored-path-becomes-entry@head": false,
+        "head-stored-path-becomes-entry@base": false,
+        "base-no-dotdot-introduced@head": true,
+        "head-no-dotdot-introduced@base": true
+      },
+      "fact_coverage": 0.5,
+      "evidence_complete_correct": false,
+      "submissions": 8,
+      "errors": {},
+      "citation_errors": 0,
+      "revision_mismatches": 0,
+      "harness_errors": 0,
+      "anchor_audit_failures": 0,
+      "accepted_revision_mismatches": 0,
+      "blind_spots": 2,
+      "tool_calls": 24,
+      "foreign_tools": [],
+      "context_leaks": [],
+      "api_key_source": "none",
+      "cost_usd": 0.2384636,
+      "components": {
+        "base": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        },
+        "head": {
+          "entrypoint": "supported",
+          "normalization": "contradicted",
+          "sanitization": "supported"
+        }
+      }
+    }
+  ]
+}

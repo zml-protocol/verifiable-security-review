@@ -1,0 +1,180 @@
+# Scorer-only truth for sets/cal.yaml (PREREGISTRATION.md §10). Never shown to a verifier.
+set: cal
+truth:
+  c01:
+    name: crd5
+    label: true
+  c02:
+    name: cff8
+    label: false
+    kind: reversed
+    of: cff1
+    reason: a literal field does not define a variable
+  c03:
+    name: cgp2
+    label: false
+    kind: wrong_source
+    reason: the POST literal defines post, not get
+  c04:
+    name: cff6
+    label: true
+  c05:
+    name: crd7
+    label: false
+    kind: wrong_target
+    of: crd6
+    reason: PIPELINE holds only a Strip
+  c06:
+    name: cff3
+    label: true
+  c07:
+    name: crd9
+    label: true
+  c08:
+    name: cgp3
+    label: false
+    kind: wrong_revision
+    of: cgp1
+    reason: at head the get written at 31 is the one defined at 30
+  c09:
+    name: crd2
+    label: true
+  c10:
+    name: cff5
+    label: true
+  c11:
+    name: coc4
+    label: false
+    kind: wrong_target
+    of: coc7
+    reason: get is the container at 31, not a stored value
+  c12:
+    name: coc6
+    label: true
+  c13:
+    name: cgp5
+    label: false
+    kind: wrong_target
+    of: cgp1
+    reason: the store at 33 writes into r, whose literal has no Methods
+  c14:
+    name: crd8
+    label: false
+    kind: reversed
+    of: crd1
+    reason: a return statement is not a method call
+  c15:
+    name: crd6
+    label: true
+  c16:
+    name: crd4
+    label: false
+    kind: wrong_revision
+    of: crd2
+    reason: Lower is not installed at head
+  c17:
+    name: cgp6
+    label: false
+    kind: reversed
+    of: cgp1
+    reason: a field store is not a literal field
+  c18:
+    name: coc7
+    label: true
+  c19:
+    name: cgp4
+    label: true
+  c20:
+    name: cct2
+    label: false
+    kind: wrong_source
+    reason: cache holds a Cache
+  c21:
+    name: cct3
+    label: true
+  c22:
+    name: coc8
+    label: false
+    kind: reversed
+    of: coc1
+    reason: r is not stored into get.Headers
+  c23:
+    name: cff1
+    label: true
+  c24:
+    name: cct5
+    label: true
+  c25:
+    name: coc5
+    label: false
+    kind: wrong_revision
+    of: coc7
+    reason: head line 30 redefines get before 33
+  c26:
+    name: crd3
+    label: false
+    kind: wrong_target
+    of: crd1
+    reason: Strip is never installed into TRANSFORMS at base
+  c27:
+    name: cct4
+    label: false
+    kind: wrong_revision
+    of: cct1
+    reason: at head backend holds a Cache
+  c28:
+    name: coc3
+    label: false
+    kind: wrong_target
+    of: coc2
+    reason: the store at 33 appends get, not post
+  c29:
+    name: cct1
+    label: true
+  c30:
+    name: cgp1
+    label: true
+  c31:
+    name: coc1
+    label: true
+  c32:
+    name: cff2
+    label: false
+    kind: wrong_source
+    reason: key never reaches value at base
+  c33:
+    name: crd10
+    label: false
+    kind: wrong_target
+    of: crd9
+    reason: Yaml is registered into Parsers.TABLE, a different class attribute of the same name
+  c34:
+    name: cff9
+    label: true
+  c35:
+    name: coc2
+    label: true
+  c36:
+    name: cct6
+    label: false
+    kind: reversed
+    of: cct1
+    reason: a return statement is not a call
+  c37:
+    name: cff7
+    label: false
+    kind: wrong_target
+    of: cff1
+    reason: Key takes key, not value
+  c38:
+    name: crd11
+    label: true
+  c39:
+    name: crd1
+    label: true
+  c40:
+    name: cff4
+    label: false
+    kind: wrong_revision
+    of: cff1
+    reason: head line 22 redefines value from key

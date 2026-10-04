@@ -1,0 +1,25 @@
+# Copy to fixtures/<case-id>/case.yaml. Everything under `hypotheses` is shown to the agent.
+id: <case-id>
+kind: semantic               # synthetic | structural | semantic
+repo:
+  path: .cache/repos/<case-id>.git   # full (non-partial) clone, relative to the project root
+  url: https://github.com/<owner>/<repo>
+base: <full sha of the introducing commit's parent>
+head: <full sha of the introducing commit>
+deny_paths: []               # extra glob patterns on top of spike.session.DEFAULT_DENY
+notes: >
+  Advisory, fix commit, how the introducing commit was located, anything odd.
+
+hypotheses:
+  - id: H1
+    property_kind: authorization   # free text for now; Phase 2 decides the vocabulary
+    claim: <one sentence, attacker-centric, testable>
+    components:                    # the claim is their conjunction
+      - id: entrypoint
+        text: <who can reach what>
+      - id: control
+        text: <which check is missing or insufficient>
+      - id: effect
+        text: <what the attacker obtains>
+    hints:                         # entrypoints and sinks only, never the deciding control
+      - {path: <path>, symbol: <symbol>, note: entrypoint}

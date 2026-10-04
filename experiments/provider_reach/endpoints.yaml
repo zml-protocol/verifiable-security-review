@@ -1,0 +1,99 @@
+# Spike P (PREREGISTRATION.md §9): directed reachability endpoints and relation types.
+#
+# Endpoints are the only fixture-specific input a provider receives. By the
+# frozen rule they are the case.yaml hint entry, the golden flip location, or
+# the entry function's own externally visible output. Golden intermediate
+# locations never appear here; they are only read by the scorer.
+#
+# A variable name narrows an endpoint to one node on that line; "*" takes
+# every data-flow node that starts on it.
+
+relations:
+  # id: what the link is; frozen before any provider runs on these fixtures
+  call_typed_attribute: method call on an attribute whose type is set elsewhere
+  registry_dispatch: callee chosen at run time from a registry keyed by input data
+  guard_property: condition that is a property of an object on the path, not on the flow
+  object_composition: object stored into a field or collection of another object
+  field_flow: value flowing through locals into a struct field
+
+fixtures:
+  authlib-jws-none:
+    language: python
+    repo: .cache/repos/authlib.git
+    commits: {base: 21f7f50820f3906cebad308b35c816abf746ec3d, head: a61c2acb807496e67f32051b5f1b1d5ccf8f0a75}
+    build: null
+    path_fact: decode-reaches-verify          # golden ids <side>-decode-reaches-verify
+    endpoints:                                 # identical lines on both sides
+      base: &authlib
+        source: {file: authlib/jose/rfc7519/jwt.py, line: 80, name: s, why: "hint entry JsonWebToken.decode, token parameter"}
+        sink: {file: authlib/jose/rfc7518/jws_algs.py, line: 37, name: sig, why: "golden flip NoneAlgorithm.verify, signature parameter"}
+      head: *authlib
+    locations:                                 # golden path-fact locations -> relation type
+      - {file: authlib/jose/rfc7519/jwt.py, lines: 104, relation: call_typed_attribute}
+      # anchors: the registry selection (106) and the dispatched call (107) must both be
+      # on the path; touching the span alone (e.g. only 109) does not recover the dispatch
+      - {file: authlib/jose/rfc7515/jws.py, lines: 106-109, anchors: [106, 107], relation: registry_dispatch}
+
+  caddy-forward-auth:
+    language: go
+    repo: .cache/repos/caddy.git
+    commits: {base: 00f948c6056f6968b07e2b92d537c0a61559e2ed, head: 05cfb121ec3f214c0e45206c188f34bad4d4eb8c}
+    # §3.5 minimal-host rule: upstream's full build fails in this window, so
+    # only the package under test (and its imports) is built, identically on both sides.
+    build: go build ./modules/caddyhttp/reverseproxy/forwardauth/
+    path_fact: copy-routes-run-on-2xx
+    endpoints:
+      base:
+        source: {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, line: 185, name: handler, why: "golden flip: the headers.Handler that carries the copy Set operations"}
+        sink: {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, line: 244, name: "*", why: "output of the hint entry parseCaddyfile (its return value)"}
+      head:
+        source: {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, line: 211, name: handler, why: "golden flip: the headers.Handler that carries the copy Set operations"}
+        sink: {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, line: 269, name: "*", why: "output of the hint entry parseCaddyfile (its return value)"}
+    locations:
+      base:
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 180, relation: guard_property}
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 198, relation: object_composition}
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 215, relation: object_composition}
+      head:
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 182, relation: guard_property}
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 233, relation: object_composition}
+        - {file: modules/caddyhttp/reverseproxy/forwardauth/caddyfile.go, lines: 240, relation: object_composition}
+
+  filebrowser-archive-backslash:
+    language: go
+    repo: .cache/repos/filebrowser.git
+    commits: {base: 0231b7ebdfbe77a6c54027d30c4856c3fd81ee4d, head: 847d08bdd135e5c3659f2e6dea2f0cd36617af9b}
+    build: go build ./http/
+    path_fact: stored-path-becomes-entry
+    endpoints:
+      base:
+        source: {file: http/raw.go, line: 165, name: filenames, why: "hint entry rawDirHandler: the stored file names selected for download"}
+        sink: {file: http/raw.go, line: 205, name: allFiles, why: "output of the hint entry: the entries handed to archiver.Archive"}
+      head:
+        source: {file: http/raw.go, line: 171, name: filenames, why: "hint entry rawDirHandler: the stored file names selected for download"}
+        sink: {file: http/raw.go, line: 211, name: allFiles, why: "output of the hint entry: the entries handed to archiver.Archive"}
+    locations:
+      base:
+        - {file: http/raw.go, lines: 125, relation: field_flow}
+        - {file: http/raw.go, lines: 131, relation: field_flow}
+      head:
+        - {file: http/raw.go, lines: 125, relation: field_flow}
+        - {file: http/raw.go, lines: 137, relation: field_flow}
+
+# Expressibility, decided from each provider's output schema before any run on
+# these fixtures (Trailmark: schema observed on synthetic-notes only).
+expressible:
+  trailmark-0.5.0:     # function nodes with line spans; `calls` edges carry no call-site location
+    call_typed_attribute: false   # function-level only; line-level call sites not representable
+    registry_dispatch: false
+    guard_property: false
+    object_composition: false
+    field_flow: false
+  codeql-2.27.1-taint-path:   # the single frozen generic taint path query per language
+    # `calibrate`: decided by the non-evaluation calibration pilot (pilot.yaml) with the
+    # query unchanged, recorded in results/spike-p-calibration.json before any evaluation run
+    call_typed_attribute: calibrate
+    registry_dispatch: calibrate   # keyed selection is control, not value derivation
+    guard_property: false          # a sibling field of an object on the flow is not on the flow
+    object_composition: calibrate
+    field_flow: calibrate

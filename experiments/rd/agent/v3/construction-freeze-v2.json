@@ -1,0 +1,78 @@
+{
+  "created_from_commit": "820cb2bfa317bd805bb35da8a187abc44f6639ce",
+  "files": {
+    "experiments/rd/agent/V3-FINAL-REVIEW.md": "2bbb24c5fb84eddf958ef72b2a4b7bc3b0ce7a2be3eae04a9f0d29acd5423046",
+    "experiments/rd/agent/V3-PROTOCOL-DELTA.md": "0358f7ae6b17a68291a7a0ab552e7136753bbb5e15e6068b76e79e3a518cc753",
+    "experiments/rd/agent/v3/CONSTRUCTION-ERRATUM.md": "6dde0ded6dcd7760fdaf6c4f9512dff42107d058996bdcb7478b4b5deddb21c7",
+    "experiments/rd/agent/v3/CONSTRUCTION-SPEC.md": "047134749d906f8cdfb34f3507e27635eaea2f389d758651c24e97d0efb51fed",
+    "experiments/rd/agent/v3/a-development.yaml": "e6b7346edc7db363ebcd6a1e3c29809662187ad745267904bed74d8459b864c7",
+    "experiments/rd/agent/v3/a-heldout-spec.yaml": "2c5953b7805e6c4c64fc6fe53113373718a0c5f9e3d8a5f934653d6be30e1f5a",
+    "experiments/rd/agent/v3/construction-freeze.json": "762233be5545825f0ac822c031c06f9aa4c852356c26fc6dbba6c896b8564041",
+    "experiments/rd/agent/v3/construction_freeze.py": "c6f60acd7f6b5f9a7e52fa2ab70e77735b2251010b3f373991b0b57d25170ade",
+    "experiments/rd/agent/v3/construction_freeze_v2.py": "203478743fb33e212609b672eedb1357fd36fc58904c4de9abdb9270de3c5d79",
+    "experiments/rd/agent/v3/provider-development-v2.yaml": "da1ab2c0bb98e35ca285149777cac6655b6fad34125bc8703e2a2f5298b6fde2",
+    "experiments/rd/agent/v3/provider-development.yaml": "ad868f9c04cc755a3e740bfda2a9e986c63fb216b39508cd9f7bc924b2db34e4",
+    "experiments/rd/agent/v3/provider-heldout-spec.yaml": "df68e864efb989330d208013733519e99cf491d19c19b3a208536131d2b97754",
+    "experiments/rd/agent/v3/selection-seed-spec.yaml": "473068cedc7e6db255dba31ffcb6390d18302955bfe53c2850bbb8bb293f5ad2",
+    "experiments/rd/definitions.yaml": "edb1f89ddf11297b99362aa95b25fcd271f26b19b1ce1a5dd766a895af896b64",
+    "results/rd-vocabulary.json": "bd4a143f8d5a1fabe06a3858903c903a7b9a66930d68644a90a025b8503ebbc8"
+  },
+  "protocol": "rd-v3",
+  "schema": "rd-v3-construction-freeze/v2",
+  "status": "CONSTRUCTION_FROZEN",
+  "supersedes": "experiments/rd/agent/v3/construction-freeze.json",
+  "validation": {
+    "a_development": {
+      "cases": 10,
+      "matrix": {
+        "go/absent_context": 1,
+        "go/changed_present_both": 1,
+        "go/claim_specific_entry": 1,
+        "go/decision_point": 1,
+        "go/statement_granularity": 1,
+        "python/absent_context": 1,
+        "python/changed_present_both": 1,
+        "python/claim_specific_entry": 1,
+        "python/decision_point": 1,
+        "python/statement_granularity": 1
+      },
+      "resolved_statement_nodes": {
+        "*ast.AssignStmt": 12,
+        "*ast.IfStmt": 4,
+        "*ast.ReturnStmt": 4,
+        "Assign": 12,
+        "If": 4,
+        "Return": 4
+      }
+    },
+    "a_heldout": {
+      "cells": 5,
+      "instances": 20
+    },
+    "provider_development": {
+      "false_edges": 6,
+      "python_source_shape": "a.b.m(...)",
+      "schema": "rd-v3-provider-development/v2",
+      "targets": 3,
+      "true_edges": 6
+    },
+    "provider_heldout": {
+      "instances": 12,
+      "targets": 3
+    },
+    "selection": {
+      "nonce_bytes": 32,
+      "reserves": 6,
+      "target": 6
+    },
+    "superseded_v1": {
+      "created_from_commit": "353778d3f6b754271a2777e24bcfdd3afd7eb446",
+      "manifest_sha256": "762233be5545825f0ac822c031c06f9aa4c852356c26fc6dbba6c896b8564041",
+      "status": "CONSTRUCTION_INVALID"
+    },
+    "toolchain": {
+      "go_version": "go1.26.8",
+      "gofmt": ".cache/toolchains/go1.26.8/bin/gofmt"
+    }
+  }
+}
